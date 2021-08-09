@@ -1,0 +1,89 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C++ Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/firmware/build/TapeLooper.elf",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd": "${workspaceRoot}",
+            "environment": [],
+            "externalConsole": false,
+            "debugServerArgs": "-f interface/ftdi/olimex-arm-usb-tiny-h.cfg -f target/stm32h7x.cfg -c init -c \"reset init\"",
+            "serverLaunchTimeout": 20000,
+            "filterStderr": true,
+            "filterStdout": false,
+            "serverStarted": "target halted due to debug-request, current mode: Thread",
+            "preLaunchTask": "build-TapeLooper-debug",
+            "setupCommands": [
+                { "text": "-target-select remote localhost:3333", "description": "connect to target", "ignoreFailures": false },
+                { "text": "-file-exec-and-symbols ${workspaceRoot}/build/TapeLooper.elf", "description": "load file", "ignoreFailures": false},
+                { "text": "-interpreter-exec console \"monitor endian little\"", "ignoreFailures": false },
+                { "text": "-interpreter-exec console \"monitor reset\"", "ignoreFailures": false },
+                { "text": "-interpreter-exec console \"monitor halt\"", "ignoreFailures": false },
+                { "text": "-interpreter-exec console \"monitor arm semihosting enable\"", "ignoreFailures": false },
+                { "text": "-target-download", "description": "flash target", "ignoreFailures": false }
+            ],
+            "logging": {
+                "moduleLoad": true,
+                "trace": true,
+                "engineLogging": true,
+                "programOutput": true,
+                "exceptions": true
+            },
+            "linux": {
+                "MIMode": "gdb",
+                "MIDebuggerPath": "~/dev/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gdb",
+                "debugServerPath": "openocd"
+            },
+            "osx": {
+                "MIMode": "gdb",
+                "MIDebuggerPath": "/Users/johannes/dev/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gdb",
+                "debugServerPath": "openocd"
+            },
+            "windows": {
+                //"preLaunchTask": "mbed",
+                "program": "C:\\Users\\johannes\\Documents\\Repos\\TapeLooper\\firmware\\build\\TapeLooper.elf",
+                "setupCommands": [
+                    { "text": "-target-select remote localhost:3333", "description": "connect to target", "ignoreFailures": false },
+                    // Yes, that's silly.
+                    // GDB expects windows-style paths, so we can't use ${workspaceRoot} and have to hardcode the path here.
+                    // Furthermore this string passes through TWO escape-steps, requiring us to use ugly "\\\\"
+                    { "text": "-file-exec-and-symbols C:\\\\Users\\\\johannes\\\\Documents\\\\Repos\\\\TapeLooper\\\\firmware\\\\build\\\\TapeLooper.elf", "description": "load file", "ignoreFailures": false},
+                    { "text": "-interpreter-exec console \"monitor endian little\"", "ignoreFailures": false },
+                    { "text": "-interpreter-exec console \"monitor reset\"", "ignoreFailures": false },
+                    { "text": "-interpreter-exec console \"monitor halt\"", "ignoreFailures": false },
+                    { "text": "-interpreter-exec console \"monitor arm semihosting enable\"", "ignoreFailures": false },
+                    { "text": "-target-download", "description": "flash target", "ignoreFailures": false }
+                ],
+                "MIMode": "gdb",
+                "MIDebuggerPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\9 2020-q2-update\\bin\\arm-none-eabi-gdb.exe",
+                "debugServerPath": "openocd.exe",
+            }
+        },
+        {
+            "name": "Launch Tests Locally",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/firmware/tests/build/bin/TapeLooper_gtest",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/firmware/tests/build/bin",
+            "environment": [],
+            "externalConsole": false,
+            "logging": {
+                "engineLogging": false
+            },
+            "preLaunchTask": "buildTests-TapeLooper",
+            
+            "osx": {
+                "MIMode": "lldb",
+            },
+            "windows": {
+                "MIMode": "gdb",
+            }
+        }
+    ]
+}

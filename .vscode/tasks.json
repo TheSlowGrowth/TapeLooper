@@ -1,0 +1,424 @@
+{
+    "version": "2.0.0",
+    "type": "shell",
+    "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated"
+    },
+    "windows": {
+        "options": {}
+    },
+    "tasks": [
+        {
+            "label": "build-libDaisy-debug",
+            "osx": {
+                "command": "make",
+                "args": [
+                    "all",
+                    "DEBUG=1"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "all",
+                    "DEBUG=1"
+                ]
+            },
+            "windows": {
+                "command": "make.exe",
+                "args": [
+                    "all",
+                    "DEBUG=1"
+                ]
+            },
+            "options" : {
+                "cwd": "${workspaceRoot}/firmware/lib/libDaisy"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "build-libDaisy-release",
+            "osx": {
+                "command": "make",
+                "args": [
+                    "all"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "all"
+                ]
+            },
+            "windows": {
+                "command": "make.exe",
+                "args": [
+                    "all"
+                ],
+                "options": {
+                    "env": {
+                        "GCC_PATH": "\"C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2020-q4-major\\bin\""
+                    }
+                }
+            },
+            "options" : {
+                "cwd": "${workspaceRoot}/firmware/lib/libDaisy"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "build-TapeLooper-debug",
+            "osx": {
+                "command": "make",
+                "args": [
+                    "all",
+                    "DEBUG=1"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "all",
+                    "DEBUG=1"
+                ]
+            },
+            "windows": {
+                "command": "make.exe",
+                "args": [
+                    "all",
+                    "DEBUG=1"
+                ]
+            },
+            "options" : {
+                "cwd": "${workspaceRoot}/firmware/"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "build-libDaisy-debug"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "build-TapeLooper-release",
+            "osx": {
+                "command": "make",
+                "args": [
+                    "all",
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "all"
+                ]
+            },
+            "windows": {
+                "command": "make.exe",
+                "args": [
+                    "all"
+                ]
+            },
+            "options" : {
+                "cwd": "${workspaceRoot}/firmware/"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "build-libDaisy-release"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },{
+            "label": "flash-TapeLooper-release",
+            "osx": {
+                "command": "make",
+                "args": [
+                    "program",
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "program"
+                ]
+            },
+            "windows": {
+                "command": "make.exe",
+                "args": [
+                    "program"
+                ]
+            },
+            "options" : {
+                "cwd": "${workspaceRoot}/firmware/"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": [
+                "build-TapeLooper-release"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "clean-TapeLooper",
+            "osx": {
+                "command": "make",
+                "args": [
+                    "clean"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "clean"
+                ]
+            },
+            "windows": {
+                "command": "make.exe",
+                "args": [
+                    "clean"
+                ]
+            },
+            "options" : {
+                "cwd": "${workspaceRoot}/firmware"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "clean-libDaisy",
+            "osx": {
+                "command": "make",
+                "args": [
+                    "clean"
+                ]
+            },
+            "linux": {
+                "command": "make",
+                "args": [
+                    "clean"
+                ]
+            },
+            "windows": {
+                "command": "make.exe",
+                "args": [
+                    "clean"
+                ]
+            },
+            "options" : {
+                "cwd": "${workspaceRoot}/firmware/lib/libDaisy"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "clean-build-debug",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "clean-libDaisy",
+                "clean-TapeLooper",
+                "build-libDaisy-debug",
+                "build-TapeLooper-debug"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "clean-build-release",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "clean-libDaisy",
+                "clean-TapeLooper",
+                "build-libDaisy-release",
+                "build-TapeLooper-release"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "buildTests-TapeLooper",
+            "command": "make",
+            "args": [
+                ""
+            ],
+            "options": {
+                    "cwd": "${workspaceFolder}/firmware/tests"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}/firmware/tests"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "cleanTests-TapeLooper",
+            "command": "make",
+            "args": [
+                "clean"
+            ],
+            "options": {
+                    "cwd": "${workspaceFolder}/firmware/tests"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "cleanBuildTests-TapeLooper",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "cleanTests-TapeLooper",
+                "buildTests-TapeLooper"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}/firmware"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+    ]
+}
