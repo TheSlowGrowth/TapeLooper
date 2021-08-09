@@ -1,0 +1,80 @@
+name: Firmware Checks
+on:
+  # run for all pull requests
+  # Run for all commits on feature branches
+  push:
+    paths:
+    - 'firmware/**'
+    - '.github/workflows/**'
+  pull_request:
+    paths:
+    - 'firmware/**'
+    - '.github/workflows/**'
+jobs:
+  ###############################################################################
+  # builds the firmware on arm-none-eabi-gcc
+  testBuild:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install arm-none-eabi-gcc
+      uses: fiam/arm-none-eabi-gcc@v1
+      with:
+        release: '9-2019-q4' # The arm-none-eabi-gcc release to use.
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Build libDaisy
+      run: |
+        cd firmware/lib/libDaisy
+        make all GCC_PATH=""
+
+    - name: Build Firmware
+      run: |
+        cd firmware
+        make all GCC_PATH=""
+
+    - name: Upload Firmware hex
+      uses: actions/upload-artifact@v2
+      with:
+        name: TapeLooper.hex
+        path: firmware/build/TapeLooper.hex
+
+    - name: Upload Firmware bin
+      uses: actions/upload-artifact@v2
+      with:
+        name: TapeLooper.bin
+        path: firmware/build/TapeLooper.bin
+  
+  ###############################################################################
+  # builds the automated tests with clang; runs tests and exports results
+  googleTest:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Build
+      run: |
+        cd firmware/tests
+        make release
+    
+    - name: Run Tests
+      run: |
+        cd firmware/tests/build/bin
+        ./TapeLooper_gtest --gtest_output=xml:gtestresults.xml
+    
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action@v1
+      if: always()
+      with:
+        files: firmware/tests/build/bin/**/*.xml
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+

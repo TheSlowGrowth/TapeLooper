@@ -1,0 +1,30 @@
+name: Formatting
+on:
+  # run for all pull requests
+  # Run for all commits on feature branches
+  push:
+    paths:
+    - 'firmware/app/**'
+    - '.github/workflows/**'
+  pull_request:
+    paths:
+    - 'firmware/app/**'
+    - '.github/workflows/**'
+jobs:
+  ###############################################################################
+  # checks the formatting with clang-format
+  formatting-check:
+    name: Formatting Check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        path:
+          - 'firmware/app' 
+          # more paths could be added here
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run clang-format style check for C/C++ programs.
+      uses: jidicula/clang-format-action@v3.2.0
+      with:
+        clang-format-version: '11'
+        check-path: ${{ matrix.path }}
