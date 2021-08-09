@@ -36,3 +36,4 @@
 
 firmware/build
 firmware/tests/build
+firmware/tests/TapeLooper_gtest
