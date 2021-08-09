@@ -32,8 +32,9 @@ OBJECTS = $(SOURCES:$(SRC_PATH)/%.$(SRC_EXT)=$(BUILD_PATH)/%.o)
 DEPS = $(OBJECTS:.o=.d)
 
 # flags #
-COMPILE_FLAGS = -std=gnu++17 -Wall -Wextra -g -Werror -pthread
+COMPILE_FLAGS = -std=gnu++17 -Wall -Wextra -g -Werror -pthread -DUNIT_TEST=1
 INCLUDES = -I /usr/local/include/ \
+		   -I ../lib/sprout/ \
 		   -I ../lib/googletest/ \
 		   -I ../lib/googletest/googletest/ \
 		   -I ../lib/googletest/googletest/include/ \
