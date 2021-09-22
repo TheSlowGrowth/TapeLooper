@@ -5,10 +5,14 @@ on:
   push:
     paths:
     - 'firmware/**'
+    - 'dsp/**'
+    - 'lib/**'
     - '.github/workflows/**'
   pull_request:
     paths:
     - 'firmware/**'
+    - 'dsp/**'
+    - 'lib/**'
     - '.github/workflows/**'
 jobs:
   ###############################################################################
@@ -62,19 +66,19 @@ jobs:
 
     - name: Build
       run: |
-        cd firmware/tests
+        cd dsp/tests
         make release
     
     - name: Run Tests
       run: |
-        cd firmware/tests/build/bin
-        ./TapeLooper_gtest --gtest_output=xml:gtestresults.xml
+        cd dsp/tests/build/bin
+        ./TapeLooperDSP_gtest --gtest_output=xml:gtestresults.xml
     
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1
       if: always()
       with:
-        files: firmware/tests/build/bin/**/*.xml
+        files: dsp/tests/build/bin/**/*.xml
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
 

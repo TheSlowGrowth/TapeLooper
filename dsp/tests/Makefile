@@ -9,7 +9,7 @@ BUILD_PATH = build
 BIN_PATH = $(BUILD_PATH)/bin
 
 # executable # 
-BIN_NAME = TapeLooper_gtest
+BIN_NAME = TapeLooperDSP_gtest
 
 # extensions #
 SRC_EXT = cpp
@@ -35,12 +35,12 @@ DEPS = $(OBJECTS:.o=.d)
 COMPILE_FLAGS = -std=gnu++17 -Wall -Wextra -g -Werror -pthread -DUNIT_TEST=1
 INCLUDES = -I /usr/local/include/ \
 		   -I ../lib/sprout/ \
-		   -I ../lib/googletest/ \
-		   -I ../lib/googletest/googlemock/ \
-		   -I ../lib/googletest/googlemock/include \
-		   -I ../lib/googletest/googletest/ \
-		   -I ../lib/googletest/googletest/include/ \
-		   -I ../app/ \
+		   -I ../../lib/googletest/ \
+		   -I ../../lib/googletest/googlemock/ \
+		   -I ../../lib/googletest/googlemock/include \
+		   -I ../../lib/googletest/googletest/ \
+		   -I ../../lib/googletest/googletest/include/ \
+		   -I ../src/ \
 		   -I .
 
 # Space-separated pkg-config libraries used by this project

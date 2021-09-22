@@ -5,10 +5,12 @@ on:
   push:
     paths:
     - 'firmware/app/**'
+    - 'dsp/**'
     - '.github/workflows/**'
   pull_request:
     paths:
     - 'firmware/app/**'
+    - 'dsp/**'
     - '.github/workflows/**'
 jobs:
   ###############################################################################
@@ -20,11 +22,12 @@ jobs:
       matrix:
         path:
           - 'firmware/app' 
-          # more paths could be added here
+          - 'dsp/src'
+          - 'dsp/tests'
     steps:
     - uses: actions/checkout@v2
     - name: Run clang-format style check for C/C++ programs.
-      uses: jidicula/clang-format-action@v3.2.0
+      uses: jidicula/clang-format-action@v3.4.0
       with:
         clang-format-version: '11'
         check-path: ${{ matrix.path }}

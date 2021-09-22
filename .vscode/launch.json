@@ -67,10 +67,10 @@
             "name": "Launch Tests Locally",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/firmware/tests/build/bin/TapeLooper_gtest",
+            "program": "${workspaceFolder}/dsp/tests/build/bin/TapeLooperDSP_gtest",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/firmware/tests/build/bin",
+            "cwd": "${workspaceFolder}/dsp/tests/build/bin",
             "environment": [],
             "externalConsole": false,
             "logging": {

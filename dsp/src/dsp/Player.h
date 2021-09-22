@@ -1,8 +1,6 @@
 #pragma once
 
-#include "../constants.h"
 #include "DspHelpers.h"
-#include <sprout/math.hpp>
 
 #ifndef MANUAL_INLINE
 #    define MANUAL_INLINE inline __attribute__((always_inline))
@@ -14,7 +12,7 @@ enum class Direction
     backwards
 };
 
-template <typename ProcessorType>
+template <typename ProcessorType, int sampleRateHz = 48000>
 class Player
 {
 public:

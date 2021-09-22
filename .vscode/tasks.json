@@ -360,7 +360,7 @@
                 ""
             ],
             "options": {
-                    "cwd": "${workspaceFolder}/firmware/tests"
+                    "cwd": "${workspaceFolder}/dsp/tests"
             },
             "group": {
                 "kind": "build",
@@ -370,7 +370,7 @@
                 "owner": "cpp",
                 "fileLocation": [
                     "relative",
-                    "${workspaceRoot}/firmware/tests"
+                    "${workspaceRoot}/dsp/tests"
                 ],
                 "pattern": {
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
@@ -389,7 +389,7 @@
                 "clean"
             ],
             "options": {
-                    "cwd": "${workspaceFolder}/firmware/tests"
+                    "cwd": "${workspaceFolder}/dsp/tests"
             },
             "problemMatcher": []
         },
@@ -408,7 +408,7 @@
                 "owner": "cpp",
                 "fileLocation": [
                     "relative",
-                    "${workspaceRoot}/firmware"
+                    "${workspaceRoot}/dsp"
                 ],
                 "pattern": {
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
