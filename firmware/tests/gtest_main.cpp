@@ -1,5 +1,6 @@
 #include <cstdio>
 #include "gtest/gtest.h"
+#include "gmock/gmock.h"
 
 #ifdef __CYGWIN__
 #    include <string>
@@ -39,6 +40,6 @@ int main(int argc, char** argv)
     // Windows-style paths. We need to translate these paths.
     replaceWinPathWithCygwinPath(argc, argv);
 #endif
-    testing::InitGoogleTest(&argc, argv);
+    testing::InitGoogleMock(&argc, argv); // also inits google test
     return RUN_ALL_TESTS();
 }
