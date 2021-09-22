@@ -56,7 +56,15 @@
         "regex": "cpp",
         "forward_list": "cpp",
         "list": "cpp",
-        "unordered_set": "cpp"
+        "unordered_set": "cpp",
+        "any": "cpp",
+        "condition_variable": "cpp",
+        "map": "cpp",
+        "set": "cpp",
+        "mutex": "cpp",
+        "shared_mutex": "cpp",
+        "thread": "cpp",
+        "variant": "cpp"
     },
     "editor.tokenColorCustomizations": {
         "textMateRules": [
