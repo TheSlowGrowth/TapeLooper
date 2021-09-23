@@ -90,7 +90,8 @@
     },
     "gtest-adapter.debugConfig": [
         "Firmware Tests",
-        "DSP Tests"
+        "DSP Tests",
+        "Plugin Tests"
     ],
     "gtest-adapter.supportLocation": true
 }
