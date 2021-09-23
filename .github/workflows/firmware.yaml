@@ -17,7 +17,7 @@ on:
 jobs:
   ###############################################################################
   # builds the firmware on arm-none-eabi-gcc
-  testBuild:
+  firmware-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,20 +26,21 @@ jobs:
       with:
         release: '9-2019-q4' # The arm-none-eabi-gcc release to use.
 
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.9
+      with:
+        cmake-version: '3.20.x'
+
     - name: Checkout
       uses: actions/checkout@v2
       with:
         submodules: recursive
 
-    - name: Build libDaisy
-      run: |
-        cd firmware/lib/libDaisy
-        make all GCC_PATH=""
-
-    - name: Build Firmware
-      run: |
-        cd firmware
-        make all GCC_PATH=""
+    - name: Configure
+      run: cmake -S firmware -B firmware/build -G "Unix Makefiles" -D CMAKE_TOOLCHAIN_FILE="$(pwd)/lib/libDaisy/cmake/toolchains/stm32h750xx.cmake" -D TOOLCHAIN_PREFIX=$(which arm-none-eabi-gcc | sed -e "s/bin\/arm-none-eabi-gcc//")
+    
+    - name: Build
+      run: cmake --build firmware/build
 
     - name: Upload Firmware hex
       uses: actions/upload-artifact@v2
@@ -52,33 +53,5 @@ jobs:
       with:
         name: TapeLooper.bin
         path: firmware/build/TapeLooper.bin
-  
-  ###############################################################################
-  # builds the automated tests with clang; runs tests and exports results
-  googleTest:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        submodules: recursive
-
-    - name: Build
-      run: |
-        cd dsp/tests
-        make release
-    
-    - name: Run Tests
-      run: |
-        cd dsp/tests/build/bin
-        ./TapeLooperDSP_gtest --gtest_output=xml:gtestresults.xml
-    
-    - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action@v1
-      if: always()
-      with:
-        files: dsp/tests/build/bin/**/*.xml
-        github_token: ${{ secrets.GITHUB_TOKEN }}
 
 

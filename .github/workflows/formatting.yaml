@@ -4,12 +4,12 @@ on:
   # Run for all commits on feature branches
   push:
     paths:
-    - 'firmware/app/**'
+    - 'firmware/**'
     - 'dsp/**'
     - '.github/workflows/**'
   pull_request:
     paths:
-    - 'firmware/app/**'
+    - 'firmware/**'
     - 'dsp/**'
     - '.github/workflows/**'
 jobs:
@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         path:
-          - 'firmware/app' 
+          - 'firmware/src' 
           - 'dsp/src'
           - 'dsp/tests'
     steps:
