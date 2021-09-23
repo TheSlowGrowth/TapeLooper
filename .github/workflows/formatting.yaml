@@ -6,11 +6,13 @@ on:
     paths:
     - 'firmware/**'
     - 'dsp/**'
+    - 'plugin/**'
     - '.github/workflows/**'
   pull_request:
     paths:
     - 'firmware/**'
     - 'dsp/**'
+    - 'plugin/**'
     - '.github/workflows/**'
 jobs:
   ###############################################################################
@@ -25,6 +27,8 @@ jobs:
           - 'firmware/tests' 
           - 'dsp/src'
           - 'dsp/tests'
+          - 'plugin/src'
+          - 'plugin/tests'
     steps:
     - uses: actions/checkout@v2
     - name: Run clang-format style check for C/C++ programs.

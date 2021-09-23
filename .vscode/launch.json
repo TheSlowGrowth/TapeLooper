@@ -106,6 +106,28 @@
             "windows": {
                 "MIMode": "gdb",
             }
+        },
+        {
+            "name": "Plugin Tests",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/plugin/build/Debug/TapeLooperPlugin_Gtest",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/plugin/build/Debug",
+            "environment": [],
+            "externalConsole": false,
+            "logging": {
+                "engineLogging": false
+            },
+            "preLaunchTask": "build plugin",
+            
+            "osx": {
+                "MIMode": "lldb",
+            },
+            "windows": {
+                "MIMode": "gdb",
+            }
         }
     ]
 }

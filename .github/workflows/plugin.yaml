@@ -1,0 +1,156 @@
+name: Plugin Checks And Builds
+on:
+  # run for all pull requests
+  # Run for all commits (e.g. on feature branches)
+  push:
+  pull_request:
+jobs:
+  ###############################################################################
+  # builds the plugin on windows
+  testBuildWindows:
+    runs-on: windows-latest
+
+    steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.8
+      with:
+        cmake-version: '3.19.x'
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Configure
+      run: |
+        cmake.exe -G "Visual Studio 16 2019" -A x64 -B plugin/build -S plugin
+    - name: Build
+      run: |
+        cmake --build plugin/build --config Release
+    - name: Run Tests
+      run: |
+        plugin/build/Release/TapeLooperPlugin_Gtest.exe --gtest_output=xml:TestResults\gtestResults_windows.xml
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: TestResults
+        path: TestResults/**
+
+    - name: Upload executable
+      uses: actions/upload-artifact@v2
+      with:
+        name: TapeLooperPlugin_Windows
+        path: |
+          plugin\build\TapeLooperPlugin_artefacts\Release\VST3\Tape Looper Plugin.vst3\Contents\x86_64-win\Tape Looper Plugin.vst3
+          plugin\build\TapeLooperPlugin_artefacts\Release\Standalone\Tape Looper Plugin.exe
+          plugin/build/Release/TapeLooperPlugin_Gtest.exe
+          TestResults\gtestResults_windows.xml
+  ###############################################################################
+  # builds the plugin on macos
+  testBuildMacOS:
+    runs-on: macos-latest
+
+    steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.8
+      with:
+        cmake-version: '3.19.x'
+
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Configure
+      run: |
+        cmake -G "Xcode" -B plugin/build -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -S plugin
+    - name: Build
+      run: |
+        cmake --build plugin/build --config Release
+    - name: Run Tests
+      run: |
+        plugin/build/Release/TapeLooperPlugin_Gtest --gtest_output=xml:TestResults/gtestResults_macos.xml
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: TestResults
+        path: TestResults/**
+
+    - name: Upload executable
+      uses: actions/upload-artifact@v2
+      with:
+        name: TapeLooperPlugin_MacOS
+        path: |
+          plugin/build/TapeLooperPlugin_artefacts/Release/VST3/Tape Looper Plugin.vst3/**
+          plugin/build/TapeLooperPlugin_artefacts/Release/Standalone/Tape Looper Plugin.app/**
+          plugin/build/Release/TapeLooperPlugin_Gtest
+          TestResults/gtestResults_macos.xml
+  ###############################################################################
+  # builds the plugin on ubuntu
+  testBuildUbuntu:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.8
+      with:
+        cmake-version: '3.19.x'
+
+    - name: Setup dependencies
+      run: |
+        sudo apt-get -y install g++ libfreetype6-dev libx11-dev libxinerama-dev libxrandr-dev libxcursor-dev mesa-common-dev libasound2-dev freeglut3-dev libxcomposite-dev
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Configure
+      run: |
+        cmake -G "Unix Makefiles" -B plugin/build -S plugin
+    - name: Build
+      run: |
+        cmake --build plugin/build --config Release
+    - name: Run Tests
+      run: |
+        plugin/build/TapeLooperPlugin_Gtest --gtest_output=xml:TestResults/gtestResults_ubuntu.xml
+    - name: Upload Test Results
+      uses: actions/upload-artifact@v2
+      with:
+        name: TestResults
+        path: TestResults/**
+
+    - name: Upload executable
+      uses: actions/upload-artifact@v2
+      with:
+        name: TapeLooperPlugin_Linux
+        path: |
+          plugin/build/TapeLooperPlugin_artefacts/VST3/Tape Looper Plugin.vst3
+          plugin/build/TapeLooperPlugin_artefacts/Standalone/Tape Looper Plugin
+          plugin/build/TapeLooperPlugin_Gtest
+          TestResults/gtestResults_ubuntu.xml
+  ###############################################################################
+  # uploads test results from the previous jobs
+  publishTestResults:
+    name: "Publish Unit Tests Results"
+    needs: [testBuildUbuntu, testBuildMacOS, testBuildWindows]
+    runs-on: ubuntu-latest
+    # the dependency jobs might be skipped, we don't need to run this job then
+    if: success() || failure()
+
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: TestResults
+          path: TestResults
+
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          files: TestResults/**/*.xml
+          github_token: ${{ secrets.GITHUB_TOKEN }}

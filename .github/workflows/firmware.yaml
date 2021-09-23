@@ -1,4 +1,4 @@
-name: Firmware Checks
+name: Firmware Checks And Builds
 on:
   # run for all pull requests
   # Run for all commits on feature branches
