@@ -64,13 +64,35 @@
             }
         },
         {
-            "name": "Launch Tests Locally",
+            "name": "DSP Tests",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/dsp/tests/build/bin/TapeLooperDSP_gtest",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/dsp/tests/build/bin",
+            "environment": [],
+            "externalConsole": false,
+            "logging": {
+                "engineLogging": false
+            },
+            "preLaunchTask": "buildTests-TapeLooperDSP",
+            
+            "osx": {
+                "MIMode": "lldb",
+            },
+            "windows": {
+                "MIMode": "gdb",
+            }
+        },
+        {
+            "name": "Firmware Tests",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/firmware/tests/build/bin/TapeLooper_gtest",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/firmware/tests/build/bin",
             "environment": [],
             "externalConsole": false,
             "logging": {

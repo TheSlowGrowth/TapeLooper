@@ -12,238 +12,106 @@
     },
     "tasks": [
         {
-            "label": "build-libDaisy-debug",
-            "osx": {
-                "command": "make",
-                "args": [
-                    "all",
-                    "DEBUG=1"
-                ]
-            },
-            "linux": {
-                "command": "make",
-                "args": [
-                    "all",
-                    "DEBUG=1"
-                ]
+            "label": "configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-D",
+                "TOOLCHAIN_PREFIX=\"${env:HOME}/dev/gcc-arm-none-eabi-9-2020-q2-update\"",
+                "-D",
+                "CMAKE_TOOLCHAIN_FILE=\"${workspaceRoot}/lib/libDaisy/cmake/toolchains/stm32h750xx.cmake\"",
+                "-S",
+                "firmware",
+                "-B",
+                "firmware/build",
+                "-D",
+                "CMAKE_EXPORT_COMPILE_COMMANDS=1",
+                "-G",
+                "\"Unix Makefiles\""
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}"
             },
             "windows": {
-                "command": "make.exe",
+                "command": "cmake.exe",
                 "args": [
-                    "all",
-                    "DEBUG=1"
-                ]
-            },
-            "options" : {
-                "cwd": "${workspaceRoot}/firmware/lib/libDaisy"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceRoot}"
+                    "-D",
+                    "TOOLCHAIN_PREFIX=\\\"C:/Program Files (x86)/GNU Arm Embedded Toolchain/9 2020-q2-update\\\"",
+                    "-D",
+                    "CMAKE_TOOLCHAIN_FILE=\\\"${workspaceRoot}/lib/libDaisy/cmake/toolchains/stm32h750xx.cmake\\\"",
+                    "-S",
+                    "firmware",
+                    "-B",
+                    "firmware/build",
+                    "-D",
+                    "CMAKE_EXPORT_COMPILE_COMMANDS=1",
+                    "-G",
+                    "\\\"Unix Makefiles\\\""
                 ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
+            },
+            "group": "build",
+            "problemMatcher": []
         },
         {
-            "label": "build-libDaisy-release",
-            "osx": {
-                "command": "make",
-                "args": [
-                    "all"
-                ]
-            },
-            "linux": {
-                "command": "make",
-                "args": [
-                    "all"
-                ]
+            "label": "configure (debug)",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-D",
+                "TOOLCHAIN_PREFIX=\"${env:HOME}/dev/gcc-arm-none-eabi-9-2020-q2-update\"",
+                "-D",
+                "CMAKE_TOOLCHAIN_FILE=\"${workspaceRoot}/lib/libDaisy/cmake/toolchains/stm32h750xx.cmake\"",
+                "-D",
+                "CMAKE_BUILD_TYPE=Debug",
+                "-S",
+                "firmware",
+                "-B",
+                "firmware/build",
+                "-D",
+                "CMAKE_EXPORT_COMPILE_COMMANDS=1",
+                "-G",
+                "\"Unix Makefiles\""
+            ],
+            "options": {
+                "cwd": "${workspaceRoot}"
             },
             "windows": {
-                "command": "make.exe",
+                "command": "cmake.exe",
                 "args": [
-                    "all"
+                    "-D",
+                    "TOOLCHAIN_PREFIX=\\\"C:/Program Files (x86)/GNU Arm Embedded Toolchain/9 2020-q2-update\\\"",
+                    "-D",
+                    "CMAKE_TOOLCHAIN_FILE=\\\"${workspaceRoot}/lib/libDaisy/cmake/toolchains/stm32h750xx.cmake\\\"",
+                    "-D",
+                    "CMAKE_BUILD_TYPE=Debug",
+                    "-S",
+                    "firmware",
+                    "-B",
+                    "firmware/build",
+                    "-D",
+                    "CMAKE_EXPORT_COMPILE_COMMANDS=1",
+                    "-G",
+                    "\\\"Unix Makefiles\\\""
                 ],
-                "options": {
-                    "env": {
-                        "GCC_PATH": "\"C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\10 2020-q4-major\\bin\""
-                    }
-                }
             },
-            "options" : {
-                "cwd": "${workspaceRoot}/firmware/lib/libDaisy"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceRoot}"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
+            "group": "build",
+            "problemMatcher": []
         },
         {
-            "label": "build-TapeLooper-debug",
-            "osx": {
-                "command": "make",
-                "args": [
-                    "all",
-                    "DEBUG=1"
-                ]
-            },
-            "linux": {
-                "command": "make",
-                "args": [
-                    "all",
-                    "DEBUG=1"
-                ]
-            },
-            "windows": {
-                "command": "make.exe",
-                "args": [
-                    "all",
-                    "DEBUG=1"
-                ]
-            },
-            "options" : {
-                "cwd": "${workspaceRoot}/firmware/"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "dependsOn": [
-                "build-libDaisy-debug"
+            "label": "build",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "firmware/build"
             ],
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceRoot}"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
-        },
-        {
-            "label": "build-TapeLooper-release",
-            "osx": {
-                "command": "make",
-                "args": [
-                    "all",
-                ]
+            "options": {
+                "cwd": "${workspaceRoot}"
             },
-            "linux": {
-                "command": "make",
-                "args": [
-                    "all"
-                ]
-            },
-            "windows": {
-                "command": "make.exe",
-                "args": [
-                    "all"
-                ]
-            },
-            "options" : {
-                "cwd": "${workspaceRoot}/firmware/"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "dependsOn": [
-                "build-libDaisy-release"
-            ],
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceRoot}"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
-        },{
-            "label": "flash-TapeLooper-release",
-            "osx": {
-                "command": "make",
-                "args": [
-                    "program",
-                ]
-            },
-            "linux": {
-                "command": "make",
-                "args": [
-                    "program"
-                ]
-            },
-            "windows": {
-                "command": "make.exe",
-                "args": [
-                    "program"
-                ]
-            },
-            "options" : {
-                "cwd": "${workspaceRoot}/firmware/"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "dependsOn": [
-                "build-TapeLooper-release"
-            ],
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceRoot}"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ]
         },
         {
             "label": "clean-TapeLooper",
@@ -266,95 +134,12 @@
                 ]
             },
             "options" : {
-                "cwd": "${workspaceRoot}/firmware"
+                "cwd": "${workspaceRoot}/firmware/build"
             },
             "problemMatcher": []
         },
         {
-            "label": "clean-libDaisy",
-            "osx": {
-                "command": "make",
-                "args": [
-                    "clean"
-                ]
-            },
-            "linux": {
-                "command": "make",
-                "args": [
-                    "clean"
-                ]
-            },
-            "windows": {
-                "command": "make.exe",
-                "args": [
-                    "clean"
-                ]
-            },
-            "options" : {
-                "cwd": "${workspaceRoot}/firmware/lib/libDaisy"
-            },
-            "problemMatcher": []
-        },
-        {
-            "label": "clean-build-debug",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "dependsOrder": "sequence",
-            "dependsOn": [
-                "clean-libDaisy",
-                "clean-TapeLooper",
-                "build-libDaisy-debug",
-                "build-TapeLooper-debug"
-            ],
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceRoot}"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
-        },
-        {
-            "label": "clean-build-release",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "dependsOrder": "sequence",
-            "dependsOn": [
-                "clean-libDaisy",
-                "clean-TapeLooper",
-                "build-libDaisy-release",
-                "build-TapeLooper-release"
-            ],
-            "problemMatcher": {
-                "owner": "cpp",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceRoot}"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
-            }
-        },
-        {
-            "label": "buildTests-TapeLooper",
+            "label": "buildTests-TapeLooperDSP",
             "command": "make",
             "args": [
                 ""
@@ -383,13 +168,80 @@
             }
         },
         {
-            "label": "cleanTests-TapeLooper",
+            "label": "cleanTests-TapeLooperDSP",
             "command": "make",
             "args": [
                 "clean"
             ],
             "options": {
                     "cwd": "${workspaceFolder}/dsp/tests"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "cleanBuildTests-TapeLooperDSP",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "cleanTests-TapeLooperDSP",
+                "buildTests-TapeLooperDSP"
+            ],
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}/dsp"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "buildTests-TapeLooper",
+            "command": "make",
+            "args": [
+                ""
+            ],
+            "options": {
+                    "cwd": "${workspaceFolder}/firmware/tests"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceRoot}/firmware/tests"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "label": "cleanTests-TapeLooper",
+            "command": "make",
+            "args": [
+                "clean"
+            ],
+            "options": {
+                    "cwd": "${workspaceFolder}/firmware/tests"
             },
             "problemMatcher": []
         },
@@ -408,7 +260,7 @@
                 "owner": "cpp",
                 "fileLocation": [
                     "relative",
-                    "${workspaceRoot}/dsp"
+                    "${workspaceRoot}/firmware/tests"
                 ],
                 "pattern": {
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",

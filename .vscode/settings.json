@@ -89,7 +89,8 @@
         ]
     },
     "gtest-adapter.debugConfig": [
-        "Launch Tests Locally"
+        "Firmware Tests",
+        "DSP Tests"
     ],
     "gtest-adapter.supportLocation": true
 }
