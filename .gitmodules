@@ -1,6 +1,6 @@
-[submodule "firmware/lib/libDaisy"]
-	path = firmware/lib/libDaisy
+[submodule "lib/libDaisy"]
+	path = lib/libDaisy
 	url = https://github.com/electro-smith/libDaisy
-[submodule "firmware/lib/googletest"]
-	path = firmware/lib/googletest
+[submodule "lib/googletest"]
+	path = lib/googletest
 	url = https://github.com/google/googletest.git

@@ -9,7 +9,7 @@ BUILD_PATH = build
 BIN_PATH = $(BUILD_PATH)/bin
 
 # executable # 
-BIN_NAME = TapeLooper_gtest
+BIN_NAME = TapeLooperDSP_gtest
 
 # extensions #
 SRC_EXT = cpp

@@ -37,3 +37,5 @@
 firmware/build
 firmware/tests/build
 firmware/tests/TapeLooper_gtest
+dsp/tests/build
+dsp/tests/TapeLooperDSP_gtest
