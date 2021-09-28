@@ -8,6 +8,7 @@ set(HEADER_FILES
     src/dsp/PeakMeter.h
     src/dsp/Player.h
     src/dsp/Recorder.h
+    src/dsp/TapeLooper.h
     src/dsp/TapeProcessor.h
 )
 
