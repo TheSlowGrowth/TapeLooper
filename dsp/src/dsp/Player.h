@@ -72,6 +72,9 @@ public:
         const auto gainTarget = (isPlaying_) ? paramGain : 0.0f;
         const auto speedTarget = limit(paramSpeed, minSpeed_, maxSpeed_);
 
+        if (playbackLength_ < 1)
+            return;
+
         for (size_t i = 0; i < numSamples; i++)
         {
             const auto gain = gainSmoother_.smooth(gainTarget, gainSmootherTimeConstant);
