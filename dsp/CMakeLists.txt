@@ -8,6 +8,7 @@ set(HEADER_FILES
     src/dsp/PeakMeter.h
     src/dsp/Player.h
     src/dsp/Recorder.h
+    src/dsp/TapeProcessor.h
 )
 
 add_subdirectory(lib/sprout)
