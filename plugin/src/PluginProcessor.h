@@ -1,6 +1,7 @@
 #pragma once
 
 #include <juce_audio_processors/juce_audio_processors.h>
+#include "TapeLooperProcessor.h"
 
 //==============================================================================
 class TapeLooperPluginAudioProcessor : public juce::AudioProcessor
@@ -42,7 +43,13 @@ public:
     void getStateInformation(juce::MemoryBlock& destData) override;
     void setStateInformation(const void* data, int sizeInBytes) override;
 
+    juce::AudioProcessorValueTreeState parameters_;
+
 private:
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(TapeLooperPluginAudioProcessor)
+
+    TapeLooperBank loopers_;
+
+    juce::AudioProcessorValueTreeState::ParameterLayout getParameterLayout();
 };

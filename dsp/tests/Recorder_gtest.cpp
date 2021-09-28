@@ -28,7 +28,7 @@ protected:
     static constexpr size_t numSamples_ = 2 * xFadeLengthInSamples_ + 10;
     std::array<float, numSamples_> storage_;
     std::array<float, numSamples_> inputSequence_;
-    Recorder recorder_;
+    Recorder<48000> recorder_;
 };
 
 TEST_F(DSP_Recorder, a_stateAfterInit)

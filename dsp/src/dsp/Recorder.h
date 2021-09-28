@@ -2,6 +2,7 @@
 
 #include "DspHelpers.h"
 
+template <size_t samplerate>
 class Recorder
 {
 public:
@@ -15,7 +16,7 @@ public:
         xfadePhase_(0.0f),
         recHead_(bufferStart_)
     {
-        setCrossfadeLength(size_t(defaultXFadeLengthInS_ * 48000));
+        setCrossfadeLength(size_t(defaultXFadeLengthInS_ * float(samplerate)));
     }
 
     void reset()
@@ -40,7 +41,7 @@ public:
         isRecording_ = false;
         isFadingOut_ = true;
         xfadePhase_ = 0.0f;
-        currentLength_ = recHead_ - bufferStart_;
+        currentLength_ = size_t(recHead_ - bufferStart_);
         recHead_ = bufferStart_;
     }
 
