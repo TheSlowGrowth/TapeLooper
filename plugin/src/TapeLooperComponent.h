@@ -81,10 +81,12 @@ class TapeLooperComponent : public juce::Component
 public:
     TapeLooperComponent(juce::AudioParameterChoice& playStateParameter,
                         juce::AudioParameterFloat& speedParameter,
-                        juce::AudioParameterFloat& gainParameter) :
+                        juce::AudioParameterFloat& preGainParameter,
+                        juce::AudioParameterFloat& postGainParameter) :
         playStopRecButtons_(playStateParameter),
         speedSliderAttachment_(speedParameter, speedSlider_),
-        gainSliderAttachment_(gainParameter, gainSlider_)
+        preGainSliderAttachment_(preGainParameter, preGainSlider_),
+        postGainSliderAttachment_(postGainParameter, postGainSlider_)
     {
         addAndMakeVisible(playStopRecButtons_);
 
@@ -92,12 +94,17 @@ public:
         speedSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
         addAndMakeVisible(speedSlider_);
 
-        gainSlider_.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
-        gainSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
-        addAndMakeVisible(gainSlider_);
+        preGainSlider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+        preGainSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
+        addAndMakeVisible(preGainSlider_);
+
+        postGainSlider_.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
+        postGainSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
+        addAndMakeVisible(postGainSlider_);
 
         speedSliderAttachment_.sendInitialUpdate();
-        gainSliderAttachment_.sendInitialUpdate();
+        preGainSliderAttachment_.sendInitialUpdate();
+        postGainSliderAttachment_.sendInitialUpdate();
     }
 
     void resized() override
@@ -108,16 +115,20 @@ public:
 
         playStopRecButtons_.setBounds(bounds.removeFromTop(2 * buttonHeight));
         bounds.removeFromTop(1); // padding
-        const auto speedSliderWidth = std::min(bounds.getWidth(), 60);
-        speedSlider_.setBounds(bounds.removeFromTop(speedSliderWidth + buttonHeight));
+        const auto rotarySliderWidth = std::min(bounds.getWidth(), 60);
+        speedSlider_.setBounds(bounds.removeFromTop(rotarySliderWidth + buttonHeight));
         bounds.removeFromTop(1); // padding
-        gainSlider_.setBounds(bounds);
+        preGainSlider_.setBounds(bounds.removeFromTop(rotarySliderWidth + buttonHeight));
+        bounds.removeFromTop(1); // padding
+        postGainSlider_.setBounds(bounds);
     }
 
 private:
     PlayStopRecButtons playStopRecButtons_;
     juce::Slider speedSlider_;
     juce::SliderParameterAttachment speedSliderAttachment_;
-    juce::Slider gainSlider_;
-    juce::SliderParameterAttachment gainSliderAttachment_;
+    juce::Slider preGainSlider_;
+    juce::SliderParameterAttachment preGainSliderAttachment_;
+    juce::Slider postGainSlider_;
+    juce::SliderParameterAttachment postGainSliderAttachment_;
 };

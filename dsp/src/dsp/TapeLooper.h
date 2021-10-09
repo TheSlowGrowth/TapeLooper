@@ -68,14 +68,16 @@ public:
     void process(float paramSpeed,
                  Direction direction,
                  const typename ProcessorType::Parameters& processorParameters,
-                 float paramGain,
+                 float paramPreGain,
+                 float paramPostGain,
                  const float* input,
                  float* outputToAddTo,
                  size_t numSamples)
     {
         player_.process(paramSpeed,
                         direction,
-                        paramGain,
+                        paramPreGain,
+                        paramPostGain,
                         processorParameters,
                         outputToAddTo,
                         numSamples);

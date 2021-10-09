@@ -167,11 +167,17 @@ juce::AudioProcessorValueTreeState::ParameterLayout TapeLooperPluginAudioProcess
                                                                speedRange, // mapping
                                                                1.0f) // default value
         );
-        result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chGain) + chStr, // parameterID
-                                                               "Gain " + chStr, // parameter name
+        result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chPreGain) + chStr, // parameterID
+                                                               "PreGain " + chStr, // parameter name
+                                                               0.0f, // minimum value
+                                                               4.0f, // maximum value
+                                                               1.0f) // default value
+        );
+        result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chPostGain) + chStr, // parameterID
+                                                               "PostGain " + chStr, // parameter name
                                                                0.0f, // minimum value
                                                                1.0f, // maximum value
-                                                               0.5f) // default value
+                                                               1.0f) // default value
         );
     }
 

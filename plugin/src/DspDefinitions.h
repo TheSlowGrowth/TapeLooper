@@ -12,6 +12,7 @@ namespace dspdefs
     {
         const auto chState = "chState";
         const auto chSpeed = "chSpeed";
-        const auto chGain = "chGain";
+        const auto chPreGain = "chPreGain";
+        const auto chPostGain = "chPostGain";
     } // namespace paramIds
 } // namespace dspdefs

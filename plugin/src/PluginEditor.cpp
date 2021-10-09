@@ -14,14 +14,15 @@ TapeLooperPluginAudioProcessorEditor::TapeLooperPluginAudioProcessorEditor(TapeL
         auto comp = std::make_unique<TapeLooperComponent>(
             *(juce::AudioParameterChoice*) p.parameters_.getParameter(dspdefs::paramIds::chState + chStr),
             *(juce::AudioParameterFloat*) p.parameters_.getParameter(dspdefs::paramIds::chSpeed + chStr),
-            *(juce::AudioParameterFloat*) p.parameters_.getParameter(dspdefs::paramIds::chGain + chStr));
+            *(juce::AudioParameterFloat*) p.parameters_.getParameter(dspdefs::paramIds::chPreGain + chStr),
+            *(juce::AudioParameterFloat*) p.parameters_.getParameter(dspdefs::paramIds::chPostGain + chStr));
         addAndMakeVisible(*comp);
         looperComponents_.add(std::move(comp));
     }
 
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
-    setSize(400, 300);
+    setSize(400, 400);
 }
 
 TapeLooperPluginAudioProcessorEditor::~TapeLooperPluginAudioProcessorEditor()
