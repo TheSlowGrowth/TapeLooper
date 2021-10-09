@@ -22,11 +22,13 @@ class TapeLooperProcessor : public ITapeLooperProcessor
 public:
     TapeLooperProcessor(juce::AudioParameterChoice& stateParameter,
                         juce::AudioParameterFloat& speedParameter,
-                        juce::AudioParameterFloat& gainParameter,
+                        juce::AudioParameterFloat& preGainParameter,
+                        juce::AudioParameterFloat& postGainParameter,
                         const LooperStorage& storage) :
         stateParameter_(stateParameter),
         speedParameter_(speedParameter),
-        gainParameter_(gainParameter),
+        preGainParameter_(preGainParameter),
+        postGainParameter_(postGainParameter),
         looper_(storage)
     {
     }
@@ -40,7 +42,8 @@ public:
                       juce::dsp::AudioBlock<float> outputToAddTo) override
     {
         const auto speed = speedParameter_.get();
-        const auto gain = gainParameter_.get();
+        const auto preGain = preGainParameter_.get();
+        const auto postGain = postGainParameter_.get();
 
         Direction direction = Direction::forwards;
         LooperState nextState = LooperState::stopped;
@@ -69,7 +72,8 @@ public:
         looper_.process(speed,
                         direction,
                         params,
-                        gain,
+                        preGain,
+                        postGain,
                         input.getChannelPointer(0),
                         outputToAddTo.getChannelPointer(0),
                         outputToAddTo.getNumSamples());
@@ -78,7 +82,8 @@ public:
 private:
     juce::AudioParameterChoice& stateParameter_;
     juce::AudioParameterFloat& speedParameter_;
-    juce::AudioParameterFloat& gainParameter_;
+    juce::AudioParameterFloat& preGainParameter_;
+    juce::AudioParameterFloat& postGainParameter_;
 
     TapeLooper<samplerate> looper_;
 };
@@ -187,11 +192,13 @@ private:
             const juce::String chStr(i);
             auto& stateParameter = *(juce::AudioParameterChoice*) parameters_.getParameter(dspdefs::paramIds::chState + chStr);
             auto& speedParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chSpeed + chStr);
-            auto& gainParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chGain + chStr);
+            auto& preGainParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chPreGain + chStr);
+            auto& postGainParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chPostGain + chStr);
 
             processors_.add(new ProcessorType(stateParameter,
                                               speedParameter,
-                                              gainParameter,
+                                              preGainParameter,
+                                              postGainParameter,
                                               storagePtr));
         }
     }
