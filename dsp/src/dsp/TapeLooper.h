@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Recorder.h"
 #include "TapeProcessor.h"
+#include "WowAndFlutter.h"
 
 struct LooperStorage
 {
@@ -18,11 +19,12 @@ enum class LooperState
     recording
 };
 
-template <size_t samplerate>
+template <size_t sampleRate>
 class TapeLooper
 {
 public:
-    using ProcessorType = TapeProcessor<samplerate>;
+    using ProcessorType = TapeProcessor<sampleRate>;
+    using SpeedModulatorType = WowAndFlutterOscillator<float, sampleRate>;
 
     TapeLooper(LooperStorage storageToUse) :
         storage_(storageToUse),
@@ -66,6 +68,7 @@ public:
     }
 
     void process(float paramSpeed,
+                 float wowAndFlutterAmt,
                  Direction direction,
                  const typename ProcessorType::Parameters& processorParameters,
                  float paramPreGain,
@@ -74,7 +77,9 @@ public:
                  float* outputToAddTo,
                  size_t numSamples)
     {
+        const auto mappedWowAndFlutterAmt = wowAndFlutterAmt * wowAndFlutterAmt;
         player_.process(paramSpeed,
+                        mappedWowAndFlutterAmt * maxWowAndFlutterAmt_,
                         direction,
                         paramPreGain,
                         paramPostGain,
@@ -89,8 +94,9 @@ public:
     }
 
 private:
+    static constexpr float maxWowAndFlutterAmt_ = 0.0125f;
     const LooperStorage storage_;
     LooperState state_;
-    Player<ProcessorType> player_;
-    Recorder<samplerate> recorder_;
+    Player<ProcessorType, SpeedModulatorType> player_;
+    Recorder<sampleRate> recorder_;
 };

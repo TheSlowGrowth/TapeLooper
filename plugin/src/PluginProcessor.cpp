@@ -85,8 +85,8 @@ void TapeLooperPluginAudioProcessor::changeProgramName(int index, const juce::St
 void TapeLooperPluginAudioProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
 {
     juce::dsp::ProcessSpec specs;
-    specs.numChannels = size_t(getMainBusNumInputChannels());
-    specs.maximumBlockSize = size_t(samplesPerBlock * 2); // safety for some weird hosts
+    specs.numChannels = juce::uint32(getMainBusNumInputChannels());
+    specs.maximumBlockSize = juce::uint32(samplesPerBlock) * 2u; // safety for some weird hosts
     specs.sampleRate = sampleRate;
 
     loopers_.prepareToPlay(specs);
@@ -165,18 +165,37 @@ juce::AudioProcessorValueTreeState::ParameterLayout TapeLooperPluginAudioProcess
         result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chSpeed) + chStr, // parameterID
                                                                "Speed " + chStr, // parameter name
                                                                speedRange, // mapping
-                                                               1.0f) // default value
+                                                               1.0f, // default value
+                                                               "", // label
+                                                               juce::AudioProcessorParameter::genericParameter, // category
+                                                               [](float value, int) { return juce::String(value, 2); }) // value-to-string function
         );
-        result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chPreGain) + chStr, // parameterID
-                                                               "PreGain " + chStr, // parameter name
+        juce::NormalisableRange<float> driveRange(0.25f, 4.0f);
+        driveRange.setSkewForCentre(1.0f);
+        result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chDrive) + chStr, // parameterID
+                                                               "Drive " + chStr, // parameter name
+                                                               driveRange, // mapping
+                                                               1.0f, // default value
+                                                               "", // label
+                                                               juce::AudioProcessorParameter::genericParameter, // category
+                                                               [](float value, int) { return juce::String(value, 2); }) // value-to-string function
+        );
+        result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chGrainAmt) + chStr, // parameterID
+                                                               "GrainAmt " + chStr, // parameter name
                                                                0.0f, // minimum value
-                                                               4.0f, // maximum value
-                                                               1.0f) // default value
+                                                               1.0f, // maximum value
+                                                               0.25f) // default value
+        );
+        result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chWowAndFlutterAmt) + chStr, // parameterID
+                                                               "WowAndFlutterAmt " + chStr, // parameter name
+                                                               0.0f, // minimum value
+                                                               1.0f, // maximum value
+                                                               0.25f) // default value
         );
         result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chPostGain) + chStr, // parameterID
                                                                "PostGain " + chStr, // parameter name
                                                                0.0f, // minimum value
-                                                               1.0f, // maximum value
+                                                               2.0f, // maximum value
                                                                1.0f) // default value
         );
     }

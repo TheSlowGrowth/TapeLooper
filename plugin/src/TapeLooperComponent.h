@@ -81,11 +81,15 @@ class TapeLooperComponent : public juce::Component
 public:
     TapeLooperComponent(juce::AudioParameterChoice& playStateParameter,
                         juce::AudioParameterFloat& speedParameter,
-                        juce::AudioParameterFloat& preGainParameter,
+                        juce::AudioParameterFloat& driveParameter,
+                        juce::AudioParameterFloat& grainAmtParameter,
+                        juce::AudioParameterFloat& wowAndFlutterAmtParameter,
                         juce::AudioParameterFloat& postGainParameter) :
         playStopRecButtons_(playStateParameter),
         speedSliderAttachment_(speedParameter, speedSlider_),
-        preGainSliderAttachment_(preGainParameter, preGainSlider_),
+        driveSliderAttachment_(driveParameter, driveSlider_),
+        grainAmtSliderAttachment_(grainAmtParameter, grainAmtSlider_),
+        wowAndFlutterAmtSliderAttachment_(wowAndFlutterAmtParameter, wowAndFlutterAmtSlider_),
         postGainSliderAttachment_(postGainParameter, postGainSlider_)
     {
         addAndMakeVisible(playStopRecButtons_);
@@ -94,16 +98,26 @@ public:
         speedSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
         addAndMakeVisible(speedSlider_);
 
-        preGainSlider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
-        preGainSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
-        addAndMakeVisible(preGainSlider_);
+        driveSlider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+        driveSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
+        addAndMakeVisible(driveSlider_);
+
+        grainAmtSlider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+        grainAmtSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
+        addAndMakeVisible(grainAmtSlider_);
+
+        wowAndFlutterAmtSlider_.setSliderStyle(juce::Slider::SliderStyle::RotaryHorizontalVerticalDrag);
+        wowAndFlutterAmtSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
+        addAndMakeVisible(wowAndFlutterAmtSlider_);
 
         postGainSlider_.setSliderStyle(juce::Slider::SliderStyle::LinearVertical);
         postGainSlider_.setTextBoxStyle(juce::Slider::TextEntryBoxPosition::TextBoxBelow, false, 40, 25);
         addAndMakeVisible(postGainSlider_);
 
         speedSliderAttachment_.sendInitialUpdate();
-        preGainSliderAttachment_.sendInitialUpdate();
+        driveSliderAttachment_.sendInitialUpdate();
+        grainAmtSliderAttachment_.sendInitialUpdate();
+        wowAndFlutterAmtSliderAttachment_.sendInitialUpdate();
         postGainSliderAttachment_.sendInitialUpdate();
     }
 
@@ -118,17 +132,46 @@ public:
         const auto rotarySliderWidth = std::min(bounds.getWidth(), 60);
         speedSlider_.setBounds(bounds.removeFromTop(rotarySliderWidth + buttonHeight));
         bounds.removeFromTop(1); // padding
-        preGainSlider_.setBounds(bounds.removeFromTop(rotarySliderWidth + buttonHeight));
+        driveSlider_.setBounds(bounds.removeFromTop(rotarySliderWidth + buttonHeight));
+        bounds.removeFromTop(1); // padding
+        grainAmtSlider_.setBounds(bounds.removeFromTop(rotarySliderWidth + buttonHeight));
+        bounds.removeFromTop(1); // padding
+        wowAndFlutterAmtSlider_.setBounds(bounds.removeFromTop(rotarySliderWidth + buttonHeight));
         bounds.removeFromTop(1); // padding
         postGainSlider_.setBounds(bounds);
+    }
+
+    void paint(juce::Graphics& g) override
+    {
+        const auto drawVerticalText = [&](const juce::String& text, juce::Rectangle<int> boundingBox) {
+            g.saveState();
+            g.setOrigin(boundingBox.getCentre());
+            g.addTransform(juce::AffineTransform().rotated(-juce::MathConstants<float>::halfPi));
+            g.drawSingleLineText(text,
+                                 0,
+                                 0,
+                                 juce::Justification::horizontallyCentred);
+            g.restoreState();
+        };
+
+        g.setColour(findColour(juce::Label::ColourIds::textColourId));
+        drawVerticalText("Speed", speedSlider_.getBounds().withWidth(20));
+        drawVerticalText("Drive", driveSlider_.getBounds().withWidth(20));
+        drawVerticalText("Grain", grainAmtSlider_.getBounds().withWidth(20));
+        drawVerticalText("Wow & Flutter", wowAndFlutterAmtSlider_.getBounds().withWidth(20));
+        drawVerticalText("Volume", postGainSlider_.getBounds().withWidth(20));
     }
 
 private:
     PlayStopRecButtons playStopRecButtons_;
     juce::Slider speedSlider_;
     juce::SliderParameterAttachment speedSliderAttachment_;
-    juce::Slider preGainSlider_;
-    juce::SliderParameterAttachment preGainSliderAttachment_;
+    juce::Slider driveSlider_;
+    juce::SliderParameterAttachment driveSliderAttachment_;
+    juce::Slider grainAmtSlider_;
+    juce::SliderParameterAttachment grainAmtSliderAttachment_;
+    juce::Slider wowAndFlutterAmtSlider_;
+    juce::SliderParameterAttachment wowAndFlutterAmtSliderAttachment_;
     juce::Slider postGainSlider_;
     juce::SliderParameterAttachment postGainSliderAttachment_;
 };

@@ -12,7 +12,7 @@ enum class Direction
     backwards
 };
 
-template <typename ProcessorType, int sampleRateHz = 48000>
+template <typename ProcessorType, typename SpeedModulatorType, int sampleRateHz = 48000>
 class Player
 {
 public:
@@ -30,6 +30,7 @@ public:
     void reset()
     {
         processor_.reset();
+        speedModulator_.reset();
         preGainSmoother_.reset(0);
         postGainSmoother_.reset(0);
         speedSmoother_.reset(0);
@@ -60,6 +61,7 @@ public:
     }
 
     void process(float paramSpeed,
+                 float speedModulationAmt,
                  Direction direction,
                  float paramPreProcessorGain,
                  float paramPostProcessorGain,
@@ -71,7 +73,7 @@ public:
                  ExponentialSmoother::TimeConstant postGainSmootherTimeConstant =
                      ExponentialSmoother::TimeConstant(0.05f, sampleRateHz, 1),
                  ExponentialSmoother::TimeConstant speedSmootherTimeConstant =
-                     ExponentialSmoother::TimeConstant(0.05f, sampleRateHz, 1))
+                     ExponentialSmoother::TimeConstant(0.5f, sampleRateHz, 1))
     {
         const auto preGainTarget = paramPreProcessorGain;
         const auto postGainTarget = (isPlaying_) ? paramPostProcessorGain : 0.0f;
@@ -84,7 +86,8 @@ public:
         {
             const auto preGain = preGainSmoother_.smooth(preGainTarget, preGainSmootherTimeConstant);
             const auto postGain = postGainSmoother_.smooth(postGainTarget, postGainSmootherTimeConstant);
-            const auto speed = speedSmoother_.smooth(speedTarget, speedSmootherTimeConstant);
+            const auto speedModulation = speedModulator_.getAndAdvance() * speedModulationAmt;
+            const auto speed = speedModulation + speedSmoother_.smooth(speedTarget, speedSmootherTimeConstant);
 
             // the final two samples we need to interpolate for the current output sample
             const auto sampleAIdx = int(playPos_);
@@ -101,7 +104,7 @@ public:
                 currentSampleIdx = wrapDownToPlaybackLength(currentSampleIdx + 1);
                 interpolationBuffer_[1] = interpolationBuffer_[0];
                 const auto indexToRead = (direction == Direction::forwards) ? currentSampleIdx
-                                                                            : playbackLength_ - 1 - currentSampleIdx;
+                                                                            : int(playbackLength_) - 1 - currentSampleIdx;
                 interpolationBuffer_[0] = processor_.process(sampleBuffer_[indexToRead] * preGain, processorParameters);
             }
 
@@ -118,6 +121,7 @@ public:
     }
 
     ProcessorType& getProcessor() { return processor_; }
+    SpeedModulatorType& getSpeedModulator() { return speedModulator_; }
 
 private:
     static constexpr float minSpeed_ = 0.25f;
@@ -152,5 +156,6 @@ private:
     int lastProcessedSampleIdx_;
     std::array<float, 2> interpolationBuffer_;
 
+    SpeedModulatorType speedModulator_;
     ProcessorType processor_;
 };
