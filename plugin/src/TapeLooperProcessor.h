@@ -16,18 +16,22 @@ public:
                               juce::dsp::AudioBlock<float> outputToAddTo) = 0;
 };
 
-template <int samplerate>
+template <size_t samplerate>
 class TapeLooperProcessor : public ITapeLooperProcessor
 {
 public:
     TapeLooperProcessor(juce::AudioParameterChoice& stateParameter,
                         juce::AudioParameterFloat& speedParameter,
-                        juce::AudioParameterFloat& preGainParameter,
+                        juce::AudioParameterFloat& driveParameter,
+                        juce::AudioParameterFloat& grainAmtParameter,
+                        juce::AudioParameterFloat& wowAndFlutterAmtParameter,
                         juce::AudioParameterFloat& postGainParameter,
                         const LooperStorage& storage) :
         stateParameter_(stateParameter),
         speedParameter_(speedParameter),
-        preGainParameter_(preGainParameter),
+        driveParameter_(driveParameter),
+        grainAmtParameter_(grainAmtParameter),
+        wowAndFlutterAmtParameter_(wowAndFlutterAmtParameter),
         postGainParameter_(postGainParameter),
         looper_(storage)
     {
@@ -42,7 +46,9 @@ public:
                       juce::dsp::AudioBlock<float> outputToAddTo) override
     {
         const auto speed = speedParameter_.get();
-        const auto preGain = preGainParameter_.get();
+        const auto drive = driveParameter_.get();
+        const auto grainAmt = grainAmtParameter_.get();
+        const auto wowAndFlutterAmt = wowAndFlutterAmtParameter_.get();
         const auto postGain = postGainParameter_.get();
 
         Direction direction = Direction::forwards;
@@ -67,12 +73,14 @@ public:
             looper_.switchState(nextState);
 
         typename TapeLooper<samplerate>::ProcessorType::Parameters params;
-        params.lofi = 0.0f; // TODO
+        params.driveGain = drive;
+        params.grainAmt = grainAmt;
 
         looper_.process(speed,
+                        wowAndFlutterAmt,
                         direction,
                         params,
-                        preGain,
+                        1.0f, // pre gain
                         postGain,
                         input.getChannelPointer(0),
                         outputToAddTo.getChannelPointer(0),
@@ -82,7 +90,9 @@ public:
 private:
     juce::AudioParameterChoice& stateParameter_;
     juce::AudioParameterFloat& speedParameter_;
-    juce::AudioParameterFloat& preGainParameter_;
+    juce::AudioParameterFloat& driveParameter_;
+    juce::AudioParameterFloat& grainAmtParameter_;
+    juce::AudioParameterFloat& wowAndFlutterAmtParameter_;
     juce::AudioParameterFloat& postGainParameter_;
 
     TapeLooper<samplerate> looper_;
@@ -145,17 +155,17 @@ private:
             switch (sampleRateToUse)
             {
                 default:
-                case 44100:
-                    createProcessorInstances<TapeLooperProcessor<44100>>();
+                case 44100u:
+                    createProcessorInstances<TapeLooperProcessor<44100u>>();
                     break;
-                case 48000:
-                    createProcessorInstances<TapeLooperProcessor<48000>>();
+                case 48000u:
+                    createProcessorInstances<TapeLooperProcessor<48000u>>();
                     break;
-                case 88200:
-                    createProcessorInstances<TapeLooperProcessor<88200>>();
+                case 88200u:
+                    createProcessorInstances<TapeLooperProcessor<88200u>>();
                     break;
-                case 96000:
-                    createProcessorInstances<TapeLooperProcessor<96000>>();
+                case 96000u:
+                    createProcessorInstances<TapeLooperProcessor<96000u>>();
                     break;
             }
         }
@@ -192,12 +202,16 @@ private:
             const juce::String chStr(i);
             auto& stateParameter = *(juce::AudioParameterChoice*) parameters_.getParameter(dspdefs::paramIds::chState + chStr);
             auto& speedParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chSpeed + chStr);
-            auto& preGainParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chPreGain + chStr);
+            auto& driveParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chDrive + chStr);
+            auto& grainAmtParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chGrainAmt + chStr);
+            auto& wowAndFlutterAmtParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chWowAndFlutterAmt + chStr);
             auto& postGainParameter = *(juce::AudioParameterFloat*) parameters_.getParameter(dspdefs::paramIds::chPostGain + chStr);
 
             processors_.add(new ProcessorType(stateParameter,
                                               speedParameter,
-                                              preGainParameter,
+                                              driveParameter,
+                                              grainAmtParameter,
+                                              wowAndFlutterAmtParameter,
                                               postGainParameter,
                                               storagePtr));
         }

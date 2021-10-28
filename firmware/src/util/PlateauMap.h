@@ -109,7 +109,7 @@ private:
 
 /**
  * Maps an input value of 0..1 to an output value of 0..1, creating
- * a number plateaus. This can be used to map a potentiometer value
+ * a number of plateaus. This can be used to map a potentiometer value
  * so that it's easier to hit certain values.
  * 
  * At each plateau value, the slope of the mapping function will be

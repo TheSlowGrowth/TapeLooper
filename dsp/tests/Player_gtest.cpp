@@ -20,6 +20,13 @@ protected:
         MOCK_METHOD(float, process, (float input, const Parameters& params), ());
     };
 
+    class MockSpeedModulator
+    {
+    public:
+        MOCK_METHOD(void, reset, (), ());
+        MOCK_METHOD(float, getAndAdvance, (), ());
+    };
+
     DSP_Player() :
         player_(buffer_.data(), numSamples_)
     {
@@ -34,7 +41,7 @@ protected:
 
     static constexpr size_t numSamples_ = 5;
     std::array<float, numSamples_> buffer_;
-    Player<MockProcessor> player_;
+    Player<MockProcessor, ::testing::NiceMock<MockSpeedModulator>> player_;
 
     template <typename ArrayTypeA, typename ArrayTypeB>
     static void expectArrayAlmostEqual(const ArrayTypeA& vecA,
@@ -88,6 +95,7 @@ TEST_F(DSP_Player, c_playForwardsNormalSpeed)
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -98,6 +106,7 @@ TEST_F(DSP_Player, c_playForwardsNormalSpeed)
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -185,6 +194,7 @@ TEST_F(DSP_Player, d_playForwardsHalfSpeed)
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(0.5f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -195,6 +205,7 @@ TEST_F(DSP_Player, d_playForwardsHalfSpeed)
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(0.5f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -271,6 +282,7 @@ TEST_F(DSP_Player, e_playForwardsDoubleSpeed)
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(2.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -281,6 +293,7 @@ TEST_F(DSP_Player, e_playForwardsDoubleSpeed)
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(2.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -365,6 +378,7 @@ TEST_F(DSP_Player, f_playBackwardsNormalSpeed)
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::backwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -375,6 +389,7 @@ TEST_F(DSP_Player, f_playBackwardsNormalSpeed)
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::backwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -462,6 +477,7 @@ TEST_F(DSP_Player, g_playBackwardsHalfSpeed)
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(0.5f, // speed
+                    0.0f, // speed modulation amount
                     Direction::backwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -472,6 +488,7 @@ TEST_F(DSP_Player, g_playBackwardsHalfSpeed)
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(0.5f, // speed
+                    0.0f, // speed modulation amount
                     Direction::backwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -547,6 +564,7 @@ TEST_F(DSP_Player, h_playBackwardsDoubleSpeed)
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(2.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::backwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -557,6 +575,7 @@ TEST_F(DSP_Player, h_playBackwardsDoubleSpeed)
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(2.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::backwards,
                     expectedPreGain,
                     expectedPostGain,
@@ -639,6 +658,7 @@ TEST_F(DSP_Player, i_applySmoothingToPreGain)
     outputBuffer.fill(0.0f);
     // process block (ramping the gain up)
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     targetGain, // target pre gain
                     1.0f, // post gain
@@ -650,6 +670,7 @@ TEST_F(DSP_Player, i_applySmoothingToPreGain)
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     // process block (ramping the gain back down)
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     0.0f, // target pre gain
                     1.0f, // post gain
@@ -705,6 +726,7 @@ TEST_F(DSP_Player, j_applySmoothingToPostGain)
     outputBuffer.fill(0.0f);
     // process block (ramping the gain up)
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     1.0f, // pre gain
                     targetGain, // post gain
@@ -716,6 +738,7 @@ TEST_F(DSP_Player, j_applySmoothingToPostGain)
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     // process block (ramping the gain back down)
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     1.0f, // pre gain
                     0.0f, // target post gain
@@ -768,6 +791,7 @@ TEST_F(DSP_Player, k_applySmoothingToSpeed)
     outputBuffer.fill(0.0f);
     // process block (ramping the speed down)
     player_.process(targetSpeed1,
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     1.0f, // pre gain
                     1.0f, // post gain
@@ -779,6 +803,7 @@ TEST_F(DSP_Player, k_applySmoothingToSpeed)
                     timeConstant); // speed time constant
     // process block (ramping the speed back up)
     player_.process(targetSpeed2,
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     1.0f, // pre gain
                     1.0f, // post gain
@@ -831,6 +856,7 @@ TEST_F(DSP_Player, l_applyNoSmoothingToProcessorParameters)
     outputBuffer.fill(0.0f);
     // process block with one parameter value
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     0.0f, // pre gain
                     0.0f, // post gain
@@ -842,6 +868,7 @@ TEST_F(DSP_Player, l_applyNoSmoothingToProcessorParameters)
                     timeConstant); // speed time constant
     // process block with another parameter value
     player_.process(1.0f, // speed
+                    0.0f, // speed modulation amount
                     Direction::forwards,
                     0.0f, // pre gain
                     0.0f, // post gain
@@ -866,4 +893,65 @@ TEST_F(DSP_Player, l_applyNoSmoothingToProcessorParameters)
         targetParamValue2,
     };
     expectArrayAlmostEqual(processCallArgs_param, expectedParameterValues);
+}
+
+TEST_F(DSP_Player, m_useSpeedModulator)
+{
+    const auto numSamplesToPlay = 6;
+
+    // the processor mock returns the input value so
+    // that we can easily see the read position incrementing
+    ON_CALL(player_.getProcessor(), process(_, _))
+        .WillByDefault([&](float input, const MockProcessor::Parameters&) {
+            return input;
+        });
+    // add this expectation to silence gmock warning.
+    EXPECT_CALL(player_.getProcessor(), process(_, _)).Times(::testing::AnyNumber());
+
+    // play the full buffer
+    player_.startPlaying(numSamples_);
+
+    std::array<float, numSamplesToPlay> outputBuffer;
+    outputBuffer.fill(0.0f);
+    // process block with speed modulator returning 1
+    EXPECT_CALL(player_.getSpeedModulator(), getAndAdvance())
+        .Times(::testing::Exactly(3))
+        .WillRepeatedly(::testing::Return(1));
+    player_.process(1.0f, // speed
+                    1.0f, // speed modulation amount
+                    Direction::forwards,
+                    1.0f, // pre gain
+                    1.0f, // post gain
+                    { 0.0f }, // processor params
+                    outputBuffer.data(),
+                    numSamplesToPlay / 2,
+                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
+                    ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
+                    ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
+    // process block with speed modulator returning 0.5, but mod amount set to 2.0
+    EXPECT_CALL(player_.getSpeedModulator(), getAndAdvance())
+        .Times(::testing::Exactly(3))
+        .WillRepeatedly(::testing::Return(0.5));
+    player_.process(1.0f,
+                    2.0f, // speed modulation amount
+                    Direction::forwards,
+                    1.0f, // pre gain
+                    1.0f, // post gain
+                    { 0.0f }, // processor params
+                    outputBuffer.data() + numSamplesToPlay / 2,
+                    numSamplesToPlay / 2,
+                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
+                    ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
+                    // this time, we have a smoothing time constant to make sure that the modulator is not smoothed
+                    ExponentialSmoother::TimeConstant::fromRawValue(0.5f)); // speed time constant
+
+    std::array<float, numSamplesToPlay> expectedOutputSamples = {
+        1,
+        3,
+        5,
+        2,
+        4,
+        1
+    };
+    expectArrayAlmostEqual(outputBuffer, expectedOutputSamples);
 }
