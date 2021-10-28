@@ -27,7 +27,6 @@ TEST(PlateauMapTest, b_monotonicRising)
     }
 }
 
-
 TEST(PlateauMapTest, c_plateauSlopeIsZero)
 {
     constexpr PlateauMapParameters<float, 1> parameters({ 0.5f });

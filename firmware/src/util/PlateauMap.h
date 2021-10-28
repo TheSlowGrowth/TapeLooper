@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <initializer_list>
 #include <memory.h>
-#include "dsp/DspHelpers.h"
+#include <dsp/DspHelpers.h>
 
 /**
  * Calculates the transition function parameters for the
