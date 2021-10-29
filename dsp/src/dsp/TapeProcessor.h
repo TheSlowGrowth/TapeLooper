@@ -10,7 +10,7 @@
 #    define MANUAL_INLINE inline __attribute__((always_inline))
 #endif
 
-template <size_t sampleRate>
+template <size_t sampleRate, size_t numChannels>
 class TapeProcessor
 {
 public:
@@ -28,13 +28,16 @@ public:
     {
         driveGainSmoother_.reset();
         grainAmtSmoother_.reset();
-        emphasisEq_.reset();
-        tapeEq_.reset();
-        grainProcessor_.reset();
+        for (size_t ch = 0; ch < numChannels; ch++)
+        {
+            emphasisEqs_[ch].reset();
+            tapeEqs_[ch].reset();
+            grainProcessors_[ch].reset();
+        }
     }
 
-    MANUAL_INLINE float process(float input,
-                                const Parameters& parameters)
+    MANUAL_INLINE void process(float inputAndOutput[numChannels],
+                               const Parameters& parameters)
     {
         constexpr auto smootherTimeConstant_ =
             ExponentialSmoother::TimeConstant(0.05f, sampleRate, 1);
@@ -43,26 +46,27 @@ public:
         const auto grainAmt = grainAmtSmoother_.smooth(parameters.grainAmt,
                                                        smootherTimeConstant_);
 
-        auto sample = input;
-        // tape saturation
-        sample = emphasisEq_.processPreEmphasis(sample);
-        sample *= driveGain;
-        sample = TapeSaturator<float>::saturate(sample);
-        sample /= driveGain;
-        sample = emphasisEq_.processDeEmphasis(sample);
-        // tape grain
-        sample = grainProcessor_.process(grainAmt, sample);
-        // apply tape EQ
-        sample = tapeEq_.process(sample);
-
-        return sample;
+        for (size_t ch = 0; ch < numChannels; ch++)
+        {
+            // tape saturation
+            auto& sample = inputAndOutput[ch];
+            sample = emphasisEqs_[ch].processPreEmphasis(sample);
+            sample *= driveGain;
+            sample = TapeSaturator<float>::saturate(sample);
+            sample /= driveGain;
+            sample = emphasisEqs_[ch].processDeEmphasis(sample);
+            // tape grain
+            sample = grainProcessors_[ch].process(grainAmt, sample);
+            // apply tape EQ
+            sample = tapeEqs_[ch].process(sample);
+        }
     }
 
 private:
     ExponentialSmoother driveGainSmoother_;
     ExponentialSmoother grainAmtSmoother_;
 
-    EmphasisEq<float, sampleRate> emphasisEq_;
-    TapeEq<sampleRate> tapeEq_;
-    TapeGrainProcessor<float, sampleRate> grainProcessor_;
+    std::array<EmphasisEq<float, sampleRate>, numChannels> emphasisEqs_;
+    std::array<TapeEq<sampleRate>, numChannels> tapeEqs_;
+    std::array<TapeGrainProcessor<float, sampleRate>, numChannels> grainProcessors_;
 };

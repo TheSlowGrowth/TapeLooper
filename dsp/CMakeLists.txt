@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.19)
 set(TARGET tapeLooperDsp)
 
 set(HEADER_FILES
+    src/dsp/AudioBuffer.h
     src/dsp/DspHelpers.h
     src/dsp/PeakMeter.h
     src/dsp/Player.h
