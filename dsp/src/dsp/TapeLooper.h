@@ -6,10 +6,29 @@
 #include "TapeProcessor.h"
 #include "WowAndFlutter.h"
 
-struct LooperStorage
+template <size_t numChannels>
+struct LooperStoragePtr
 {
-    float* data;
+    float* data[numChannels];
     size_t numSamples;
+};
+
+template <size_t size, size_t numChannels>
+class LooperStorage : public LooperStoragePtr<numChannels>
+{
+public:
+    LooperStorage()
+    {
+        for (size_t ch = 0; ch < numChannels; ch++)
+        {
+            storage_[ch].fill(0.0f);
+            this->data[ch] = storage_[ch];
+        }
+        this->numSamples = size;
+    }
+
+private:
+    std::array<std::array<float, size>, numChannels> storage_;
 };
 
 enum class LooperState
@@ -19,18 +38,18 @@ enum class LooperState
     recording
 };
 
-template <size_t sampleRate>
+template <size_t sampleRate, size_t numChannels>
 class TapeLooper
 {
 public:
-    using ProcessorType = TapeProcessor<sampleRate>;
+    using ProcessorType = TapeProcessor<sampleRate, numChannels>;
     using SpeedModulatorType = WowAndFlutterOscillator<float, sampleRate>;
 
-    TapeLooper(LooperStorage storageToUse) :
+    TapeLooper(LooperStoragePtr<numChannels> storageToUse) :
         storage_(storageToUse),
         state_(LooperState::stopped),
-        player_(storage_.data, storage_.numSamples),
-        recorder_(storage_.data, storage_.numSamples)
+        player_(AudioBufferPtr<numChannels, const float>(storage_.data, storage_.numSamples)),
+        recorder_(AudioBufferPtr<numChannels, float>(storage_.data, storage_.numSamples))
     {
     }
 
@@ -73,9 +92,8 @@ public:
                  const typename ProcessorType::Parameters& processorParameters,
                  float paramPreGain,
                  float paramPostGain,
-                 const float* input,
-                 float* outputToAddTo,
-                 size_t numSamples)
+                 AudioBufferPtr<numChannels, const float> input,
+                 AudioBufferPtr<numChannels, float> outputToAddTo)
     {
         const auto mappedWowAndFlutterAmt = wowAndFlutterAmt * wowAndFlutterAmt;
         player_.process(paramSpeed,
@@ -84,9 +102,8 @@ public:
                         paramPreGain,
                         paramPostGain,
                         processorParameters,
-                        outputToAddTo,
-                        numSamples);
-        recorder_.process(input, numSamples);
+                        outputToAddTo);
+        recorder_.process(input);
 
         const auto recordingStopped = state_ == LooperState::recording && !recorder_.isRecording();
         if (recordingStopped)
@@ -95,8 +112,8 @@ public:
 
 private:
     static constexpr float maxWowAndFlutterAmt_ = 0.0125f;
-    const LooperStorage storage_;
+    const LooperStoragePtr<numChannels> storage_;
     LooperState state_;
-    Player<ProcessorType, SpeedModulatorType> player_;
-    Recorder<sampleRate> recorder_;
+    Player<ProcessorType, SpeedModulatorType, sampleRate, numChannels> player_;
+    Recorder<sampleRate, numChannels> recorder_;
 };

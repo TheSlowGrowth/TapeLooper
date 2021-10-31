@@ -1,20 +1,19 @@
 #pragma once
 
 #include "DspHelpers.h"
+#include "AudioBuffer.h"
 
-template <size_t samplerate>
+template <size_t samplerate, size_t numChannels>
 class Recorder
 {
 public:
-    Recorder(float* buffer, size_t bufferSize) :
-        bufferStart_(buffer),
-        bufferEnd_(buffer + bufferSize),
-        bufferSize_(bufferSize),
+    Recorder(AudioBufferPtr<numChannels> bufferPtr) :
+        buffer_(bufferPtr),
         currentLength_(0),
         isRecording_(false),
         isFadingOut_(false),
         xfadePhase_(0.0f),
-        recHead_(bufferStart_)
+        recHeadIdx_(0)
     {
         setCrossfadeLength(size_t(defaultXFadeLengthInS_ * float(samplerate)));
     }
@@ -25,12 +24,12 @@ public:
         isRecording_ = false;
         isFadingOut_ = false;
         xfadePhase_ = 0.0f;
-        recHead_ = bufferStart_;
+        recHeadIdx_ = 0;
     }
 
     void startRecording()
     {
-        recHead_ = bufferStart_;
+        recHeadIdx_ = 0;
         isRecording_ = true;
         isFadingOut_ = false;
         currentLength_ = 0;
@@ -41,26 +40,27 @@ public:
         isRecording_ = false;
         isFadingOut_ = true;
         xfadePhase_ = 0.0f;
-        currentLength_ = size_t(recHead_ - bufferStart_);
-        recHead_ = bufferStart_;
+        currentLength_ = recHeadIdx_;
+        recHeadIdx_ = 0;
     }
 
     void setCrossfadeLength(size_t crossfadeLengthInSamples)
     {
-        xFadeLengthInSamples_ = std::min(crossfadeLengthInSamples, bufferSize_);
+        xFadeLengthInSamples_ = std::min(crossfadeLengthInSamples, buffer_.size_);
         xFadeIncrement_ = 1.0f / float(xFadeLengthInSamples_);
     }
 
-    void process(const float* input, size_t numSamples)
+    void process(AudioBufferPtr<numChannels, const float> input)
     {
         size_t i = 0;
         if (isRecording_)
         {
-            for (; i < numSamples; i++)
+            for (; i < input.size_; i++)
             {
-                *recHead_ = input[i];
-                recHead_++;
-                if (recHead_ == bufferEnd_)
+                for (size_t ch = 0; ch < numChannels; ch++)
+                    buffer_[ch][recHeadIdx_] = input.buffer_[ch][i];
+                recHeadIdx_++;
+                if (recHeadIdx_ == buffer_.size_)
                 {
                     stopRecording();
                     break;
@@ -69,13 +69,18 @@ public:
         }
         if (isFadingOut_)
         {
-            for (; i < numSamples; i++)
+            for (; i < input.size_; i++)
             {
                 xfadePhase_ = std::min(xfadePhase_ + xFadeIncrement_, 1.0f);
-                const auto xFadedSample = linMap(xfadePhase_, input[i], *recHead_);
-                *recHead_ = xFadedSample;
-                recHead_++;
-                if ((recHead_ == bufferEnd_) || (xfadePhase_ > 1.0f - xFadeIncrement_))
+                for (size_t ch = 0; ch < numChannels; ch++)
+                {
+                    const auto xFadedSample = linMap(xfadePhase_,
+                                                     input.buffer_[ch][i],
+                                                     buffer_[ch][recHeadIdx_]);
+                    buffer_[ch][recHeadIdx_] = xFadedSample;
+                }
+                recHeadIdx_++;
+                if ((recHeadIdx_ == buffer_.size_) || (xfadePhase_ > 1.0f - xFadeIncrement_))
                 {
                     isFadingOut_ = false;
                     break;
@@ -90,14 +95,12 @@ public:
 private:
     static constexpr float defaultXFadeLengthInS_ = 0.1f;
 
-    float* bufferStart_;
-    float* bufferEnd_;
-    size_t bufferSize_;
+    AudioBufferPtr<numChannels> buffer_;
     size_t currentLength_;
     bool isRecording_;
     bool isFadingOut_;
     float xfadePhase_;
-    float* recHead_;
+    size_t recHeadIdx_;
     size_t xFadeLengthInSamples_;
     float xFadeIncrement_;
 };

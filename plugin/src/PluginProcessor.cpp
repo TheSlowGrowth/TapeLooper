@@ -117,7 +117,7 @@ void TapeLooperPluginAudioProcessor::processBlock(juce::AudioBuffer<float>& buff
 
     juce::ScopedNoDenormals noDenormals;
 
-    loopers_.processBlock(buffer, buffer);
+    loopers_.processBlock(buffer);
 }
 
 //==============================================================================
