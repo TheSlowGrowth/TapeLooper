@@ -47,6 +47,7 @@ juce_add_plugin(TapeLooperPlugin
                                                 # GarageBand 10.3 requires the first letter to be upper-case, and the remaining letters to be lower-case
     FORMATS AU VST3 Standalone                  # The formats to build. Other valid formats are: AAX Unity VST AU AUv3
     PRODUCT_NAME "Tape Looper Plugin")          # The name of the final executable, which can differ from the target name
+set_property(TARGET TapeLooperPlugin PROPERTY CXX_STANDARD 17)
 
 # `juce_generate_juce_header` will create a JuceHeader.h for a given target, which will be generated
 # into your build tree. This should be included with `#include <JuceHeader.h>`. The include path for
@@ -151,7 +152,7 @@ set(
 # This target adds a googletest executable
 add_executable(TapeLooperPlugin_Gtest)
 
-set_target_properties (TapeLooperPlugin PROPERTIES
+set_target_properties (TapeLooperPlugin_Gtest PROPERTIES
     FOLDER TapeLooperPlugin
 )
         
@@ -179,3 +180,9 @@ target_link_libraries(TapeLooperPlugin_Gtest
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
     )
+
+    
+set_property(TARGET TapeLooperPlugin_Gtest 
+    PROPERTY 
+        CXX_STANDARD 17
+)

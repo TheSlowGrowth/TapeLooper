@@ -64,6 +64,8 @@ public:
         return isPlaying_;
     }
 
+    size_t getLoopLengthInSamples() const { return playbackLength_; }
+
     void process(float paramSpeed,
                  float speedModulationAmt,
                  Direction direction,

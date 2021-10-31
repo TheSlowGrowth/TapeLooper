@@ -134,17 +134,36 @@ juce::AudioProcessorEditor* TapeLooperPluginAudioProcessor::createEditor()
 //==============================================================================
 void TapeLooperPluginAudioProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
-    // You should use this method to store your parameters in the memory block.
-    // You could do that either as raw data, or use the XML or ValueTree classes
-    // as intermediaries to make it easy to save and load complex data.
-    juce::ignoreUnused(destData);
+    try
+    {
+        loopers_.saveState(destData);
+    }
+    catch (const std::exception& e)
+    {
+        juce::NativeMessageBox::showAsync(
+            juce::MessageBoxOptions()
+                .withTitle(juce::String("Exception saving state"))
+                .withMessage(juce::String("Exception saving state: ") + e.what())
+                .withIconType(juce::MessageBoxIconType::WarningIcon),
+            [](int) {});
+    }
 }
 
 void TapeLooperPluginAudioProcessor::setStateInformation(const void* data, int sizeInBytes)
 {
-    // You should use this method to restore your parameters from this memory block,
-    // whose contents will have been created by the getStateInformation() call.
-    juce::ignoreUnused(data, sizeInBytes);
+    try
+    {
+        loopers_.recallState(data, size_t(sizeInBytes));
+    }
+    catch (const std::exception& e)
+    {
+        juce::NativeMessageBox::showAsync(
+            juce::MessageBoxOptions()
+                .withTitle(juce::String("Exception recalling state"))
+                .withMessage(juce::String("Exception recalling state: ") + e.what())
+                .withIconType(juce::MessageBoxIconType::WarningIcon),
+            [](int) {});
+    }
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout TapeLooperPluginAudioProcessor::getParameterLayout()
