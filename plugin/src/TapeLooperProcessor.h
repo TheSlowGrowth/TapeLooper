@@ -1,10 +1,62 @@
 #pragma once
 
 #include "DspDefinitions.h"
+#include <algorithm>
 #include <juce_audio_plugin_client/juce_audio_plugin_client.h>
 #include <juce_dsp/juce_dsp.h>
 
 #include <dsp/TapeLooper.h>
+#include <util/Memory.h>
+
+class MemoryBlockStorageProvider
+{
+public:
+    MemoryBlockStorageProvider(juce::MemoryBlock& mem) :
+        size_(mem.getSize()),
+        ptr_((uint8_t*) mem.getData())
+    {
+    }
+
+    constexpr size_t getAvailableSize() const { return size_; }
+
+    void write(const void* srcData, size_t sizeToWrite)
+    {
+        if (size_ >= sizeToWrite)
+        {
+            memcpy(ptr_, srcData, sizeToWrite);
+            ptr_ += sizeToWrite;
+            size_ -= sizeToWrite;
+        }
+    }
+
+    size_t size_;
+    uint8_t* ptr_;
+};
+
+class RawMemoryStorageProvider
+{
+public:
+    RawMemoryStorageProvider(const void* data, size_t size) :
+        size_(size),
+        ptr_((uint8_t*) data)
+    {
+    }
+
+    constexpr size_t getAvailableSize() const { return size_; }
+
+    void read(void* destData, size_t sizeToRead)
+    {
+        if (size_ >= sizeToRead)
+        {
+            memcpy(destData, ptr_, sizeToRead);
+            ptr_ += sizeToRead;
+            size_ -= sizeToRead;
+        }
+    }
+
+    size_t size_;
+    uint8_t* ptr_;
+};
 
 class ITapeLooperProcessor
 {
@@ -14,6 +66,9 @@ public:
     virtual void prepareToPlay() = 0;
     virtual void processBlock(juce::dsp::AudioBlock<const float> input,
                               juce::dsp::AudioBlock<float> outputToAddTo) = 0;
+    virtual size_t getStateSizeInBytes() const = 0;
+    virtual void saveState(WritableMemory<MemoryBlockStorageProvider>& mem) const = 0;
+    virtual void recallState(ReadableMemory<RawMemoryStorageProvider>& mem) = 0;
 };
 
 template <size_t samplerate>
@@ -92,6 +147,62 @@ public:
                             outChPtrs, outputToAddTo.getNumSamples()));
     }
 
+    size_t getStateSizeInBytes() const override
+    {
+        return looper_.getSaveAndRecallStorageSize()
+               + sizeof(ParameterValues);
+    }
+
+    void saveState(WritableMemory<MemoryBlockStorageProvider>& mem) const override
+    {
+        if (mem.getRemainingSize() < getStateSizeInBytes())
+            throw std::runtime_error("Not enough memory to store looper state");
+
+        bool result = true;
+
+        result &= looper_.save(mem);
+
+        ParameterValues params;
+        params.state = uint8_t(stateParameter_.getIndex());
+        params.speed = speedParameter_.get();
+        params.drive = driveParameter_.get();
+        params.grainAmt = grainAmtParameter_.get();
+        params.wowAndFlutter = wowAndFlutterAmtParameter_.get();
+        params.postGain = postGainParameter_.get();
+        result &= mem.writeItem(params);
+
+        if (!result)
+            throw std::runtime_error("Error saving looper state");
+    }
+
+    void recallState(ReadableMemory<RawMemoryStorageProvider>& mem) override
+    {
+        if (mem.getRemainingSize() < getStateSizeInBytes())
+            throw std::runtime_error("Not enough memory to restore looper state");
+
+        bool result = true;
+
+        result &= looper_.restore(mem);
+
+        ParameterValues params;
+        result &= mem.readItem(params);
+
+        if (!result)
+            throw std::runtime_error("Error loading looper state");
+
+        const auto setParam = [](juce::RangedAudioParameter& param, float value) {
+            param.beginChangeGesture();
+            param.setValueNotifyingHost(param.convertTo0to1(value));
+            param.endChangeGesture();
+        };
+        setParam(stateParameter_, float(params.state));
+        setParam(speedParameter_, params.speed);
+        setParam(driveParameter_, params.drive);
+        setParam(grainAmtParameter_, params.grainAmt);
+        setParam(wowAndFlutterAmtParameter_, params.wowAndFlutter);
+        setParam(postGainParameter_, params.postGain);
+    }
+
 private:
     juce::AudioParameterChoice& stateParameter_;
     juce::AudioParameterFloat& speedParameter_;
@@ -100,7 +211,18 @@ private:
     juce::AudioParameterFloat& wowAndFlutterAmtParameter_;
     juce::AudioParameterFloat& postGainParameter_;
 
-    TapeLooper<samplerate, 2> looper_;
+    struct ParameterValues
+    {
+        uint8_t state;
+        float speed;
+        float drive;
+        float grainAmt;
+        float wowAndFlutter;
+        float postGain;
+    };
+
+    using TapeLooperType = TapeLooper<samplerate, 2>;
+    TapeLooperType looper_;
 };
 
 class TapeLooperBank
@@ -114,7 +236,7 @@ public:
 
     void prepareToPlay(const juce::dsp::ProcessSpec& specs)
     {
-        inputTmpBuffer_.setSize(2, specs.maximumBlockSize);
+        inputTmpBuffer_.setSize(2, int(specs.maximumBlockSize));
         inputTmpBuffer_.clear();
 
         createInstancesFor(specs.sampleRate);
@@ -136,6 +258,29 @@ public:
         buffer.clear();
         for (auto processor : processors_)
             processor->processBlock(inputBuffer, buffer);
+    }
+
+    void saveState(juce::MemoryBlock& memory)
+    {
+        size_t sizeNeeded = 0;
+        for (auto processor : processors_)
+            sizeNeeded += processor->getStateSizeInBytes();
+
+        memory.setSize(sizeNeeded, true);
+        MemoryBlockStorageProvider storageProvider(memory);
+        WritableMemory<MemoryBlockStorageProvider> writableMem(storageProvider);
+
+        for (auto processor : processors_)
+            processor->saveState(writableMem);
+    }
+
+    void recallState(const void* data, size_t sizeInBytes)
+    {
+        RawMemoryStorageProvider storageProvider(data, sizeInBytes);
+        ReadableMemory<RawMemoryStorageProvider> readableMem(storageProvider);
+
+        for (auto processor : processors_)
+            processor->recallState(readableMem);
     }
 
 private:

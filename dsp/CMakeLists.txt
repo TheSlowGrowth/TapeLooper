@@ -11,6 +11,7 @@ set(HEADER_FILES
     src/dsp/Recorder.h
     src/dsp/TapeLooper.h
     src/dsp/TapeProcessor.h
+    src/util/Memory.h
 )
 
 add_subdirectory(lib/sprout)
@@ -20,3 +21,4 @@ target_include_directories(${TARGET} INTERFACE
     src/
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/sprout/
 ) 
+set_property(TARGET tapeLooperDsp PROPERTY CXX_STANDARD 17)

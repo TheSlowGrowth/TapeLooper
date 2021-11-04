@@ -2,6 +2,7 @@
 
 #include "DspHelpers.h"
 #include "AudioBuffer.h"
+#include "../util/Memory.h"
 
 template <size_t samplerate, size_t numChannels>
 class Recorder
@@ -87,6 +88,30 @@ public:
                 }
             }
         }
+    }
+
+    size_t getSaveAndRecallStorageSize() const
+    {
+        return sizeof(uint32_t); // recordingLengthInSamples
+    }
+
+    template <typename StorageType>
+    bool save(WritableMemory<StorageType>& mem) const
+    {
+        const auto recordingLengthInSamples = uint32_t(currentLength_);
+        return mem.writeItems(recordingLengthInSamples);
+    }
+
+    template <typename StorageType>
+    bool restore(ReadableMemory<StorageType>& mem)
+    {
+        reset();
+        uint32_t recordingLengthInSamples = 0;
+        if (!mem.readItems(recordingLengthInSamples))
+            return false;
+
+        currentLength_ = std::min(size_t(recordingLengthInSamples), buffer_.size_);
+        return true;
     }
 
     size_t getCurrentRecordingLength() const { return currentLength_; }
