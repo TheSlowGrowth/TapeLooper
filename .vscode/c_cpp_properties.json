@@ -34,7 +34,8 @@
             },
             "compilerPath": "~/dev/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gcc",
             "cStandard": "c11",
-            "cppStandard": "gnu++17"
+            "cppStandard": "gnu++17",
+            "compileCommands": "${workspaceFolder}/plugin/build/compile_commands.json"
         },
         {
             "name": "Win32",

@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C++ Launch",
+            "name": "Launch Firmware",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/firmware/build/TapeLooper.elf",
