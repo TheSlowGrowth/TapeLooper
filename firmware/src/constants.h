@@ -2,11 +2,11 @@
 
 #ifndef UNIT_TEST
 #    include "daisy_seed.h"
-constexpr daisy::SaiHandle::Config::SampleRate sampleRate = daisy::SaiHandle::Config::SampleRate::SAI_48KHZ;
+constexpr daisy::SaiHandle::Config::SampleRate sampleRate = daisy::SaiHandle::Config::SampleRate::SAI_44KHZ;
 #endif
 
 constexpr uint8_t blockSize = 48;
-constexpr uint16_t sampleRateHz = 48000;
+constexpr uint16_t sampleRateHz = 44100;
 constexpr uint8_t numChannelsPerLooper = 2;
 constexpr uint8_t numLoopers = 4;
 
