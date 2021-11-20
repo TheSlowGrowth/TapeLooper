@@ -30,7 +30,7 @@ public:
         for (size_t ch = 0; ch < numChannels; ch++)
         {
             storage_[ch].fill(0.0f);
-            this->data[ch] = storage_[ch];
+            this->data[ch] = storage_[ch].data();
         }
         this->numSamples = size;
     }

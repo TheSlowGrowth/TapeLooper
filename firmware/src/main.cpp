@@ -8,6 +8,8 @@
 #include "hardware/Leds.h"
 #include "hardware/Pots.h"
 #include "ui/UiBasePage.h"
+#include "dsp/TapeLooper.h"
+#include "util/LateInitializedObject.h"
 
 #define EXTERNAL_SDRAM_SECTION __attribute__((section(".sdram_bss")))
 
@@ -37,7 +39,12 @@ PeakMeter<blockSize, sampleRateHz> peakMeterOutL;
 PeakMeter<blockSize, sampleRateHz> peakMeterOutR;
 
 // dsp static objects
-// TODO
+#define EXTERNAL_SDRAM_SECTION __attribute__((section(".sdram_bss")))
+using LooperType = TapeLooper<sampleRateHz, numChannelsPerLooper>;
+using LooperStorageType = LooperStorage<looperSamplesPerChannel, numChannelsPerLooper>;
+
+std::array<LateInitializedObject<LooperStorageType>, numLoopers> EXTERNAL_SDRAM_SECTION looperStorages = {};
+std::array<LateInitializedObject<LooperType>, numLoopers> loopers;
 
 // misc
 daisy::CpuLoadMeter cpuLoadMeter;
@@ -90,6 +97,28 @@ void initUiPages()
 }
 
 // ===================================================================
+// DSP Init
+// ===================================================================
+
+void initDsp()
+{
+    for (size_t l = 0; l < numLoopers; l++)
+    {
+        looperStorages[l].create();
+        loopers[l].create(*looperStorages[l]);
+    }
+
+    // init peak meters
+    peakMeterInL.init(0.5f);
+    peakMeterInR.init(0.5f);
+    peakMeterOutL.init(0.5f);
+    peakMeterOutR.init(0.5f);
+
+    // init CPU load meter
+    cpuLoadMeter.Init(seed.AudioSampleRate(), seed.AudioBlockSize());
+}
+
+// ===================================================================
 // ===================================================================
 
 void configureHardware()
@@ -98,9 +127,9 @@ void configureHardware()
     // These are separate to allow reconfiguration of any of the internal
     // components before initialization.
     seed.Configure();
+    seed.Init(true /* enable 480MHz boost */);
     seed.SetAudioBlockSize(blockSize);
     seed.SetAudioSampleRate(sampleRate);
-    seed.Init(true /* enable 480MHz boost */);
 
     potReader.init();
     buttonReader.init();
@@ -133,7 +162,24 @@ void audioCallback(const float* const* in, float** out, size_t size)
     peakMeterInL.readPeaks(in[0]);
     peakMeterInR.readPeaks(in[1]);
 
-    // TODO: add processing here
+    AudioBufferPtr<numChannelsPerLooper, const float> inputs(in, size);
+    AudioBufferPtr<numChannelsPerLooper, float> outputs(out, size);
+    outputs.fill(0.0f);
+    for (size_t l = 0; l < numLoopers; l++)
+    {
+        loopers[l]->process(
+            4.0f, // speed
+            1.0f, // wow & flutter amt
+            Direction::forwards,
+            {
+                0.5f, // drive amt
+                0.5f // grain amt
+            },
+            1.0f, // pre gain
+            1.0f, // post gain
+            inputs,
+            outputs);
+    }
 
     // peak meters
     peakMeterOutL.readPeaks(out[0]);
@@ -143,6 +189,9 @@ void audioCallback(const float* const* in, float** out, size_t size)
     // TODO
 
     cpuLoadMeter.OnBlockEnd();
+    // Set breakpoint here to check load
+    const auto load = cpuLoadMeter.GetAvgCpuLoad();
+    (void) load;
 }
 
 int main(void)
@@ -159,21 +208,20 @@ int main(void)
                        buttonDoubleClickTimeoutMs,
                        retriggerTimeoutMs,
                        retriggerPeriodMs);
-    // init UI
+
     initUi();
     initUiPages();
 
-    // init peak meters
-    peakMeterInL.init(0.5f);
-    peakMeterInR.init(0.5f);
-    peakMeterOutL.init(0.5f);
-    peakMeterOutR.init(0.5f);
-
-    // init CPU load meter
-    cpuLoadMeter.Init(seed.AudioSampleRate(), seed.AudioBlockSize());
+    initDsp();
 
     // start audio
     seed.StartAudio(&audioCallback);
+
+    for (size_t l = 0; l < numLoopers; l++)
+        loopers[l]->switchState(LooperState::recording);
+    seed.system.Delay(200);
+    for (size_t l = 0; l < numLoopers; l++)
+        loopers[l]->switchState(LooperState::playing);
 
     // UI loop
     for (;;)
