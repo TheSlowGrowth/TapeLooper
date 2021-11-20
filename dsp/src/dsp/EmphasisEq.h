@@ -125,9 +125,9 @@ private:
 
 /**
  * An pre-emphasis / de-emphasis EQ consisting of
- * a first order high shelf and low shelf EQ.
- * The pre-emphasis section boosts bass and treble,
- * while the de-emphasis section cuts them by the same amount.
+ * two first order low shelf EQs.
+ * The pre-emphasis section boosts bass,
+ * while the de-emphasis section cuts it by the same amount.
  */
 template <typename FloatType, int sampleRate>
 class EmphasisEq
@@ -140,32 +140,27 @@ public:
     void reset()
     {
         lowShelfPreEmphasis_.reset();
-        highShelfPreEmphasis_.reset();
         lowShelfDeEmphasis_.reset();
-        highShelfDeEmphasis_.reset();
     }
 
-    /** Boosts bass and treble by 12dB */
+    /** Boosts bass by 12dB */
     MANUAL_INLINE FloatType processPreEmphasis(const FloatType inputSample)
     {
         FloatType sample = inputSample;
         sample = lowShelfPreEmphasis_.processSample(sample);
-        sample = highShelfPreEmphasis_.processSample(sample);
         return sample;
     }
 
-    /** Cuts bass and treble by 12dB */
+    /** Cuts bass by 12dB */
     MANUAL_INLINE FloatType processDeEmphasis(const FloatType inputSample)
     {
         FloatType sample = inputSample;
         sample = lowShelfDeEmphasis_.processSample(sample);
-        sample = highShelfDeEmphasis_.processSample(sample);
         return sample;
     }
 
 private:
     static constexpr int lowFrequencyInHz_ = 500;
-    static constexpr int highFrequencyInHz_ = 2000;
     static constexpr int gainInDecibels_ = 12;
     FixedOnePoleShelvingEq<FixedOnePoleShelvingEqParameters<FloatType,
                                                             sampleRate,
@@ -175,20 +170,8 @@ private:
         lowShelfPreEmphasis_;
     FixedOnePoleShelvingEq<FixedOnePoleShelvingEqParameters<FloatType,
                                                             sampleRate,
-                                                            OnePoleShelvingEqType::highShelf,
-                                                            highFrequencyInHz_,
-                                                            gainInDecibels_>>
-        highShelfPreEmphasis_;
-    FixedOnePoleShelvingEq<FixedOnePoleShelvingEqParameters<FloatType,
-                                                            sampleRate,
                                                             OnePoleShelvingEqType::lowShelf,
                                                             lowFrequencyInHz_,
                                                             -gainInDecibels_>>
         lowShelfDeEmphasis_;
-    FixedOnePoleShelvingEq<FixedOnePoleShelvingEqParameters<FloatType,
-                                                            sampleRate,
-                                                            OnePoleShelvingEqType::highShelf,
-                                                            highFrequencyInHz_,
-                                                            -gainInDecibels_>>
-        highShelfDeEmphasis_;
 };
