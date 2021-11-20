@@ -11,15 +11,15 @@
             "cwd": "${workspaceRoot}",
             "environment": [],
             "externalConsole": false,
-            "debugServerArgs": "-f interface/ftdi/olimex-arm-usb-tiny-h.cfg -f target/stm32h7x.cfg -c init -c \"reset init\"",
+            "debugServerArgs": "-f interface/stlink.cfg -f target/stm32h7x.cfg -c init -c \"reset init\"",
             "serverLaunchTimeout": 20000,
             "filterStderr": true,
             "filterStdout": false,
             "serverStarted": "target halted due to debug-request, current mode: Thread",
-            "preLaunchTask": "build-TapeLooper-debug",
+            "preLaunchTask": "build firmware",
             "setupCommands": [
                 { "text": "-target-select remote localhost:3333", "description": "connect to target", "ignoreFailures": false },
-                { "text": "-file-exec-and-symbols ${workspaceRoot}/build/TapeLooper.elf", "description": "load file", "ignoreFailures": false},
+                { "text": "-file-exec-and-symbols ${workspaceRoot}/firmware/build/TapeLooper.elf", "description": "load file", "ignoreFailures": false},
                 { "text": "-interpreter-exec console \"monitor endian little\"", "ignoreFailures": false },
                 { "text": "-interpreter-exec console \"monitor reset\"", "ignoreFailures": false },
                 { "text": "-interpreter-exec console \"monitor halt\"", "ignoreFailures": false },
@@ -40,7 +40,7 @@
             },
             "osx": {
                 "MIMode": "gdb",
-                "MIDebuggerPath": "/Users/johannes/dev/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gdb",
+                "MIDebuggerPath": "/Users/johanneselliesen/dev/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gdb",
                 "debugServerPath": "openocd"
             },
             "windows": {
