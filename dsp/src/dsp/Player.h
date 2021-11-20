@@ -33,7 +33,6 @@ public:
     {
         processor_.reset();
         speedModulator_.reset();
-        preGainSmoother_.reset(0);
         postGainSmoother_.reset(0);
         speedSmoother_.reset(0);
         playbackLength_ = 0;
@@ -69,18 +68,14 @@ public:
     void process(float paramSpeed,
                  float speedModulationAmt,
                  Direction direction,
-                 float paramPreProcessorGain,
                  float paramPostProcessorGain,
                  const typename ProcessorType::Parameters& processorParameters,
                  AudioBufferPtr<numChannels, float> outputToAddTo,
-                 ExponentialSmoother::TimeConstant preGainSmootherTimeConstant =
-                     ExponentialSmoother::TimeConstant(0.05f, sampleRateHz, 1),
                  ExponentialSmoother::TimeConstant postGainSmootherTimeConstant =
                      ExponentialSmoother::TimeConstant(0.05f, sampleRateHz, 1),
                  ExponentialSmoother::TimeConstant speedSmootherTimeConstant =
                      ExponentialSmoother::TimeConstant(0.5f, sampleRateHz, 1))
     {
-        const auto preGainTarget = paramPreProcessorGain;
         const auto postGainTarget = (isPlaying_) ? paramPostProcessorGain : 0.0f;
         const auto speedTarget = limit(paramSpeed, minSpeed_, maxSpeed_);
 
@@ -89,7 +84,6 @@ public:
 
         for (size_t i = 0; i < outputToAddTo.size_; i++)
         {
-            const auto preGain = preGainSmoother_.smooth(preGainTarget, preGainSmootherTimeConstant);
             const auto postGain = postGainSmoother_.smooth(postGainTarget, postGainSmootherTimeConstant);
             const auto speedModulation = speedModulator_.getAndAdvance() * speedModulationAmt;
             const auto speed = speedModulation + speedSmoother_.smooth(speedTarget, speedSmootherTimeConstant);
@@ -114,7 +108,7 @@ public:
                 for (size_t ch = 0; ch < numChannels; ch++)
                 {
                     interpolationBuffer_[1][ch] = interpolationBuffer_[0][ch];
-                    interpolationBuffer_[0][ch] = sampleBuffer_[ch][indexToRead] * preGain;
+                    interpolationBuffer_[0][ch] = sampleBuffer_[ch][indexToRead];
                 }
                 processor_.process(interpolationBuffer_[0].data(), processorParameters);
             }
@@ -156,7 +150,6 @@ private:
         return value;
     }
 
-    ExponentialSmoother preGainSmoother_;
     ExponentialSmoother postGainSmoother_;
     ExponentialSmoother speedSmoother_;
 

@@ -100,7 +100,6 @@ public:
                  float wowAndFlutterAmt,
                  Direction direction,
                  const typename ProcessorType::Parameters& processorParameters,
-                 float paramPreGain,
                  float paramPostGain,
                  AudioBufferPtr<numChannels, const float> input,
                  AudioBufferPtr<numChannels, float> outputToAddTo)
@@ -109,7 +108,6 @@ public:
         player_.process(paramSpeed,
                         mappedWowAndFlutterAmt * maxWowAndFlutterAmt_,
                         direction,
-                        paramPreGain,
                         paramPostGain,
                         processorParameters,
                         outputToAddTo);

@@ -175,7 +175,6 @@ void audioCallback(const float* const* in, float** out, size_t size)
                 0.5f, // drive amt
                 0.5f // grain amt
             },
-            1.0f, // pre gain
             1.0f, // post gain
             inputs,
             outputs);
