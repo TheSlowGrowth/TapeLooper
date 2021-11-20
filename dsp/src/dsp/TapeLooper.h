@@ -175,7 +175,7 @@ public:
     const LooperStoragePtr<numChannels> getSampleStoragePtr() const { return storage_; }
 
 private:
-    static constexpr float maxWowAndFlutterAmt_ = 0.0125f;
+    static constexpr float maxWowAndFlutterAmt_ = 0.025f;
     const LooperStoragePtr<numChannels> storage_;
     LooperState state_;
     PlayerType player_;
