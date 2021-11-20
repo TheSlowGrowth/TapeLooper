@@ -1,0 +1,6 @@
+{
+	"recommendations": [
+        "davidschuldenfrei.gtest-adapter",
+        "ms-vscode.cpptools",
+    ]
+}
