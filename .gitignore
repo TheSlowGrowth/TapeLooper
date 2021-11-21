@@ -44,3 +44,5 @@ plugin/build
 
 # macOS crap
 .DS_Store
+hardware/mainboard/gerbers
+hardware/frontpanel/gerber

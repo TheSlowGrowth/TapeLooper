@@ -1,0 +1,1805 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 5 8
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Driver_LED:PCA9685PW U?
+U 1 1 61D9F718
+P 3400 2550
+AR Path="/61A6EF5C/61D9F718" Ref="U?"  Part="1" 
+AR Path="/61D9F718" Ref="U?"  Part="1" 
+AR Path="/619A998C/61D9F718" Ref="U?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F718" Ref="U?"  Part="1" 
+AR Path="/61C541EA/61D9F718" Ref="U?"  Part="1" 
+AR Path="/61D4151D/61D9F718" Ref="U?"  Part="1" 
+AR Path="/61D60973/61D9F718" Ref="U6"  Part="1" 
+F 0 "U6" H 3800 3400 50  0000 C CNN
+F 1 "PCA9685PW" H 3100 3400 50  0000 C CNN
+F 2 "Package_SO:TSSOP-28_4.4x9.7mm_P0.65mm" H 3425 1575 50  0001 L CNN
+F 3 "http://www.nxp.com/documents/data_sheet/PCA9685.pdf" H 3000 3250 50  0001 C CNN
+	1    3400 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F71E
+P 3400 1550
+AR Path="/61A6EF5C/61D9F71E" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F71E" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F71E" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F71E" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F71E" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F71E" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F71E" Ref="#PWR069"  Part="1" 
+F 0 "#PWR069" H 3400 1400 50  0001 C CNN
+F 1 "+3.3V" H 3415 1723 50  0000 C CNN
+F 2 "" H 3400 1550 50  0001 C CNN
+F 3 "" H 3400 1550 50  0001 C CNN
+	1    3400 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61D9F724
+P 3400 3650
+AR Path="/61A6EF5C/61D9F724" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F724" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F724" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F724" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F724" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F724" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F724" Ref="#PWR070"  Part="1" 
+F 0 "#PWR070" H 3400 3400 50  0001 C CNN
+F 1 "GND" H 3405 3477 50  0000 C CNN
+F 2 "" H 3400 3650 50  0001 C CNN
+F 3 "" H 3400 3650 50  0001 C CNN
+	1    3400 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61D9F72A
+P 2600 3350
+AR Path="/61A6EF5C/61D9F72A" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F72A" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F72A" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F72A" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F72A" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F72A" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F72A" Ref="#PWR063"  Part="1" 
+F 0 "#PWR063" H 2600 3100 50  0001 C CNN
+F 1 "GND" H 2605 3177 50  0000 C CNN
+F 2 "" H 2600 3350 50  0001 C CNN
+F 3 "" H 2600 3350 50  0001 C CNN
+	1    2600 3350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 2850 2600 2850
+Connection ~ 2600 2850
+Wire Wire Line
+	2600 2850 2600 2950
+Wire Wire Line
+	2600 2950 2700 2950
+Connection ~ 2600 2950
+Wire Wire Line
+	2600 2950 2600 3050
+Wire Wire Line
+	2700 3050 2600 3050
+Connection ~ 2600 3050
+Wire Wire Line
+	2600 3050 2600 3150
+Wire Wire Line
+	2600 3150 2700 3150
+Connection ~ 2600 3150
+Wire Wire Line
+	2600 3150 2600 3250
+Wire Wire Line
+	2700 3250 2600 3250
+Connection ~ 2600 3250
+Wire Wire Line
+	2600 3250 2600 3350
+Text GLabel 2400 1950 0    50   Input ~ 0
+LED_SDA
+Text GLabel 2400 1850 0    50   Input ~ 0
+LED_SCL
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61D9F741
+P 6250 1200
+AR Path="/61A6EF5C/61D9F741" Ref="D?"  Part="1" 
+AR Path="/61D9F741" Ref="D?"  Part="1" 
+AR Path="/619A998C/61D9F741" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F741" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61D9F741" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61D9F741" Ref="D?"  Part="1" 
+AR Path="/61D60973/61D9F741" Ref="D12"  Part="1" 
+F 0 "D12" V 6050 1350 50  0000 L CNN
+F 1 "LED_SPEED_+2_A" H 6850 1200 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 6300 1200 50  0001 C CNN
+F 3 "~" H 6300 1200 50  0001 C CNN
+	1    6250 1200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F747
+P 4250 1650
+AR Path="/61A6EF5C/61D9F747" Ref="R?"  Part="1" 
+AR Path="/61D9F747" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F747" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F747" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F747" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F747" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F747" Ref="R39"  Part="1" 
+F 0 "R39" H 4320 1696 50  0000 L CNN
+F 1 "Rled" H 4320 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4180 1650 50  0001 C CNN
+F 3 "~" H 4250 1650 50  0001 C CNN
+	1    4250 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F74D
+P 4450 1650
+AR Path="/61A6EF5C/61D9F74D" Ref="R?"  Part="1" 
+AR Path="/61D9F74D" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F74D" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F74D" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F74D" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F74D" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F74D" Ref="R41"  Part="1" 
+F 0 "R41" H 4520 1696 50  0000 L CNN
+F 1 "Rled" H 4520 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4380 1650 50  0001 C CNN
+F 3 "~" H 4450 1650 50  0001 C CNN
+	1    4450 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 900  4350 800 
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F754
+P 4350 800
+AR Path="/61A6EF5C/61D9F754" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F754" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F754" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F754" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F754" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F754" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F754" Ref="#PWR073"  Part="1" 
+F 0 "#PWR073" H 4350 650 50  0001 C CNN
+F 1 "+3.3V" H 4365 973 50  0000 C CNN
+F 2 "" H 4350 800 50  0001 C CNN
+F 3 "" H 4350 800 50  0001 C CNN
+	1    4350 800 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61D9F75A
+P 5700 1200
+AR Path="/61A6EF5C/61D9F75A" Ref="D?"  Part="1" 
+AR Path="/61D9F75A" Ref="D?"  Part="1" 
+AR Path="/619A998C/61D9F75A" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F75A" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61D9F75A" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61D9F75A" Ref="D?"  Part="1" 
+AR Path="/61D60973/61D9F75A" Ref="D14"  Part="1" 
+F 0 "D14" V 5500 1350 50  0000 L CNN
+F 1 "LED_SPEED_+1_A" H 6300 1200 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 5750 1200 50  0001 C CNN
+F 3 "~" H 5750 1200 50  0001 C CNN
+	1    5700 1200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F760
+P 4800 1650
+AR Path="/61A6EF5C/61D9F760" Ref="R?"  Part="1" 
+AR Path="/61D9F760" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F760" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F760" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F760" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F760" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F760" Ref="R43"  Part="1" 
+F 0 "R43" H 4870 1696 50  0000 L CNN
+F 1 "Rled" H 4870 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4730 1650 50  0001 C CNN
+F 3 "~" H 4800 1650 50  0001 C CNN
+	1    4800 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F766
+P 5000 1650
+AR Path="/61A6EF5C/61D9F766" Ref="R?"  Part="1" 
+AR Path="/61D9F766" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F766" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F766" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F766" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F766" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F766" Ref="R45"  Part="1" 
+F 0 "R45" H 5070 1696 50  0000 L CNN
+F 1 "Rled" H 5070 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4930 1650 50  0001 C CNN
+F 3 "~" H 5000 1650 50  0001 C CNN
+	1    5000 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4900 900  4900 800 
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F76D
+P 4900 800
+AR Path="/61A6EF5C/61D9F76D" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F76D" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F76D" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F76D" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F76D" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F76D" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F76D" Ref="#PWR075"  Part="1" 
+F 0 "#PWR075" H 4900 650 50  0001 C CNN
+F 1 "+3.3V" H 4915 973 50  0000 C CNN
+F 2 "" H 4900 800 50  0001 C CNN
+F 3 "" H 4900 800 50  0001 C CNN
+	1    4900 800 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61D9F773
+P 4900 1200
+AR Path="/61A6EF5C/61D9F773" Ref="D?"  Part="1" 
+AR Path="/61D9F773" Ref="D?"  Part="1" 
+AR Path="/619A998C/61D9F773" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F773" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61D9F773" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61D9F773" Ref="D?"  Part="1" 
+AR Path="/61D60973/61D9F773" Ref="D16"  Part="1" 
+F 0 "D16" V 4700 1350 50  0000 L CNN
+F 1 "LED_SPEED_-1_A" H 5500 1200 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 4950 1200 50  0001 C CNN
+F 3 "~" H 4950 1200 50  0001 C CNN
+	1    4900 1200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F779
+P 5600 1650
+AR Path="/61A6EF5C/61D9F779" Ref="R?"  Part="1" 
+AR Path="/61D9F779" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F779" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F779" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F779" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F779" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F779" Ref="R47"  Part="1" 
+F 0 "R47" H 5670 1696 50  0000 L CNN
+F 1 "Rled" H 5670 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 5530 1650 50  0001 C CNN
+F 3 "~" H 5600 1650 50  0001 C CNN
+	1    5600 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F77F
+P 5800 1650
+AR Path="/61A6EF5C/61D9F77F" Ref="R?"  Part="1" 
+AR Path="/61D9F77F" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F77F" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F77F" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F77F" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F77F" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F77F" Ref="R49"  Part="1" 
+F 0 "R49" H 5870 1696 50  0000 L CNN
+F 1 "Rled" H 5870 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 5730 1650 50  0001 C CNN
+F 3 "~" H 5800 1650 50  0001 C CNN
+	1    5800 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 900  5700 800 
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F786
+P 5700 800
+AR Path="/61A6EF5C/61D9F786" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F786" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F786" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F786" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F786" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F786" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F786" Ref="#PWR077"  Part="1" 
+F 0 "#PWR077" H 5700 650 50  0001 C CNN
+F 1 "+3.3V" H 5715 973 50  0000 C CNN
+F 2 "" H 5700 800 50  0001 C CNN
+F 3 "" H 5700 800 50  0001 C CNN
+	1    5700 800 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61D9F78C
+P 4350 1200
+AR Path="/61A6EF5C/61D9F78C" Ref="D?"  Part="1" 
+AR Path="/61D9F78C" Ref="D?"  Part="1" 
+AR Path="/619A998C/61D9F78C" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F78C" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61D9F78C" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61D9F78C" Ref="D?"  Part="1" 
+AR Path="/61D60973/61D9F78C" Ref="D18"  Part="1" 
+F 0 "D18" V 4150 1350 50  0000 L CNN
+F 1 "LED_SPEED_-2_A" H 4950 1200 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 4400 1200 50  0001 C CNN
+F 3 "~" H 4400 1200 50  0001 C CNN
+	1    4350 1200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F792
+P 6150 1650
+AR Path="/61A6EF5C/61D9F792" Ref="R?"  Part="1" 
+AR Path="/61D9F792" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F792" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F792" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F792" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F792" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F792" Ref="R51"  Part="1" 
+F 0 "R51" H 6220 1696 50  0000 L CNN
+F 1 "Rled" H 6220 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 6080 1650 50  0001 C CNN
+F 3 "~" H 6150 1650 50  0001 C CNN
+	1    6150 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F798
+P 6350 1650
+AR Path="/61A6EF5C/61D9F798" Ref="R?"  Part="1" 
+AR Path="/61D9F798" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F798" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F798" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F798" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F798" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F798" Ref="R53"  Part="1" 
+F 0 "R53" H 6420 1696 50  0000 L CNN
+F 1 "Rled" H 6420 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 6280 1650 50  0001 C CNN
+F 3 "~" H 6350 1650 50  0001 C CNN
+	1    6350 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 900  6250 800 
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F79F
+P 6250 800
+AR Path="/61A6EF5C/61D9F79F" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F79F" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F79F" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F79F" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F79F" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F79F" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F79F" Ref="#PWR079"  Part="1" 
+F 0 "#PWR079" H 6250 650 50  0001 C CNN
+F 1 "+3.3V" H 6265 973 50  0000 C CNN
+F 2 "" H 6250 800 50  0001 C CNN
+F 3 "" H 6250 800 50  0001 C CNN
+	1    6250 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4250 1800 4250 1850
+Wire Wire Line
+	4250 1850 4100 1850
+Wire Wire Line
+	4100 1950 4450 1950
+Wire Wire Line
+	4450 1950 4450 1800
+Wire Wire Line
+	4100 2050 4800 2050
+Wire Wire Line
+	4800 2050 4800 1800
+Wire Wire Line
+	5000 1800 5000 2150
+Wire Wire Line
+	5000 2150 4100 2150
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61D9F7AD
+P 7000 1200
+AR Path="/61A6EF5C/61D9F7AD" Ref="D?"  Part="1" 
+AR Path="/61D9F7AD" Ref="D?"  Part="1" 
+AR Path="/619A998C/61D9F7AD" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7AD" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61D9F7AD" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61D9F7AD" Ref="D?"  Part="1" 
+AR Path="/61D60973/61D9F7AD" Ref="D20"  Part="1" 
+F 0 "D20" V 6800 1350 50  0000 L CNN
+F 1 "LED_SPEED_+2_B" H 7600 1200 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 7050 1200 50  0001 C CNN
+F 3 "~" H 7050 1200 50  0001 C CNN
+	1    7000 1200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F7B3
+P 6900 1650
+AR Path="/61A6EF5C/61D9F7B3" Ref="R?"  Part="1" 
+AR Path="/61D9F7B3" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F7B3" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7B3" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F7B3" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F7B3" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F7B3" Ref="R55"  Part="1" 
+F 0 "R55" H 6970 1696 50  0000 L CNN
+F 1 "Rled" H 6970 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 6830 1650 50  0001 C CNN
+F 3 "~" H 6900 1650 50  0001 C CNN
+	1    6900 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F7B9
+P 7100 1650
+AR Path="/61A6EF5C/61D9F7B9" Ref="R?"  Part="1" 
+AR Path="/61D9F7B9" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F7B9" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7B9" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F7B9" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F7B9" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F7B9" Ref="R57"  Part="1" 
+F 0 "R57" H 7170 1696 50  0000 L CNN
+F 1 "Rled" H 7170 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7030 1650 50  0001 C CNN
+F 3 "~" H 7100 1650 50  0001 C CNN
+	1    7100 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 900  7000 800 
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F7C0
+P 7000 800
+AR Path="/61A6EF5C/61D9F7C0" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F7C0" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F7C0" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7C0" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F7C0" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F7C0" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F7C0" Ref="#PWR081"  Part="1" 
+F 0 "#PWR081" H 7000 650 50  0001 C CNN
+F 1 "+3.3V" H 7015 973 50  0000 C CNN
+F 2 "" H 7000 800 50  0001 C CNN
+F 3 "" H 7000 800 50  0001 C CNN
+	1    7000 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6900 1800 6900 2650
+Wire Wire Line
+	7100 1800 7100 2750
+Text GLabel 2400 2150 0    50   Input ~ 0
+LED_OE
+Wire Wire Line
+	5800 2350 4100 2350
+Wire Wire Line
+	4100 2250 5600 2250
+$Comp
+L Device:C C?
+U 1 1 61D9F7CB
+P 2550 1150
+AR Path="/5EDCCD5B/61D9F7CB" Ref="C?"  Part="1" 
+AR Path="/5EDCCDFD/61D9F7CB" Ref="C?"  Part="1" 
+AR Path="/61A6EF5C/61D9F7CB" Ref="C?"  Part="1" 
+AR Path="/61D9F7CB" Ref="C?"  Part="1" 
+AR Path="/619A998C/61D9F7CB" Ref="C?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7CB" Ref="C?"  Part="1" 
+AR Path="/61C541EA/61D9F7CB" Ref="C?"  Part="1" 
+AR Path="/61D4151D/61D9F7CB" Ref="C?"  Part="1" 
+AR Path="/61D60973/61D9F7CB" Ref="C15"  Part="1" 
+F 0 "C15" H 2665 1196 50  0000 L CNN
+F 1 "10u" H 2665 1105 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 2588 1000 50  0001 C CNN
+F 3 "" H 2550 1150 50  0001 C CNN
+	1    2550 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61D9F7D1
+P 2950 1150
+AR Path="/5EDCCD5B/61D9F7D1" Ref="C?"  Part="1" 
+AR Path="/5EDCCDFD/61D9F7D1" Ref="C?"  Part="1" 
+AR Path="/61A6EF5C/61D9F7D1" Ref="C?"  Part="1" 
+AR Path="/61D9F7D1" Ref="C?"  Part="1" 
+AR Path="/619A998C/61D9F7D1" Ref="C?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7D1" Ref="C?"  Part="1" 
+AR Path="/61C541EA/61D9F7D1" Ref="C?"  Part="1" 
+AR Path="/61D4151D/61D9F7D1" Ref="C?"  Part="1" 
+AR Path="/61D60973/61D9F7D1" Ref="C17"  Part="1" 
+F 0 "C17" H 3065 1196 50  0000 L CNN
+F 1 "100n" H 3065 1105 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 2988 1000 50  0001 C CNN
+F 3 "" H 2950 1150 50  0001 C CNN
+	1    2950 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61D9F7D7
+P 2950 1300
+AR Path="/61A6EF5C/61D9F7D7" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F7D7" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F7D7" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7D7" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F7D7" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F7D7" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F7D7" Ref="#PWR066"  Part="1" 
+F 0 "#PWR066" H 2950 1050 50  0001 C CNN
+F 1 "GND" H 2955 1127 50  0000 C CNN
+F 2 "" H 2950 1300 50  0001 C CNN
+F 3 "" H 2950 1300 50  0001 C CNN
+	1    2950 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61D9F7DD
+P 2550 1300
+AR Path="/61A6EF5C/61D9F7DD" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F7DD" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F7DD" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7DD" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F7DD" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F7DD" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F7DD" Ref="#PWR060"  Part="1" 
+F 0 "#PWR060" H 2550 1050 50  0001 C CNN
+F 1 "GND" H 2555 1127 50  0000 C CNN
+F 2 "" H 2550 1300 50  0001 C CNN
+F 3 "" H 2550 1300 50  0001 C CNN
+	1    2550 1300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F7E3
+P 2950 1000
+AR Path="/61A6EF5C/61D9F7E3" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F7E3" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F7E3" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7E3" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F7E3" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F7E3" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F7E3" Ref="#PWR065"  Part="1" 
+F 0 "#PWR065" H 2950 850 50  0001 C CNN
+F 1 "+3.3V" H 2965 1173 50  0000 C CNN
+F 2 "" H 2950 1000 50  0001 C CNN
+F 3 "" H 2950 1000 50  0001 C CNN
+	1    2950 1000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F7E9
+P 2550 1000
+AR Path="/61A6EF5C/61D9F7E9" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F7E9" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F7E9" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7E9" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F7E9" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F7E9" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F7E9" Ref="#PWR059"  Part="1" 
+F 0 "#PWR059" H 2550 850 50  0001 C CNN
+F 1 "+3.3V" H 2565 1173 50  0000 C CNN
+F 2 "" H 2550 1000 50  0001 C CNN
+F 3 "" H 2550 1000 50  0001 C CNN
+	1    2550 1000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 1800 5600 2250
+Wire Wire Line
+	4100 2450 6150 2450
+Wire Wire Line
+	5800 1800 5800 2350
+Wire Wire Line
+	4100 2550 6350 2550
+Wire Wire Line
+	6150 1800 6150 2450
+Wire Wire Line
+	4100 2650 6900 2650
+Wire Wire Line
+	6350 1800 6350 2550
+Wire Wire Line
+	4100 2750 7100 2750
+Wire Wire Line
+	2600 2050 2700 2050
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61D9F7F8
+P 7550 1200
+AR Path="/61A6EF5C/61D9F7F8" Ref="D?"  Part="1" 
+AR Path="/61D9F7F8" Ref="D?"  Part="1" 
+AR Path="/619A998C/61D9F7F8" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7F8" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61D9F7F8" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61D9F7F8" Ref="D?"  Part="1" 
+AR Path="/61D60973/61D9F7F8" Ref="D22"  Part="1" 
+F 0 "D22" V 7350 1350 50  0000 L CNN
+F 1 "LED_SPEED_+1_B" H 8150 1200 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 7600 1200 50  0001 C CNN
+F 3 "~" H 7600 1200 50  0001 C CNN
+	1    7550 1200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F7FE
+P 7450 1650
+AR Path="/61A6EF5C/61D9F7FE" Ref="R?"  Part="1" 
+AR Path="/61D9F7FE" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F7FE" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F7FE" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F7FE" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F7FE" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F7FE" Ref="R59"  Part="1" 
+F 0 "R59" H 7520 1696 50  0000 L CNN
+F 1 "Rled" H 7520 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7380 1650 50  0001 C CNN
+F 3 "~" H 7450 1650 50  0001 C CNN
+	1    7450 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F804
+P 7650 1650
+AR Path="/61A6EF5C/61D9F804" Ref="R?"  Part="1" 
+AR Path="/61D9F804" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F804" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F804" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F804" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F804" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F804" Ref="R61"  Part="1" 
+F 0 "R61" H 7720 1696 50  0000 L CNN
+F 1 "Rled" H 7720 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7580 1650 50  0001 C CNN
+F 3 "~" H 7650 1650 50  0001 C CNN
+	1    7650 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7550 900  7550 800 
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F80B
+P 7550 800
+AR Path="/61A6EF5C/61D9F80B" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F80B" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F80B" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F80B" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F80B" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F80B" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F80B" Ref="#PWR083"  Part="1" 
+F 0 "#PWR083" H 7550 650 50  0001 C CNN
+F 1 "+3.3V" H 7565 973 50  0000 C CNN
+F 2 "" H 7550 800 50  0001 C CNN
+F 3 "" H 7550 800 50  0001 C CNN
+	1    7550 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 1800 7450 2850
+Wire Wire Line
+	7650 1800 7650 2950
+Wire Wire Line
+	4100 2850 7450 2850
+Wire Wire Line
+	4100 2950 7650 2950
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61D9F815
+P 8100 1200
+AR Path="/61A6EF5C/61D9F815" Ref="D?"  Part="1" 
+AR Path="/61D9F815" Ref="D?"  Part="1" 
+AR Path="/619A998C/61D9F815" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F815" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61D9F815" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61D9F815" Ref="D?"  Part="1" 
+AR Path="/61D60973/61D9F815" Ref="D24"  Part="1" 
+F 0 "D24" V 7900 1350 50  0000 L CNN
+F 1 "LED_SPEED_-1_B" H 8700 1200 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 8150 1200 50  0001 C CNN
+F 3 "~" H 8150 1200 50  0001 C CNN
+	1    8100 1200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F81B
+P 8000 1650
+AR Path="/61A6EF5C/61D9F81B" Ref="R?"  Part="1" 
+AR Path="/61D9F81B" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F81B" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F81B" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F81B" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F81B" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F81B" Ref="R63"  Part="1" 
+F 0 "R63" H 8070 1696 50  0000 L CNN
+F 1 "Rled" H 8070 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7930 1650 50  0001 C CNN
+F 3 "~" H 8000 1650 50  0001 C CNN
+	1    8000 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F821
+P 8200 1650
+AR Path="/61A6EF5C/61D9F821" Ref="R?"  Part="1" 
+AR Path="/61D9F821" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F821" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F821" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F821" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F821" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F821" Ref="R65"  Part="1" 
+F 0 "R65" H 8270 1696 50  0000 L CNN
+F 1 "Rled" H 8270 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8130 1650 50  0001 C CNN
+F 3 "~" H 8200 1650 50  0001 C CNN
+	1    8200 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8100 900  8100 800 
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F828
+P 8100 800
+AR Path="/61A6EF5C/61D9F828" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F828" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F828" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F828" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F828" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F828" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F828" Ref="#PWR085"  Part="1" 
+F 0 "#PWR085" H 8100 650 50  0001 C CNN
+F 1 "+3.3V" H 8115 973 50  0000 C CNN
+F 2 "" H 8100 800 50  0001 C CNN
+F 3 "" H 8100 800 50  0001 C CNN
+	1    8100 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 1800 8000 3050
+Wire Wire Line
+	8200 1800 8200 3150
+Wire Wire Line
+	4100 3050 8000 3050
+Wire Wire Line
+	4100 3150 8200 3150
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61D9F832
+P 8650 1200
+AR Path="/61A6EF5C/61D9F832" Ref="D?"  Part="1" 
+AR Path="/61D9F832" Ref="D?"  Part="1" 
+AR Path="/619A998C/61D9F832" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F832" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61D9F832" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61D9F832" Ref="D?"  Part="1" 
+AR Path="/61D60973/61D9F832" Ref="D26"  Part="1" 
+F 0 "D26" V 8450 1350 50  0000 L CNN
+F 1 "LED_SPEED_-2_B" H 9250 1200 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 8700 1200 50  0001 C CNN
+F 3 "~" H 8700 1200 50  0001 C CNN
+	1    8650 1200
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F838
+P 8550 1650
+AR Path="/61A6EF5C/61D9F838" Ref="R?"  Part="1" 
+AR Path="/61D9F838" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F838" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F838" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F838" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F838" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F838" Ref="R67"  Part="1" 
+F 0 "R67" H 8620 1696 50  0000 L CNN
+F 1 "Rled" H 8620 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8480 1650 50  0001 C CNN
+F 3 "~" H 8550 1650 50  0001 C CNN
+	1    8550 1650
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61D9F83E
+P 8750 1650
+AR Path="/61A6EF5C/61D9F83E" Ref="R?"  Part="1" 
+AR Path="/61D9F83E" Ref="R?"  Part="1" 
+AR Path="/619A998C/61D9F83E" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F83E" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61D9F83E" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61D9F83E" Ref="R?"  Part="1" 
+AR Path="/61D60973/61D9F83E" Ref="R69"  Part="1" 
+F 0 "R69" H 8820 1696 50  0000 L CNN
+F 1 "Rled" H 8820 1605 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8680 1650 50  0001 C CNN
+F 3 "~" H 8750 1650 50  0001 C CNN
+	1    8750 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8650 900  8650 800 
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61D9F845
+P 8650 800
+AR Path="/61A6EF5C/61D9F845" Ref="#PWR?"  Part="1" 
+AR Path="/61D9F845" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61D9F845" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61D9F845" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61D9F845" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61D9F845" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61D9F845" Ref="#PWR087"  Part="1" 
+F 0 "#PWR087" H 8650 650 50  0001 C CNN
+F 1 "+3.3V" H 8665 973 50  0000 C CNN
+F 2 "" H 8650 800 50  0001 C CNN
+F 3 "" H 8650 800 50  0001 C CNN
+	1    8650 800 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 1800 8550 3250
+Wire Wire Line
+	8750 1800 8750 3350
+Wire Wire Line
+	4100 3250 8550 3250
+Wire Wire Line
+	2400 2150 2700 2150
+Wire Wire Line
+	2400 1850 2700 1850
+Wire Wire Line
+	2400 1950 2700 1950
+Wire Wire Line
+	2600 2050 2600 2750
+$Comp
+L Driver_LED:PCA9685PW U?
+U 1 1 61E60B7B
+P 3400 5500
+AR Path="/61A6EF5C/61E60B7B" Ref="U?"  Part="1" 
+AR Path="/61E60B7B" Ref="U?"  Part="1" 
+AR Path="/619A998C/61E60B7B" Ref="U?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60B7B" Ref="U?"  Part="1" 
+AR Path="/61C541EA/61E60B7B" Ref="U?"  Part="1" 
+AR Path="/61D4151D/61E60B7B" Ref="U?"  Part="1" 
+AR Path="/61D60973/61E60B7B" Ref="U7"  Part="1" 
+F 0 "U7" H 3800 6350 50  0000 C CNN
+F 1 "PCA9685PW" H 3100 6350 50  0000 C CNN
+F 2 "Package_SO:TSSOP-28_4.4x9.7mm_P0.65mm" H 3425 4525 50  0001 L CNN
+F 3 "http://www.nxp.com/documents/data_sheet/PCA9685.pdf" H 3000 6200 50  0001 C CNN
+	1    3400 5500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60B81
+P 3400 4500
+AR Path="/61A6EF5C/61E60B81" Ref="#PWR?"  Part="1" 
+AR Path="/61E60B81" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60B81" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60B81" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60B81" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60B81" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60B81" Ref="#PWR071"  Part="1" 
+F 0 "#PWR071" H 3400 4350 50  0001 C CNN
+F 1 "+3.3V" H 3415 4673 50  0000 C CNN
+F 2 "" H 3400 4500 50  0001 C CNN
+F 3 "" H 3400 4500 50  0001 C CNN
+	1    3400 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61E60B87
+P 3400 6600
+AR Path="/61A6EF5C/61E60B87" Ref="#PWR?"  Part="1" 
+AR Path="/61E60B87" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60B87" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60B87" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60B87" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60B87" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60B87" Ref="#PWR072"  Part="1" 
+F 0 "#PWR072" H 3400 6350 50  0001 C CNN
+F 1 "GND" H 3405 6427 50  0000 C CNN
+F 2 "" H 3400 6600 50  0001 C CNN
+F 3 "" H 3400 6600 50  0001 C CNN
+	1    3400 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61E60B8D
+P 2600 6300
+AR Path="/61A6EF5C/61E60B8D" Ref="#PWR?"  Part="1" 
+AR Path="/61E60B8D" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60B8D" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60B8D" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60B8D" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60B8D" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60B8D" Ref="#PWR064"  Part="1" 
+F 0 "#PWR064" H 2600 6050 50  0001 C CNN
+F 1 "GND" H 2605 6127 50  0000 C CNN
+F 2 "" H 2600 6300 50  0001 C CNN
+F 3 "" H 2600 6300 50  0001 C CNN
+	1    2600 6300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2700 5800 2600 5800
+Connection ~ 2600 5800
+Wire Wire Line
+	2600 5800 2600 5900
+Wire Wire Line
+	2600 5900 2700 5900
+Connection ~ 2600 5900
+Wire Wire Line
+	2600 5900 2600 6000
+Wire Wire Line
+	2700 6000 2600 6000
+Connection ~ 2600 6000
+Wire Wire Line
+	2600 6000 2600 6100
+Wire Wire Line
+	2600 6100 2700 6100
+Connection ~ 2600 6100
+Wire Wire Line
+	2600 6100 2600 6200
+Wire Wire Line
+	2700 6200 2600 6200
+Connection ~ 2600 6200
+Wire Wire Line
+	2600 6200 2600 6300
+Text GLabel 2400 4900 0    50   Input ~ 0
+LED_SDA
+Text GLabel 2400 4800 0    50   Input ~ 0
+LED_SCL
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61E60BA4
+P 6250 4150
+AR Path="/61A6EF5C/61E60BA4" Ref="D?"  Part="1" 
+AR Path="/61E60BA4" Ref="D?"  Part="1" 
+AR Path="/619A998C/61E60BA4" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BA4" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61E60BA4" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61E60BA4" Ref="D?"  Part="1" 
+AR Path="/61D60973/61E60BA4" Ref="D13"  Part="1" 
+F 0 "D13" V 6050 4300 50  0000 L CNN
+F 1 "LED_SPEED_+2_C" H 6850 4150 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 6300 4150 50  0001 C CNN
+F 3 "~" H 6300 4150 50  0001 C CNN
+	1    6250 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60BAA
+P 4250 4600
+AR Path="/61A6EF5C/61E60BAA" Ref="R?"  Part="1" 
+AR Path="/61E60BAA" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60BAA" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BAA" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60BAA" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60BAA" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60BAA" Ref="R40"  Part="1" 
+F 0 "R40" H 4320 4646 50  0000 L CNN
+F 1 "Rled" H 4320 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4180 4600 50  0001 C CNN
+F 3 "~" H 4250 4600 50  0001 C CNN
+	1    4250 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60BB0
+P 4450 4600
+AR Path="/61A6EF5C/61E60BB0" Ref="R?"  Part="1" 
+AR Path="/61E60BB0" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60BB0" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BB0" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60BB0" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60BB0" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60BB0" Ref="R42"  Part="1" 
+F 0 "R42" H 4520 4646 50  0000 L CNN
+F 1 "Rled" H 4520 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4380 4600 50  0001 C CNN
+F 3 "~" H 4450 4600 50  0001 C CNN
+	1    4450 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 3850 4350 3750
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60BB7
+P 4350 3750
+AR Path="/61A6EF5C/61E60BB7" Ref="#PWR?"  Part="1" 
+AR Path="/61E60BB7" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60BB7" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BB7" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60BB7" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60BB7" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60BB7" Ref="#PWR074"  Part="1" 
+F 0 "#PWR074" H 4350 3600 50  0001 C CNN
+F 1 "+3.3V" H 4365 3923 50  0000 C CNN
+F 2 "" H 4350 3750 50  0001 C CNN
+F 3 "" H 4350 3750 50  0001 C CNN
+	1    4350 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61E60BBD
+P 5700 4150
+AR Path="/61A6EF5C/61E60BBD" Ref="D?"  Part="1" 
+AR Path="/61E60BBD" Ref="D?"  Part="1" 
+AR Path="/619A998C/61E60BBD" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BBD" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61E60BBD" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61E60BBD" Ref="D?"  Part="1" 
+AR Path="/61D60973/61E60BBD" Ref="D15"  Part="1" 
+F 0 "D15" V 5500 4300 50  0000 L CNN
+F 1 "LED_SPEED_+1_C" H 6300 4150 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 5750 4150 50  0001 C CNN
+F 3 "~" H 5750 4150 50  0001 C CNN
+	1    5700 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60BC3
+P 4800 4600
+AR Path="/61A6EF5C/61E60BC3" Ref="R?"  Part="1" 
+AR Path="/61E60BC3" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60BC3" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BC3" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60BC3" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60BC3" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60BC3" Ref="R44"  Part="1" 
+F 0 "R44" H 4870 4646 50  0000 L CNN
+F 1 "Rled" H 4870 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4730 4600 50  0001 C CNN
+F 3 "~" H 4800 4600 50  0001 C CNN
+	1    4800 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60BC9
+P 5000 4600
+AR Path="/61A6EF5C/61E60BC9" Ref="R?"  Part="1" 
+AR Path="/61E60BC9" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60BC9" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BC9" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60BC9" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60BC9" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60BC9" Ref="R46"  Part="1" 
+F 0 "R46" H 5070 4646 50  0000 L CNN
+F 1 "Rled" H 5070 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 4930 4600 50  0001 C CNN
+F 3 "~" H 5000 4600 50  0001 C CNN
+	1    5000 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4900 3850 4900 3750
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60BD0
+P 4900 3750
+AR Path="/61A6EF5C/61E60BD0" Ref="#PWR?"  Part="1" 
+AR Path="/61E60BD0" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60BD0" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BD0" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60BD0" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60BD0" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60BD0" Ref="#PWR076"  Part="1" 
+F 0 "#PWR076" H 4900 3600 50  0001 C CNN
+F 1 "+3.3V" H 4915 3923 50  0000 C CNN
+F 2 "" H 4900 3750 50  0001 C CNN
+F 3 "" H 4900 3750 50  0001 C CNN
+	1    4900 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61E60BD6
+P 4900 4150
+AR Path="/61A6EF5C/61E60BD6" Ref="D?"  Part="1" 
+AR Path="/61E60BD6" Ref="D?"  Part="1" 
+AR Path="/619A998C/61E60BD6" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BD6" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61E60BD6" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61E60BD6" Ref="D?"  Part="1" 
+AR Path="/61D60973/61E60BD6" Ref="D17"  Part="1" 
+F 0 "D17" V 4700 4300 50  0000 L CNN
+F 1 "LED_SPEED_-1_C" H 5500 4150 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 4950 4150 50  0001 C CNN
+F 3 "~" H 4950 4150 50  0001 C CNN
+	1    4900 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60BDC
+P 5600 4600
+AR Path="/61A6EF5C/61E60BDC" Ref="R?"  Part="1" 
+AR Path="/61E60BDC" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60BDC" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BDC" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60BDC" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60BDC" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60BDC" Ref="R48"  Part="1" 
+F 0 "R48" H 5670 4646 50  0000 L CNN
+F 1 "Rled" H 5670 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 5530 4600 50  0001 C CNN
+F 3 "~" H 5600 4600 50  0001 C CNN
+	1    5600 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60BE2
+P 5800 4600
+AR Path="/61A6EF5C/61E60BE2" Ref="R?"  Part="1" 
+AR Path="/61E60BE2" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60BE2" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BE2" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60BE2" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60BE2" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60BE2" Ref="R50"  Part="1" 
+F 0 "R50" H 5870 4646 50  0000 L CNN
+F 1 "Rled" H 5870 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 5730 4600 50  0001 C CNN
+F 3 "~" H 5800 4600 50  0001 C CNN
+	1    5800 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 3850 5700 3750
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60BE9
+P 5700 3750
+AR Path="/61A6EF5C/61E60BE9" Ref="#PWR?"  Part="1" 
+AR Path="/61E60BE9" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60BE9" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BE9" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60BE9" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60BE9" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60BE9" Ref="#PWR078"  Part="1" 
+F 0 "#PWR078" H 5700 3600 50  0001 C CNN
+F 1 "+3.3V" H 5715 3923 50  0000 C CNN
+F 2 "" H 5700 3750 50  0001 C CNN
+F 3 "" H 5700 3750 50  0001 C CNN
+	1    5700 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61E60BEF
+P 4350 4150
+AR Path="/61A6EF5C/61E60BEF" Ref="D?"  Part="1" 
+AR Path="/61E60BEF" Ref="D?"  Part="1" 
+AR Path="/619A998C/61E60BEF" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BEF" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61E60BEF" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61E60BEF" Ref="D?"  Part="1" 
+AR Path="/61D60973/61E60BEF" Ref="D19"  Part="1" 
+F 0 "D19" V 4150 4300 50  0000 L CNN
+F 1 "LED_SPEED_-2_C" H 4950 4150 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 4400 4150 50  0001 C CNN
+F 3 "~" H 4400 4150 50  0001 C CNN
+	1    4350 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60BF5
+P 6150 4600
+AR Path="/61A6EF5C/61E60BF5" Ref="R?"  Part="1" 
+AR Path="/61E60BF5" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60BF5" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BF5" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60BF5" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60BF5" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60BF5" Ref="R52"  Part="1" 
+F 0 "R52" H 6220 4646 50  0000 L CNN
+F 1 "Rled" H 6220 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 6080 4600 50  0001 C CNN
+F 3 "~" H 6150 4600 50  0001 C CNN
+	1    6150 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60BFB
+P 6350 4600
+AR Path="/61A6EF5C/61E60BFB" Ref="R?"  Part="1" 
+AR Path="/61E60BFB" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60BFB" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60BFB" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60BFB" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60BFB" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60BFB" Ref="R54"  Part="1" 
+F 0 "R54" H 6420 4646 50  0000 L CNN
+F 1 "Rled" H 6420 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 6280 4600 50  0001 C CNN
+F 3 "~" H 6350 4600 50  0001 C CNN
+	1    6350 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 3850 6250 3750
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60C02
+P 6250 3750
+AR Path="/61A6EF5C/61E60C02" Ref="#PWR?"  Part="1" 
+AR Path="/61E60C02" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60C02" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C02" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60C02" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60C02" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60C02" Ref="#PWR080"  Part="1" 
+F 0 "#PWR080" H 6250 3600 50  0001 C CNN
+F 1 "+3.3V" H 6265 3923 50  0000 C CNN
+F 2 "" H 6250 3750 50  0001 C CNN
+F 3 "" H 6250 3750 50  0001 C CNN
+	1    6250 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4250 4750 4250 4800
+Wire Wire Line
+	4250 4800 4100 4800
+Wire Wire Line
+	4100 4900 4450 4900
+Wire Wire Line
+	4450 4900 4450 4750
+Wire Wire Line
+	4100 5000 4800 5000
+Wire Wire Line
+	4800 5000 4800 4750
+Wire Wire Line
+	5000 4750 5000 5100
+Wire Wire Line
+	5000 5100 4100 5100
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61E60C10
+P 7000 4150
+AR Path="/61A6EF5C/61E60C10" Ref="D?"  Part="1" 
+AR Path="/61E60C10" Ref="D?"  Part="1" 
+AR Path="/619A998C/61E60C10" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C10" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61E60C10" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61E60C10" Ref="D?"  Part="1" 
+AR Path="/61D60973/61E60C10" Ref="D21"  Part="1" 
+F 0 "D21" V 6800 4300 50  0000 L CNN
+F 1 "LED_SPEED_+2_D" H 7600 4150 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 7050 4150 50  0001 C CNN
+F 3 "~" H 7050 4150 50  0001 C CNN
+	1    7000 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60C16
+P 6900 4600
+AR Path="/61A6EF5C/61E60C16" Ref="R?"  Part="1" 
+AR Path="/61E60C16" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60C16" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C16" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60C16" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60C16" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60C16" Ref="R56"  Part="1" 
+F 0 "R56" H 6970 4646 50  0000 L CNN
+F 1 "Rled" H 6970 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 6830 4600 50  0001 C CNN
+F 3 "~" H 6900 4600 50  0001 C CNN
+	1    6900 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60C1C
+P 7100 4600
+AR Path="/61A6EF5C/61E60C1C" Ref="R?"  Part="1" 
+AR Path="/61E60C1C" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60C1C" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C1C" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60C1C" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60C1C" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60C1C" Ref="R58"  Part="1" 
+F 0 "R58" H 7170 4646 50  0000 L CNN
+F 1 "Rled" H 7170 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7030 4600 50  0001 C CNN
+F 3 "~" H 7100 4600 50  0001 C CNN
+	1    7100 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7000 3850 7000 3750
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60C23
+P 7000 3750
+AR Path="/61A6EF5C/61E60C23" Ref="#PWR?"  Part="1" 
+AR Path="/61E60C23" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60C23" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C23" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60C23" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60C23" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60C23" Ref="#PWR082"  Part="1" 
+F 0 "#PWR082" H 7000 3600 50  0001 C CNN
+F 1 "+3.3V" H 7015 3923 50  0000 C CNN
+F 2 "" H 7000 3750 50  0001 C CNN
+F 3 "" H 7000 3750 50  0001 C CNN
+	1    7000 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6900 4750 6900 5600
+Wire Wire Line
+	7100 4750 7100 5700
+Text GLabel 2400 5100 0    50   Input ~ 0
+LED_OE
+Wire Wire Line
+	5800 5300 4100 5300
+Wire Wire Line
+	4100 5200 5600 5200
+$Comp
+L Device:C C?
+U 1 1 61E60C2E
+P 2550 4100
+AR Path="/5EDCCD5B/61E60C2E" Ref="C?"  Part="1" 
+AR Path="/5EDCCDFD/61E60C2E" Ref="C?"  Part="1" 
+AR Path="/61A6EF5C/61E60C2E" Ref="C?"  Part="1" 
+AR Path="/61E60C2E" Ref="C?"  Part="1" 
+AR Path="/619A998C/61E60C2E" Ref="C?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C2E" Ref="C?"  Part="1" 
+AR Path="/61C541EA/61E60C2E" Ref="C?"  Part="1" 
+AR Path="/61D4151D/61E60C2E" Ref="C?"  Part="1" 
+AR Path="/61D60973/61E60C2E" Ref="C16"  Part="1" 
+F 0 "C16" H 2665 4146 50  0000 L CNN
+F 1 "10u" H 2665 4055 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 2588 3950 50  0001 C CNN
+F 3 "" H 2550 4100 50  0001 C CNN
+	1    2550 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 61E60C34
+P 2950 4100
+AR Path="/5EDCCD5B/61E60C34" Ref="C?"  Part="1" 
+AR Path="/5EDCCDFD/61E60C34" Ref="C?"  Part="1" 
+AR Path="/61A6EF5C/61E60C34" Ref="C?"  Part="1" 
+AR Path="/61E60C34" Ref="C?"  Part="1" 
+AR Path="/619A998C/61E60C34" Ref="C?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C34" Ref="C?"  Part="1" 
+AR Path="/61C541EA/61E60C34" Ref="C?"  Part="1" 
+AR Path="/61D4151D/61E60C34" Ref="C?"  Part="1" 
+AR Path="/61D60973/61E60C34" Ref="C18"  Part="1" 
+F 0 "C18" H 3065 4146 50  0000 L CNN
+F 1 "100n" H 3065 4055 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" H 2988 3950 50  0001 C CNN
+F 3 "" H 2950 4100 50  0001 C CNN
+	1    2950 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61E60C3A
+P 2950 4250
+AR Path="/61A6EF5C/61E60C3A" Ref="#PWR?"  Part="1" 
+AR Path="/61E60C3A" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60C3A" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C3A" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60C3A" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60C3A" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60C3A" Ref="#PWR068"  Part="1" 
+F 0 "#PWR068" H 2950 4000 50  0001 C CNN
+F 1 "GND" H 2955 4077 50  0000 C CNN
+F 2 "" H 2950 4250 50  0001 C CNN
+F 3 "" H 2950 4250 50  0001 C CNN
+	1    2950 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61E60C40
+P 2550 4250
+AR Path="/61A6EF5C/61E60C40" Ref="#PWR?"  Part="1" 
+AR Path="/61E60C40" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60C40" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C40" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60C40" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60C40" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60C40" Ref="#PWR062"  Part="1" 
+F 0 "#PWR062" H 2550 4000 50  0001 C CNN
+F 1 "GND" H 2555 4077 50  0000 C CNN
+F 2 "" H 2550 4250 50  0001 C CNN
+F 3 "" H 2550 4250 50  0001 C CNN
+	1    2550 4250
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60C46
+P 2950 3950
+AR Path="/61A6EF5C/61E60C46" Ref="#PWR?"  Part="1" 
+AR Path="/61E60C46" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60C46" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C46" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60C46" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60C46" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60C46" Ref="#PWR067"  Part="1" 
+F 0 "#PWR067" H 2950 3800 50  0001 C CNN
+F 1 "+3.3V" H 2965 4123 50  0000 C CNN
+F 2 "" H 2950 3950 50  0001 C CNN
+F 3 "" H 2950 3950 50  0001 C CNN
+	1    2950 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60C4C
+P 2550 3950
+AR Path="/61A6EF5C/61E60C4C" Ref="#PWR?"  Part="1" 
+AR Path="/61E60C4C" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60C4C" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C4C" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60C4C" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60C4C" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60C4C" Ref="#PWR061"  Part="1" 
+F 0 "#PWR061" H 2550 3800 50  0001 C CNN
+F 1 "+3.3V" H 2565 4123 50  0000 C CNN
+F 2 "" H 2550 3950 50  0001 C CNN
+F 3 "" H 2550 3950 50  0001 C CNN
+	1    2550 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 4750 5600 5200
+Wire Wire Line
+	4100 5400 6150 5400
+Wire Wire Line
+	5800 4750 5800 5300
+Wire Wire Line
+	4100 5500 6350 5500
+Wire Wire Line
+	6150 4750 6150 5400
+Wire Wire Line
+	4100 5600 6900 5600
+Wire Wire Line
+	6350 4750 6350 5500
+Wire Wire Line
+	4100 5700 7100 5700
+Wire Wire Line
+	2600 5000 2700 5000
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61E60C5B
+P 7550 4150
+AR Path="/61A6EF5C/61E60C5B" Ref="D?"  Part="1" 
+AR Path="/61E60C5B" Ref="D?"  Part="1" 
+AR Path="/619A998C/61E60C5B" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C5B" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61E60C5B" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61E60C5B" Ref="D?"  Part="1" 
+AR Path="/61D60973/61E60C5B" Ref="D23"  Part="1" 
+F 0 "D23" V 7350 4300 50  0000 L CNN
+F 1 "LED_SPEED_+1_D" H 8150 4150 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 7600 4150 50  0001 C CNN
+F 3 "~" H 7600 4150 50  0001 C CNN
+	1    7550 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60C61
+P 7450 4600
+AR Path="/61A6EF5C/61E60C61" Ref="R?"  Part="1" 
+AR Path="/61E60C61" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60C61" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C61" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60C61" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60C61" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60C61" Ref="R60"  Part="1" 
+F 0 "R60" H 7520 4646 50  0000 L CNN
+F 1 "Rled" H 7520 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7380 4600 50  0001 C CNN
+F 3 "~" H 7450 4600 50  0001 C CNN
+	1    7450 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60C67
+P 7650 4600
+AR Path="/61A6EF5C/61E60C67" Ref="R?"  Part="1" 
+AR Path="/61E60C67" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60C67" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C67" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60C67" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60C67" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60C67" Ref="R62"  Part="1" 
+F 0 "R62" H 7720 4646 50  0000 L CNN
+F 1 "Rled" H 7720 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7580 4600 50  0001 C CNN
+F 3 "~" H 7650 4600 50  0001 C CNN
+	1    7650 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7550 3850 7550 3750
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60C6E
+P 7550 3750
+AR Path="/61A6EF5C/61E60C6E" Ref="#PWR?"  Part="1" 
+AR Path="/61E60C6E" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60C6E" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C6E" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60C6E" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60C6E" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60C6E" Ref="#PWR084"  Part="1" 
+F 0 "#PWR084" H 7550 3600 50  0001 C CNN
+F 1 "+3.3V" H 7565 3923 50  0000 C CNN
+F 2 "" H 7550 3750 50  0001 C CNN
+F 3 "" H 7550 3750 50  0001 C CNN
+	1    7550 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7450 4750 7450 5800
+Wire Wire Line
+	7650 4750 7650 5900
+Wire Wire Line
+	4100 5800 7450 5800
+Wire Wire Line
+	4100 5900 7650 5900
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61E60C78
+P 8100 4150
+AR Path="/61A6EF5C/61E60C78" Ref="D?"  Part="1" 
+AR Path="/61E60C78" Ref="D?"  Part="1" 
+AR Path="/619A998C/61E60C78" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C78" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61E60C78" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61E60C78" Ref="D?"  Part="1" 
+AR Path="/61D60973/61E60C78" Ref="D25"  Part="1" 
+F 0 "D25" V 7900 4300 50  0000 L CNN
+F 1 "LED_SPEED_-1_D" H 8700 4150 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 8150 4150 50  0001 C CNN
+F 3 "~" H 8150 4150 50  0001 C CNN
+	1    8100 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60C7E
+P 8000 4600
+AR Path="/61A6EF5C/61E60C7E" Ref="R?"  Part="1" 
+AR Path="/61E60C7E" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60C7E" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C7E" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60C7E" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60C7E" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60C7E" Ref="R64"  Part="1" 
+F 0 "R64" H 8070 4646 50  0000 L CNN
+F 1 "Rled" H 8070 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 7930 4600 50  0001 C CNN
+F 3 "~" H 8000 4600 50  0001 C CNN
+	1    8000 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60C84
+P 8200 4600
+AR Path="/61A6EF5C/61E60C84" Ref="R?"  Part="1" 
+AR Path="/61E60C84" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60C84" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C84" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60C84" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60C84" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60C84" Ref="R66"  Part="1" 
+F 0 "R66" H 8270 4646 50  0000 L CNN
+F 1 "Rled" H 8270 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8130 4600 50  0001 C CNN
+F 3 "~" H 8200 4600 50  0001 C CNN
+	1    8200 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8100 3850 8100 3750
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60C8B
+P 8100 3750
+AR Path="/61A6EF5C/61E60C8B" Ref="#PWR?"  Part="1" 
+AR Path="/61E60C8B" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60C8B" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C8B" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60C8B" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60C8B" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60C8B" Ref="#PWR086"  Part="1" 
+F 0 "#PWR086" H 8100 3600 50  0001 C CNN
+F 1 "+3.3V" H 8115 3923 50  0000 C CNN
+F 2 "" H 8100 3750 50  0001 C CNN
+F 3 "" H 8100 3750 50  0001 C CNN
+	1    8100 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8000 4750 8000 6000
+Wire Wire Line
+	8200 4750 8200 6100
+Wire Wire Line
+	4100 6000 8000 6000
+Wire Wire Line
+	4100 6100 8200 6100
+$Comp
+L Device:LED_Dual_CAC D?
+U 1 1 61E60C95
+P 8650 4150
+AR Path="/61A6EF5C/61E60C95" Ref="D?"  Part="1" 
+AR Path="/61E60C95" Ref="D?"  Part="1" 
+AR Path="/619A998C/61E60C95" Ref="D?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C95" Ref="D?"  Part="1" 
+AR Path="/61C541EA/61E60C95" Ref="D?"  Part="1" 
+AR Path="/61D4151D/61E60C95" Ref="D?"  Part="1" 
+AR Path="/61D60973/61E60C95" Ref="D27"  Part="1" 
+F 0 "D27" V 8450 4300 50  0000 L CNN
+F 1 "LED_SPEED_-2_D" H 9250 4150 50  0000 L CNN
+F 2 "LED_THT:LED_D3.0mm-3" H 8700 4150 50  0001 C CNN
+F 3 "~" H 8700 4150 50  0001 C CNN
+	1    8650 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60C9B
+P 8550 4600
+AR Path="/61A6EF5C/61E60C9B" Ref="R?"  Part="1" 
+AR Path="/61E60C9B" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60C9B" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60C9B" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60C9B" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60C9B" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60C9B" Ref="R68"  Part="1" 
+F 0 "R68" H 8620 4646 50  0000 L CNN
+F 1 "Rled" H 8620 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8480 4600 50  0001 C CNN
+F 3 "~" H 8550 4600 50  0001 C CNN
+	1    8550 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 61E60CA1
+P 8750 4600
+AR Path="/61A6EF5C/61E60CA1" Ref="R?"  Part="1" 
+AR Path="/61E60CA1" Ref="R?"  Part="1" 
+AR Path="/619A998C/61E60CA1" Ref="R?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60CA1" Ref="R?"  Part="1" 
+AR Path="/61C541EA/61E60CA1" Ref="R?"  Part="1" 
+AR Path="/61D4151D/61E60CA1" Ref="R?"  Part="1" 
+AR Path="/61D60973/61E60CA1" Ref="R70"  Part="1" 
+F 0 "R70" H 8820 4646 50  0000 L CNN
+F 1 "Rled" H 8820 4555 50  0000 L CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" V 8680 4600 50  0001 C CNN
+F 3 "~" H 8750 4600 50  0001 C CNN
+	1    8750 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8650 3850 8650 3750
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E60CA8
+P 8650 3750
+AR Path="/61A6EF5C/61E60CA8" Ref="#PWR?"  Part="1" 
+AR Path="/61E60CA8" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E60CA8" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E60CA8" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E60CA8" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E60CA8" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E60CA8" Ref="#PWR088"  Part="1" 
+F 0 "#PWR088" H 8650 3600 50  0001 C CNN
+F 1 "+3.3V" H 8665 3923 50  0000 C CNN
+F 2 "" H 8650 3750 50  0001 C CNN
+F 3 "" H 8650 3750 50  0001 C CNN
+	1    8650 3750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8550 4750 8550 6200
+Wire Wire Line
+	8750 4750 8750 6300
+Wire Wire Line
+	4100 6200 8550 6200
+Wire Wire Line
+	4100 6300 8750 6300
+Wire Wire Line
+	2400 5100 2700 5100
+Wire Wire Line
+	2400 4800 2700 4800
+Wire Wire Line
+	2400 4900 2700 4900
+Wire Wire Line
+	2600 5000 2600 5800
+Wire Wire Line
+	2400 5700 2700 5700
+$Comp
+L power:+3.3V #PWR?
+U 1 1 61E65B46
+P 2400 5600
+AR Path="/61A6EF5C/61E65B46" Ref="#PWR?"  Part="1" 
+AR Path="/61E65B46" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61E65B46" Ref="#PWR?"  Part="1" 
+AR Path="/619A998C/61A0FB81/61E65B46" Ref="#PWR?"  Part="1" 
+AR Path="/61C541EA/61E65B46" Ref="#PWR?"  Part="1" 
+AR Path="/61D4151D/61E65B46" Ref="#PWR?"  Part="1" 
+AR Path="/61D60973/61E65B46" Ref="#PWR058"  Part="1" 
+F 0 "#PWR058" H 2400 5450 50  0001 C CNN
+F 1 "+3.3V" H 2415 5773 50  0000 C CNN
+F 2 "" H 2400 5600 50  0001 C CNN
+F 3 "" H 2400 5600 50  0001 C CNN
+	1    2400 5600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2400 5600 2400 5700
+Wire Wire Line
+	2700 2750 2600 2750
+Connection ~ 2600 2750
+Wire Wire Line
+	2600 2750 2600 2850
+Wire Wire Line
+	4100 3350 8750 3350
+$EndSCHEMATC
