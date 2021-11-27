@@ -110,7 +110,6 @@ TEST_F(DSP_Player, b_reset)
 
 TEST_F(DSP_Player, c_playForwardsNormalSpeed)
 {
-    const auto expectedPreGain = 0.6734258f;
     const auto expectedPostGain = 0.89563f;
     const auto numSamplesToPlay = 2 * numSamples_;
 
@@ -142,21 +141,17 @@ TEST_F(DSP_Player, c_playForwardsNormalSpeed)
     player_.process(1.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 0.0f }, // processor parameters
                     outputBuffer.subBlock(0, numSamplesToPlay / 2 + 1), // first half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(1.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 1.0f }, // processor parameters (changed this time)
                     outputBuffer.subBlock(numSamplesToPlay / 2 + 1), // second half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
 
@@ -164,32 +159,32 @@ TEST_F(DSP_Player, c_playForwardsNormalSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> expectedProcessorCallArgs_input = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { 1.0f * expectedPreGain,
-              2.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              4.0f * expectedPreGain,
-              5.0f * expectedPreGain,
-              1.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              2.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              4.0f * expectedPreGain,
-              5.0f * expectedPreGain, // last sample of second buffer
+            { 1.0f,
+              2.0f,
+              3.0f,
+              4.0f,
+              5.0f,
+              1.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              2.0f,
+              3.0f,
+              4.0f,
+              5.0f, // last sample of second buffer
               // this is the additonal sample from the linear interpolation
-              1.0f * expectedPreGain }),
+              1.0f }),
         // right channel
         std::vector<FloatWithTolerance>(
-            { 101.0f * expectedPreGain,
-              102.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              104.0f * expectedPreGain,
-              105.0f * expectedPreGain,
-              101.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              102.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              104.0f * expectedPreGain,
-              105.0f * expectedPreGain, // last sample of second buffer
+            { 101.0f,
+              102.0f,
+              103.0f,
+              104.0f,
+              105.0f,
+              101.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              102.0f,
+              103.0f,
+              104.0f,
+              105.0f, // last sample of second buffer
               // this is the additonal sample from the linear interpolation
-              101.0f * expectedPreGain })
+              101.0f })
     };
     EXPECT_EQ(processCallArgs_input, expectedProcessorCallArgs_input);
     // expect correct parameters to be passed to the processor
@@ -213,35 +208,34 @@ TEST_F(DSP_Player, c_playForwardsNormalSpeed)
     std::array<std::vector<FloatWithTolerance>, 2> expectedOutputSamples = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { (100 + 1 * expectedPreGain) * expectedPostGain,
-              (100 + 2 * expectedPreGain) * expectedPostGain,
-              (100 + 3 * expectedPreGain) * expectedPostGain,
-              (100 + 4 * expectedPreGain) * expectedPostGain,
-              (100 + 5 * expectedPreGain) * expectedPostGain,
-              (100 + 1 * expectedPreGain) * expectedPostGain, // this is where the buffer wrapped around
-              (100 + 2 * expectedPreGain) * expectedPostGain,
-              (100 + 3 * expectedPreGain) * expectedPostGain,
-              (100 + 4 * expectedPreGain) * expectedPostGain,
-              (100 + 5 * expectedPreGain) * expectedPostGain }),
+            { (100 + 1) * expectedPostGain,
+              (100 + 2) * expectedPostGain,
+              (100 + 3) * expectedPostGain,
+              (100 + 4) * expectedPostGain,
+              (100 + 5) * expectedPostGain,
+              (100 + 1) * expectedPostGain, // this is where the buffer wrapped around
+              (100 + 2) * expectedPostGain,
+              (100 + 3) * expectedPostGain,
+              (100 + 4) * expectedPostGain,
+              (100 + 5) * expectedPostGain }),
         // right channel
         std::vector<FloatWithTolerance>(
-            { (100 + 101 * expectedPreGain) * expectedPostGain,
-              (100 + 102 * expectedPreGain) * expectedPostGain,
-              (100 + 103 * expectedPreGain) * expectedPostGain,
-              (100 + 104 * expectedPreGain) * expectedPostGain,
-              (100 + 105 * expectedPreGain) * expectedPostGain,
-              (100 + 101 * expectedPreGain) * expectedPostGain, // this is where the buffer wrapped around
-              (100 + 102 * expectedPreGain) * expectedPostGain,
-              (100 + 103 * expectedPreGain) * expectedPostGain,
-              (100 + 104 * expectedPreGain) * expectedPostGain,
-              (100 + 105 * expectedPreGain) * expectedPostGain })
+            { (100 + 101) * expectedPostGain,
+              (100 + 102) * expectedPostGain,
+              (100 + 103) * expectedPostGain,
+              (100 + 104) * expectedPostGain,
+              (100 + 105) * expectedPostGain,
+              (100 + 101) * expectedPostGain, // this is where the buffer wrapped around
+              (100 + 102) * expectedPostGain,
+              (100 + 103) * expectedPostGain,
+              (100 + 104) * expectedPostGain,
+              (100 + 105) * expectedPostGain })
     };
     EXPECT_EQ(toArrOfVecs(outputBuffer), expectedOutputSamples);
 }
 
 TEST_F(DSP_Player, d_playForwardsHalfSpeed)
 {
-    const auto expectedPreGain = 0.6734258f;
     const auto expectedPostGain = 0.89563f;
     const auto numSamplesToPlay = 2 * numSamples_;
 
@@ -273,21 +267,17 @@ TEST_F(DSP_Player, d_playForwardsHalfSpeed)
     player_.process(0.5f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(0, numSamplesToPlay / 2 + 1), // first half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(0.5f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 1.0f }, // processor params (changed this time)
                     outputBuffer.subBlock(numSamplesToPlay / 2 + 1), // second half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
 
@@ -296,22 +286,22 @@ TEST_F(DSP_Player, d_playForwardsHalfSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> expectedProcessorCallArgs_input = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { 1.0f * expectedPreGain,
-              2.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              4.0f * expectedPreGain,
-              5.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+            { 1.0f,
+              2.0f,
+              3.0f,
+              4.0f,
+              5.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
               // this is the additonal sample from the linear interpolation
-              1.0f * expectedPreGain }),
+              1.0f }),
         // right channel
         std::vector<FloatWithTolerance>(
-            { 101.0f * expectedPreGain,
-              102.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              104.0f * expectedPreGain,
-              105.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+            { 101.0f,
+              102.0f,
+              103.0f,
+              104.0f,
+              105.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
               // this is the additonal sample from the linear interpolation
-              101.0f * expectedPreGain })
+              101.0f })
     };
     EXPECT_EQ(processCallArgs_input, expectedProcessorCallArgs_input);
     // expect correct parameters to be passed to the processor
@@ -330,30 +320,30 @@ TEST_F(DSP_Player, d_playForwardsHalfSpeed)
         // left channel
         std::vector<FloatWithTolerance>(
             {
-                (100 + 1.0f * expectedPreGain) * expectedPostGain,
-                (100 + 1.5f * expectedPreGain) * expectedPostGain, // interpolated between 1.0f and 2.0f due to half speed
-                (100 + 2.0f * expectedPreGain) * expectedPostGain,
-                (100 + 2.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 3.0f * expectedPreGain) * expectedPostGain,
-                (100 + 3.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 4.0f * expectedPreGain) * expectedPostGain,
-                (100 + 4.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 5.0f * expectedPreGain) * expectedPostGain,
-                (100 + 3.0f * expectedPreGain) * expectedPostGain // interpolated between 5.0f and 1.0f
+                (100 + 1.0f) * expectedPostGain,
+                (100 + 1.5f) * expectedPostGain, // interpolated between 1.0f and 2.0f due to half speed
+                (100 + 2.0f) * expectedPostGain,
+                (100 + 2.5f) * expectedPostGain, // interpolated
+                (100 + 3.0f) * expectedPostGain,
+                (100 + 3.5f) * expectedPostGain, // interpolated
+                (100 + 4.0f) * expectedPostGain,
+                (100 + 4.5f) * expectedPostGain, // interpolated
+                (100 + 5.0f) * expectedPostGain,
+                (100 + 3.0f) * expectedPostGain // interpolated between 5.0f and 1.0f
             }),
         // right channel
         std::vector<FloatWithTolerance>(
             {
-                (100 + 101.0f * expectedPreGain) * expectedPostGain,
-                (100 + 101.5f * expectedPreGain) * expectedPostGain, // interpolated between 101.0f and 102.0f due to half speed
-                (100 + 102.0f * expectedPreGain) * expectedPostGain,
-                (100 + 102.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 103.0f * expectedPreGain) * expectedPostGain,
-                (100 + 103.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 104.0f * expectedPreGain) * expectedPostGain,
-                (100 + 104.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 105.0f * expectedPreGain) * expectedPostGain,
-                (100 + 103.0f * expectedPreGain) * expectedPostGain // interpolated between 105.0f and 101.0f
+                (100 + 101.0f) * expectedPostGain,
+                (100 + 101.5f) * expectedPostGain, // interpolated between 101.0f and 102.0f due to half speed
+                (100 + 102.0f) * expectedPostGain,
+                (100 + 102.5f) * expectedPostGain, // interpolated
+                (100 + 103.0f) * expectedPostGain,
+                (100 + 103.5f) * expectedPostGain, // interpolated
+                (100 + 104.0f) * expectedPostGain,
+                (100 + 104.5f) * expectedPostGain, // interpolated
+                (100 + 105.0f) * expectedPostGain,
+                (100 + 103.0f) * expectedPostGain // interpolated between 105.0f and 101.0f
             })
     };
     EXPECT_EQ(toArrOfVecs(outputBuffer), expectedOutputSamples);
@@ -361,7 +351,6 @@ TEST_F(DSP_Player, d_playForwardsHalfSpeed)
 
 TEST_F(DSP_Player, e_playForwardsDoubleSpeed)
 {
-    const auto expectedPreGain = 0.6734258f;
     const auto expectedPostGain = 0.89563f;
     const auto numSamplesToPlay = 6;
 
@@ -393,21 +382,17 @@ TEST_F(DSP_Player, e_playForwardsDoubleSpeed)
     player_.process(2.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(0, numSamplesToPlay / 2 + 1), // first half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(2.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 1.0f }, // processor params (changed this time)
                     outputBuffer.subBlock(numSamplesToPlay / 2 + 1), // second half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
 
@@ -416,34 +401,34 @@ TEST_F(DSP_Player, e_playForwardsDoubleSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> expectedProcessorCallArgs_input = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { 1.0f * expectedPreGain,
-              2.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              4.0f * expectedPreGain,
-              5.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              1.0f * expectedPreGain,
-              2.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              4.0f * expectedPreGain,
-              5.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              1.0f * expectedPreGain,
+            { 1.0f,
+              2.0f,
+              3.0f,
+              4.0f,
+              5.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              1.0f,
+              2.0f,
+              3.0f,
+              4.0f,
+              5.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              1.0f,
               // this is the additonal sample from the linear interpolation
-              2.0f * expectedPreGain }),
+              2.0f }),
         // right channel
         std::vector<FloatWithTolerance>(
-            { 101.0f * expectedPreGain,
-              102.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              104.0f * expectedPreGain,
-              105.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              101.0f * expectedPreGain,
-              102.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              104.0f * expectedPreGain,
-              105.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              101.0f * expectedPreGain,
+            { 101.0f,
+              102.0f,
+              103.0f,
+              104.0f,
+              105.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              101.0f,
+              102.0f,
+              103.0f,
+              104.0f,
+              105.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              101.0f,
               // this is the additonal sample from the linear interpolation
-              102.0f * expectedPreGain })
+              102.0f })
     };
     EXPECT_EQ(processCallArgs_input, expectedProcessorCallArgs_input);
     // expect correct parameters to be passed to the processor
@@ -467,27 +452,26 @@ TEST_F(DSP_Player, e_playForwardsDoubleSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> expectedOutputSamples = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { (100 + 1.0f * expectedPreGain) * expectedPostGain,
-              (100 + 3.0f * expectedPreGain) * expectedPostGain,
-              (100 + 5.0f * expectedPreGain) * expectedPostGain,
-              (100 + 2.0f * expectedPreGain) * expectedPostGain,
-              (100 + 4.0f * expectedPreGain) * expectedPostGain,
-              (100 + 1.0f * expectedPreGain) * expectedPostGain }),
+            { (100 + 1.0f) * expectedPostGain,
+              (100 + 3.0f) * expectedPostGain,
+              (100 + 5.0f) * expectedPostGain,
+              (100 + 2.0f) * expectedPostGain,
+              (100 + 4.0f) * expectedPostGain,
+              (100 + 1.0f) * expectedPostGain }),
         // right channel
         std::vector<FloatWithTolerance>(
-            { (100 + 101.0f * expectedPreGain) * expectedPostGain,
-              (100 + 103.0f * expectedPreGain) * expectedPostGain,
-              (100 + 105.0f * expectedPreGain) * expectedPostGain,
-              (100 + 102.0f * expectedPreGain) * expectedPostGain,
-              (100 + 104.0f * expectedPreGain) * expectedPostGain,
-              (100 + 101.0f * expectedPreGain) * expectedPostGain }),
+            { (100 + 101.0f) * expectedPostGain,
+              (100 + 103.0f) * expectedPostGain,
+              (100 + 105.0f) * expectedPostGain,
+              (100 + 102.0f) * expectedPostGain,
+              (100 + 104.0f) * expectedPostGain,
+              (100 + 101.0f) * expectedPostGain }),
     };
     EXPECT_EQ(toArrOfVecs(outputBuffer), expectedOutputSamples);
 }
 
 TEST_F(DSP_Player, f_playBackwardsNormalSpeed)
 {
-    const auto expectedPreGain = 0.6734258f;
     const auto expectedPostGain = 0.89563f;
     const auto numSamplesToPlay = 2 * numSamples_;
 
@@ -519,21 +503,17 @@ TEST_F(DSP_Player, f_playBackwardsNormalSpeed)
     player_.process(1.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::backwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(0, numSamplesToPlay / 2 + 1), // first half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(1.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::backwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 1.0f }, // processor params (changed this time)
                     outputBuffer.subBlock(numSamplesToPlay / 2 + 1), // second half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
 
@@ -541,32 +521,32 @@ TEST_F(DSP_Player, f_playBackwardsNormalSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> expectedProcessorCallArgs_input = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { 5.0f * expectedPreGain,
-              4.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              2.0f * expectedPreGain,
-              1.0f * expectedPreGain,
-              5.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              4.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              2.0f * expectedPreGain,
-              1.0f * expectedPreGain, // last sample of second buffer
+            { 5.0f,
+              4.0f,
+              3.0f,
+              2.0f,
+              1.0f,
+              5.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              4.0f,
+              3.0f,
+              2.0f,
+              1.0f, // last sample of second buffer
               // this is the additonal sample from the linear interpolation
-              5.0f * expectedPreGain }),
+              5.0f }),
         // right channel
         std::vector<FloatWithTolerance>(
-            { 105.0f * expectedPreGain,
-              104.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              102.0f * expectedPreGain,
-              101.0f * expectedPreGain,
-              105.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              104.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              102.0f * expectedPreGain,
-              101.0f * expectedPreGain, // last sample of second buffer
+            { 105.0f,
+              104.0f,
+              103.0f,
+              102.0f,
+              101.0f,
+              105.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              104.0f,
+              103.0f,
+              102.0f,
+              101.0f, // last sample of second buffer
               // this is the additonal sample from the linear interpolation
-              105.0f * expectedPreGain }),
+              105.0f }),
     };
     EXPECT_EQ(processCallArgs_input, expectedProcessorCallArgs_input);
     // expect correct parameters to be passed to the processor
@@ -590,35 +570,34 @@ TEST_F(DSP_Player, f_playBackwardsNormalSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> expectedOutputSamples = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { (100 + 5 * expectedPreGain) * expectedPostGain,
-              (100 + 4 * expectedPreGain) * expectedPostGain,
-              (100 + 3 * expectedPreGain) * expectedPostGain,
-              (100 + 2 * expectedPreGain) * expectedPostGain,
-              (100 + 1 * expectedPreGain) * expectedPostGain,
-              (100 + 5 * expectedPreGain) * expectedPostGain, // this is where the buffer wrapped around
-              (100 + 4 * expectedPreGain) * expectedPostGain,
-              (100 + 3 * expectedPreGain) * expectedPostGain,
-              (100 + 2 * expectedPreGain) * expectedPostGain,
-              (100 + 1 * expectedPreGain) * expectedPostGain }),
+            { (100 + 5) * expectedPostGain,
+              (100 + 4) * expectedPostGain,
+              (100 + 3) * expectedPostGain,
+              (100 + 2) * expectedPostGain,
+              (100 + 1) * expectedPostGain,
+              (100 + 5) * expectedPostGain, // this is where the buffer wrapped around
+              (100 + 4) * expectedPostGain,
+              (100 + 3) * expectedPostGain,
+              (100 + 2) * expectedPostGain,
+              (100 + 1) * expectedPostGain }),
         // right channel
         std::vector<FloatWithTolerance>(
-            { (100 + 105 * expectedPreGain) * expectedPostGain,
-              (100 + 104 * expectedPreGain) * expectedPostGain,
-              (100 + 103 * expectedPreGain) * expectedPostGain,
-              (100 + 102 * expectedPreGain) * expectedPostGain,
-              (100 + 101 * expectedPreGain) * expectedPostGain,
-              (100 + 105 * expectedPreGain) * expectedPostGain, // this is where the buffer wrapped around
-              (100 + 104 * expectedPreGain) * expectedPostGain,
-              (100 + 103 * expectedPreGain) * expectedPostGain,
-              (100 + 102 * expectedPreGain) * expectedPostGain,
-              (100 + 101 * expectedPreGain) * expectedPostGain })
+            { (100 + 105) * expectedPostGain,
+              (100 + 104) * expectedPostGain,
+              (100 + 103) * expectedPostGain,
+              (100 + 102) * expectedPostGain,
+              (100 + 101) * expectedPostGain,
+              (100 + 105) * expectedPostGain, // this is where the buffer wrapped around
+              (100 + 104) * expectedPostGain,
+              (100 + 103) * expectedPostGain,
+              (100 + 102) * expectedPostGain,
+              (100 + 101) * expectedPostGain })
     };
     EXPECT_EQ(toArrOfVecs(outputBuffer), expectedOutputSamples);
 }
 
 TEST_F(DSP_Player, g_playBackwardsHalfSpeed)
 {
-    const auto expectedPreGain = 0.6734258f;
     const auto expectedPostGain = 0.89563f;
     const auto numSamplesToPlay = 2 * numSamples_;
 
@@ -650,21 +629,17 @@ TEST_F(DSP_Player, g_playBackwardsHalfSpeed)
     player_.process(0.5f, // speed
                     0.0f, // speed modulation amount
                     Direction::backwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(0, numSamplesToPlay / 2 + 1), // first half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(0.5f, // speed
                     0.0f, // speed modulation amount
                     Direction::backwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 1.0f }, // processor params (changed this time)
                     outputBuffer.subBlock(numSamplesToPlay / 2 + 1), // second half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
 
@@ -673,20 +648,20 @@ TEST_F(DSP_Player, g_playBackwardsHalfSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> expectedProcessorCallArgs_input = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { 5.0f * expectedPreGain,
-              4.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              2.0f * expectedPreGain,
-              1.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              5.0f * expectedPreGain }), // this is the additonal sample from the linear interpolation
+            { 5.0f,
+              4.0f,
+              3.0f,
+              2.0f,
+              1.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              5.0f }), // this is the additonal sample from the linear interpolation
         // right channel
         std::vector<FloatWithTolerance>(
-            { 105.0f * expectedPreGain,
-              104.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              102.0f * expectedPreGain,
-              101.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              105.0f * expectedPreGain }) // this is the additonal sample from the linear interpolation
+            { 105.0f,
+              104.0f,
+              103.0f,
+              102.0f,
+              101.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              105.0f }) // this is the additonal sample from the linear interpolation
     };
     EXPECT_EQ(processCallArgs_input, expectedProcessorCallArgs_input);
     // expect correct parameters to be passed to the processor
@@ -705,30 +680,30 @@ TEST_F(DSP_Player, g_playBackwardsHalfSpeed)
         // left channel
         std::vector<FloatWithTolerance>(
             {
-                (100 + 5.0f * expectedPreGain) * expectedPostGain,
-                (100 + 4.5f * expectedPreGain) * expectedPostGain, // interpolated between 4.0f and 5.0f due to half speed
-                (100 + 4.0f * expectedPreGain) * expectedPostGain,
-                (100 + 3.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 3.0f * expectedPreGain) * expectedPostGain,
-                (100 + 2.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 2.0f * expectedPreGain) * expectedPostGain,
-                (100 + 1.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 1.0f * expectedPreGain) * expectedPostGain,
-                (100 + 3.0f * expectedPreGain) * expectedPostGain // interpolated between 1.0f and 5.0f
+                (100 + 5.0f) * expectedPostGain,
+                (100 + 4.5f) * expectedPostGain, // interpolated between 4.0f and 5.0f due to half speed
+                (100 + 4.0f) * expectedPostGain,
+                (100 + 3.5f) * expectedPostGain, // interpolated
+                (100 + 3.0f) * expectedPostGain,
+                (100 + 2.5f) * expectedPostGain, // interpolated
+                (100 + 2.0f) * expectedPostGain,
+                (100 + 1.5f) * expectedPostGain, // interpolated
+                (100 + 1.0f) * expectedPostGain,
+                (100 + 3.0f) * expectedPostGain // interpolated between 1.0f and 5.0f
             }),
         // right channel
         std::vector<FloatWithTolerance>(
             {
-                (100 + 105.0f * expectedPreGain) * expectedPostGain,
-                (100 + 104.5f * expectedPreGain) * expectedPostGain, // interpolated between 4.0f and 5.0f due to half speed
-                (100 + 104.0f * expectedPreGain) * expectedPostGain,
-                (100 + 103.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 103.0f * expectedPreGain) * expectedPostGain,
-                (100 + 102.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 102.0f * expectedPreGain) * expectedPostGain,
-                (100 + 101.5f * expectedPreGain) * expectedPostGain, // interpolated
-                (100 + 101.0f * expectedPreGain) * expectedPostGain,
-                (100 + 103.0f * expectedPreGain) * expectedPostGain // interpolated between 1.0f and 5.0f
+                (100 + 105.0f) * expectedPostGain,
+                (100 + 104.5f) * expectedPostGain, // interpolated between 4.0f and 5.0f due to half speed
+                (100 + 104.0f) * expectedPostGain,
+                (100 + 103.5f) * expectedPostGain, // interpolated
+                (100 + 103.0f) * expectedPostGain,
+                (100 + 102.5f) * expectedPostGain, // interpolated
+                (100 + 102.0f) * expectedPostGain,
+                (100 + 101.5f) * expectedPostGain, // interpolated
+                (100 + 101.0f) * expectedPostGain,
+                (100 + 103.0f) * expectedPostGain // interpolated between 1.0f and 5.0f
             }),
     };
     EXPECT_EQ(toArrOfVecs(outputBuffer), expectedOutputSamples);
@@ -736,7 +711,6 @@ TEST_F(DSP_Player, g_playBackwardsHalfSpeed)
 
 TEST_F(DSP_Player, h_playBackwardsDoubleSpeed)
 {
-    const auto expectedPreGain = 0.6734258f;
     const auto expectedPostGain = 0.89563f;
     const auto numSamplesToPlay = 6;
 
@@ -768,21 +742,17 @@ TEST_F(DSP_Player, h_playBackwardsDoubleSpeed)
     player_.process(2.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::backwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(0, numSamplesToPlay / 2 + 1), // first half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     player_.process(2.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::backwards,
-                    expectedPreGain,
                     expectedPostGain,
                     { 1.0f }, // processor params (changed this time)
                     outputBuffer.subBlock(numSamplesToPlay / 2 + 1), // second half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
 
@@ -791,32 +761,32 @@ TEST_F(DSP_Player, h_playBackwardsDoubleSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> expectedProcessorCallArgs_input = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { 5.0f * expectedPreGain,
-              4.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              2.0f * expectedPreGain,
-              1.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              5.0f * expectedPreGain,
-              4.0f * expectedPreGain,
-              3.0f * expectedPreGain,
-              2.0f * expectedPreGain,
-              1.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              5.0f * expectedPreGain,
-              4.0f * expectedPreGain }), // this is the additonal sample from the linear interpolation
+            { 5.0f,
+              4.0f,
+              3.0f,
+              2.0f,
+              1.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              5.0f,
+              4.0f,
+              3.0f,
+              2.0f,
+              1.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              5.0f,
+              4.0f }), // this is the additonal sample from the linear interpolation
         // right channel
         std::vector<FloatWithTolerance>(
-            { 105.0f * expectedPreGain,
-              104.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              102.0f * expectedPreGain,
-              101.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              105.0f * expectedPreGain,
-              104.0f * expectedPreGain,
-              103.0f * expectedPreGain,
-              102.0f * expectedPreGain,
-              101.0f * expectedPreGain, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
-              105.0f * expectedPreGain,
-              104.0f * expectedPreGain }), // this is the additonal sample from the linear interpolation
+            { 105.0f,
+              104.0f,
+              103.0f,
+              102.0f,
+              101.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              105.0f,
+              104.0f,
+              103.0f,
+              102.0f,
+              101.0f, // here the playback buffer must wrap around to the beginning (just 5 samples long!)
+              105.0f,
+              104.0f }), // this is the additonal sample from the linear interpolation
     };
     EXPECT_EQ(processCallArgs_input, expectedProcessorCallArgs_input);
     // expect correct parameters to be passed to the processor
@@ -840,99 +810,25 @@ TEST_F(DSP_Player, h_playBackwardsDoubleSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> expectedOutputSamples = {
         // left channel
         std::vector<FloatWithTolerance>(
-            { (100 + 5.0f * expectedPreGain) * expectedPostGain,
-              (100 + 3.0f * expectedPreGain) * expectedPostGain,
-              (100 + 1.0f * expectedPreGain) * expectedPostGain,
-              (100 + 4.0f * expectedPreGain) * expectedPostGain,
-              (100 + 2.0f * expectedPreGain) * expectedPostGain,
-              (100 + 5.0f * expectedPreGain) * expectedPostGain }),
+            { (100 + 5.0f) * expectedPostGain,
+              (100 + 3.0f) * expectedPostGain,
+              (100 + 1.0f) * expectedPostGain,
+              (100 + 4.0f) * expectedPostGain,
+              (100 + 2.0f) * expectedPostGain,
+              (100 + 5.0f) * expectedPostGain }),
         // right channel
         std::vector<FloatWithTolerance>(
-            { (100 + 105.0f * expectedPreGain) * expectedPostGain,
-              (100 + 103.0f * expectedPreGain) * expectedPostGain,
-              (100 + 101.0f * expectedPreGain) * expectedPostGain,
-              (100 + 104.0f * expectedPreGain) * expectedPostGain,
-              (100 + 102.0f * expectedPreGain) * expectedPostGain,
-              (100 + 105.0f * expectedPreGain) * expectedPostGain })
+            { (100 + 105.0f) * expectedPostGain,
+              (100 + 103.0f) * expectedPostGain,
+              (100 + 101.0f) * expectedPostGain,
+              (100 + 104.0f) * expectedPostGain,
+              (100 + 102.0f) * expectedPostGain,
+              (100 + 105.0f) * expectedPostGain })
     };
     EXPECT_EQ(toArrOfVecs(outputBuffer), expectedOutputSamples);
 }
 
-TEST_F(DSP_Player, i_applySmoothingToPreGain)
-{
-    const auto numSamplesToPlay = 10;
-
-    // the processor mock stores its argument values
-    std::array<std::vector<FloatWithTolerance>, numChannels_> processCallArgs_input;
-    ON_CALL(player_.getProcessor(), process(_, _))
-        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters&) {
-            for (size_t ch = 0; ch < numChannels_; ch++)
-                processCallArgs_input[ch].push_back(inputsAndOutputs[ch]);
-        });
-
-    // fill input buffer with 1.0f
-    buffer_.fill(1.0f);
-    // add this expectation to silence gmock warning.
-    EXPECT_CALL(player_.getProcessor(), process(_, _)).Times(::testing::AnyNumber());
-
-    // play the full buffer
-    player_.startPlaying(numSamples_);
-
-    // the smoothing we'll use
-    const auto timeConstant = ExponentialSmoother::TimeConstant::fromRawValue(0.5f);
-    const auto targetGain = 1.0f;
-
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
-    outputBuffer.fill(0.0f);
-    // process block (ramping the gain up)
-    player_.process(1.0f, // speed
-                    0.0f, // speed modulation amount
-                    Direction::forwards,
-                    targetGain, // target pre gain
-                    1.0f, // post gain
-                    { 0.0f }, // processor params
-                    outputBuffer.subBlock(0, numSamplesToPlay / 2), // first half of the buffer
-                    timeConstant, // pre gain time constant
-                    ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
-                    ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
-    // process block (ramping the gain back down)
-    player_.process(1.0f, // speed
-                    0.0f, // speed modulation amount
-                    Direction::forwards,
-                    0.0f, // target pre gain
-                    1.0f, // post gain
-                    { 0.0f }, // processor params
-                    outputBuffer.subBlock(numSamplesToPlay / 2), // second half of the buffer
-                    timeConstant, // pre gain time constant
-                    ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
-                    ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
-
-    // we expect the gain to ramp up/down exponentially with the supplied smoothing constant
-    std::vector<FloatWithTolerance> expectedProcessorInputSamples = {
-        targetGain * 0.5f, // first sample processed
-        // due to the linear interpolation, the second input sample is also processed
-        // while calculating the first output sample. Thus, it gets the same gain
-        // as the first sample, since we expect the gain to be smoothed in sync with
-        // the output samples.
-        targetGain * 0.5f,
-        targetGain * 0.75f,
-        targetGain * 0.875f,
-        targetGain * 0.9375f,
-        targetGain * 0.96875f,
-        // ramping down again
-        targetGain * 0.484375f,
-        targetGain * 0.2421875f,
-        targetGain * 0.12109375f,
-        targetGain * 0.060546875f,
-        targetGain * 0.0302734375f,
-    };
-    // left and right channel had the same input samples (all 1.0f)
-    // so we also expect the same output samples
-    EXPECT_EQ(processCallArgs_input[0], expectedProcessorInputSamples);
-    EXPECT_EQ(processCallArgs_input[1], expectedProcessorInputSamples);
-}
-
-TEST_F(DSP_Player, j_applySmoothingToPostGain)
+TEST_F(DSP_Player, i_applySmoothingToPostGain)
 {
     const auto numSamplesToPlay = 10;
 
@@ -958,22 +854,18 @@ TEST_F(DSP_Player, j_applySmoothingToPostGain)
     player_.process(1.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    1.0f, // pre gain
                     targetGain, // post gain
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(0, numSamplesToPlay / 2), // first half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     timeConstant, // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     // process block (ramping the gain back down)
     player_.process(1.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    1.0f, // pre gain
                     0.0f, // target post gain
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(numSamplesToPlay / 2), // second half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     timeConstant, // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
 
@@ -1013,7 +905,7 @@ TEST_F(DSP_Player, j_applySmoothingToPostGain)
     EXPECT_EQ(toArrOfVecs(outputBuffer), expectedOutputSamples);
 }
 
-TEST_F(DSP_Player, k_applySmoothingToSpeed)
+TEST_F(DSP_Player, j_applySmoothingToSpeed)
 {
     const auto numSamplesToPlay = 6;
 
@@ -1038,22 +930,18 @@ TEST_F(DSP_Player, k_applySmoothingToSpeed)
     player_.process(targetSpeed1,
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    1.0f, // pre gain
                     1.0f, // post gain
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(0, numSamplesToPlay / 2), // first half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     timeConstant); // speed time constant
     // process block (ramping the speed back up)
     player_.process(targetSpeed2,
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    1.0f, // pre gain
                     1.0f, // post gain
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(numSamplesToPlay / 2), // second half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     timeConstant); // speed time constant
 
@@ -1076,7 +964,7 @@ TEST_F(DSP_Player, k_applySmoothingToSpeed)
     EXPECT_EQ(toArrOfVecs(outputBuffer), toArrOfVecs(expectedOutputSamples));
 }
 
-TEST_F(DSP_Player, l_applyNoSmoothingToProcessorParameters)
+TEST_F(DSP_Player, k_applyNoSmoothingToProcessorParameters)
 {
     const auto numSamplesToPlay = 10;
 
@@ -1103,22 +991,18 @@ TEST_F(DSP_Player, l_applyNoSmoothingToProcessorParameters)
     player_.process(1.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    0.0f, // pre gain
                     0.0f, // post gain
                     { targetParamValue1 },
                     outputBuffer.subBlock(0, numSamplesToPlay / 2), // first half of the buffer
-                    timeConstant, // pre gain time constant
                     timeConstant, // post gain time constant
                     timeConstant); // speed time constant
     // process block with another parameter value
     player_.process(1.0f, // speed
                     0.0f, // speed modulation amount
                     Direction::forwards,
-                    0.0f, // pre gain
                     0.0f, // post gain
                     { targetParamValue2 },
                     outputBuffer.subBlock(numSamplesToPlay / 2), // second half of the buffer
-                    timeConstant, // pre gain time constant
                     timeConstant, // post gain time constant
                     timeConstant); // speed time constant
 
@@ -1138,7 +1022,7 @@ TEST_F(DSP_Player, l_applyNoSmoothingToProcessorParameters)
     EXPECT_EQ(processCallArgs_param, expectedParameterValues);
 }
 
-TEST_F(DSP_Player, m_useSpeedModulator)
+TEST_F(DSP_Player, l_useSpeedModulator)
 {
     const auto numSamplesToPlay = 6;
 
@@ -1161,11 +1045,9 @@ TEST_F(DSP_Player, m_useSpeedModulator)
     player_.process(1.0f, // speed
                     1.0f, // speed modulation amount
                     Direction::forwards,
-                    1.0f, // pre gain
                     1.0f, // post gain
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(0, numSamplesToPlay / 2), // first half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous()); // speed time constant
     // process block with speed modulator returning 0.5, but mod amount set to 2.0
@@ -1175,11 +1057,9 @@ TEST_F(DSP_Player, m_useSpeedModulator)
     player_.process(1.0f,
                     2.0f, // speed modulation amount
                     Direction::forwards,
-                    1.0f, // pre gain
                     1.0f, // post gain
                     { 0.0f }, // processor params
                     outputBuffer.subBlock(numSamplesToPlay / 2), // second half of the buffer
-                    ExponentialSmoother::TimeConstant::instantaneous(), // pre gain time constant
                     ExponentialSmoother::TimeConstant::instantaneous(), // post gain time constant
                     // this time, we have a smoothing time constant to make sure that the modulator is not smoothed
                     ExponentialSmoother::TimeConstant::fromRawValue(0.5f)); // speed time constant

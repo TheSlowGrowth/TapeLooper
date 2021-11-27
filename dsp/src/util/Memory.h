@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <cstring>
 
 /** 
  * Represents a fixed size chunk of memory to which data can be written.

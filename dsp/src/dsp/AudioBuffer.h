@@ -39,7 +39,7 @@ public:
 
     AudioBufferPtr<numChannels, FloatType> subBlock(size_t startSample, size_t length = size_t(-1)) const
     {
-        const auto resultMaxLength = std::max(size_ - startSample, 0ul);
+        const auto resultMaxLength = std::max(size_ - startSample, size_t(0));
         const auto resultLength = std::min(resultMaxLength, length);
         AudioBufferPtr<numChannels, FloatType> result(resultLength);
         for (size_t ch = 0; ch < numChannels; ch++)

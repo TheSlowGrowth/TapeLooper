@@ -30,7 +30,7 @@ public:
         for (size_t ch = 0; ch < numChannels; ch++)
         {
             storage_[ch].fill(0.0f);
-            this->data[ch] = storage_[ch];
+            this->data[ch] = storage_[ch].data();
         }
         this->numSamples = size;
     }
@@ -100,7 +100,6 @@ public:
                  float wowAndFlutterAmt,
                  Direction direction,
                  const typename ProcessorType::Parameters& processorParameters,
-                 float paramPreGain,
                  float paramPostGain,
                  AudioBufferPtr<numChannels, const float> input,
                  AudioBufferPtr<numChannels, float> outputToAddTo)
@@ -109,7 +108,6 @@ public:
         player_.process(paramSpeed,
                         mappedWowAndFlutterAmt * maxWowAndFlutterAmt_,
                         direction,
-                        paramPreGain,
                         paramPostGain,
                         processorParameters,
                         outputToAddTo);
@@ -177,7 +175,7 @@ public:
     const LooperStoragePtr<numChannels> getSampleStoragePtr() const { return storage_; }
 
 private:
-    static constexpr float maxWowAndFlutterAmt_ = 0.0125f;
+    static constexpr float maxWowAndFlutterAmt_ = 0.025f;
     const LooperStoragePtr<numChannels> storage_;
     LooperState state_;
     PlayerType player_;

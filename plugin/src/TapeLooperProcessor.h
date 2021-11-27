@@ -139,7 +139,6 @@ public:
                         wowAndFlutterAmt,
                         direction,
                         params,
-                        1.0f, // pre gain
                         postGain,
                         AudioBufferPtr<2, const float>(
                             inChPtrs, input.getNumSamples()),

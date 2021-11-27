@@ -63,7 +63,7 @@ public:
     FloatType getCurrentOutputValue() const { return currentOutputValue_; }
 
 private:
-    void updatePhaseIncrement(FloatType frequency)
+    MANUAL_INLINE void updatePhaseIncrement(FloatType frequency)
     {
         phaseIncrement_ = frequency / FloatType(sampleRate);
     }
