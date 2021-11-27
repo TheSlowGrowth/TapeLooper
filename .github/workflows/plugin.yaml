@@ -3,7 +3,17 @@ on:
   # run for all pull requests
   # Run for all commits (e.g. on feature branches)
   push:
+    paths:
+    - 'dsp/**'
+    - 'plugin/**'
+    - 'lib/**'
+    - '.github/workflows/**'
   pull_request:
+    paths:
+    - 'dsp/**'
+    - 'plugin/**'
+    - 'lib/**'
+    - '.github/workflows/**'
 jobs:
   ###############################################################################
   # builds the plugin on windows
