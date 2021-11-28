@@ -38,6 +38,12 @@ struct LooperStoragePtr
     }
 };
 
+struct MonoOrStereoLooperStoragePtr :
+    public LooperStoragePtr<1>,
+    public LooperStoragePtr<2>
+{
+};
+
 template <size_t size, size_t numChannels>
 class LooperStorage : public LooperStoragePtr<numChannels>
 {
@@ -54,6 +60,27 @@ public:
 
 private:
     std::array<std::array<float, size>, numChannels> storage_;
+};
+
+template <size_t sizeWhenMono>
+class MonoOrStereoLooperStorage : public MonoOrStereoLooperStoragePtr
+{
+public:
+    MonoOrStereoLooperStorage()
+    {
+        storage_.fill(0.0f);
+
+        this->LooperStoragePtr<1>::data[0] = storage_.data();
+        this->LooperStoragePtr<1>::numSamples = sizeWhenMono;
+
+        const auto sizePerChannel = sizeWhenMono / 2;
+        this->LooperStoragePtr<2>::data[0] = storage_.data();
+        this->LooperStoragePtr<2>::data[1] = storage_.data() + sizePerChannel;
+        this->LooperStoragePtr<2>::numSamples = sizePerChannel;
+    }
+
+private:
+    std::array<float, sizeWhenMono> storage_;
 };
 
 enum class LooperState
@@ -119,7 +146,11 @@ public:
                  const typename ProcessorType::Parameters& processorParameters,
                  float paramPostGain,
                  AudioBufferPtr<numChannels, const float> input,
-                 AudioBufferPtr<numChannels, float> outputToAddTo)
+                 AudioBufferPtr<numChannels, float> outputToAddTo,
+                 ExponentialSmoother::TimeConstant postGainSmootherTimeConstant =
+                     ExponentialSmoother::TimeConstant(0.05f, sampleRate, 1),
+                 ExponentialSmoother::TimeConstant speedSmootherTimeConstant =
+                     ExponentialSmoother::TimeConstant(0.05f, sampleRate, 1))
     {
         const auto mappedWowAndFlutterAmt = wowAndFlutterAmt * wowAndFlutterAmt;
         player_.process(paramSpeed,
@@ -127,7 +158,9 @@ public:
                         direction,
                         paramPostGain,
                         processorParameters,
-                        outputToAddTo);
+                        outputToAddTo,
+                        postGainSmootherTimeConstant,
+                        speedSmootherTimeConstant);
         recorder_.process(input);
 
         const auto recordingStopped = state_ == LooperState::recording && !recorder_.isRecording();

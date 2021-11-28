@@ -27,6 +27,8 @@
 #include "ui/UiBasePage.h"
 #include "dsp/TapeLooper.h"
 #include "util/LateInitializedObject.h"
+#include "LooperController.h"
+#include "ui/LooperParameterProvider.h"
 
 #define EXTERNAL_SDRAM_SECTION __attribute__((section(".sdram_bss")))
 
@@ -57,11 +59,19 @@ PeakMeter<blockSize, sampleRateHz> peakMeterOutR;
 
 // dsp static objects
 #define EXTERNAL_SDRAM_SECTION __attribute__((section(".sdram_bss")))
-using LooperType = TapeLooper<sampleRateHz, numChannelsPerLooper>;
-using LooperStorageType = LooperStorage<looperSamplesPerChannel, numChannelsPerLooper>;
-
-std::array<LateInitializedObject<LooperStorageType>, numLoopers> EXTERNAL_SDRAM_SECTION looperStorages = {};
-std::array<LateInitializedObject<LooperType>, numLoopers> loopers;
+using LooperStoragesType = std::array<MonoOrStereoLooperStorage<looperSamplesPerChannel>, numLoopers>;
+LateInitializedObject<LooperStoragesType> EXTERNAL_SDRAM_SECTION looperStorages;
+struct LooperTypes
+{
+    using MonoLooperType = TapeLooper<sampleRateHz, 1>;
+    using StereoLooperType = TapeLooper<sampleRateHz, 2>;
+    using ParameterProvider = LooperParameterProvider;
+};
+LooperParameterProvider parameterProvider;
+AudioBuffer<1, blockSize> monoDownmixBuffer;
+AudioBuffer<1, blockSize> temporaryBuffer;
+using LooperControllerType = LooperController<LooperTypes, numLoopers>;
+LateInitializedObject<LooperControllerType> looperController;
 
 // misc
 daisy::CpuLoadMeter cpuLoadMeter;
@@ -119,11 +129,19 @@ void initUiPages()
 
 void initDsp()
 {
-    for (size_t l = 0; l < numLoopers; l++)
-    {
-        looperStorages[l].create();
-        loopers[l].create(*looperStorages[l]);
-    }
+    // initialize the looper storage in SDRAM
+    const auto rawStorages = *looperStorages.create<LooperStoragesType>();
+    // build an array of storage pointers
+    std::array<MonoOrStereoLooperStoragePtr, numLoopers> arrayOfStoragePtrs;
+    for (size_t i = 0; i < numLoopers; i++)
+        arrayOfStoragePtrs[i] = rawStorages[i];
+
+    // initialize the looper controller that contains/controls the loopers
+    looperController.create<LooperControllerType>(
+        arrayOfStoragePtrs,
+        monoDownmixBuffer,
+        temporaryBuffer,
+        parameterProvider);
 
     // init peak meters
     peakMeterInL.init(0.5f);
@@ -182,20 +200,7 @@ void audioCallback(const float* const* in, float** out, size_t size)
     AudioBufferPtr<numChannelsPerLooper, const float> inputs(in, size);
     AudioBufferPtr<numChannelsPerLooper, float> outputs(out, size);
     outputs.fill(0.0f);
-    for (size_t l = 0; l < numLoopers; l++)
-    {
-        loopers[l]->process(
-            4.0f, // speed
-            1.0f, // wow & flutter amt
-            Direction::forwards,
-            {
-                0.5f, // drive amt
-                0.5f // grain amt
-            },
-            1.0f, // post gain
-            inputs,
-            outputs);
-    }
+    looperController.as<LooperControllerType>().process(inputs, outputs);
 
     // peak meters
     peakMeterOutL.readPeaks(out[0]);
@@ -234,10 +239,10 @@ int main(void)
     seed.StartAudio(&audioCallback);
 
     for (size_t l = 0; l < numLoopers; l++)
-        loopers[l]->switchState(LooperState::recording);
+        looperController.as<LooperControllerType>().setLooperState(l, LooperState::recording);
     seed.system.Delay(200);
     for (size_t l = 0; l < numLoopers; l++)
-        loopers[l]->switchState(LooperState::playing);
+        looperController.as<LooperControllerType>().setLooperState(l, LooperState::playing);
 
     // UI loop
     for (;;)
