@@ -23,8 +23,8 @@ template <size_t numChannels, typename FloatType = float>
 class AudioBufferPtr
 {
 public:
-    AudioBufferPtr(FloatType* const* buffer, size_t numSamples) :
-        size_(numSamples)
+    AudioBufferPtr(FloatType* const* buffer, size_t numSamplesPerChannel) :
+        size_(numSamplesPerChannel)
     {
         for (size_t ch = 0; ch < numChannels; ch++)
             buffer_[ch] = buffer[ch];
@@ -37,9 +37,19 @@ public:
         return buffer_[channelIdx];
     }
 
-    FloatType* operator[](size_t channelIdx) const
+    const FloatType* operator[](size_t channelIdx) const
     {
         return buffer_[channelIdx];
+    }
+
+    FloatType* const* getChannelPointers()
+    {
+        return buffer_;
+    }
+
+    const FloatType* const* getChannelPointers() const
+    {
+        return buffer_;
     }
 
     operator AudioBufferPtr<numChannels, const FloatType>() const
@@ -54,6 +64,25 @@ public:
                 buffer_[ch][i] = value;
     }
 
+    void copyToChannel(size_t destChannel, const FloatType* const srcSamples, size_t numSamples)
+    {
+        for (size_t i = 0; i < std::min(numSamples, size_); i++)
+            buffer_[destChannel][i] = srcSamples[i];
+    }
+
+    void addToChannel(size_t destChannel, const FloatType* const srcSamples, size_t numSamples)
+    {
+        for (size_t i = 0; i < std::min(numSamples, size_); i++)
+            buffer_[destChannel][i] += srcSamples[i];
+    }
+
+    void applyGain(FloatType value)
+    {
+        for (size_t ch = 0; ch < numChannels; ch++)
+            for (size_t i = 0; i < size_; i++)
+                buffer_[ch][i] *= value;
+    }
+
     AudioBufferPtr<numChannels, FloatType> subBlock(size_t startSample, size_t length = size_t(-1)) const
     {
         const auto resultMaxLength = std::max(size_ - startSample, size_t(0));
@@ -64,15 +93,17 @@ public:
         return result;
     }
 
-    FloatType* buffer_[numChannels];
     const size_t size_;
 
 protected:
+    // private ctor for use in subBlock()
     AudioBufferPtr(size_t numSamples) :
         size_(numSamples) {}
+
+    FloatType* buffer_[numChannels];
 };
 
-template <size_t numSamples, size_t numChannels, typename FloatType = float>
+template <size_t numChannels, size_t numSamples, typename FloatType = float>
 class AudioBuffer : public AudioBufferPtr<numChannels, FloatType>
 {
 public:

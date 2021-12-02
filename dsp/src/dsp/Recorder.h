@@ -76,7 +76,7 @@ public:
             for (; i < input.size_; i++)
             {
                 for (size_t ch = 0; ch < numChannels; ch++)
-                    buffer_[ch][recHeadIdx_] = input.buffer_[ch][i];
+                    buffer_[ch][recHeadIdx_] = input[ch][i];
                 recHeadIdx_++;
                 if (recHeadIdx_ == buffer_.size_)
                 {
@@ -93,7 +93,7 @@ public:
                 for (size_t ch = 0; ch < numChannels; ch++)
                 {
                     const auto xFadedSample = linMap(xfadePhase_,
-                                                     input.buffer_[ch][i],
+                                                     input[ch][i],
                                                      buffer_[ch][recHeadIdx_]);
                     buffer_[ch][recHeadIdx_] = xFadedSample;
                 }

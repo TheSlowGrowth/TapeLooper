@@ -87,7 +87,7 @@ protected:
 
     DSP_Player() :
         player_(AudioBufferPtr<numChannels_, const float>(
-            buffer_.buffer_,
+            buffer_.getChannelPointers(),
             buffer_.size_))
     {
         fillInputSequence();
@@ -103,7 +103,7 @@ protected:
     static constexpr size_t sampleRate_ = 48000u;
     static constexpr size_t numChannels_ = 2;
     static constexpr size_t numSamples_ = 5;
-    AudioBuffer<numSamples_, numChannels_> buffer_;
+    AudioBuffer<numChannels_, numSamples_> buffer_;
 
     Player<MockProcessor,
            ::testing::NiceMock<MockSpeedModulator>,
@@ -152,7 +152,7 @@ TEST_F(DSP_Player, c_playForwardsNormalSpeed)
     // play the full buffer
     player_.startPlaying(numSamples_);
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(1.0f, // speed
@@ -278,7 +278,7 @@ TEST_F(DSP_Player, d_playForwardsHalfSpeed)
     // play the full buffer
     player_.startPlaying(numSamples_);
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(0.5f, // speed
@@ -393,7 +393,7 @@ TEST_F(DSP_Player, e_playForwardsDoubleSpeed)
     // play the full buffer
     player_.startPlaying(numSamples_);
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(2.0f, // speed
@@ -514,7 +514,7 @@ TEST_F(DSP_Player, f_playBackwardsNormalSpeed)
     // play the full buffer
     player_.startPlaying(numSamples_);
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(1.0f, // speed
@@ -640,7 +640,7 @@ TEST_F(DSP_Player, g_playBackwardsHalfSpeed)
     // play the full buffer
     player_.startPlaying(numSamples_);
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(0.5f, // speed
@@ -753,7 +753,7 @@ TEST_F(DSP_Player, h_playBackwardsDoubleSpeed)
     // play the full buffer
     player_.startPlaying(numSamples_);
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process in two blocks
     player_.process(2.0f, // speed
@@ -865,7 +865,7 @@ TEST_F(DSP_Player, i_applySmoothingToPostGain)
     const auto timeConstant = ExponentialSmoother::TimeConstant::fromRawValue(0.5f);
     const auto targetGain = 1.0f;
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process block (ramping the gain up)
     player_.process(1.0f, // speed
@@ -941,7 +941,7 @@ TEST_F(DSP_Player, j_applySmoothingToSpeed)
     const auto targetSpeed1 = 0.5f;
     const auto targetSpeed2 = 1.0f;
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process block (ramping the speed down)
     player_.process(targetSpeed1,
@@ -965,7 +965,7 @@ TEST_F(DSP_Player, j_applySmoothingToSpeed)
     // we expect the speed to ramp up/down exponentially with the supplied smoothing constant
     // we examine this from the output samples - since the raw playback buffer contains
     // increasing numbers 1, 2, 3, 4, ... we can easily see the phase increments here.
-    AudioBuffer<numSamplesToPlay, numChannels_, float> expectedOutputSamples;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> expectedOutputSamples;
     for (size_t ch = 0; ch < numChannels_; ch++)
     {
         float currentSpeed = 0.0f;
@@ -1002,7 +1002,7 @@ TEST_F(DSP_Player, k_applyNoSmoothingToProcessorParameters)
     const auto targetParamValue1 = 1.0f;
     const auto targetParamValue2 = 0.0f;
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process block with one parameter value
     player_.process(1.0f, // speed
@@ -1053,7 +1053,7 @@ TEST_F(DSP_Player, l_useSpeedModulator)
     // play the full buffer
     player_.startPlaying(numSamples_);
 
-    AudioBuffer<numSamplesToPlay, numChannels_, float> outputBuffer;
+    AudioBuffer<numChannels_, numSamplesToPlay, float> outputBuffer;
     outputBuffer.fill(0.0f);
     // process block with speed modulator returning 1
     EXPECT_CALL(player_.getSpeedModulator(), getAndAdvance())

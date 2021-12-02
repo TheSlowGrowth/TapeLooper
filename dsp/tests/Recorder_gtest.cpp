@@ -45,8 +45,8 @@ protected:
 
     static constexpr size_t numChannels_ = 2;
     static constexpr size_t numSamples_ = 2 * xFadeLengthInSamples_ + 10;
-    AudioBuffer<numSamples_, numChannels_> storage_;
-    AudioBuffer<numSamples_, numChannels_> inputSequence_;
+    AudioBuffer<numChannels_, numSamples_> storage_;
+    AudioBuffer<numChannels_, numSamples_> inputSequence_;
     Recorder<48000, numChannels_> recorder_;
 };
 
