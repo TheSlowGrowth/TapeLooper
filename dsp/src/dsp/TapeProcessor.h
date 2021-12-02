@@ -27,6 +27,12 @@
 #    define MANUAL_INLINE inline __attribute__((always_inline))
 #endif
 
+struct TapeProcessorParameters
+{
+    float driveGain;
+    float grainAmt;
+};
+
 template <size_t sampleRate, size_t numChannels>
 class TapeProcessor
 {
@@ -35,11 +41,7 @@ public:
     {
     }
 
-    struct Parameters
-    {
-        float driveGain;
-        float grainAmt;
-    };
+    using Parameters = TapeProcessorParameters;
 
     void reset()
     {
