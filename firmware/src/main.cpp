@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -21,10 +21,8 @@
 
 #include "constants.h"
 #include "dsp/PeakMeter.h"
-#include "hardware/Buttons.h"
-#include "hardware/Leds.h"
-#include "hardware/Pots.h"
-#include "ui/UiBasePage.h"
+#include "hardware/UiHardware.h"
+#include "ui/TapeLooperUi.h"
 #include "dsp/TapeLooper.h"
 #include "util/LateInitializedObject.h"
 #include "LooperController.h"
@@ -32,45 +30,37 @@
 
 #define EXTERNAL_SDRAM_SECTION __attribute__((section(".sdram_bss")))
 
-// constants
-constexpr uint16_t potIdleTimeoutMs = 500; // TODO: adjust
-constexpr uint16_t buttonDebounceTimeoutMs = 50; // TODO: adjust
-constexpr uint32_t buttonDoubleClickTimeoutMs = 500; // TODO: adjust
-constexpr uint32_t retriggerTimeoutMs = 1000; // TODO: adjust
-constexpr uint32_t retriggerPeriodMs = 50; // TODO: adjust
-
-// hardware static objects
-daisy::DaisySeed seed;
-PotReader potReader;
-ButtonReader buttonReader;
-
-// ui static objects
-daisy::UiEventQueue uiEventQueue;
-daisy::PotMonitor<PotReader, 12> potMonitor;
-daisy::ButtonMonitor<ButtonReader, int(Buttons::NUM_BUTTONS)> buttonMonitor;
-
-LedDriverType::DmaBuffer DMA_BUFFER_MEM_SECTION ledDmaBufferA, ledDmaBufferB;
-LedDriverType leds;
-
-PeakMeter<blockSize, sampleRateHz> peakMeterInL;
-PeakMeter<blockSize, sampleRateHz> peakMeterInR;
-PeakMeter<blockSize, sampleRateHz> peakMeterOutL;
-PeakMeter<blockSize, sampleRateHz> peakMeterOutR;
-
-// dsp static objects
-#define EXTERNAL_SDRAM_SECTION __attribute__((section(".sdram_bss")))
-using LooperStoragesType = std::array<MonoOrStereoLooperStorage<looperSamplesPerChannel>, numLoopers>;
-LateInitializedObject<LooperStoragesType> EXTERNAL_SDRAM_SECTION looperStorages;
+// type definitions
+using LooperParameterProviderType = LooperParameterProvider<numLoopers>;
 struct LooperTypes
 {
     using MonoLooperType = TapeLooper<sampleRateHz, 1>;
     using StereoLooperType = TapeLooper<sampleRateHz, 2>;
-    using ParameterProvider = LooperParameterProvider;
+    using ParameterProvider = LooperParameterProviderType;
 };
-LooperParameterProvider parameterProvider;
+using LooperControllerType = LooperController<LooperTypes, numLoopers>;
+using TapeLooperUiType = TapeLooperUi<UiHardware,
+                                      PeakMeter<blockSize, sampleRateHz>,
+                                      LooperControllerType,
+                                      LooperParameterProviderType>;
+using LooperStoragesType = std::array<MonoOrStereoLooperStorage<looperSamplesPerChannel>, numLoopers>;
+
+// hardware static objects
+daisy::DaisySeed seed;
+
+// ui static objects
+daisy::UiEventQueue uiEventQueue;
+UiHardware::LedDmaBufferType DMA_BUFFER_MEM_SECTION ledDmaBufferA, ledDmaBufferB;
+LateInitializedObject<UiHardware> uiHardware;
+LateInitializedObject<TapeLooperUiType> ui;
+
+// dsp static objects
+std::array<PeakMeter<blockSize, sampleRateHz>, 4> peakMeters;
+#define EXTERNAL_SDRAM_SECTION __attribute__((section(".sdram_bss")))
+LateInitializedObject<LooperStoragesType> EXTERNAL_SDRAM_SECTION looperStorages;
+LateInitializedObject<LooperParameterProviderType> looperParameterProvider;
 AudioBuffer<1, blockSize> monoDownmixBuffer;
 AudioBuffer<1, blockSize> temporaryBuffer;
-using LooperControllerType = LooperController<LooperTypes, numLoopers>;
 LateInitializedObject<LooperControllerType> looperController;
 
 // misc
@@ -80,47 +70,32 @@ daisy::CpuLoadMeter cpuLoadMeter;
 // UI
 // ===================================================================
 
-daisy::UI ui;
-
-void clearDisplay(const daisy::UiCanvasDescriptor&)
+void clearLedDisplay(const daisy::UiCanvasDescriptor&)
 {
-    leds.SetAllToRaw(0);
+    uiHardware->clearLeds();
 }
 
-void updateDisplay(const daisy::UiCanvasDescriptor&)
+void flushLedDisplay(const daisy::UiCanvasDescriptor&)
 {
-    leds.SwapBuffersAndTransmit();
+    uiHardware->transmitLeds();
 }
 
 void initUi()
 {
-    // initialize the display
-    // TODO
+    // init the UI hardware
+    auto& hardware = *uiHardware.create(uiEventQueue,
+                                        ledDmaBufferA,
+                                        ledDmaBufferB);
 
-    // add the led display canvas
-    daisy::UiCanvasDescriptor ledDisplayDescriptor;
-    ledDisplayDescriptor.id_ = 0;
-    ledDisplayDescriptor.handle_ = &leds;
-    ledDisplayDescriptor.updateRateMs_ = 50;
-    ledDisplayDescriptor.clearFunction_ = &clearDisplay;
-    ledDisplayDescriptor.flushFunction_ = &updateDisplay;
-
-    // initialize the UI
-    ui.Init(uiEventQueue,
-            daisy::UI::SpecialControlIds {},
-            { ledDisplayDescriptor });
-}
-
-// ===================================================================
-// UI Pages
-// ===================================================================
-
-BaseUiPage basePage;
-
-void initUiPages()
-{
-    // open the base UI page
-    ui.OpenPage(basePage);
+    // init the UI
+    ui.create(
+        hardware,
+        &clearLedDisplay,
+        &flushLedDisplay,
+        uiEventQueue,
+        peakMeters,
+        looperController,
+        looperParameterProvider);
 }
 
 // ===================================================================
@@ -129,25 +104,26 @@ void initUiPages()
 
 void initDsp()
 {
+    // init the parameter provider
+    looperParameterProvider.create();
+
     // initialize the looper storage in SDRAM
-    const auto rawStorages = *looperStorages.create<LooperStoragesType>();
+    const auto& rawStorages = *looperStorages.create();
     // build an array of storage pointers
     std::array<MonoOrStereoLooperStoragePtr, numLoopers> arrayOfStoragePtrs;
     for (size_t i = 0; i < numLoopers; i++)
         arrayOfStoragePtrs[i] = rawStorages[i];
 
     // initialize the looper controller that contains/controls the loopers
-    looperController.create<LooperControllerType>(
+    looperController.create(
         arrayOfStoragePtrs,
         monoDownmixBuffer,
         temporaryBuffer,
-        parameterProvider);
+        looperParameterProvider);
 
     // init peak meters
-    peakMeterInL.init(0.5f);
-    peakMeterInR.init(0.5f);
-    peakMeterOutL.init(0.5f);
-    peakMeterOutR.init(0.5f);
+    for (auto& peakMeter : peakMeters)
+        peakMeter.init(0.5f);
 
     // init CPU load meter
     cpuLoadMeter.Init(seed.AudioSampleRate(), seed.AudioBlockSize());
@@ -156,55 +132,31 @@ void initDsp()
 // ===================================================================
 // ===================================================================
 
-void configureHardware()
+void configurePlatform()
 {
-    // Configure and Initialize the Daisy Seed
-    // These are separate to allow reconfiguration of any of the internal
-    // components before initialization.
     seed.Configure();
     seed.Init(true /* enable 480MHz boost */);
     seed.SetAudioBlockSize(blockSize);
     seed.SetAudioSampleRate(sampleRate);
-
-    potReader.init();
-    buttonReader.init();
-
-    // init leds
-    daisy::I2CHandle i2c;
-    i2c.Init({ daisy::I2CHandle::Config::Peripheral::I2C_1,
-               { { DSY_GPIOB, 8 }, { DSY_GPIOB, 9 } },
-               daisy::I2CHandle::Config::Speed::I2C_100KHZ });
-    leds.Init(i2c,
-              { 0 },
-              ledDmaBufferA,
-              ledDmaBufferB,
-              { DSY_GPIOB, 6 });
-}
-
-void scanUiControls()
-{
-    potMonitor.Process();
-    buttonMonitor.Process();
 }
 
 void audioCallback(const float* const* in, float** out, size_t size)
 {
     cpuLoadMeter.OnBlockStart();
 
-    scanUiControls(); // TODO: move to low prio timer?
-
     // peak meters
-    peakMeterInL.readPeaks(in[0]);
-    peakMeterInR.readPeaks(in[1]);
+    peakMeters[0].readPeaks(in[0]);
+    peakMeters[1].readPeaks(in[1]);
 
+    // process
     AudioBufferPtr<numChannelsPerLooper, const float> inputs(in, size);
     AudioBufferPtr<numChannelsPerLooper, float> outputs(out, size);
     outputs.fill(0.0f);
-    looperController.as<LooperControllerType>().process(inputs, outputs);
+    looperController->process(inputs, outputs);
 
     // peak meters
-    peakMeterOutL.readPeaks(out[0]);
-    peakMeterOutR.readPeaks(out[1]);
+    peakMeters[2].readPeaks(out[0]);
+    peakMeters[3].readPeaks(out[1]);
 
     // clip outputs
     // TODO
@@ -217,39 +169,19 @@ void audioCallback(const float* const* in, float** out, size_t size)
 
 int main(void)
 {
-    configureHardware();
-
-    // init monitors
-    potMonitor.Init(uiEventQueue,
-                    potReader,
-                    potIdleTimeoutMs);
-    buttonMonitor.Init(uiEventQueue,
-                       buttonReader,
-                       buttonDebounceTimeoutMs,
-                       buttonDoubleClickTimeoutMs,
-                       retriggerTimeoutMs,
-                       retriggerPeriodMs);
-
-    initUi();
-    initUiPages();
+    configurePlatform();
 
     initDsp();
+
+    initUi();
 
     // start audio
     seed.StartAudio(&audioCallback);
 
-    for (size_t l = 0; l < numLoopers; l++)
-        looperController.as<LooperControllerType>().setLooperState(l, LooperState::recording);
-    seed.system.Delay(200);
-    for (size_t l = 0; l < numLoopers; l++)
-        looperController.as<LooperControllerType>().setLooperState(l, LooperState::playing);
-
     // UI loop
     for (;;)
     {
-        ui.Process();
-
-        // Wait 5ms
-        seed.system.Delay(5);
+        uiHardware->processControls();
+        ui->process();
     }
 }

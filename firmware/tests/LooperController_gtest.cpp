@@ -359,10 +359,10 @@ TEST_F(LooperController_Test, process_shouldUseCorrectMotorSpeedTimeConstants)
     // instantaneous setting should yield no smoothing at all
     EXPECT_FLOAT_EQ(measuredSmoothingTimes[MotorAcceleration::instantaneous], 0.0f);
     // expect minimum and maximum values
-    EXPECT_NEAR(measuredSmoothingTimes[MotorAcceleration::veryFast], 0.01f, 0.01f * toleranceAmt);
-    EXPECT_NEAR(measuredSmoothingTimes[MotorAcceleration::verySlow], 5.0f, 5.0f * toleranceAmt);
+    EXPECT_NEAR(measuredSmoothingTimes[MotorAcceleration::veryFast], 0.1f, 0.1f * toleranceAmt);
+    EXPECT_NEAR(measuredSmoothingTimes[MotorAcceleration::verySlow], 20.0f, 20.0f * toleranceAmt);
     // expect the other times to be scaled exponentially in between (== constant factor)
-    constexpr float totalRange = 5.0f / 0.01f;
+    constexpr float totalRange = 20.0f / 0.1f;
     constexpr size_t numSettings = 5;
     constexpr float expectedFactor = sprout::pow(totalRange, 1.0f / float(numSettings - 1));
     EXPECT_NEAR(measuredSmoothingTimes[MotorAcceleration::fast]

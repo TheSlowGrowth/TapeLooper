@@ -95,7 +95,7 @@ public:
     {
         const auto postGainTarget = (isPlaying_) ? paramPostProcessorGain : 0.0f;
         const auto speedTarget = limit(paramSpeed, minSpeed_, maxSpeed_);
-        const auto speedModulationAmtTarget = speedModulationAmt * maxSpeedModulationAmt_;
+        const auto speedModulationAmtTarget = speedModulationAmt;
 
         if (playbackLength_ < 1)
             return;
@@ -151,7 +151,6 @@ public:
 private:
     static constexpr float minSpeed_ = 0.25f;
     static constexpr float maxSpeed_ = 4.0f;
-    static constexpr float maxSpeedModulationAmt_ = 0.025f;
 
     template <typename T>
     MANUAL_INLINE T wrapDownToPlaybackLength(T value)

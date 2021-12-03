@@ -1071,7 +1071,7 @@ TEST_F(DSP_Player, l_useSpeedModulator)
     EXPECT_CALL(player_.getSpeedModulator(), getAndAdvance())
         .Times(::testing::Exactly(3))
         .WillRepeatedly(::testing::Return(0.5));
-    player_.process(1.0f,
+    player_.process(1.0f, // speed
                     2.0f, // speed modulation amount
                     Direction::forwards,
                     1.0f, // post gain

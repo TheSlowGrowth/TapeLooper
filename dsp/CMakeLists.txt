@@ -16,8 +16,14 @@ set(HEADER_FILES
 
 add_subdirectory(lib/sprout)
 
-add_library(${TARGET} INTERFACE)
-target_include_directories(${TARGET} INTERFACE 
+add_library(${TARGET}
+    src/dsp/DspHelpers.cpp
+)
+target_include_directories(${TARGET} INTERFACE
+    src/
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/sprout/
+) 
+target_include_directories(${TARGET} PRIVATE
     src/
     ${CMAKE_CURRENT_SOURCE_DIR}/lib/sprout/
 ) 

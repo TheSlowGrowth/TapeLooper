@@ -46,12 +46,12 @@ class LooperController
 public:
     using MonoLooperType = typename LooperTypes::MonoLooperType;
     using StereoLooperType = typename LooperTypes::StereoLooperType;
-    using ParameterProvider = typename LooperTypes::ParameterProvider;
+    using ParameterProviderType = typename LooperTypes::ParameterProvider;
 
     LooperController(std::array<MonoOrStereoLooperStoragePtr, numLoopers> looperStorage,
                      AudioBufferPtr<1> monoDownmixBuffer,
                      AudioBufferPtr<1> temporaryBuffer,
-                     const ParameterProvider& paramProvider) :
+                     const ParameterProviderType& paramProvider) :
         looperStorage_(looperStorage),
         monoDownmixBuffer_(monoDownmixBuffer),
         temporaryBuffer_(temporaryBuffer),
@@ -121,7 +121,7 @@ public:
     void process(AudioBufferPtr<2, const float> inputBuffer, AudioBufferPtr<2> outputBuffer)
     {
         outputBuffer.fill(0.0f);
-        
+
         bool hasProcessedMonoDownmix = false;
         for (size_t ch = 0; ch < numLoopers; ch++)
         {
@@ -211,21 +211,21 @@ private:
 
     static constexpr float getMotorSmoothingTimeInSFor(MotorAcceleration acceleration)
     {
-        constexpr float minSpeed = 0.01f;
-        constexpr float maxSpeed = 5.0f;
+        constexpr float minLag = 0.1f;
+        constexpr float maxLag = 20.0f;
         constexpr size_t numSteps = 5;
 
         // f(x) = a * e^(b * x)
-        // f(0) = minSpeed;
-        // f(numSteps-1) = maxSpeed;
+        // f(0) = minLag;
+        // f(numSteps-1) = maxLag;
         // -------------------------
-        //      minSpeed = a * e^(b * 0) = a
-        //      maxSpeed = a * e^(b * (numSteps-1))
-        //      ln(maxSpeed / minSpeed) = (numSteps-1) * b
-        //      ln(maxSpeed / minSpeed) / (numSteps-1) = b
-        //      log(maxSpeed / minSpeed) / ((numSteps-1) * log(e)) = b
-        constexpr auto a = minSpeed;
-        constexpr auto b = sprout::math::log(maxSpeed / minSpeed) / (float(numSteps - 1) * sprout::math::log(2.718281828f));
+        //      minLag = a * e^(b * 0) = a
+        //      maxLag = a * e^(b * (numSteps-1))
+        //      ln(maxLag / minLag) = (numSteps-1) * b
+        //      ln(maxLag / minLag) / (numSteps-1) = b
+        //      log(maxLag / minLag) / ((numSteps-1) * log(e)) = b
+        constexpr auto a = minLag;
+        constexpr auto b = sprout::math::log(maxLag / minLag) / (float(numSteps - 1) * sprout::math::log(2.718281828f));
 
         switch (acceleration)
         {
@@ -296,5 +296,5 @@ private:
     std::array<LooperWithSettings, numLoopers> loopers_;
     AudioBufferPtr<1> monoDownmixBuffer_;
     AudioBufferPtr<1> temporaryBuffer_;
-    const ParameterProvider& paramProvider_;
+    const ParameterProviderType& paramProvider_;
 };
