@@ -154,7 +154,7 @@ public:
     {
         const auto mappedWowAndFlutterAmt = wowAndFlutterAmt * wowAndFlutterAmt;
         player_.process(paramSpeed,
-                        mappedWowAndFlutterAmt * maxWowAndFlutterAmt_,
+                        mappedWowAndFlutterAmt,
                         direction,
                         paramPostGain,
                         processorParameters,
@@ -225,7 +225,6 @@ public:
     const LooperStoragePtr<numChannels> getSampleStoragePtr() const { return storage_; }
 
 private:
-    static constexpr float maxWowAndFlutterAmt_ = 0.025f;
     const LooperStoragePtr<numChannels> storage_;
     LooperState state_;
     PlayerType player_;

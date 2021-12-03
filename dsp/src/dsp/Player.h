@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -95,6 +95,7 @@ public:
     {
         const auto postGainTarget = (isPlaying_) ? paramPostProcessorGain : 0.0f;
         const auto speedTarget = limit(paramSpeed, minSpeed_, maxSpeed_);
+        const auto speedModulationAmtTarget = speedModulationAmt * maxSpeedModulationAmt_;
 
         if (playbackLength_ < 1)
             return;
@@ -102,7 +103,7 @@ public:
         for (size_t i = 0; i < outputToAddTo.size_; i++)
         {
             const auto postGain = postGainSmoother_.smooth(postGainTarget, postGainSmootherTimeConstant);
-            const auto speedModulation = speedModulator_.getAndAdvance() * speedModulationAmt;
+            const auto speedModulation = speedModulator_.getAndAdvance() * speedModulationAmtTarget;
             const auto speed = speedModulation + speedSmoother_.smooth(speedTarget, speedSmootherTimeConstant);
 
             // the final two samples we need to interpolate for the current output sample
@@ -150,6 +151,7 @@ public:
 private:
     static constexpr float minSpeed_ = 0.25f;
     static constexpr float maxSpeed_ = 4.0f;
+    static constexpr float maxSpeedModulationAmt_ = 0.025f;
 
     template <typename T>
     MANUAL_INLINE T wrapDownToPlaybackLength(T value)
