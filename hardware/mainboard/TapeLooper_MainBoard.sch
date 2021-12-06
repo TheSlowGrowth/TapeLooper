@@ -99,7 +99,7 @@ BTTN_LOAD
 Text GLabel 7450 2000 0    50   Input ~ 0
 BTTN_SAVE
 Text GLabel 7450 2600 0    50   Input ~ 0
-BTTN_DIRECTION
+BTTN_SETTINGS
 Text GLabel 7450 1200 0    50   Input ~ 0
 BTTN_REC
 Wire Wire Line
