@@ -97,7 +97,7 @@ private:
     static constexpr float minSpeed_ = 0.25f;
     static constexpr float maxSpeed_ = 4.0f;
     static constexpr float minDriveGain_ = 0.25f;
-    static constexpr float maxDriveGain_ = 10.0f;
+    static constexpr float maxDriveGain_ = 100.0f;
     static constexpr float maxSliderGain_ = 2.0f;
     static constexpr float maxCvGain_ = 2.0f;
     static constexpr size_t numPlateaus_ = 5;
@@ -147,7 +147,7 @@ private:
 
     float drivePotToDriveGain(float normalizedInput) const
     {
-        const auto mappedDriveGain = normalizedInput * normalizedInput;
+        const auto mappedDriveGain = normalizedInput * normalizedInput * normalizedInput;
         return linMap(mappedDriveGain, minDriveGain_, maxDriveGain_);
     }
 };

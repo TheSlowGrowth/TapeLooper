@@ -128,7 +128,7 @@ public:
 private:
     static constexpr auto clockedNoiseFreq_ = FloatType(8000);
     static constexpr auto clockedNoiseJitter_ = FloatType(0.6);
-    static constexpr auto maxAmount_ = FloatType(12);
+    static constexpr auto maxAmount_ = FloatType(24);
 
     ClockedNoiseGenerator<FloatType, sampleRate> noise_;
     Biquad<FloatType> noiseFilter_;

@@ -67,15 +67,17 @@ public:
 
         for (size_t ch = 0; ch < numChannels; ch++)
         {
-            // tape saturation
             auto& sample = inputAndOutput[ch];
+
+            // tape grain
+            sample = grainProcessors_[ch].process(grainAmt, sample);
+
+            // tape saturation
             sample = emphasisEqs_[ch].processPreEmphasis(sample);
             sample *= driveGain;
             sample = TapeSaturator<float>::saturate(sample);
             sample /= driveGain;
             sample = emphasisEqs_[ch].processDeEmphasis(sample);
-            // tape grain
-            sample = grainProcessors_[ch].process(grainAmt, sample);
             // apply tape EQ
             sample = tapeEqs_[ch].process(sample);
         }
