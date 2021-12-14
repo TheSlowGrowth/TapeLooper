@@ -50,7 +50,9 @@ daisy::DaisySeed seed;
 
 // ui static objects
 daisy::UiEventQueue uiEventQueue;
+daisy::MAX11300Types::DmaBuffer DMA_BUFFER_MEM_SECTION max11300DmaBuffer;
 UiHardware::LedDmaBufferType DMA_BUFFER_MEM_SECTION ledDmaBufferA, ledDmaBufferB;
+
 LateInitializedObject<UiHardware> uiHardware;
 LateInitializedObject<TapeLooperUiType> ui;
 
@@ -85,7 +87,8 @@ void initUi()
     // init the UI hardware
     auto& hardware = *uiHardware.create(uiEventQueue,
                                         ledDmaBufferA,
-                                        ledDmaBufferB);
+                                        ledDmaBufferB,
+                                        &max11300DmaBuffer);
 
     // init the UI
     ui.create(
@@ -181,7 +184,6 @@ int main(void)
     // UI loop
     for (;;)
     {
-        uiHardware->processControls();
         ui->process();
     }
 }
