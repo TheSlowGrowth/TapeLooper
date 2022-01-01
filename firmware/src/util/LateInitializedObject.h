@@ -24,14 +24,14 @@ template <class... Types>
 class LateInitializedObject
 {
     template <typename T, typename... AllTypes>
-    struct isOneOf : public std::false_type
+    struct IsOneOf : public std::false_type
     {
     };
     template <typename T, typename FirstType, typename... RestOfTypes>
-    struct isOneOf<T, FirstType, RestOfTypes...> :
+    struct IsOneOf<T, FirstType, RestOfTypes...> :
         public std::conditional<std::is_same<T, FirstType>::value,
                                 std::true_type,
-                                isOneOf<T, RestOfTypes...>>::type
+                                IsOneOf<T, RestOfTypes...>>::type
     {
     };
 
@@ -40,21 +40,20 @@ class LateInitializedObject
         typename std::tuple_element<0, std::tuple<Ts...>>::type;
 
 public:
-    LateInitializedObject() :
-        object_(nullptr)
+    LateInitializedObject()
     {
     }
 
     template <class T = FirstTypeOf<Types...>,
               typename... Args,
-              typename std::enable_if<isOneOf<T, Types...>::value>::type* = nullptr>
+              typename std::enable_if<IsOneOf<T, Types...>::value>::type* = nullptr>
     T* create(Args&&... args)
     {
         object_ = new (::std::addressof(storage_)) T(std::forward<Args>(args)...);
         return reinterpret_cast<T*>(object_);
     }
 
-    template <class T, typename std::enable_if<isOneOf<T, Types...>::value>::type* = nullptr>
+    template <class T, typename std::enable_if<IsOneOf<T, Types...>::value>::type* = nullptr>
     void destroy()
     {
         if (object_)
@@ -65,13 +64,13 @@ public:
         }
     }
 
-    template <class T, typename std::enable_if<isOneOf<T, Types...>::value>::type* = nullptr>
+    template <class T, typename std::enable_if<IsOneOf<T, Types...>::value>::type* = nullptr>
     T& as()
     {
         return *reinterpret_cast<T*>(object_);
     }
 
-    template <class T, typename std::enable_if<isOneOf<T, Types...>::value>::type* = nullptr>
+    template <class T, typename std::enable_if<IsOneOf<T, Types...>::value>::type* = nullptr>
     const T& as() const
     {
         return *reinterpret_cast<T*>(object_);
