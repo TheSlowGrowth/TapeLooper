@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "TapeLooper_MainBoard-rescue")(type "KiCad")(uri "${KIPRJMOD}/TapeLooper_MainBoard-rescue.kicad_sym")(options "")(descr ""))
+)
