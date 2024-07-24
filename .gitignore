@@ -33,6 +33,13 @@
 # Kicad pcb and schematics backup files
 *.sch-bak
 *.kicad_pcb-bak
+_autosave*
+\#auto_saved_files\#
+hardware/*/*-backups
+
+# gerber output files
+hardware/mainboard/gerbers
+hardware/frontpanel/gerber
 
 # build directories and binaries
 firmware/build
@@ -44,5 +51,3 @@ plugin/build
 
 # macOS crap
 .DS_Store
-hardware/mainboard/gerbers
-hardware/frontpanel/gerber
