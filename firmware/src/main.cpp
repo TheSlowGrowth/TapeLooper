@@ -182,8 +182,17 @@ int main(void)
     seed.StartAudio(&audioCallback);
 
     // UI loop
+    auto lastUpdate = daisy::System::GetNow();
     for (;;)
     {
         ui->process();
+        uiHardware->processControls();
+
+        // limit update rate to 50Hz
+        constexpr auto kUpdateIntervalMs = 20;
+        while (daisy::System::GetNow() < lastUpdate + kUpdateIntervalMs)
+        {
+        }
+        lastUpdate = daisy::System::GetNow();
     }
 }
