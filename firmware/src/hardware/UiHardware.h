@@ -40,8 +40,7 @@ public:
 
     UiHardware(daisy::UiEventQueue& eventQueue,
                LedDmaBufferType bufferA,
-               LedDmaBufferType bufferB,
-               daisy::MAX11300Types::DmaBuffer* maxDmaBuffer)
+               LedDmaBufferType bufferB)
     {
         potMonitor_.Init(eventQueue, *this);
         buttonMonitor_.Init(eventQueue,
@@ -50,7 +49,7 @@ public:
                             500, // double click time ms
                             0); // retriggering disabled
 
-        initControls(maxDmaBuffer);
+        initControls();
         initLeds(bufferA, bufferB);
     }
 
@@ -87,21 +86,21 @@ public:
         switch (cv)
         {
             case CvInput::chA_speed:
-                return max11300_.ReadAnalogPinVolts(0, daisy::MAX11300Types::PIN_0);
+                return 0.0f; // TODO
             case CvInput::chA_volume:
-                return max11300_.ReadAnalogPinVolts(0, daisy::MAX11300Types::PIN_2);
+                return 0.0f; // TODO
             case CvInput::chB_speed:
-                return max11300_.ReadAnalogPinVolts(0, daisy::MAX11300Types::PIN_1);
+                return 0.0f; // TODO
             case CvInput::chB_volume:
-                return max11300_.ReadAnalogPinVolts(0, daisy::MAX11300Types::PIN_3);
+                return 0.0f; // TODO
             case CvInput::chC_speed:
-                return max11300_.ReadAnalogPinVolts(1, daisy::MAX11300Types::PIN_0);
+                return 0.0f; // TODO
             case CvInput::chC_volume:
-                return max11300_.ReadAnalogPinVolts(1, daisy::MAX11300Types::PIN_2);
+                return 0.0f; // TODO
             case CvInput::chD_speed:
-                return max11300_.ReadAnalogPinVolts(1, daisy::MAX11300Types::PIN_1);
+                return 0.0f; // TODO
             case CvInput::chD_volume:
-                return max11300_.ReadAnalogPinVolts(1, daisy::MAX11300Types::PIN_3);
+                return 0.0f; // TODO
             case CvInput::NUM_CVS:
                 break;
         }
@@ -118,37 +117,37 @@ public:
         switch (Button(buttonId))
         {
             case Button::save:
-                return !dsy_gpio_read(&commonGpios_.save);
+                return false; // TODO
             case Button::load:
-                return !dsy_gpio_read(&commonGpios_.load);
+                return false; // TODO
             case Button::settings:
-                return !dsy_gpio_read(&commonGpios_.settings);
+                return false; // TODO
             case Button::record:
-                return !dsy_gpio_read(&commonGpios_.rec);
+                return false; // TODO
             case Button::chA_play:
-                return !dsy_gpio_read(&chanAGpios_.play);
+                return false; // TODO
             case Button::chA_up:
-                return !dsy_gpio_read(&chanAGpios_.up);
+                return false; // TODO
             case Button::chA_down:
-                return !dsy_gpio_read(&chanAGpios_.down);
+                return false; // TODO
             case Button::chB_play:
-                return !max11300_.ReadDigitalPin(0, daisy::MAX11300Types::PIN_17);
+                return false; // TODO
             case Button::chB_up:
-                return !max11300_.ReadDigitalPin(0, daisy::MAX11300Types::PIN_15);
+                return false; // TODO
             case Button::chB_down:
-                return !max11300_.ReadDigitalPin(0, daisy::MAX11300Types::PIN_16);
+                return false; // TODO
             case Button::chC_play:
-                return !max11300_.ReadDigitalPin(1, daisy::MAX11300Types::PIN_18);
+                return false; // TODO
             case Button::chC_up:
-                return !max11300_.ReadDigitalPin(1, daisy::MAX11300Types::PIN_14);
+                return false; // TODO
             case Button::chC_down:
-                return !max11300_.ReadDigitalPin(1, daisy::MAX11300Types::PIN_16);
+                return false; // TODO
             case Button::chD_play:
-                return !max11300_.ReadDigitalPin(1, daisy::MAX11300Types::PIN_19);
+                return false; // TODO
             case Button::chD_up:
-                return !max11300_.ReadDigitalPin(1, daisy::MAX11300Types::PIN_15);
+                return false; // TODO
             case Button::chD_down:
-                return !max11300_.ReadDigitalPin(1, daisy::MAX11300Types::PIN_17);
+                return false; // TODO
             case Button::NUM_BUTTONS:
                 break;
         }
@@ -165,45 +164,45 @@ public:
         switch (Pot(potId))
         {
             case Pot::chA_speed:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_4)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chA_warbleAmt:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_12)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chA_grainAmt:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_10)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chA_driveAmt:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_8)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chA_volume:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_6)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chB_speed:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_5)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chB_warbleAmt:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_14)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chB_grainAmt:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_11)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chB_driveAmt:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_9)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chB_volume:
-                return float(max11300_.ReadAnalogPinRaw(0, daisy::MAX11300Types::PIN_7)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chC_speed:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_4)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chC_warbleAmt:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_12)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chC_grainAmt:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_10)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chC_driveAmt:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_8)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chC_volume:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_6)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chD_speed:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_5)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chD_warbleAmt:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_13)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chD_grainAmt:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_11)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chD_driveAmt:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_9)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::chD_volume:
-                return float(max11300_.ReadAnalogPinRaw(1, daisy::MAX11300Types::PIN_7)) / 4095.0f;
+                return 0.0f; // TODO
             case Pot::NUM_POTS:
                 break;
         }
@@ -214,96 +213,8 @@ private:
     UiHardware(const UiHardware&) = delete;
     UiHardware& operator=(const UiHardware&) = delete;
 
-    void initControls(daisy::MAX11300Types::DmaBuffer* maxDmaBuffer)
+    void initControls()
     {
-        daisy::MAX11300<2>::Config config;
-        config.transport_config.periph = daisy::SpiHandle::Config::Peripheral::SPI_1;
-        config.transport_config.baud_prescaler = daisy::SpiHandle::Config::BaudPrescaler::PS_2;
-        config.transport_config.pin_config.nss[0] = { DSY_GPIOC, 1 };
-        config.transport_config.pin_config.nss[1] = { DSY_GPIOC, 4 };
-        config.transport_config.pin_config.sclk = { DSY_GPIOA, 5 };
-        config.transport_config.pin_config.miso = { DSY_GPIOA, 6 };
-        config.transport_config.pin_config.mosi = { DSY_GPIOA, 7 };
-        max11300_.Init(config, maxDmaBuffer);
-
-        // Pitch CVs
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_0, daisy::MAX11300Types::AdcVoltageRange::NEGATIVE_5_TO_5);
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_1, daisy::MAX11300Types::AdcVoltageRange::NEGATIVE_5_TO_5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_0, daisy::MAX11300Types::AdcVoltageRange::NEGATIVE_5_TO_5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_1, daisy::MAX11300Types::AdcVoltageRange::NEGATIVE_5_TO_5);
-        // Volume CVs
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_2, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_10);
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_3, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_10);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_2, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_10);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_3, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_10);
-        // Pitch pots
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_4, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_5, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_4, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_5, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        // Volume sliders
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_6, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_7, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_6, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_7, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        // Drive pots
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_8, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_9, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_8, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_9, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        // Grain pots
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_10, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_11, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_10, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_11, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        // Warble pots
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_12, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_14, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_12, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        max11300_.ConfigurePinAsAnalogRead(1, daisy::MAX11300Types::PIN_13, daisy::MAX11300Types::AdcVoltageRange::ZERO_TO_2P5);
-        // Buttons for ch A
-        chanAGpios_.up.pin = { DSY_GPIOB, 14 };
-        chanAGpios_.up.mode = DSY_GPIO_MODE_INPUT;
-        chanAGpios_.up.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&chanAGpios_.up);
-        chanAGpios_.down.pin = { DSY_GPIOA, 2 };
-        chanAGpios_.down.mode = DSY_GPIO_MODE_INPUT;
-        chanAGpios_.down.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&chanAGpios_.down);
-        chanAGpios_.play.pin = { DSY_GPIOB, 15 };
-        chanAGpios_.play.mode = DSY_GPIO_MODE_INPUT;
-        chanAGpios_.play.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&chanAGpios_.play);
-        // Buttons for ch B
-        max11300_.ConfigurePinAsDigitalRead(0, daisy::MAX11300Types::PIN_15, 1.5f); // up B
-        max11300_.ConfigurePinAsDigitalRead(0, daisy::MAX11300Types::PIN_16, 1.5f); // down B
-        max11300_.ConfigurePinAsDigitalRead(0, daisy::MAX11300Types::PIN_17, 1.5f); // play B
-        // Buttons for ch C / D
-        max11300_.ConfigurePinAsDigitalRead(1, daisy::MAX11300Types::PIN_14, 1.5f); // up C
-        max11300_.ConfigurePinAsDigitalRead(1, daisy::MAX11300Types::PIN_15, 1.5f); // up D
-        max11300_.ConfigurePinAsDigitalRead(1, daisy::MAX11300Types::PIN_16, 1.5f); // down C
-        max11300_.ConfigurePinAsDigitalRead(1, daisy::MAX11300Types::PIN_17, 1.5f); // down D
-        max11300_.ConfigurePinAsDigitalRead(1, daisy::MAX11300Types::PIN_18, 1.5f); // play C
-        max11300_.ConfigurePinAsDigitalRead(1, daisy::MAX11300Types::PIN_19, 1.5f); // play D
-        // common section buttons
-        commonGpios_.settings.pin = { DSY_GPIOB, 7 };
-        commonGpios_.settings.mode = DSY_GPIO_MODE_INPUT;
-        commonGpios_.settings.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&commonGpios_.settings);
-        commonGpios_.save.pin = { DSY_GPIOG, 11 };
-        commonGpios_.save.mode = DSY_GPIO_MODE_INPUT;
-        commonGpios_.save.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&commonGpios_.save);
-        commonGpios_.load.pin = { DSY_GPIOG, 10 };
-        commonGpios_.load.mode = DSY_GPIO_MODE_INPUT;
-        commonGpios_.load.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&commonGpios_.load);
-        commonGpios_.rec.pin = { DSY_GPIOB, 12 };
-        commonGpios_.rec.mode = DSY_GPIO_MODE_INPUT;
-        commonGpios_.rec.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&commonGpios_.rec);
-
-        max11300_.Start(&updateComplete, this);
     }
 
     void initLeds(LedDmaBufferType bufferA,
@@ -444,20 +355,6 @@ private:
         sender->processControls();
     }
 
-    daisy::MAX11300<2> max11300_;
-    struct
-    {
-        dsy_gpio up;
-        dsy_gpio down;
-        dsy_gpio play;
-    } chanAGpios_;
-    struct
-    {
-        dsy_gpio settings;
-        dsy_gpio save;
-        dsy_gpio load;
-        dsy_gpio rec;
-    } commonGpios_;
     LedDriverType ledDriver_;
 
     struct LedSettings
