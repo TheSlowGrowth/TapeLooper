@@ -151,6 +151,142 @@ private:
     dsy_gpio shiftRegisterLoadPin_;
 };
 
+class KnobAndCvReader
+{
+public:
+    void init(daisy::AdcHandle::ConversionCompleteCallbackFunctionPtr completeCallback, void* callbackContext)
+    {
+        const dsy_gpio_pin mux0 = { DSY_GPIOA, 1 };
+        const dsy_gpio_pin mux1 = { DSY_GPIOA, 0 };
+        const dsy_gpio_pin mux2 = { DSY_GPIOD, 11 };
+
+        constexpr auto kNumChannelsPerAdc = 7;
+        constexpr auto kNumAdcs = 4;
+
+        daisy::AdcChannelConfig channelConfigs[kNumAdcs];
+        channelConfigs[0].InitMux({ DSY_GPIOC, 0 }, kNumChannelsPerAdc, mux0, mux1, mux2);
+        channelConfigs[1].InitMux({ DSY_GPIOA, 3 }, kNumChannelsPerAdc, mux0, mux1, mux2);
+        channelConfigs[2].InitMux({ DSY_GPIOB, 1 }, kNumChannelsPerAdc, mux0, mux1, mux2);
+        channelConfigs[3].InitMux({ DSY_GPIOA, 7 }, kNumChannelsPerAdc, mux0, mux1, mux2);
+
+        adc_.Init(channelConfigs, kNumAdcs);
+        adc_.Start(completeCallback, callbackContext);
+    }
+
+    float getPotValue(Pot potId) const
+    {
+        assert(uint16_t(potId) < uint16_t(Pot::NUM_POTS));
+        switch (potId)
+        {
+            case Pot::chA_speed:
+                return adc_.GetMuxFloat(0, 0);
+            case Pot::chA_warbleAmt:
+                return adc_.GetMuxFloat(0, 4);
+            case Pot::chA_grainAmt:
+                return adc_.GetMuxFloat(0, 3);
+            case Pot::chA_driveAmt:
+                return adc_.GetMuxFloat(0, 2);
+            case Pot::chA_volume:
+                return adc_.GetMuxFloat(0, 1);
+            case Pot::chB_speed:
+                return adc_.GetMuxFloat(1, 0);
+            case Pot::chB_warbleAmt:
+                return adc_.GetMuxFloat(1, 4);
+            case Pot::chB_grainAmt:
+                return adc_.GetMuxFloat(1, 3);
+            case Pot::chB_driveAmt:
+                return adc_.GetMuxFloat(1, 2);
+            case Pot::chB_volume:
+                return adc_.GetMuxFloat(1, 1);
+            case Pot::chC_speed:
+                return adc_.GetMuxFloat(2, 0);
+            case Pot::chC_warbleAmt:
+                return adc_.GetMuxFloat(2, 4);
+            case Pot::chC_grainAmt:
+                return adc_.GetMuxFloat(2, 3);
+            case Pot::chC_driveAmt:
+                return adc_.GetMuxFloat(2, 2);
+            case Pot::chC_volume:
+                return adc_.GetMuxFloat(2, 1);
+            case Pot::chD_speed:
+                return adc_.GetMuxFloat(3, 0);
+            case Pot::chD_warbleAmt:
+                return adc_.GetMuxFloat(3, 4);
+            case Pot::chD_grainAmt:
+                return adc_.GetMuxFloat(3, 3);
+            case Pot::chD_driveAmt:
+                return adc_.GetMuxFloat(3, 2);
+            case Pot::chD_volume:
+                return adc_.GetMuxFloat(3, 1);
+            case Pot::NUM_POTS:
+                break;
+        }
+        return 0.0f;
+    }
+
+    float getCvVolts(CvInput cv) const
+    {
+        /**
+            The general formula for the CV inputs is
+
+                Uout = -Isum * Rf;
+                Isum = -10V / Rr + Uin / Rin;
+                Uout = -(-10V / Rr + Uin / Rin) * Rf;
+
+            For the speed/pitch inputs:
+
+                Uout = 10V * 78.7k / 480k - 78.7k / 100k * Uin;
+                Uout = 1.639583333 - 0.787 * Uin;
+                Uin,max = 1.639583333 / 0.787 = 2.08V;
+                Uin,min = (1.639583333 - 3.3)/ 0.787 = -2.1098V;
+
+                scale = Uin,max - Uin,min = 4.19313850;
+                offset = Uin,min = -2.10980516;
+
+            For the volume inputs:
+
+                Uout = 10V * 68k / 200k - 68k / 100k * Uin;
+                Uout = 3.4 - 0.68 * Uin;
+                Uin,max = 3.4 / 0.68 = 5V;
+                Uin,min = (3.4 - 3.3)/ 0.68 = -0.1470588V;
+
+                scale = Uin,max - Uin,min = 5.1470588;
+                offset = Uin,min = -2.10980516;
+
+        */
+        constexpr auto kScaleSpeed = 4.19313850f;
+        constexpr auto kOffsetSpeed = -2.10980516f;
+        constexpr auto kScaleVolume = 5.1470588f;
+        constexpr auto kOffsetVolume = -0.1470588f;
+
+        switch (cv)
+        {
+            case CvInput::chA_speed:
+                return adc_.GetMuxFloat(0, 5) * kScaleSpeed + kOffsetSpeed;
+            case CvInput::chA_volume:
+                return adc_.GetMuxFloat(0, 6) * kScaleVolume + kOffsetVolume;
+            case CvInput::chB_speed:
+                return adc_.GetMuxFloat(1, 5) * kScaleSpeed + kOffsetSpeed;
+            case CvInput::chB_volume:
+                return adc_.GetMuxFloat(1, 6) * kScaleVolume + kOffsetVolume;
+            case CvInput::chC_speed:
+                return adc_.GetMuxFloat(2, 5) * kScaleSpeed + kOffsetSpeed;
+            case CvInput::chC_volume:
+                return adc_.GetMuxFloat(2, 6) * kScaleVolume + kOffsetVolume;
+            case CvInput::chD_speed:
+                return adc_.GetMuxFloat(3, 5) * kScaleSpeed + kOffsetSpeed;
+            case CvInput::chD_volume:
+                return adc_.GetMuxFloat(3, 6) * kScaleVolume + kOffsetVolume;
+            case CvInput::NUM_CVS:
+                break;
+        }
+        return 0.0f;
+    }
+
+private:
+    daisy::AdcHandle adc_;
+};
+
 class UiHardware
 {
 public:
@@ -203,28 +339,7 @@ public:
 
     float getCvVolts(CvInput cv) const
     {
-        switch (cv)
-        {
-            case CvInput::chA_speed:
-                return 0.0f; // TODO
-            case CvInput::chA_volume:
-                return 0.0f; // TODO
-            case CvInput::chB_speed:
-                return 0.0f; // TODO
-            case CvInput::chB_volume:
-                return 0.0f; // TODO
-            case CvInput::chC_speed:
-                return 0.0f; // TODO
-            case CvInput::chC_volume:
-                return 0.0f; // TODO
-            case CvInput::chD_speed:
-                return 0.0f; // TODO
-            case CvInput::chD_volume:
-                return 0.0f; // TODO
-            case CvInput::NUM_CVS:
-                break;
-        }
-        return 0.0f;
+        return knobsAndCv_.getCvVolts(cv);
     }
 
     // ===================================================================
@@ -242,53 +357,7 @@ public:
 
     float GetPotValue(uint16_t potId) const
     {
-        assert(potId < uint16_t(Pot::NUM_POTS)); // TODO: write my own assert macro with bkpt();
-        switch (Pot(potId))
-        {
-            case Pot::chA_speed:
-                return 0.0f; // TODO
-            case Pot::chA_warbleAmt:
-                return 0.0f; // TODO
-            case Pot::chA_grainAmt:
-                return 0.0f; // TODO
-            case Pot::chA_driveAmt:
-                return 0.0f; // TODO
-            case Pot::chA_volume:
-                return 0.0f; // TODO
-            case Pot::chB_speed:
-                return 0.0f; // TODO
-            case Pot::chB_warbleAmt:
-                return 0.0f; // TODO
-            case Pot::chB_grainAmt:
-                return 0.0f; // TODO
-            case Pot::chB_driveAmt:
-                return 0.0f; // TODO
-            case Pot::chB_volume:
-                return 0.0f; // TODO
-            case Pot::chC_speed:
-                return 0.0f; // TODO
-            case Pot::chC_warbleAmt:
-                return 0.0f; // TODO
-            case Pot::chC_grainAmt:
-                return 0.0f; // TODO
-            case Pot::chC_driveAmt:
-                return 0.0f; // TODO
-            case Pot::chC_volume:
-                return 0.0f; // TODO
-            case Pot::chD_speed:
-                return 0.0f; // TODO
-            case Pot::chD_warbleAmt:
-                return 0.0f; // TODO
-            case Pot::chD_grainAmt:
-                return 0.0f; // TODO
-            case Pot::chD_driveAmt:
-                return 0.0f; // TODO
-            case Pot::chD_volume:
-                return 0.0f; // TODO
-            case Pot::NUM_POTS:
-                break;
-        }
-        return 0.0f;
+        return knobsAndCv_.getPotValue(Pot(potId));
     }
 
 private:
@@ -298,6 +367,7 @@ private:
     void initControls(uint16_t* shiftRegisterDmaBuffer)
     {
         buttons_.init(shiftRegisterDmaBuffer);
+        knobsAndCv_.init(&updateComplete, this);
     }
 
     void initLeds(LedDmaBufferType bufferA,
@@ -468,6 +538,7 @@ private:
     std::array<LedSettings, size_t(Led::NUM_LEDS)> ledCfgs_;
 
     ButtonReader buttons_;
+    KnobAndCvReader knobsAndCv_;
 
     daisy::PotMonitor<UiHardware, int(Pot::NUM_POTS)> potMonitor_;
     daisy::ButtonMonitor<UiHardware, int(Button::NUM_BUTTONS)> buttonMonitor_;
