@@ -51,6 +51,7 @@ daisy::DaisySeed seed;
 // ui static objects
 daisy::UiEventQueue uiEventQueue;
 UiHardware::LedDmaBufferType DMA_BUFFER_MEM_SECTION ledDmaBufferA, ledDmaBufferB;
+uint16_t DMA_BUFFER_MEM_SECTION buttonShiftRegisterDmaBuffer;
 
 LateInitializedObject<UiHardware> uiHardware;
 LateInitializedObject<TapeLooperUiType> ui;
@@ -86,7 +87,8 @@ void initUi()
     // init the UI hardware
     auto& hardware = *uiHardware.create(uiEventQueue,
                                         ledDmaBufferA,
-                                        ledDmaBufferB);
+                                        ledDmaBufferB,
+                                        &buttonShiftRegisterDmaBuffer);
 
     // init the UI
     ui.create(

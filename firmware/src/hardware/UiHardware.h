@@ -32,6 +32,125 @@ extern "C"
 #include "util/hal_map.h"
 }
 
+class ButtonReader
+{
+public:
+    void init(uint16_t* dmaBuffer)
+    {
+        dmaBuffer_ = dmaBuffer;
+
+        // shift register for the channel buttons
+        shiftRegisterLoadPin_.pin = { DSY_GPIOA, 4 };
+        shiftRegisterLoadPin_.mode = DSY_GPIO_MODE_OUTPUT_PP;
+        shiftRegisterLoadPin_.pull = DSY_GPIO_NOPULL;
+        dsy_gpio_init(&shiftRegisterLoadPin_);
+        dsy_gpio_write(&shiftRegisterLoadPin_, 1);
+
+        daisy::SpiHandle::Config config;
+        config.periph = daisy::SpiHandle::Config::Peripheral::SPI_1;
+        config.mode = daisy::SpiHandle::Config::Mode::MASTER;
+        config.direction = daisy::SpiHandle::Config::Direction::TWO_LINES_RX_ONLY;
+        config.datasize = 8;
+        config.clock_polarity = daisy::SpiHandle::Config::ClockPolarity::LOW;
+        config.clock_phase = daisy::SpiHandle::Config::ClockPhase::ONE_EDGE;
+        config.nss = daisy::SpiHandle::Config::NSS::SOFT;
+        config.baud_prescaler = daisy::SpiHandle::Config::BaudPrescaler::PS_16;
+        config.pin_config.sclk = { DSY_GPIOA, 5 };
+        config.pin_config.miso = { DSY_GPIOG, 9 };
+        shiftRegisterSpi_.Init(config);
+
+        // common section buttons
+        commonGpios_.settings.pin = { DSY_GPIOB, 7 };
+        commonGpios_.settings.mode = DSY_GPIO_MODE_INPUT;
+        commonGpios_.settings.pull = DSY_GPIO_NOPULL;
+        dsy_gpio_init(&commonGpios_.settings);
+        commonGpios_.save.pin = { DSY_GPIOG, 11 };
+        commonGpios_.save.mode = DSY_GPIO_MODE_INPUT;
+        commonGpios_.save.pull = DSY_GPIO_NOPULL;
+        dsy_gpio_init(&commonGpios_.save);
+        commonGpios_.load.pin = { DSY_GPIOG, 10 };
+        commonGpios_.load.mode = DSY_GPIO_MODE_INPUT;
+        commonGpios_.load.pull = DSY_GPIO_NOPULL;
+        dsy_gpio_init(&commonGpios_.load);
+        commonGpios_.rec.pin = { DSY_GPIOB, 12 };
+        commonGpios_.rec.mode = DSY_GPIO_MODE_INPUT;
+        commonGpios_.rec.pull = DSY_GPIO_NOPULL;
+        dsy_gpio_init(&commonGpios_.rec);
+    }
+
+    bool getButtonState(Button buttonId) const
+    {
+        assert(uint16_t(buttonId) < uint16_t(Button::NUM_BUTTONS));
+        switch (buttonId)
+        {
+            case Button::save:
+                return !dsy_gpio_read(&commonGpios_.save);
+            case Button::load:
+                return !dsy_gpio_read(&commonGpios_.load);
+            case Button::settings:
+                return !dsy_gpio_read(&commonGpios_.settings);
+            case Button::record:
+                return !dsy_gpio_read(&commonGpios_.rec);
+            case Button::chA_play:
+                return !getBit<2>();
+            case Button::chA_up:
+                return !getBit<1>();
+            case Button::chA_down:
+                return !getBit<0>();
+            case Button::chB_play:
+                return !getBit<5>();
+            case Button::chB_up:
+                return !getBit<3>();
+            case Button::chB_down:
+                return !getBit<4>();
+            case Button::chC_play:
+                return !getBit<10>();
+            case Button::chC_up:
+                return !getBit<8>();
+            case Button::chC_down:
+                return !getBit<9>();
+            case Button::chD_play:
+                return !getBit<13>();
+            case Button::chD_up:
+                return !getBit<11>();
+            case Button::chD_down:
+                return !getBit<12>();
+            case Button::NUM_BUTTONS:
+                break;
+        }
+        return false;
+    }
+
+    void triggerReadout()
+    {
+        dsy_gpio_write(&shiftRegisterLoadPin_, 0);
+
+        constexpr auto kNumBytes = 2;
+        shiftRegisterSpi_.DmaReceive((uint8_t*) dmaBuffer_, kNumBytes, nullptr, nullptr, nullptr);
+
+        dsy_gpio_write(&shiftRegisterLoadPin_, 1);
+    }
+
+private:
+    template <size_t bitIndex>
+    bool getBit() const
+    {
+        return *dmaBuffer_ & (1 << bitIndex);
+    }
+
+    struct
+    {
+        dsy_gpio settings;
+        dsy_gpio save;
+        dsy_gpio load;
+        dsy_gpio rec;
+    } commonGpios_;
+
+    uint16_t* dmaBuffer_ = nullptr;
+    daisy::SpiHandle shiftRegisterSpi_;
+    dsy_gpio shiftRegisterLoadPin_;
+};
+
 class UiHardware
 {
 public:
@@ -40,7 +159,8 @@ public:
 
     UiHardware(daisy::UiEventQueue& eventQueue,
                LedDmaBufferType bufferA,
-               LedDmaBufferType bufferB)
+               LedDmaBufferType bufferB,
+               uint16_t* shiftRegisterDmaBuffer)
     {
         potMonitor_.Init(eventQueue, *this);
         buttonMonitor_.Init(eventQueue,
@@ -49,7 +169,7 @@ public:
                             500, // double click time ms
                             0); // retriggering disabled
 
-        initControls();
+        initControls(shiftRegisterDmaBuffer);
         initLeds(bufferA, bufferB);
     }
 
@@ -113,45 +233,7 @@ public:
 
     bool IsButtonPressed(uint16_t buttonId) const
     {
-        assert(buttonId < uint16_t(Button::NUM_BUTTONS)); // TODO: write my own assert macro with bkpt();
-        switch (Button(buttonId))
-        {
-            case Button::save:
-                return false; // TODO
-            case Button::load:
-                return false; // TODO
-            case Button::settings:
-                return false; // TODO
-            case Button::record:
-                return false; // TODO
-            case Button::chA_play:
-                return false; // TODO
-            case Button::chA_up:
-                return false; // TODO
-            case Button::chA_down:
-                return false; // TODO
-            case Button::chB_play:
-                return false; // TODO
-            case Button::chB_up:
-                return false; // TODO
-            case Button::chB_down:
-                return false; // TODO
-            case Button::chC_play:
-                return false; // TODO
-            case Button::chC_up:
-                return false; // TODO
-            case Button::chC_down:
-                return false; // TODO
-            case Button::chD_play:
-                return false; // TODO
-            case Button::chD_up:
-                return false; // TODO
-            case Button::chD_down:
-                return false; // TODO
-            case Button::NUM_BUTTONS:
-                break;
-        }
-        return false;
+        return buttons_.getButtonState(Button(buttonId));
     }
 
     // ===================================================================
@@ -213,8 +295,9 @@ private:
     UiHardware(const UiHardware&) = delete;
     UiHardware& operator=(const UiHardware&) = delete;
 
-    void initControls()
+    void initControls(uint16_t* shiftRegisterDmaBuffer)
     {
+        buttons_.init(shiftRegisterDmaBuffer);
     }
 
     void initLeds(LedDmaBufferType bufferA,
@@ -347,6 +430,8 @@ private:
         // transform raw inputs into UI Events
         potMonitor_.Process();
         buttonMonitor_.Process();
+
+        buttons_.triggerReadout();
     }
 
     static void updateComplete(void* context)
@@ -381,6 +466,8 @@ private:
         LedColour colour;
     };
     std::array<LedSettings, size_t(Led::NUM_LEDS)> ledCfgs_;
+
+    ButtonReader buttons_;
 
     daisy::PotMonitor<UiHardware, int(Pot::NUM_POTS)> potMonitor_;
     daisy::ButtonMonitor<UiHardware, int(Button::NUM_BUTTONS)> buttonMonitor_;
