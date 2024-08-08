@@ -23,7 +23,7 @@
 "R801,R802","2k2","~","Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder","2",""
 "R902,R908,R914,R920","78k7","~","Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder","4",""
 "R904,R910,R916,R922","68k","~","Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder","4",""
-"R905,R911,R917,R923","480k","~","Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder","4",""
+"R905,R911,R917,R923","481k","~","Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder","4",""
 "R906,R912,R918,R924","200k","~","Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder","4",""
 "RV501,RV502,RV503,RV504,RV509,RV510,RV511,RV512,RV513,RV514,RV515,RV516,RV517,RV518,RV519,RV520","POTENTIOMETER","","ell_passives:9mm_pot","16",""
 "RV505,RV506,RV507,RV508","PTA4543-2010CPB103","~","Potentiometer_THT:Potentiometer_Bourns_PTA4543_Single_Slide","4",""
