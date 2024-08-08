@@ -3,7 +3,7 @@
         {
             "name": "Mac",
             "includePath": [
-                "~/dev/gcc-arm-none-eabi-9-2020-q2-update/include",
+                "~/dev/gcc-arm-none-eabi-9-2020-q2-update/arm-none-eabi/include",
                 "${workspaceRoot}/firmware/src",
                 "${workspaceRoot}/dsp/src",
                 "${workspaceRoot}/lib/googletest/",
@@ -14,8 +14,8 @@
                 "${workspaceRoot}/lib/libDaisy/src",
                 "${workspaceRoot}/lib/libDaisy/src/sys",
                 "${workspaceRoot}/lib/libDaisy/src/util",
-                "${workspaceRoot}/lib/libDaisy/Drivers/CMSIS/Include/",
-                "${workspaceRoot}/lib/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include",
+                "${workspaceRoot}/lib/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc",
+                "${workspaceRoot}/lib/libDaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include",
                 "${workspaceRoot}/lib/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc",
                 "${workspaceRoot}/lib/libDaisy/Middlewares/Third_Party/FatFs/src"
             ],
@@ -35,7 +35,7 @@
             "compilerPath": "~/dev/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gcc",
             "cStandard": "c11",
             "cppStandard": "gnu++17",
-            "compileCommands": "${workspaceFolder}/plugin/build/compile_commands.json"
+            "compileCommands": "${workspaceFolder}/firmware/build/compile_commands.json"
         },
         {
             "name": "Win32",
@@ -52,7 +52,7 @@
                 "${workspaceRoot}/lib/libDaisy/src/sys",
                 "${workspaceRoot}/lib/libDaisy/src/util",
                 "${workspaceRoot}/lib/libDaisy/Drivers/CMSIS/Include/",
-                "${workspaceRoot}/lib/libDaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include",
+                "${workspaceRoot}/lib/libDaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include",
                 "${workspaceRoot}/lib/libDaisy/Drivers/STM32H7xx_HAL_Driver/Inc",
                 "${workspaceRoot}/lib/libDaisy/Middlewares/Third_Party/FatFs/src"
             ],
@@ -71,7 +71,8 @@
             },
             "compilerPath": "C:\\Program Files (x86)\\GNU Arm Embedded Toolchain\\9 2020-q2-update\\bin\\arm-none-eabi-gcc",
             "cStandard": "c11",
-            "cppStandard": "gnu++17"
+            "cppStandard": "gnu++17",
+            "compileCommands": "${workspaceFolder}\\firmware\\build\\compile_commands.json"
         }
     ],
     "version": 4
