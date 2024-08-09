@@ -78,7 +78,7 @@ public:
 
         // 0 .. 10
         float volumeCvVolts = 0.0f;
-        // -5 .. 5
+        // -2 .. 2
         float pitchCvVolts = 0.0f;
 
         // the rest here is 0..1
