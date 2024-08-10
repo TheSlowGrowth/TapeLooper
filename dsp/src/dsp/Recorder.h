@@ -62,6 +62,15 @@ public:
         recHeadIdx_ = 0;
     }
 
+    void stopRecordingImmediately()
+    {
+        isRecording_ = false;
+        isFadingOut_ = false;
+        xfadePhase_ = 0.0f;
+        currentLength_ = recHeadIdx_;
+        recHeadIdx_ = 0;
+    }
+
     void setCrossfadeLength(size_t crossfadeLengthInSamples)
     {
         xFadeLengthInSamples_ = std::min(crossfadeLengthInSamples, buffer_.size_);
