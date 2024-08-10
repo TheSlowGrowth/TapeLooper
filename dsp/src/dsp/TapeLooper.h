@@ -230,8 +230,6 @@ public:
         return true;
     }
 
-    LooperStoragePtr<numChannels> getSampleStoragePtr() { return storage_; }
-
     void preventPlaybackAndRecording(bool stopRecordingImmediately = false)
     {
         preventPlayback_ = true;
@@ -263,6 +261,11 @@ public:
         preventPlayback_ = false;
         preventRecording_ = false;
     }
+
+    LooperStoragePtr<numChannels> getSampleStoragePtr() { return storage_; }
+    size_t getPlaybackLength() const { return recorder_.getCurrentRecordingLength(); }
+    static constexpr size_t getNumChannels() { return numChannels; }
+    static constexpr size_t getSampleRate() { return sampleRate; }
 
 private:
     const LooperStoragePtr<numChannels> storage_;
