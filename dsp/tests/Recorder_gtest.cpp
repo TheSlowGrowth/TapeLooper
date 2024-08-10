@@ -97,12 +97,15 @@ TEST_F(DSP_Recorder, b_recordAndStop)
         {
             xfade += xFadeIncrement_;
             const float expectedSample = xfade * inputSequence_[ch][i]
-                                         + (1.0f - xfade) * inputSequence_[ch][i + expectedTotalNumSamples];
-            EXPECT_NEAR(expectedSample, storage_[ch][i], absError_) << "at i=" << i;
+                                         + (1.0f - xfade)
+                                               * inputSequence_[ch][i + expectedTotalNumSamples];
+            EXPECT_NEAR(expectedSample, storage_[ch][i], absError_)
+                << "at ch=" << ch << ", at i=" << i;
         }
         // compare the samples in the non-crossfaded portion
         for (size_t i = xFadeLengthInSamples_; i < expectedTotalNumSamples; i++)
-            EXPECT_NEAR(inputSequence_[ch][i], storage_[ch][i], absError_) << "at i=" << i;
+            EXPECT_NEAR(inputSequence_[ch][i], storage_[ch][i], absError_)
+                << "at ch=" << ch << ", at i=" << i;
     }
 
     if (HasFailure())
@@ -125,6 +128,32 @@ TEST_F(DSP_Recorder, b_recordAndStop)
             for (size_t i = 0; i < numSamples_; i++)
                 std::cout << storage_[ch][i] << ", ";
             std::cout << "\n";
+        }
+    }
+}
+
+TEST_F(DSP_Recorder, c_stopRecordingImmediately)
+{
+    fillInputSequence();
+
+    recorder_.startRecording();
+    // record some samples, but don't fill the recording buffer yet
+    constexpr auto kNumSamples = blockSize_ / 2;
+    recorder_.process(inputSequence_.subBlock(0, kNumSamples));
+
+    recorder_.stopRecordingImmediately();
+
+    // No longer recording - no crossfading
+    EXPECT_FALSE(recorder_.isRecording());
+
+    // The recorded data is preserved
+    EXPECT_EQ(recorder_.getCurrentRecordingLength(), kNumSamples);
+    for (size_t ch = 0; ch < numChannels_; ch++)
+    {
+        for (size_t i = 0; i < kNumSamples; i++)
+        {
+            EXPECT_NEAR(inputSequence_[ch][i], storage_[ch][i], absError_)
+                << "at ch=" << ch << ", at i=" << i;
         }
     }
 }
