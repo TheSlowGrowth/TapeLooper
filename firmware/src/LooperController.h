@@ -40,6 +40,13 @@ enum class MotorAcceleration
     verySlow
 };
 
+enum class StorageBank
+{
+    green,
+    yellow,
+    red
+};
+
 template <typename LooperTypes, size_t numLoopers>
 class LooperController
 {
@@ -77,16 +84,23 @@ public:
             return loopers_[looperIdx].looper.template as<StereoLooperType>().getState();
     }
 
-    void saveTo(size_t looperIdx, size_t slot)
+    void saveTo(size_t looperIdx, StorageBank bank, size_t slot)
     {
         (void) (looperIdx);
+        (void) (bank);
         (void) (slot);
         // TODO
     }
 
-    void loadFrom(size_t looperIdx, size_t slot)
+    float getCurrentSaveOrLoadProgress()
+    {
+        return 0.0f; // TODO
+    }
+
+    void loadFrom(size_t looperIdx, StorageBank bank, size_t slot)
     {
         (void) (looperIdx);
+        (void) (bank);
         (void) (slot);
         // TODO
     }

@@ -144,6 +144,8 @@ public:
     size_t getCurrentRecordingLength() const { return currentLength_; }
     bool isRecording() const { return isRecording_ || isFadingOut_; }
 
+    void setRecordingProgressForTesting(size_t numSamplesDone) { recHeadIdx_ = numSamplesDone; }
+
 private:
     static constexpr float defaultXFadeLengthInS_ = 0.1f;
 

@@ -40,6 +40,12 @@ public:
 
     bool IsOpaque(const daisy::UiCanvasDescriptor&) override { return false; }
 
+    void OnShow() override
+    {
+        stage_ = Stage::selectChannel;
+        channel_ = -1;
+    }
+
     void Draw(const daisy::UiCanvasDescriptor& canvas) override
     {
         UiHardwareType& hardware = *((UiHardwareType*) canvas.handle_);
@@ -47,20 +53,20 @@ public:
         // light up the save page led
         hardware.setLed(Led::save, LedColour::pulsingRed);
 
-        // update channel octave LEDs to show the currently selected slot
-        // TODO
-        const auto updateChannelOctaveLeds = [&](size_t looperChannel, std::array<Led, 4> ledIds)
+        switch (stage_)
         {
-            (void) (looperChannel);
-            hardware.setLed(ledIds[0], LedColour::off);
-            hardware.setLed(ledIds[1], LedColour::off);
-            hardware.setLed(ledIds[2], LedColour::off);
-            hardware.setLed(ledIds[3], LedColour::off);
-        };
-        updateChannelOctaveLeds(0, { Led::chA_m2, Led::chA_m1, Led::chA_p1, Led::chA_p2 });
-        updateChannelOctaveLeds(1, { Led::chB_m2, Led::chB_m1, Led::chB_p1, Led::chB_p2 });
-        updateChannelOctaveLeds(2, { Led::chC_m2, Led::chC_m1, Led::chC_p1, Led::chC_p2 });
-        updateChannelOctaveLeds(3, { Led::chD_m2, Led::chD_m1, Led::chD_p1, Led::chD_p2 });
+            case Stage::selectChannel:
+                drawSelectChannel(hardware);
+                break;
+            case Stage::selectBankAndSlot:
+                drawSelectBankAndSlot(hardware);
+                break;
+            case Stage::saveInProgress:
+                drawSaveInProgress(hardware);
+                break;
+            default:
+                break;
+        }
     }
 
     bool OnButton(uint16_t buttonID, uint8_t numberOfPresses, bool isRetriggering) override
@@ -98,5 +104,33 @@ private:
     UiSavePage(const UiSavePage&) = delete;
     UiSavePage& operator=(const UiSavePage&) = delete;
 
+    void drawSelectChannel(UiHardwareType& /*hardware*/) {}
+
+    void drawSelectBankAndSlot(UiHardwareType& hardware)
+    {
+        const auto updateChannelOctaveLeds = [&](size_t looperChannel, std::array<Led, 4> ledIds)
+        {
+            (void) (looperChannel);
+            hardware.setLed(ledIds[0], LedColour::off);
+            hardware.setLed(ledIds[1], LedColour::off);
+            hardware.setLed(ledIds[2], LedColour::off);
+            hardware.setLed(ledIds[3], LedColour::off);
+        };
+        updateChannelOctaveLeds(0, { Led::chA_m2, Led::chA_m1, Led::chA_p1, Led::chA_p2 });
+        updateChannelOctaveLeds(1, { Led::chB_m2, Led::chB_m1, Led::chB_p1, Led::chB_p2 });
+        updateChannelOctaveLeds(2, { Led::chC_m2, Led::chC_m1, Led::chC_p1, Led::chC_p2 });
+        updateChannelOctaveLeds(3, { Led::chD_m2, Led::chD_m1, Led::chD_p1, Led::chD_p2 });
+    }
+
+    void drawSaveInProgress(UiHardwareType& /*hardware*/) {}
+
+    enum class Stage
+    {
+        selectChannel,
+        selectBankAndSlot,
+        saveInProgress,
+    };
+    Stage stage_ = Stage::selectChannel;
+    int channel_ = -1;
     LooperControllerType& looperController_;
 };
