@@ -85,7 +85,8 @@ void flushLedDisplay(const daisy::UiCanvasDescriptor&)
 void initUi()
 {
     // init the UI hardware
-    auto& hardware = *uiHardware.create(uiEventQueue,
+    auto& hardware = *uiHardware.create(seed.qspi,
+                                        uiEventQueue,
                                         ledDmaBufferA,
                                         ledDmaBufferB,
                                         &buttonShiftRegisterDmaBuffer);
