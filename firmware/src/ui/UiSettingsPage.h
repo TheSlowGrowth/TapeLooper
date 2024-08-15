@@ -181,6 +181,7 @@ public:
             case Button::save:
                 if (saveButtonState_ && loadButtonState_)
                 {
+                    Close();
                     GetParentUI()->OpenPage(calibrationPage_);
                 }
             default:
