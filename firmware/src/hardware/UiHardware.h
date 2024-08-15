@@ -340,10 +340,7 @@ public:
         ledDriver_.SwapBuffersAndTransmit();
     }
 
-    float getCvVolts(CvInput cv) const
-    {
-        return knobsAndCv_.getCvVolts(cv);
-    }
+    KnobAndCvReader& getKnobsAndCv() { return knobsAndCv_; }
 
     // ===================================================================
     // implements the button reader interface for the libDaisy UI system
