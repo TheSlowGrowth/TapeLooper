@@ -33,9 +33,11 @@ class UiSettingsPage : public daisy::UiPage
 {
 public:
     UiSettingsPage(LooperControllerType& looperController,
-                   LooperParameterProviderType& looperParameterProvider) :
+                   LooperParameterProviderType& looperParameterProvider,
+                   daisy::UiPage& calibrationPage) :
         looperController_(looperController),
-        looperParameterProvider_(looperParameterProvider)
+        looperParameterProvider_(looperParameterProvider),
+        calibrationPage_(calibrationPage)
     {
     }
 
@@ -120,17 +122,22 @@ public:
     void OnFocusGained() override
     {
         currentSetting_ = Setting::direction;
+        saveButtonState_ = false;
+        loadButtonState_ = false;
     }
 
     bool OnButton(uint16_t buttonID, uint8_t numberOfPresses, bool isRetriggering) override
     {
         (void) (isRetriggering); // ignore this argument
 
+        const Button button = Button(buttonID);
+
+        trackLoadAndSaveButtonStates(button, numberOfPresses);
+
         // swallow but ignore button-up messages
         if (numberOfPresses < 1)
             return true;
 
-        const Button button = Button(buttonID);
         switch (button)
         {
             // channel up rocker switch
@@ -168,11 +175,14 @@ public:
                 else if (currentSetting_ == Setting::motorLag)
                     Close(); // close this page
                 break;
-            case Button::record:
+
+            // open calibration menu when load and save pressed at the same time
             case Button::load:
             case Button::save:
-                Close(); // close this page
-                return false; // pass event to the page below to open the respective page
+                if (saveButtonState_ && loadButtonState_)
+                {
+                    GetParentUI()->OpenPage(calibrationPage_);
+                }
             default:
                 break;
         }
@@ -187,6 +197,18 @@ public:
 private:
     UiSettingsPage(const UiSettingsPage&) = delete;
     UiSettingsPage& operator=(const UiSettingsPage&) = delete;
+
+    void trackLoadAndSaveButtonStates(Button button, int numberOfPresses)
+    {
+        if (button == Button::save)
+        {
+            saveButtonState_ = numberOfPresses > 0;
+        }
+        if (button == Button::load)
+        {
+            loadButtonState_ = numberOfPresses > 0;
+        }
+    }
 
     void onUpButton(size_t looperChannel)
     {
@@ -266,6 +288,11 @@ private:
     };
     Setting currentSetting_ = Setting::direction;
 
+    bool saveButtonState_ = false;
+    bool loadButtonState_ = false;
+
     LooperControllerType& looperController_;
     LooperParameterProviderType& looperParameterProvider_;
+
+    daisy::UiPage& calibrationPage_;
 };
