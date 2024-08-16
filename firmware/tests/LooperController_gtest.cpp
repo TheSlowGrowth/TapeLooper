@@ -125,11 +125,18 @@ public:
     MOCK_METHOD(ProcessorParametersMock, getProcessorParameters, (size_t looperChannel), (const));
 };
 
+class AudioSaveAndRecallMock
+{
+public:
+    // MOCK_METHOD(ReturnType, MethodName, (Args...), (Specs...));
+};
+
 struct LooperMockTypes
 {
     using MonoLooperType = ::testing::NiceMock<MonoLooperMock>;
     using StereoLooperType = ::testing::NiceMock<StereoLooperMock>;
     using ParameterProvider = ::testing::NiceMock<ParameterProviderMock>;
+    using AudioSaveAndRecallType = ::testing::NiceMock<AudioSaveAndRecallMock>;
 };
 
 class LooperController_Test : public ::testing::Test
@@ -139,7 +146,8 @@ protected:
         controller_(storage_,
                     monoDownmixBuffer_,
                     temporaryBuffer_,
-                    parameterProvider_)
+                    parameterProvider_,
+                    audioSaveAndRecall_)
     {
     }
 
@@ -164,6 +172,7 @@ protected:
     AudioBuffer<1, numSamples_> monoDownmixBuffer_;
     AudioBuffer<1, numSamples_> temporaryBuffer_;
     ::testing::NiceMock<ParameterProviderMock> parameterProvider_;
+    ::testing::NiceMock<AudioSaveAndRecallMock> audioSaveAndRecall_;
     LooperController<LooperMockTypes, numLoopers_> controller_;
     MockInstanceRegistry& looperInstanceRegistry_ = *mockInstances.GetStateForCurrentTest();
 };
