@@ -42,8 +42,10 @@ public:
     /** Called by the LooperController */
     float getGainParameter(size_t looperChannel) const
     {
-        return volumeSliderToGainMultiplier(controlInputs_[looperChannel].volumeSliderPosition)
-               * volumeCvToGainMultiplier(controlInputs_[looperChannel].volumeCvVolts);
+        return std::clamp(volumeSliderToGainMultiplier(controlInputs_[looperChannel].volumeSliderPosition)
+                              * volumeCvToGainMultiplier(controlInputs_[looperChannel].volumeCvVolts),
+                          0.0f,
+                          1.0f);
     }
     /** Called by the LooperController */
     TapeProcessorParameters getProcessorParameters(size_t looperChannel) const
@@ -118,8 +120,7 @@ private:
 
     float pitchCvToSemitones(float cvVolts) const
     {
-        (void) (cvVolts);
-        return 0.0f; // TODO
+        return cvVolts * 12.0f;
     }
 
     float volumeSliderToGainMultiplier(float sliderValue) const
@@ -130,8 +131,7 @@ private:
 
     float volumeCvToGainMultiplier(float cvVolts) const
     {
-        (void) (cvVolts);
-        return 1.0f; // TODO
+        return cvVolts / 5.0f;
     }
 
     float getUnclampedSpeedParameter(size_t looperChannel) const

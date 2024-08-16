@@ -24,6 +24,7 @@
 
 #include "LooperParameterProvider.h"
 #include "UiBasePage.h"
+#include "UiCalibrationPage.h"
 #include "UiSettingsPage.h"
 #include "UiSavePage.h"
 #include "UiLoadPage.h"
@@ -45,8 +46,10 @@ public:
                  ParameterProviderType& looperParameterProvider) :
         uiHardware_(uiHardware),
         eventQueue_(eventQueue),
+        calibrationPage_(uiHardware),
         settingsPage_(looperController,
-                      looperParameterProvider),
+                      looperParameterProvider,
+                      calibrationPage_),
         savePage_(looperController),
         loadPage_(looperController),
         recordingPage_(looperController),
@@ -83,6 +86,8 @@ private:
     UiHardwareType& uiHardware_;
     daisy::UiEventQueue& eventQueue_;
     daisy::UI ui_;
+    UiCalibrationPage<UiHardwareType>
+        calibrationPage_;
     UiSettingsPage<LooperControllerType,
                    UiHardwareType,
                    ParameterProviderType>

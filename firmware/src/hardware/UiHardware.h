@@ -154,8 +154,15 @@ private:
 class KnobAndCvReader
 {
 public:
+    KnobAndCvReader(daisy::QSPIHandle& qspi) :
+        calibrationStorage_(qspi)
+    {
+    }
+
     void init()
     {
+        calibrationStorage_.Init(getDefaultCalibrationData(), kCalibrationDataOffset);
+
         const dsy_gpio_pin mux0 = { DSY_GPIOA, 1 };
         const dsy_gpio_pin mux1 = { DSY_GPIOA, 0 };
         const dsy_gpio_pin mux2 = { DSY_GPIOD, 11 };
@@ -224,7 +231,55 @@ public:
         return 0.0f;
     }
 
+    float getCvRaw(CvInput cv) const
+    {
+        switch (cv)
+        {
+            case CvInput::chA_speed:
+                return adc_.GetMuxFloat(0, 5);
+            case CvInput::chA_volume:
+                return adc_.GetMuxFloat(0, 6);
+            case CvInput::chB_speed:
+                return adc_.GetMuxFloat(1, 5);
+            case CvInput::chB_volume:
+                return adc_.GetMuxFloat(1, 6);
+            case CvInput::chC_speed:
+                return adc_.GetMuxFloat(2, 5);
+            case CvInput::chC_volume:
+                return adc_.GetMuxFloat(2, 6);
+            case CvInput::chD_speed:
+                return adc_.GetMuxFloat(3, 5);
+            case CvInput::chD_volume:
+                return adc_.GetMuxFloat(3, 6);
+            case CvInput::NUM_CVS:
+                break;
+        }
+        return 0.0f;
+    }
+
     float getCvVolts(CvInput cv) const
+    {
+        const auto& coeffs = calibrationStorage_.GetSettings();
+        return getCvRaw(cv) * coeffs[int(cv)].scale
+               + coeffs[int(cv)].offset;
+    }
+
+    struct CvInCoefficients
+    {
+        bool operator==(const CvInCoefficients& other) const
+        {
+            return scale == other.scale && offset == other.offset;
+        }
+        float scale;
+        float offset;
+    };
+    using CalibrationData = std::array<CvInCoefficients, int(CvInput::NUM_CVS)>;
+
+    CalibrationData& getCalibrationData() { return calibrationStorage_.GetSettings(); }
+    void saveCalibrationData() { calibrationStorage_.Save(); }
+
+private:
+    static constexpr CalibrationData getDefaultCalibrationData()
     {
         /**
             The general formula for the CV inputs is
@@ -262,31 +317,23 @@ public:
         constexpr auto kScaleVolume = -4.852941f;
         constexpr auto kOffsetVolume = 5.0f;
 
-        switch (cv)
+        constexpr CalibrationData defaults = []() constexpr
         {
-            case CvInput::chA_speed:
-                return adc_.GetMuxFloat(0, 5) * kScaleSpeed + kOffsetSpeed;
-            case CvInput::chA_volume:
-                return adc_.GetMuxFloat(0, 6) * kScaleVolume + kOffsetVolume;
-            case CvInput::chB_speed:
-                return adc_.GetMuxFloat(1, 5) * kScaleSpeed + kOffsetSpeed;
-            case CvInput::chB_volume:
-                return adc_.GetMuxFloat(1, 6) * kScaleVolume + kOffsetVolume;
-            case CvInput::chC_speed:
-                return adc_.GetMuxFloat(2, 5) * kScaleSpeed + kOffsetSpeed;
-            case CvInput::chC_volume:
-                return adc_.GetMuxFloat(2, 6) * kScaleVolume + kOffsetVolume;
-            case CvInput::chD_speed:
-                return adc_.GetMuxFloat(3, 5) * kScaleSpeed + kOffsetSpeed;
-            case CvInput::chD_volume:
-                return adc_.GetMuxFloat(3, 6) * kScaleVolume + kOffsetVolume;
-            case CvInput::NUM_CVS:
-                break;
-        }
-        return 0.0f;
-    }
+            CalibrationData result = { { 0.0f, 0.0f } };
+            for (size_t i = 0; i < result.size(); i++)
+            {
+                const auto isSpeedCv = i % 2 == 0;
+                result[i] = isSpeedCv ? CvInCoefficients { kScaleSpeed, kOffsetSpeed } : CvInCoefficients { kScaleVolume, kOffsetVolume };
+            }
+            return result;
+        }();
 
-private:
+        return defaults;
+    }
+    static constexpr auto kCalibrationDataOffset = 0;
+
+    mutable daisy::PersistentStorage<CalibrationData> calibrationStorage_;
+
     daisy::AdcHandle adc_;
 };
 
@@ -296,10 +343,12 @@ public:
     using LedDriverType = daisy::LedDriverPca9685<3, false>;
     using LedDmaBufferType = LedDriverType::DmaBuffer;
 
-    UiHardware(daisy::UiEventQueue& eventQueue,
+    UiHardware(daisy::QSPIHandle& qspi,
+               daisy::UiEventQueue& eventQueue,
                LedDmaBufferType bufferA,
                LedDmaBufferType bufferB,
-               uint16_t* shiftRegisterDmaBuffer)
+               uint16_t* shiftRegisterDmaBuffer) :
+        knobsAndCv_(qspi)
     {
         potMonitor_.Init(eventQueue, *this);
         buttonMonitor_.Init(eventQueue,
@@ -340,10 +389,7 @@ public:
         ledDriver_.SwapBuffersAndTransmit();
     }
 
-    float getCvVolts(CvInput cv) const
-    {
-        return knobsAndCv_.getCvVolts(cv);
-    }
+    KnobAndCvReader& getKnobsAndCv() { return knobsAndCv_; }
 
     // ===================================================================
     // implements the button reader interface for the libDaisy UI system

@@ -85,7 +85,8 @@ void flushLedDisplay(const daisy::UiCanvasDescriptor&)
 void initUi()
 {
     // init the UI hardware
-    auto& hardware = *uiHardware.create(uiEventQueue,
+    auto& hardware = *uiHardware.create(seed.qspi,
+                                        uiEventQueue,
                                         ledDmaBufferA,
                                         ledDmaBufferB,
                                         &buttonShiftRegisterDmaBuffer);
@@ -146,6 +147,24 @@ void configurePlatform()
 void audioCallback(const float* const* in, float** out, size_t size)
 {
     cpuLoadMeter.OnBlockStart();
+
+    // update CV values
+    looperParameterProvider->controlInputs_[0].pitchCvVolts =
+        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chA_speed);
+    looperParameterProvider->controlInputs_[1].pitchCvVolts =
+        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chB_speed);
+    looperParameterProvider->controlInputs_[2].pitchCvVolts =
+        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chC_speed);
+    looperParameterProvider->controlInputs_[3].pitchCvVolts =
+        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chD_speed);
+    looperParameterProvider->controlInputs_[0].volumeCvVolts =
+        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chA_volume);
+    looperParameterProvider->controlInputs_[1].volumeCvVolts =
+        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chB_volume);
+    looperParameterProvider->controlInputs_[2].volumeCvVolts =
+        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chC_volume);
+    looperParameterProvider->controlInputs_[3].volumeCvVolts =
+        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chD_volume);
 
     // peak meters
     peakMeters[0].readPeaks(in[0]);
