@@ -263,6 +263,7 @@ public:
     }
 
     LooperStoragePtr<numChannels> getSampleStoragePtr() { return storage_; }
+    void setPlaybackLength(size_t length) { recorder_.setCurrentPlaybackLength(length); }
     size_t getPlaybackLength() const { return recorder_.getCurrentRecordingLength(); }
     static constexpr size_t getNumChannels() { return numChannels; }
     static constexpr size_t getSampleRate() { return sampleRate; }
