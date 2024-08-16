@@ -24,6 +24,7 @@
 
 #include "constants.h"
 #include "util/LateInitializedObject.h"
+#include "AudioSaveAndRecall.h"
 
 enum class ChannelLayout
 {
@@ -48,15 +49,18 @@ public:
     using MonoLooperType = typename LooperTypes::MonoLooperType;
     using StereoLooperType = typename LooperTypes::StereoLooperType;
     using ParameterProviderType = typename LooperTypes::ParameterProvider;
+    using AudioSaveAndRecallType = typename LooperTypes::AudioSaveAndRecallType;
 
     LooperController(std::array<MonoOrStereoLooperStoragePtr, numLoopers> looperStorage,
                      AudioBufferPtr<1> monoDownmixBuffer,
                      AudioBufferPtr<1> temporaryBuffer,
-                     const ParameterProviderType& paramProvider) :
+                     const ParameterProviderType& paramProvider,
+                     AudioSaveAndRecallType& audioSaveAndRecall) :
         looperStorage_(looperStorage),
         monoDownmixBuffer_(monoDownmixBuffer),
         temporaryBuffer_(temporaryBuffer),
-        paramProvider_(paramProvider)
+        paramProvider_(paramProvider),
+        audioSaveAndRecall_(audioSaveAndRecall)
     {
         for (size_t i = 0; i < numLoopers; i++)
             loopers_[i].initializeToLayout(ChannelLayout::stereo, looperStorage_[i]);
@@ -78,18 +82,51 @@ public:
             return loopers_[looperIdx].looper.template as<StereoLooperType>().getState();
     }
 
-    void saveTo(size_t looperIdx, size_t slot)
+    void saveTo(StorageBank bank,
+                size_t looperIdx,
+                size_t slot,
+                AudioSaveAndRecallDoneCallbackPtr doneCallback,
+                void* doneCallbackContext)
     {
+        (void) (bank);
         (void) (looperIdx);
         (void) (slot);
-        // TODO
+        (void) (doneCallback);
+        (void) (doneCallbackContext);
+        /*
+        audioSaveAndRecall_.startSavingToFile(bank,
+                                              slot,
+                                              loopers_[looperIdx].looper,
+                                              doneCallback,
+                                              doneCallbackContext);
+        */
     }
 
-    void loadFrom(size_t looperIdx, size_t slot)
+    float getCurrentSaveOrLoadProgress()
     {
+        // return audioSaveAndRecall_.getCurrentProgress();
+        return 0.0f;
+    }
+
+    void loadFrom(StorageBank bank,
+                  size_t looperIdx,
+                  size_t slot,
+                  AudioSaveAndRecallDoneCallbackPtr doneCallback,
+                  void* doneCallbackContext)
+    {
+        (void) (bank);
         (void) (looperIdx);
         (void) (slot);
-        // TODO
+        (void) (doneCallback);
+        (void) (doneCallbackContext);
+        /*
+        // TODO: Reconfigure to correct channel layout
+        audioSaveAndRecall_.startReadingFromFiles(bank,
+                                                  slot,
+                                                  loopers_[looperIdx].looper,
+                                                  doneCallback,
+                                                  doneCallbackContext);
+        */
     }
 
     void setChannelLayout(size_t looperIdx, ChannelLayout channelLayout)
@@ -298,4 +335,5 @@ private:
     AudioBufferPtr<1> monoDownmixBuffer_;
     AudioBufferPtr<1> temporaryBuffer_;
     const ParameterProviderType& paramProvider_;
+    AudioSaveAndRecallType& audioSaveAndRecall_;
 };
