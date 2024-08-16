@@ -1,2001 +1,4874 @@
-(kicad_sch (version 20230121) (generator eeschema)
-
-  (uuid 69466829-a832-41ba-ae54-16fa10b20f54)
-
-  (paper "A4")
-
-  (lib_symbols
-    (symbol "Amplifier_Operational:TL074" (pin_names (offset 0.127)) (in_bom yes) (on_board yes)
-      (property "Reference" "U" (at 0 5.08 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "TL074" (at 0 -5.08 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "" (at -1.27 2.54 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "http://www.ti.com/lit/ds/symlink/tl071.pdf" (at 1.27 5.08 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_locked" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "ki_keywords" "quad opamp" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Quad Low-Noise JFET-Input Operational Amplifiers, DIP-14/SOIC-14" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "SOIC*3.9x8.7mm*P1.27mm* DIP*W7.62mm* TSSOP*4.4x5mm*P0.65mm* SSOP*5.3x6.2mm*P0.65mm* MSOP*3x3mm*P0.5mm*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "TL074_1_1"
-        (polyline
-          (pts
-            (xy -5.08 5.08)
-            (xy 5.08 0)
-            (xy -5.08 -5.08)
-            (xy -5.08 5.08)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type background))
-        )
-        (pin output line (at 7.62 0 180) (length 2.54)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin input line (at -7.62 -2.54 0) (length 2.54)
-          (name "-" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-        (pin input line (at -7.62 2.54 0) (length 2.54)
-          (name "+" (effects (font (size 1.27 1.27))))
-          (number "3" (effects (font (size 1.27 1.27))))
-        )
-      )
-      (symbol "TL074_2_1"
-        (polyline
-          (pts
-            (xy -5.08 5.08)
-            (xy 5.08 0)
-            (xy -5.08 -5.08)
-            (xy -5.08 5.08)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type background))
-        )
-        (pin input line (at -7.62 2.54 0) (length 2.54)
-          (name "+" (effects (font (size 1.27 1.27))))
-          (number "5" (effects (font (size 1.27 1.27))))
-        )
-        (pin input line (at -7.62 -2.54 0) (length 2.54)
-          (name "-" (effects (font (size 1.27 1.27))))
-          (number "6" (effects (font (size 1.27 1.27))))
-        )
-        (pin output line (at 7.62 0 180) (length 2.54)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "7" (effects (font (size 1.27 1.27))))
-        )
-      )
-      (symbol "TL074_3_1"
-        (polyline
-          (pts
-            (xy -5.08 5.08)
-            (xy 5.08 0)
-            (xy -5.08 -5.08)
-            (xy -5.08 5.08)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type background))
-        )
-        (pin input line (at -7.62 2.54 0) (length 2.54)
-          (name "+" (effects (font (size 1.27 1.27))))
-          (number "10" (effects (font (size 1.27 1.27))))
-        )
-        (pin output line (at 7.62 0 180) (length 2.54)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "8" (effects (font (size 1.27 1.27))))
-        )
-        (pin input line (at -7.62 -2.54 0) (length 2.54)
-          (name "-" (effects (font (size 1.27 1.27))))
-          (number "9" (effects (font (size 1.27 1.27))))
-        )
-      )
-      (symbol "TL074_4_1"
-        (polyline
-          (pts
-            (xy -5.08 5.08)
-            (xy 5.08 0)
-            (xy -5.08 -5.08)
-            (xy -5.08 5.08)
-          )
-          (stroke (width 0.254) (type default))
-          (fill (type background))
-        )
-        (pin input line (at -7.62 2.54 0) (length 2.54)
-          (name "+" (effects (font (size 1.27 1.27))))
-          (number "12" (effects (font (size 1.27 1.27))))
-        )
-        (pin input line (at -7.62 -2.54 0) (length 2.54)
-          (name "-" (effects (font (size 1.27 1.27))))
-          (number "13" (effects (font (size 1.27 1.27))))
-        )
-        (pin output line (at 7.62 0 180) (length 2.54)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "14" (effects (font (size 1.27 1.27))))
-        )
-      )
-      (symbol "TL074_5_1"
-        (pin power_in line (at -2.54 -7.62 90) (length 3.81)
-          (name "V-" (effects (font (size 1.27 1.27))))
-          (number "11" (effects (font (size 1.27 1.27))))
-        )
-        (pin power_in line (at -2.54 7.62 270) (length 3.81)
-          (name "V+" (effects (font (size 1.27 1.27))))
-          (number "4" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "Device:C" (pin_numbers hide) (pin_names (offset 0.254)) (in_bom yes) (on_board yes)
-      (property "Reference" "C" (at 0.635 2.54 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Value" "C" (at 0.635 -2.54 0)
-        (effects (font (size 1.27 1.27)) (justify left))
-      )
-      (property "Footprint" "" (at 0.9652 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "cap capacitor" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Unpolarized capacitor" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "C_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "C_0_1"
-        (polyline
-          (pts
-            (xy -2.032 -0.762)
-            (xy 2.032 -0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -2.032 0.762)
-            (xy 2.032 0.762)
-          )
-          (stroke (width 0.508) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "C_1_1"
-        (pin passive line (at 0 3.81 270) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 2.794)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "Device:R" (pin_numbers hide) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "R" (at 2.032 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "R" (at 0 0 90)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at -1.778 0 90)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "~" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "R res resistor" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Resistor" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_fp_filters" "R_*" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "R_0_1"
-        (rectangle (start -1.016 -2.54) (end 1.016 2.54)
-          (stroke (width 0.254) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "R_1_1"
-        (pin passive line (at 0 3.81 270) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 0 -3.81 90) (length 1.27)
-          (name "~" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "ell_audio_conn:JACK_TS_3PINS" (pin_names (offset 0.762)) (in_bom yes) (on_board yes)
-      (property "Reference" "J" (at 0 7.62 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Value" "JACK_TS_3PINS" (at -1.27 -3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 2.54 -3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Datasheet" "" (at 2.54 -3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (symbol "JACK_TS_3PINS_0_0"
-        (polyline
-          (pts
-            (xy 3.81 -1.27)
-            (xy 3.81 1.27)
-            (xy 7.62 1.27)
-          )
-          (stroke (width 0) (type solid))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy -8.89 5.08)
-            (xy -7.62 3.81)
-            (xy -6.35 5.08)
-            (xy 7.62 5.08)
-          )
-          (stroke (width 0) (type solid))
-          (fill (type none))
-        )
-      )
-      (symbol "JACK_TS_3PINS_0_1"
-        (rectangle (start -11.43 5.08) (end -10.16 -1.27)
-          (stroke (width 0) (type solid))
-          (fill (type outline))
-        )
-        (polyline
-          (pts
-            (xy 1.27 -1.27)
-            (xy 7.62 -1.27)
-          )
-          (stroke (width 0) (type solid))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 1.27 -1.27)
-            (xy 0 0)
-            (xy -1.27 -1.27)
-            (xy -1.27 -1.27)
-          )
-          (stroke (width 0) (type solid))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 2.54 0)
-            (xy 3.81 -1.27)
-            (xy 5.08 0)
-            (xy 5.08 0)
-          )
-          (stroke (width 0) (type solid))
-          (fill (type none))
-        )
-        (rectangle (start 7.62 -2.54) (end -10.16 6.35)
-          (stroke (width 0) (type solid))
-          (fill (type none))
-        )
-      )
-      (symbol "JACK_TS_3PINS_1_1"
-        (pin passive line (at 10.16 5.08 180) (length 2.54)
-          (name "S" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 10.16 1.27 180) (length 2.54)
-          (name "TN" (effects (font (size 1.27 1.27))))
-          (number "2" (effects (font (size 1.27 1.27))))
-        )
-        (pin passive line (at 10.16 -1.27 180) (length 2.54)
-          (name "T" (effects (font (size 1.27 1.27))))
-          (number "3" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "power:+12VA" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "#PWR" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Value" "+12VA" (at 0 3.556 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "global power" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Power symbol creates a global label with name \"+12VA\"" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "+12VA_0_1"
-        (polyline
-          (pts
-            (xy -0.762 1.27)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 2.54)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-        (polyline
-          (pts
-            (xy 0 2.54)
-            (xy 0.762 1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "+12VA_1_1"
-        (pin power_in line (at 0 0 90) (length 0) hide
-          (name "+12VA" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-    (symbol "power:-12VA" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "#PWR" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Value" "-12VA" (at 0 3.556 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "global power" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Power symbol creates a global label with name \"-12VA\"" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "-12VA_0_0"
-        (pin power_in line (at 0 0 90) (length 0) hide
-          (name "-12VA" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-      (symbol "-12VA_0_1"
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 1.27)
-            (xy 0.762 1.27)
-            (xy 0 2.54)
-            (xy -0.762 1.27)
-            (xy 0 1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type outline))
-        )
-      )
-    )
-    (symbol "power:GNDA" (power) (pin_names (offset 0)) (in_bom yes) (on_board yes)
-      (property "Reference" "#PWR" (at 0 -6.35 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Value" "GNDA" (at 0 -3.81 0)
-        (effects (font (size 1.27 1.27)))
-      )
-      (property "Footprint" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "Datasheet" "" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_keywords" "global power" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (property "ki_description" "Power symbol creates a global label with name \"GNDA\" , analog ground" (at 0 0 0)
-        (effects (font (size 1.27 1.27)) hide)
-      )
-      (symbol "GNDA_0_1"
-        (polyline
-          (pts
-            (xy 0 0)
-            (xy 0 -1.27)
-            (xy 1.27 -1.27)
-            (xy 0 -2.54)
-            (xy -1.27 -1.27)
-            (xy 0 -1.27)
-          )
-          (stroke (width 0) (type default))
-          (fill (type none))
-        )
-      )
-      (symbol "GNDA_1_1"
-        (pin power_in line (at 0 0 270) (length 0) hide
-          (name "GNDA" (effects (font (size 1.27 1.27))))
-          (number "1" (effects (font (size 1.27 1.27))))
-        )
-      )
-    )
-  )
-
-  (junction (at 129.54 133.35) (diameter 0) (color 0 0 0 0)
-    (uuid 023569aa-4eac-4095-a3a0-b7232a034550)
-  )
-  (junction (at 187.96 88.9) (diameter 0) (color 0 0 0 0)
-    (uuid 1fc5e47c-c414-4b0e-acae-dea855742112)
-  )
-  (junction (at 129.54 140.97) (diameter 0) (color 0 0 0 0)
-    (uuid 23277220-5364-4288-a268-22e38f7d76fa)
-  )
-  (junction (at 109.22 140.97) (diameter 0) (color 0 0 0 0)
-    (uuid 25877180-2804-46c6-a546-7b15d6f3b896)
-  )
-  (junction (at 109.22 107.95) (diameter 0) (color 0 0 0 0)
-    (uuid 3dbeb2d2-43cc-4d01-b6e5-b832746c1217)
-  )
-  (junction (at 133.35 38.1) (diameter 0) (color 0 0 0 0)
-    (uuid 47510e0b-c8a5-4672-b879-f9e381b9fca3)
-  )
-  (junction (at 133.35 77.47) (diameter 0) (color 0 0 0 0)
-    (uuid 552d77f5-8a8e-495c-8866-c028cfc39d4f)
-  )
-  (junction (at 109.22 135.89) (diameter 0) (color 0 0 0 0)
-    (uuid 586e710b-5e1f-4310-bd4a-05458c6136b0)
-  )
-  (junction (at 133.35 72.39) (diameter 0) (color 0 0 0 0)
-    (uuid 5f5d91d2-1f61-48fa-91c5-58db16565af9)
-  )
-  (junction (at 109.22 102.87) (diameter 0) (color 0 0 0 0)
-    (uuid 6451895f-b052-41aa-a915-0a35815a8563)
-  )
-  (junction (at 133.35 43.18) (diameter 0) (color 0 0 0 0)
-    (uuid 7ae59f64-94a0-4b16-a243-bfd502893c15)
-  )
-  (junction (at 129.54 107.95) (diameter 0) (color 0 0 0 0)
-    (uuid 7c979add-faed-4bbf-a098-d5a50bca6515)
-  )
-  (junction (at 129.54 100.33) (diameter 0) (color 0 0 0 0)
-    (uuid 9bda5262-63c8-4e5d-af38-7da6925ee66e)
-  )
-  (junction (at 153.67 35.56) (diameter 0) (color 0 0 0 0)
-    (uuid a70b6061-2fa4-4692-9178-aae5e493dd36)
-  )
-  (junction (at 123.19 38.1) (diameter 0) (color 0 0 0 0)
-    (uuid acbc2536-2705-4d33-bd35-ad39de003e76)
-  )
-  (junction (at 153.67 77.47) (diameter 0) (color 0 0 0 0)
-    (uuid d82f4513-2d5b-4def-a92c-cae1dc30a6c5)
-  )
-  (junction (at 153.67 43.18) (diameter 0) (color 0 0 0 0)
-    (uuid eb17fa61-504c-4f71-9b98-7839c35900c5)
-  )
-  (junction (at 153.67 69.85) (diameter 0) (color 0 0 0 0)
-    (uuid f63ad328-a61d-4e98-af84-e2559ea3f125)
-  )
-
-  (no_connect (at 142.24 135.89) (uuid 324ee018-f24f-4434-ae78-c96bbdea759d))
-  (no_connect (at 142.24 102.87) (uuid 91c812d0-0fa2-4886-8f4b-88e1b3625df1))
-  (no_connect (at 114.3 40.64) (uuid c12106b0-8275-495c-b54e-a5bdc5f66899))
-
-  (wire (pts (xy 123.19 74.93) (xy 123.19 38.1))
-    (stroke (width 0) (type default))
-    (uuid 0182e4da-e528-468d-895f-df788e6542cb)
-  )
-  (wire (pts (xy 132.08 38.1) (xy 133.35 38.1))
-    (stroke (width 0) (type default))
-    (uuid 09ce76d2-321f-42b9-bc92-4caa45f49773)
-  )
-  (wire (pts (xy 139.7 100.33) (xy 142.24 100.33))
-    (stroke (width 0) (type default))
-    (uuid 0c1e3dea-ec6e-442a-8bc8-e1a555f86337)
-  )
-  (wire (pts (xy 133.35 72.39) (xy 135.89 72.39))
-    (stroke (width 0) (type default))
-    (uuid 0f9c93b7-13c3-45ce-af2c-8d08334d3601)
-  )
-  (wire (pts (xy 133.35 33.02) (xy 135.89 33.02))
-    (stroke (width 0) (type default))
-    (uuid 10d995d2-df01-468b-bcca-208b4dc6b42e)
-  )
-  (wire (pts (xy 182.88 88.9) (xy 187.96 88.9))
-    (stroke (width 0) (type default))
-    (uuid 1b825441-c8b2-41ae-ac1a-924d906bad9a)
-  )
-  (wire (pts (xy 96.52 135.89) (xy 99.06 135.89))
-    (stroke (width 0) (type default))
-    (uuid 1ba69503-dfe2-4228-b4bd-23c3886cabba)
-  )
-  (wire (pts (xy 149.86 52.07) (xy 153.67 52.07))
-    (stroke (width 0) (type default))
-    (uuid 1e5bc3f5-dcbd-45f7-bf3e-9fa3724ef9fb)
-  )
-  (wire (pts (xy 153.67 69.85) (xy 151.13 69.85))
-    (stroke (width 0) (type default))
-    (uuid 1f960de5-2ea5-4a2f-94e8-8159a6274e4c)
-  )
-  (wire (pts (xy 132.08 72.39) (xy 133.35 72.39))
-    (stroke (width 0) (type default))
-    (uuid 20ff0744-a4d2-4571-b5a1-c125add58e7a)
-  )
-  (wire (pts (xy 106.68 102.87) (xy 109.22 102.87))
-    (stroke (width 0) (type default))
-    (uuid 212f139f-e53e-4c76-9109-8bd0bc470026)
-  )
-  (wire (pts (xy 139.7 133.35) (xy 142.24 133.35))
-    (stroke (width 0) (type default))
-    (uuid 21463fe6-52db-4cf2-b6e8-e7b87438303b)
-  )
-  (wire (pts (xy 133.35 67.31) (xy 135.89 67.31))
-    (stroke (width 0) (type default))
-    (uuid 24d6bd1c-7b25-4679-ad85-29166a96b01e)
-  )
-  (wire (pts (xy 109.22 135.89) (xy 111.76 135.89))
-    (stroke (width 0) (type default))
-    (uuid 253041a5-3267-464f-b99f-bb79ee78a3a4)
-  )
-  (wire (pts (xy 129.54 100.33) (xy 132.08 100.33))
-    (stroke (width 0) (type default))
-    (uuid 2611c16e-cec6-4df4-86a1-2c0f7b6206a1)
-  )
-  (wire (pts (xy 153.67 52.07) (xy 153.67 43.18))
-    (stroke (width 0) (type default))
-    (uuid 29f2922c-d36d-49f5-8df1-16625633a67c)
-  )
-  (wire (pts (xy 125.73 116.84) (xy 129.54 116.84))
-    (stroke (width 0) (type default))
-    (uuid 2adf7b2e-5240-4008-b35a-1655085cdf0b)
-  )
-  (wire (pts (xy 109.22 130.81) (xy 111.76 130.81))
-    (stroke (width 0) (type default))
-    (uuid 334fb5b3-8f91-4982-9722-9c82120c3a38)
-  )
-  (wire (pts (xy 187.96 88.9) (xy 187.96 87.63))
-    (stroke (width 0) (type default))
-    (uuid 34ee251b-5700-424c-9a98-abe85ab6fbdf)
-  )
-  (wire (pts (xy 153.67 86.36) (xy 153.67 77.47))
-    (stroke (width 0) (type default))
-    (uuid 36cfb91d-1c66-488d-9a02-c8e9ad24588e)
-  )
-  (wire (pts (xy 153.67 69.85) (xy 158.75 69.85))
-    (stroke (width 0) (type default))
-    (uuid 3a7a0ad7-ec8a-4ed3-a35f-41e660b7d49e)
-  )
-  (wire (pts (xy 133.35 38.1) (xy 135.89 38.1))
-    (stroke (width 0) (type default))
-    (uuid 3c1d6607-905c-4635-876e-452f9f462066)
-  )
-  (wire (pts (xy 109.22 140.97) (xy 118.11 140.97))
-    (stroke (width 0) (type default))
-    (uuid 4c846904-0709-4053-89b9-c8f174257792)
-  )
-  (wire (pts (xy 109.22 97.79) (xy 111.76 97.79))
-    (stroke (width 0) (type default))
-    (uuid 4ef075f9-cd16-4fac-83a9-b05a36b89e35)
-  )
-  (wire (pts (xy 140.97 139.7) (xy 140.97 140.97))
-    (stroke (width 0) (type default))
-    (uuid 59280e27-eb37-40e8-8c3d-b4cd1af8e35a)
-  )
-  (wire (pts (xy 142.24 52.07) (xy 133.35 52.07))
-    (stroke (width 0) (type default))
-    (uuid 5b5e916b-4abf-4780-b66b-36c226b57546)
-  )
-  (wire (pts (xy 129.54 107.95) (xy 129.54 100.33))
-    (stroke (width 0) (type default))
-    (uuid 6028e431-1771-48bc-a920-dc0e20c010ca)
-  )
-  (wire (pts (xy 153.67 35.56) (xy 158.75 35.56))
-    (stroke (width 0) (type default))
-    (uuid 6171ad0a-1379-4fe6-8645-57a8cf0b48ee)
-  )
-  (wire (pts (xy 182.88 90.17) (xy 182.88 88.9))
-    (stroke (width 0) (type default))
-    (uuid 65ea45d0-467e-48f7-bb4b-b042086ab2fa)
-  )
-  (wire (pts (xy 123.19 38.1) (xy 124.46 38.1))
-    (stroke (width 0) (type default))
-    (uuid 6b76fcb1-0fb5-47e8-86dd-4f31faabffa7)
-  )
-  (wire (pts (xy 142.24 139.7) (xy 140.97 139.7))
-    (stroke (width 0) (type default))
-    (uuid 6edbe342-b954-4c4d-8386-31e108fc62a0)
-  )
-  (wire (pts (xy 142.24 86.36) (xy 133.35 86.36))
-    (stroke (width 0) (type default))
-    (uuid 74884bc9-8cf1-400c-a2d2-8d32148e81cc)
-  )
-  (wire (pts (xy 133.35 77.47) (xy 142.24 77.47))
-    (stroke (width 0) (type default))
-    (uuid 765154b9-0393-41a4-a0bf-463b8b2fd799)
-  )
-  (wire (pts (xy 125.73 149.86) (xy 129.54 149.86))
-    (stroke (width 0) (type default))
-    (uuid 7bd338b1-3221-4f4e-88bd-4bfe89d68a77)
-  )
-  (wire (pts (xy 142.24 106.68) (xy 140.97 106.68))
-    (stroke (width 0) (type default))
-    (uuid 7d90d411-b69b-4256-8cd2-2790590af8dc)
-  )
-  (wire (pts (xy 140.97 106.68) (xy 140.97 107.95))
-    (stroke (width 0) (type default))
-    (uuid 7f6ac485-dce8-4603-baa8-a1f3ac8bccfd)
-  )
-  (wire (pts (xy 109.22 107.95) (xy 118.11 107.95))
-    (stroke (width 0) (type default))
-    (uuid 8f5916f5-dd2a-414a-a34b-e7a24ebb2f3a)
-  )
-  (wire (pts (xy 153.67 35.56) (xy 151.13 35.56))
-    (stroke (width 0) (type default))
-    (uuid 92a99cd4-1ed3-4240-b929-1c0243abc36d)
-  )
-  (wire (pts (xy 133.35 72.39) (xy 133.35 77.47))
-    (stroke (width 0) (type default))
-    (uuid 9317c3f1-c6a4-4c9d-9edf-b5dca61392da)
-  )
-  (wire (pts (xy 114.3 74.93) (xy 123.19 74.93))
-    (stroke (width 0) (type default))
-    (uuid 99414538-f98b-459c-a5cb-2331f4888683)
-  )
-  (wire (pts (xy 133.35 43.18) (xy 142.24 43.18))
-    (stroke (width 0) (type default))
-    (uuid 9a686feb-cdef-452d-a61b-dc1a30edbedc)
-  )
-  (wire (pts (xy 129.54 149.86) (xy 129.54 140.97))
-    (stroke (width 0) (type default))
-    (uuid 9e6bf015-ee65-4893-82f4-a5937f6b997f)
-  )
-  (wire (pts (xy 149.86 77.47) (xy 153.67 77.47))
-    (stroke (width 0) (type default))
-    (uuid 9fdafd81-eaac-47fa-a342-08c2696551d1)
-  )
-  (wire (pts (xy 106.68 135.89) (xy 109.22 135.89))
-    (stroke (width 0) (type default))
-    (uuid a186cdfa-224d-49d9-a76a-d95c060af16e)
-  )
-  (wire (pts (xy 187.96 88.9) (xy 187.96 90.17))
-    (stroke (width 0) (type default))
-    (uuid a4bed47f-3d39-4643-9a58-3404344c0262)
-  )
-  (wire (pts (xy 96.52 102.87) (xy 99.06 102.87))
-    (stroke (width 0) (type default))
-    (uuid a7b69618-8ea3-4d82-9180-a61bd990c6cc)
-  )
-  (wire (pts (xy 153.67 43.18) (xy 153.67 35.56))
-    (stroke (width 0) (type default))
-    (uuid aa5d0ad2-ae63-4bdd-878f-7b793466a41e)
-  )
-  (wire (pts (xy 149.86 43.18) (xy 153.67 43.18))
-    (stroke (width 0) (type default))
-    (uuid af7b4b04-88a9-4b71-a0d2-efe3ea968159)
-  )
-  (wire (pts (xy 129.54 100.33) (xy 127 100.33))
-    (stroke (width 0) (type default))
-    (uuid b066ff13-e0bd-4ea3-8948-b2724007a2d5)
-  )
-  (wire (pts (xy 109.22 102.87) (xy 109.22 107.95))
-    (stroke (width 0) (type default))
-    (uuid b194cd7a-fb0f-4dc4-88c1-3274406be17a)
-  )
-  (wire (pts (xy 114.3 78.74) (xy 115.57 78.74))
-    (stroke (width 0) (type default))
-    (uuid b2266549-e6f6-499b-a411-3e87d3470baa)
-  )
-  (wire (pts (xy 133.35 86.36) (xy 133.35 77.47))
-    (stroke (width 0) (type default))
-    (uuid b3987ff3-c6c4-4a57-b948-0735bc3c07b2)
-  )
-  (wire (pts (xy 123.19 38.1) (xy 114.3 38.1))
-    (stroke (width 0) (type default))
-    (uuid b61363f7-7448-478c-aa16-e77fc4d9758a)
-  )
-  (wire (pts (xy 129.54 133.35) (xy 132.08 133.35))
-    (stroke (width 0) (type default))
-    (uuid bbeb0946-e18d-4822-a1b2-0cef6b73a8bd)
-  )
-  (wire (pts (xy 109.22 102.87) (xy 111.76 102.87))
-    (stroke (width 0) (type default))
-    (uuid c1878cf4-f0fe-4b48-92a2-caa0966b0fb0)
-  )
-  (wire (pts (xy 133.35 38.1) (xy 133.35 43.18))
-    (stroke (width 0) (type default))
-    (uuid c8a7d536-1805-41e7-96d4-839d932c6bb4)
-  )
-  (wire (pts (xy 129.54 116.84) (xy 129.54 107.95))
-    (stroke (width 0) (type default))
-    (uuid ca9e4d87-7eb5-45d4-b2cd-43f6b1a7a3d1)
-  )
-  (wire (pts (xy 109.22 116.84) (xy 109.22 107.95))
-    (stroke (width 0) (type default))
-    (uuid d5d5a735-3752-4756-bfdb-1e111ea883c9)
-  )
-  (wire (pts (xy 118.11 116.84) (xy 109.22 116.84))
-    (stroke (width 0) (type default))
-    (uuid d69264b7-97aa-45eb-8463-4a2cefc425cc)
-  )
-  (wire (pts (xy 109.22 149.86) (xy 109.22 140.97))
-    (stroke (width 0) (type default))
-    (uuid d71997d0-a165-462d-9dab-99743d358f48)
-  )
-  (wire (pts (xy 153.67 77.47) (xy 153.67 69.85))
-    (stroke (width 0) (type default))
-    (uuid d9cb7444-c6a1-48d8-98a9-d6f22513886e)
-  )
-  (wire (pts (xy 114.3 72.39) (xy 124.46 72.39))
-    (stroke (width 0) (type default))
-    (uuid e0066367-0c27-4886-88d2-eb43804bf9d0)
-  )
-  (wire (pts (xy 129.54 133.35) (xy 127 133.35))
-    (stroke (width 0) (type default))
-    (uuid e13860e6-cf69-4ca7-89d5-fac2f2b6559e)
-  )
-  (wire (pts (xy 114.3 44.45) (xy 115.57 44.45))
-    (stroke (width 0) (type default))
-    (uuid e18239f4-81c8-4251-91b5-73c239ad2279)
-  )
-  (wire (pts (xy 133.35 52.07) (xy 133.35 43.18))
-    (stroke (width 0) (type default))
-    (uuid e6e1cf55-1300-4652-b00f-4e5d658886a9)
-  )
-  (wire (pts (xy 118.11 149.86) (xy 109.22 149.86))
-    (stroke (width 0) (type default))
-    (uuid eb2b9614-3e32-471b-99e1-5cc26e85bf9f)
-  )
-  (wire (pts (xy 115.57 78.74) (xy 115.57 80.01))
-    (stroke (width 0) (type default))
-    (uuid ec2f08b8-3502-49a2-ae47-944f5e55c1b8)
-  )
-  (wire (pts (xy 149.86 86.36) (xy 153.67 86.36))
-    (stroke (width 0) (type default))
-    (uuid f1641095-8d2e-4aeb-b0f3-8ddb77e52ff3)
-  )
-  (wire (pts (xy 125.73 140.97) (xy 129.54 140.97))
-    (stroke (width 0) (type default))
-    (uuid f26077ed-9032-45ab-aea0-ee087e161516)
-  )
-  (wire (pts (xy 109.22 135.89) (xy 109.22 140.97))
-    (stroke (width 0) (type default))
-    (uuid f2d8753d-e35d-4b85-9eda-f93e5cff1688)
-  )
-  (wire (pts (xy 129.54 140.97) (xy 129.54 133.35))
-    (stroke (width 0) (type default))
-    (uuid f3212d5b-d08c-4ab9-8c01-508dac020b15)
-  )
-  (wire (pts (xy 125.73 107.95) (xy 129.54 107.95))
-    (stroke (width 0) (type default))
-    (uuid fa00e816-744f-46a4-96a2-37a5ff2f5209)
-  )
-  (wire (pts (xy 115.57 44.45) (xy 115.57 45.72))
-    (stroke (width 0) (type default))
-    (uuid ff030493-81e9-44ea-9948-7c25a4866528)
-  )
-
-  (text "Audio Out L\n" (at 165.1 100.33 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 00e469a0-db9b-4a4d-b538-b52f3d6d87a0)
-  )
-  (text "Audio In L\n" (at 93.98 35.56 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 44d52659-df92-4482-9a66-8d0157306cbf)
-  )
-  (text "Audio In R\n" (at 93.98 69.85 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 8a331762-a643-4d73-9d09-4a78f724c43d)
-  )
-  (text "Audio Out R" (at 165.1 133.35 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid b0d45882-d5cb-4a66-a882-dae71c49596e)
-  )
-
-  (global_label "AUDIO_ADC_R" (shape output) (at 158.75 69.85 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid 379baf51-4ebe-4f1a-94d9-d2eac120d2bd)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 158.75 69.85 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-  )
-  (global_label "AUDIO_ADC_L" (shape output) (at 158.75 35.56 0)
-    (effects (font (size 1.27 1.27)) (justify left))
-    (uuid 5580e384-1bd0-48fe-ac63-c649a6e289ef)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 158.75 35.56 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-  )
-  (global_label "AUDIO_DAC_R" (shape input) (at 96.52 135.89 180)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 5bd373bb-c1e7-4b82-91ef-8747348ab08b)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 96.52 135.89 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-  )
-  (global_label "AUDIO_DAC_L" (shape input) (at 96.52 102.87 180)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid d58da50c-7d8e-490b-9762-52808457b048)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 96.52 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-  )
-
-  (symbol (lib_id "Amplifier_Operational:TL074") (at 143.51 35.56 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c4719a)
-    (property "Reference" "U?" (at 143.51 31.75 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "TL074" (at 143.51 39.37 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" (at 142.24 33.02 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf" (at 144.78 30.48 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 0758d7e1-d83c-4fe1-a7da-e219f94acd15))
-    (pin "2" (uuid 734d563a-b2c3-49cd-9105-31b850ebd35e))
-    (pin "3" (uuid 953b3657-2dbf-4b18-b481-39abde07549b))
-    (pin "5" (uuid 52412df5-2cfd-48fa-af35-9fedb4120e4b))
-    (pin "6" (uuid 1bf18b2e-4848-4db2-9b0f-e6a01aa84c8f))
-    (pin "7" (uuid 9fe28dec-97ae-4728-9f86-0d2f26cd9dcb))
-    (pin "10" (uuid 2d4d8c06-ad9d-41a8-a44b-c1d1339dd58c))
-    (pin "8" (uuid c8acb883-c0d4-495c-bedc-499bd64cd728))
-    (pin "9" (uuid 10e1ec68-043d-4e1d-ba20-e99d9b1db6ed))
-    (pin "12" (uuid c8b8d8ca-074e-4698-9ca6-c89367e5bd67))
-    (pin "13" (uuid d1c3bad0-15de-4ec7-9680-cbfc966abd02))
-    (pin "14" (uuid 780b8288-5639-4320-ad9f-612053840e59))
-    (pin "11" (uuid 2b5d800d-1726-4d17-bfd6-23e49b1d5f61))
-    (pin "4" (uuid 6c479c93-d650-4071-8527-2432b43cf62c))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "U?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "U701") (unit 3)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+12VA") (at 199.39 80.01 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471a0)
-    (property "Reference" "#PWR?" (at 199.39 83.82 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+12VA" (at 199.771 75.6158 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 199.39 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 199.39 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 9ac802aa-7acc-45a5-84ed-d1415dbf6cda))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0706") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:-12VA") (at 199.39 95.25 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471a6)
-    (property "Reference" "#PWR?" (at 199.39 91.44 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "-12VA" (at 199.009 99.6442 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 199.39 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 199.39 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 8057f39e-32d1-4c7a-8206-6945af6b81c6))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0708") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 128.27 38.1 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471ae)
-    (property "Reference" "R?" (at 128.27 40.64 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100k" (at 128.27 43.18 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 128.27 36.322 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 128.27 38.1 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid fc2694b6-748a-4149-9963-a47b3f1b9b70))
-    (pin "2" (uuid a31cd5c0-2748-4b10-bb17-0e676b5c3def))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R701") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 146.05 43.18 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471ba)
-    (property "Reference" "R?" (at 146.05 45.72 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "10k" (at 146.05 48.26 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 146.05 41.402 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 146.05 43.18 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 5a562952-040a-41a5-9aab-846145b2bce4))
-    (pin "2" (uuid 4188ab0f-eb09-431c-a6f8-02578e59b7c1))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R702") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDA") (at 133.35 33.02 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471c3)
-    (property "Reference" "#PWR?" (at 133.35 39.37 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDA" (at 129.54 33.02 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 133.35 33.02 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 133.35 33.02 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 401bdb15-61df-4226-8f44-19e0f61ba04d))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0701") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Amplifier_Operational:TL074") (at 143.51 69.85 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471cc)
-    (property "Reference" "U?" (at 143.51 66.04 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "TL074" (at 143.51 73.66 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" (at 142.24 67.31 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf" (at 144.78 64.77 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 3dcf2b35-b8f4-4eec-a99c-926fa26ae18a))
-    (pin "2" (uuid 033fb6e7-027d-402d-b4d2-ec36854fb6aa))
-    (pin "3" (uuid 6b13b4b3-58f6-435d-ac9e-769e7848a2c4))
-    (pin "5" (uuid 0323e907-84ce-4caa-a336-315bfec23692))
-    (pin "6" (uuid d55d9049-b727-4277-a29d-4a1421d56862))
-    (pin "7" (uuid 6b01b0ec-a24d-418b-96b7-757b042f05e5))
-    (pin "10" (uuid 1f6e8823-5c6a-4391-9030-cf937913b4d3))
-    (pin "8" (uuid 65a26f9a-2124-400d-ac81-a7f4b3fd10bc))
-    (pin "9" (uuid d3aeebab-f09d-4216-ad94-dd87c811b80a))
-    (pin "12" (uuid f6ba83ff-1cf3-4326-ba55-983a5e728cdd))
-    (pin "13" (uuid c5270210-7d93-4acd-ae04-0cca7231e28b))
-    (pin "14" (uuid 290a35b2-745a-49e3-94b6-ab235ba41e53))
-    (pin "11" (uuid 6f4cca4a-ac38-4640-891d-955f5dee467a))
-    (pin "4" (uuid 30438b76-7351-4bc6-b3b0-9504486afc72))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "U?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "U701") (unit 4)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 128.27 72.39 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471d2)
-    (property "Reference" "R?" (at 128.27 74.93 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100k" (at 128.27 77.47 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 128.27 70.612 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 128.27 72.39 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 0400ba45-2026-479f-9a41-bdba41c3c15d))
-    (pin "2" (uuid 6216ef29-3bdc-4c5e-9a20-540411164f9f))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R703") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 146.05 77.47 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471dd)
-    (property "Reference" "R?" (at 146.05 80.01 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "10k" (at 146.05 82.55 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 146.05 75.692 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 146.05 77.47 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid c814a993-b363-4545-85f7-3bf95710cab9))
-    (pin "2" (uuid 96d69a8b-9dfc-408b-87e6-3a0b338ad99a))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R704") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDA") (at 133.35 67.31 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471e6)
-    (property "Reference" "#PWR?" (at 133.35 73.66 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDA" (at 129.54 67.31 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 133.35 67.31 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 133.35 67.31 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 5c22067f-b3c8-4689-b419-0a27a128f18a))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0703") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Amplifier_Operational:TL074") (at 119.38 100.33 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471ee)
-    (property "Reference" "U?" (at 119.38 96.52 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "TL074" (at 119.38 104.14 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" (at 118.11 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf" (at 120.65 95.25 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 39f8dd68-536d-4a9a-87a7-c7224db77231))
-    (pin "2" (uuid 504d5845-3de7-447b-ae3a-d6eee4d2ef8e))
-    (pin "3" (uuid 95035c10-ea37-4739-88e2-6e05684a0166))
-    (pin "5" (uuid bf827b32-bb15-450a-a3bc-ec5f4c7ba1e7))
-    (pin "6" (uuid 7056d09f-d460-4b6c-892b-486cc61a6da9))
-    (pin "7" (uuid 2ec9ed95-603f-48c8-90d9-d239d3bbc1b3))
-    (pin "10" (uuid 5bdf60a7-15b9-440f-9c14-c9c6375a806e))
-    (pin "8" (uuid ef250cbf-e5a1-4149-8da9-36b4a51faa5d))
-    (pin "9" (uuid 24678e36-eaa3-4fa4-9efa-cc1f3503a3d3))
-    (pin "12" (uuid 9be33296-2d7c-4052-a99f-a25d346ff29b))
-    (pin "13" (uuid 9b66372b-8ac2-4d9b-b8b7-fc365439b672))
-    (pin "14" (uuid 6d46c75d-f84a-4785-b314-f2b68546409d))
-    (pin "11" (uuid e3fa5c52-75b9-40e7-9dce-6741522a17f4))
-    (pin "4" (uuid c9015fd7-fff6-46ba-985e-1db33bdb75b0))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "U?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "U701") (unit 2)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 102.87 102.87 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471f4)
-    (property "Reference" "R?" (at 102.87 105.41 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "10k" (at 102.87 107.95 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 102.87 101.092 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 102.87 102.87 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid a7369430-2501-406e-8628-ee7146db7b30))
-    (pin "2" (uuid 3d8dc5a4-fdb7-48b4-9c69-a6fd73fe0cb5))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R706") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 121.92 107.95 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c471ff)
-    (property "Reference" "R?" (at 121.92 110.49 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100k" (at 121.92 113.03 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 121.92 106.172 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 121.92 107.95 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 634c01c1-e611-4444-8799-097344c7200d))
-    (pin "2" (uuid cb8d2c13-ba0c-4263-ab40-2c509bc44e96))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R707") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDA") (at 109.22 97.79 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47208)
-    (property "Reference" "#PWR?" (at 109.22 104.14 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDA" (at 105.41 97.79 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 109.22 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 109.22 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 79b01937-af65-405b-a5dd-caca135d041f))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0709") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Amplifier_Operational:TL074") (at 119.38 133.35 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47211)
-    (property "Reference" "U?" (at 119.38 129.54 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "TL074" (at 119.38 137.16 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" (at 118.11 130.81 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf" (at 120.65 128.27 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ad4c416c-296d-457c-aad2-01b3323093df))
-    (pin "2" (uuid e082c95c-24c8-4535-8dfc-c44eedfba289))
-    (pin "3" (uuid 7e1e29e9-6c30-4620-8365-0cd27e842a49))
-    (pin "5" (uuid 1726bc9f-5955-4c77-88ea-1c8b969fd118))
-    (pin "6" (uuid 6d2c0d08-5527-4e55-99eb-e2afd4184502))
-    (pin "7" (uuid f48d48ea-d1e0-4537-a4b6-a760302b455a))
-    (pin "10" (uuid 25e27821-5118-4b5e-91e1-872c548ecb7d))
-    (pin "8" (uuid bad1dad2-5a3a-442f-bea8-d05f2f327fc0))
-    (pin "9" (uuid 64f1bfb7-18e7-4750-9ac5-8adc19dff197))
-    (pin "12" (uuid 0bd9a191-c47e-425c-9d60-56899e63634f))
-    (pin "13" (uuid 8b79033d-bc5d-4d6c-a697-cd37237fca8f))
-    (pin "14" (uuid 76bddc21-7416-4187-8b0d-1945ba7d8fca))
-    (pin "11" (uuid e8ab1318-f60d-4d64-ac81-894653367e4e))
-    (pin "4" (uuid 26d5bba3-637d-48ea-8f3d-41bd746669dd))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "U?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "U701") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 102.87 135.89 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47217)
-    (property "Reference" "R?" (at 102.87 138.43 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "10k" (at 102.87 140.97 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 102.87 134.112 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 102.87 135.89 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 9f4528e9-13e8-4a4e-8049-2f3cf062eb03))
-    (pin "2" (uuid 2ed6fa1d-ff23-4498-b9ce-3f9939126ebf))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R709") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 121.92 140.97 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47222)
-    (property "Reference" "R?" (at 121.92 143.51 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "100k" (at 121.92 146.05 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 121.92 139.192 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 121.92 140.97 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 5f8c0feb-899b-406a-85f3-17d2ae8532e9))
-    (pin "2" (uuid b1134a79-c797-410d-afcb-616ee0f2288a))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R710") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDA") (at 109.22 130.81 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c4722b)
-    (property "Reference" "#PWR?" (at 109.22 137.16 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDA" (at 105.41 130.81 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 109.22 130.81 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 109.22 130.81 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid d059856c-0693-406a-98b6-814a66c0c059))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0712") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 135.89 100.33 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47234)
-    (property "Reference" "R?" (at 135.89 102.87 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "1k" (at 135.89 105.41 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 135.89 98.552 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 135.89 100.33 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 2ee796d1-1dd6-47d8-bba7-9cfa8bccd64e))
-    (pin "2" (uuid 484cb547-faac-4373-8a24-bff65a12f059))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R705") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:R") (at 135.89 133.35 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c4723a)
-    (property "Reference" "R?" (at 135.89 135.89 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "1k" (at 135.89 138.43 90)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (at 135.89 131.572 90)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 135.89 133.35 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 74b0719c-c797-490d-933a-e7862d3f3878))
-    (pin "2" (uuid 79b653af-0248-443b-8579-bf628d0bb63d))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "R?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "R708") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDA") (at 115.57 45.72 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47247)
-    (property "Reference" "#PWR?" (at 115.57 52.07 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDA" (at 119.38 45.72 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 115.57 45.72 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 115.57 45.72 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 60325f83-d064-4113-a07c-3c58f877b7af))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0702") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "ell_audio_conn:JACK_TS_3PINS") (at 104.14 39.37 0) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47250)
-    (property "Reference" "J?" (at 91.9988 40.2336 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "PJ398SM" (at 91.9988 42.545 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "ell_connectors:THONKICONN" (at 103.7082 47.8282 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 106.68 35.56 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (pin "1" (uuid d1f34b5c-9bf8-4ec4-a153-d833f5671c99))
-    (pin "2" (uuid 14a2e0f0-7bf4-443c-86eb-400b6807d2f5))
-    (pin "3" (uuid 44989864-d114-4c83-afed-acea4a8d0c50))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "J701") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "J?") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDA") (at 115.57 80.01 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47257)
-    (property "Reference" "#PWR?" (at 115.57 86.36 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDA" (at 119.38 80.01 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 115.57 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 115.57 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid b65550be-423f-474a-b8ab-583e0dd777ff))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0704") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "ell_audio_conn:JACK_TS_3PINS") (at 104.14 73.66 0) (mirror x) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47260)
-    (property "Reference" "J?" (at 91.9988 74.5236 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "PJ398SM" (at 91.9988 76.835 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "ell_connectors:THONKICONN" (at 103.7082 82.1182 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 106.68 69.85 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (pin "1" (uuid 1180891f-b1b3-43d3-8736-46b9d5a3c790))
-    (pin "2" (uuid 3c347ac2-be89-49ae-9345-e2425b7eb4e3))
-    (pin "3" (uuid 66788998-6cfc-43b6-a0b2-f12f721f2b29))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "J702") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "J?") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDA") (at 140.97 107.95 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47267)
-    (property "Reference" "#PWR?" (at 140.97 114.3 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDA" (at 137.16 107.95 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 140.97 107.95 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 140.97 107.95 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid c17d27c2-50a6-4934-ae93-3fa33282639f))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0711") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "ell_audio_conn:JACK_TS_3PINS") (at 152.4 101.6 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47270)
-    (property "Reference" "J?" (at 164.5412 102.4636 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "PJ398SM" (at 164.5412 104.775 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "ell_connectors:THONKICONN" (at 152.8318 110.0582 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 149.86 97.79 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (pin "1" (uuid 3e58712d-89ac-4d4b-b925-b97ffed7e719))
-    (pin "2" (uuid 2e7ceff1-247e-450d-b367-83f4974709cc))
-    (pin "3" (uuid b1951e98-0be5-4d55-ad0e-705891653ff8))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "J703") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "J?") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDA") (at 140.97 140.97 0) (mirror y) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47277)
-    (property "Reference" "#PWR?" (at 140.97 147.32 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDA" (at 137.16 140.97 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 140.97 140.97 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 140.97 140.97 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ee09437a-0628-4cbf-9945-980c1573918c))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0713") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "ell_audio_conn:JACK_TS_3PINS") (at 152.4 134.62 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47280)
-    (property "Reference" "J?" (at 164.5412 135.4836 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Value" "PJ398SM" (at 164.5412 137.795 0)
-      (effects (font (size 1.27 1.27)) (justify right))
-    )
-    (property "Footprint" "ell_connectors:THONKICONN" (at 152.8318 143.0782 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 149.86 130.81 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (pin "1" (uuid c89d0e44-904c-43d2-b789-7a8167921904))
-    (pin "2" (uuid 51ae020e-1554-435e-999c-db8aa40c3473))
-    (pin "3" (uuid 4dbd4017-9dce-4e7b-a108-ce4f8818c245))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "J704") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "J?") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C") (at 187.96 83.82 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47287)
-    (property "Reference" "C?" (at 190.881 82.6516 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "100n" (at 190.881 84.963 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 188.9252 87.63 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 187.96 83.82 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 89fd4cd4-7743-42ff-81a3-d8bd6695390a))
-    (pin "2" (uuid c20f2a15-e979-4477-aef9-60742f91c3c7))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "C?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "C702") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:+12VA") (at 187.96 80.01 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c4728d)
-    (property "Reference" "#PWR?" (at 187.96 83.82 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "+12VA" (at 188.341 75.6158 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 187.96 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 187.96 80.01 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 93c1a54a-738e-4a74-89bf-df8145c0d5fd))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0705") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:GNDA") (at 182.88 90.17 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47293)
-    (property "Reference" "#PWR?" (at 182.88 96.52 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "GNDA" (at 183.007 94.5642 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 182.88 90.17 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 182.88 90.17 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid acf6a625-db0f-4f60-b759-6f57ecdff1c3))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0707") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C") (at 187.96 93.98 0) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c47299)
-    (property "Reference" "C?" (at 190.881 92.8116 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "100n" (at 190.881 95.123 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 188.9252 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 187.96 93.98 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid f3d1a649-74a9-4582-849b-a555a4fc3847))
-    (pin "2" (uuid ccc564cb-9ed6-4c26-9569-9b0d05892ad2))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "C?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "C704") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "power:-12VA") (at 187.96 97.79 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c472a4)
-    (property "Reference" "#PWR?" (at 187.96 93.98 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Value" "-12VA" (at 187.579 102.1842 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "" (at 187.96 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 187.96 97.79 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ff621074-def1-4f21-984c-ac7fbc8814c8))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "#PWR?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "#PWR0710") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Amplifier_Operational:TL074") (at 201.93 87.63 0) (unit 5)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000061c472aa)
-    (property "Reference" "U?" (at 200.8632 86.4616 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "TL074" (at 200.8632 88.773 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm" (at 200.66 85.09 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "http://www.ti.com/lit/ds/symlink/tl071.pdf" (at 203.2 82.55 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid c4e7f5be-7fd5-4fa0-a6f6-6a5c682a0437))
-    (pin "2" (uuid bc2f4297-cf98-4dc2-a218-a69b11312053))
-    (pin "3" (uuid 04a1d7b3-4204-4fca-b684-62701d5de243))
-    (pin "5" (uuid 118bcf24-7a86-40bb-b08b-2c193a35fb3b))
-    (pin "6" (uuid 818acec0-18db-4720-9faf-3858dec4aaaf))
-    (pin "7" (uuid c36dfd6c-adb2-4577-9c1e-b02c012d0f90))
-    (pin "10" (uuid 371d692b-ac0e-4b19-8b65-f9745ec81298))
-    (pin "8" (uuid 5ef4b9dc-20c0-4d1f-a708-958da956fb6e))
-    (pin "9" (uuid b56f4807-247c-47bd-8022-aeab4ca019f3))
-    (pin "12" (uuid 4b269bdd-7bc4-45db-a345-a0bd8340e325))
-    (pin "13" (uuid 5f310103-fbc4-472d-834d-b2aa22ab93e4))
-    (pin "14" (uuid 95b0c277-cef9-47bd-963e-38d714725e22))
-    (pin "11" (uuid 1a4aea33-a5ca-4f00-82cb-ae8e4a22e037))
-    (pin "4" (uuid 2614cf30-c787-4496-952d-f71a5dc1c1ce))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "U?") (unit 5)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "U701") (unit 5)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C") (at 146.05 52.07 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-00006224fbcf)
-    (property "Reference" "C?" (at 147.2184 54.991 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "560p" (at 144.907 54.991 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 142.24 53.0352 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 146.05 52.07 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 1105bae9-2394-4b49-bca9-1f4a5c94c665))
-    (pin "2" (uuid 81430bb3-8e59-4061-baa9-747a03069304))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "C?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "C701") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C") (at 146.05 86.36 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-00006225a6f4)
-    (property "Reference" "C?" (at 147.2184 89.281 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "560p" (at 144.907 89.281 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 142.24 87.3252 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 146.05 86.36 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid e36e6df6-bef8-49f3-84d3-afb6d7b73c66))
-    (pin "2" (uuid 8bc99c46-4fb8-4c07-8869-7091505aff3f))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "C?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "C703") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C") (at 121.92 116.84 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000062266216)
-    (property "Reference" "C?" (at 123.0884 119.761 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "560p" (at 120.777 119.761 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 118.11 117.8052 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 121.92 116.84 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid ad0f2380-623f-42b2-b66c-db2d20a049d2))
-    (pin "2" (uuid b52a47d8-e042-4432-b8a6-003a9c30dc51))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "C?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "C705") (unit 1)
-        )
-      )
-    )
-  )
-
-  (symbol (lib_id "Device:C") (at 121.92 149.86 270) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-000062267fbc)
-    (property "Reference" "C?" (at 123.0884 152.781 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Value" "560p" (at 120.777 152.781 0)
-      (effects (font (size 1.27 1.27)) (justify left))
-    )
-    (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (at 118.11 150.8252 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "" (at 121.92 149.86 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 0182824f-ca71-4db4-82d1-b1cb3c108e7d))
-    (pin "2" (uuid 4b5f8319-5f4e-4b47-914f-ac138adb6413))
-    (instances
-      (project "TapeLooper_MainBoard"
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e"
-          (reference "C?") (unit 1)
-        )
-        (path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
-          (reference "C706") (unit 1)
-        )
-      )
-    )
-  )
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "69466829-a832-41ba-ae54-16fa10b20f54")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Amplifier_Operational:TL074"
+			(pin_names
+				(offset 0.127)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "TL074"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.27 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tl071.pdf"
+				(at 1.27 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Quad Low-Noise JFET-Input Operational Amplifiers, DIP-14/SOIC-14"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "quad opamp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOIC*3.9x8.7mm*P1.27mm* DIP*W7.62mm* TSSOP*4.4x5mm*P0.65mm* SSOP*5.3x6.2mm*P0.65mm* MSOP*3x3mm*P0.5mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "TL074_1_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "TL074_2_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "TL074_3_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "TL074_4_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "TL074_5_1"
+				(pin power_in line
+					(at -2.54 -7.62 90)
+					(length 3.81)
+					(name "V-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -2.54 7.62 270)
+					(length 3.81)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:C"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:R"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "ell_audio_conn:JACK_TS_3PINS"
+			(pin_names
+				(offset 0.762)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "JACK_TS_3PINS"
+				(at -1.27 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 2.54 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.54 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "JACK_TS_3PINS_0_0"
+				(polyline
+					(pts
+						(xy 3.81 -1.27) (xy 3.81 1.27) (xy 7.62 1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.89 5.08) (xy -7.62 3.81) (xy -6.35 5.08) (xy 7.62 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "JACK_TS_3PINS_0_1"
+				(rectangle
+					(start -11.43 5.08)
+					(end -10.16 -1.27)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 7.62 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 0 0) (xy -1.27 -1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 3.81 -1.27) (xy 5.08 0) (xy 5.08 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 7.62 -2.54)
+					(end -10.16 6.35)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "JACK_TS_3PINS_1_1"
+				(pin passive line
+					(at 10.16 5.08 180)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 1.27 180)
+					(length 2.54)
+					(name "TN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -1.27 180)
+					(length 2.54)
+					(name "T"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:+12VA"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+12VA"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+12VA\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+12VA_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+12VA_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0) hide
+					(name "+12VA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:-12VA"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "-12VA"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"-12VA\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "-12VA_0_0"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0) hide
+					(name "-12VA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "-12VA_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy 0.762 1.27) (xy 0 2.54) (xy -0.762 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+		)
+		(symbol "power:GNDA"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GNDA"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GNDA_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GNDA_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0) hide
+					(name "GNDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 129.54 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "023569aa-4eac-4095-a3a0-b7232a034550")
+	)
+	(junction
+		(at 187.96 88.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1fc5e47c-c414-4b0e-acae-dea855742112")
+	)
+	(junction
+		(at 129.54 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "23277220-5364-4288-a268-22e38f7d76fa")
+	)
+	(junction
+		(at 109.22 140.97)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "25877180-2804-46c6-a546-7b15d6f3b896")
+	)
+	(junction
+		(at 109.22 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3dbeb2d2-43cc-4d01-b6e5-b832746c1217")
+	)
+	(junction
+		(at 133.35 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "47510e0b-c8a5-4672-b879-f9e381b9fca3")
+	)
+	(junction
+		(at 133.35 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "552d77f5-8a8e-495c-8866-c028cfc39d4f")
+	)
+	(junction
+		(at 109.22 135.89)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "586e710b-5e1f-4310-bd4a-05458c6136b0")
+	)
+	(junction
+		(at 133.35 72.39)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5f5d91d2-1f61-48fa-91c5-58db16565af9")
+	)
+	(junction
+		(at 109.22 102.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6451895f-b052-41aa-a915-0a35815a8563")
+	)
+	(junction
+		(at 133.35 43.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7ae59f64-94a0-4b16-a243-bfd502893c15")
+	)
+	(junction
+		(at 129.54 107.95)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7c979add-faed-4bbf-a098-d5a50bca6515")
+	)
+	(junction
+		(at 129.54 100.33)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9bda5262-63c8-4e5d-af38-7da6925ee66e")
+	)
+	(junction
+		(at 153.67 35.56)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a70b6061-2fa4-4692-9178-aae5e493dd36")
+	)
+	(junction
+		(at 123.19 38.1)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "acbc2536-2705-4d33-bd35-ad39de003e76")
+	)
+	(junction
+		(at 153.67 77.47)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d82f4513-2d5b-4def-a92c-cae1dc30a6c5")
+	)
+	(junction
+		(at 153.67 43.18)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "eb17fa61-504c-4f71-9b98-7839c35900c5")
+	)
+	(junction
+		(at 153.67 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f63ad328-a61d-4e98-af84-e2559ea3f125")
+	)
+	(no_connect
+		(at 142.24 135.89)
+		(uuid "324ee018-f24f-4434-ae78-c96bbdea759d")
+	)
+	(no_connect
+		(at 142.24 102.87)
+		(uuid "91c812d0-0fa2-4886-8f4b-88e1b3625df1")
+	)
+	(no_connect
+		(at 114.3 40.64)
+		(uuid "c12106b0-8275-495c-b54e-a5bdc5f66899")
+	)
+	(wire
+		(pts
+			(xy 123.19 74.93) (xy 123.19 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0182e4da-e528-468d-895f-df788e6542cb")
+	)
+	(wire
+		(pts
+			(xy 132.08 38.1) (xy 133.35 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "09ce76d2-321f-42b9-bc92-4caa45f49773")
+	)
+	(wire
+		(pts
+			(xy 139.7 100.33) (xy 142.24 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0c1e3dea-ec6e-442a-8bc8-e1a555f86337")
+	)
+	(wire
+		(pts
+			(xy 133.35 72.39) (xy 135.89 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f9c93b7-13c3-45ce-af2c-8d08334d3601")
+	)
+	(wire
+		(pts
+			(xy 133.35 33.02) (xy 135.89 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10d995d2-df01-468b-bcca-208b4dc6b42e")
+	)
+	(wire
+		(pts
+			(xy 182.88 88.9) (xy 187.96 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b825441-c8b2-41ae-ac1a-924d906bad9a")
+	)
+	(wire
+		(pts
+			(xy 96.52 135.89) (xy 99.06 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ba69503-dfe2-4228-b4bd-23c3886cabba")
+	)
+	(wire
+		(pts
+			(xy 149.86 52.07) (xy 153.67 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e5bc3f5-dcbd-45f7-bf3e-9fa3724ef9fb")
+	)
+	(wire
+		(pts
+			(xy 153.67 69.85) (xy 151.13 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f960de5-2ea5-4a2f-94e8-8159a6274e4c")
+	)
+	(wire
+		(pts
+			(xy 132.08 72.39) (xy 133.35 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20ff0744-a4d2-4571-b5a1-c125add58e7a")
+	)
+	(wire
+		(pts
+			(xy 106.68 102.87) (xy 109.22 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "212f139f-e53e-4c76-9109-8bd0bc470026")
+	)
+	(wire
+		(pts
+			(xy 139.7 133.35) (xy 142.24 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21463fe6-52db-4cf2-b6e8-e7b87438303b")
+	)
+	(wire
+		(pts
+			(xy 133.35 67.31) (xy 135.89 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24d6bd1c-7b25-4679-ad85-29166a96b01e")
+	)
+	(wire
+		(pts
+			(xy 109.22 135.89) (xy 111.76 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "253041a5-3267-464f-b99f-bb79ee78a3a4")
+	)
+	(wire
+		(pts
+			(xy 129.54 100.33) (xy 132.08 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2611c16e-cec6-4df4-86a1-2c0f7b6206a1")
+	)
+	(wire
+		(pts
+			(xy 153.67 52.07) (xy 153.67 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29f2922c-d36d-49f5-8df1-16625633a67c")
+	)
+	(wire
+		(pts
+			(xy 125.73 116.84) (xy 129.54 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2adf7b2e-5240-4008-b35a-1655085cdf0b")
+	)
+	(wire
+		(pts
+			(xy 109.22 130.81) (xy 111.76 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "334fb5b3-8f91-4982-9722-9c82120c3a38")
+	)
+	(wire
+		(pts
+			(xy 187.96 88.9) (xy 187.96 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34ee251b-5700-424c-9a98-abe85ab6fbdf")
+	)
+	(wire
+		(pts
+			(xy 153.67 86.36) (xy 153.67 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36cfb91d-1c66-488d-9a02-c8e9ad24588e")
+	)
+	(wire
+		(pts
+			(xy 153.67 69.85) (xy 158.75 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3a7a0ad7-ec8a-4ed3-a35f-41e660b7d49e")
+	)
+	(wire
+		(pts
+			(xy 133.35 38.1) (xy 135.89 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c1d6607-905c-4635-876e-452f9f462066")
+	)
+	(wire
+		(pts
+			(xy 109.22 140.97) (xy 118.11 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c846904-0709-4053-89b9-c8f174257792")
+	)
+	(wire
+		(pts
+			(xy 109.22 97.79) (xy 111.76 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ef075f9-cd16-4fac-83a9-b05a36b89e35")
+	)
+	(wire
+		(pts
+			(xy 140.97 139.7) (xy 140.97 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59280e27-eb37-40e8-8c3d-b4cd1af8e35a")
+	)
+	(wire
+		(pts
+			(xy 142.24 52.07) (xy 133.35 52.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b5e916b-4abf-4780-b66b-36c226b57546")
+	)
+	(wire
+		(pts
+			(xy 129.54 107.95) (xy 129.54 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6028e431-1771-48bc-a920-dc0e20c010ca")
+	)
+	(wire
+		(pts
+			(xy 153.67 35.56) (xy 158.75 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6171ad0a-1379-4fe6-8645-57a8cf0b48ee")
+	)
+	(wire
+		(pts
+			(xy 182.88 90.17) (xy 182.88 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "65ea45d0-467e-48f7-bb4b-b042086ab2fa")
+	)
+	(wire
+		(pts
+			(xy 123.19 38.1) (xy 124.46 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6b76fcb1-0fb5-47e8-86dd-4f31faabffa7")
+	)
+	(wire
+		(pts
+			(xy 142.24 139.7) (xy 140.97 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6edbe342-b954-4c4d-8386-31e108fc62a0")
+	)
+	(wire
+		(pts
+			(xy 142.24 86.36) (xy 133.35 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74884bc9-8cf1-400c-a2d2-8d32148e81cc")
+	)
+	(wire
+		(pts
+			(xy 133.35 77.47) (xy 142.24 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "765154b9-0393-41a4-a0bf-463b8b2fd799")
+	)
+	(wire
+		(pts
+			(xy 125.73 149.86) (xy 129.54 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7bd338b1-3221-4f4e-88bd-4bfe89d68a77")
+	)
+	(wire
+		(pts
+			(xy 142.24 106.68) (xy 140.97 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d90d411-b69b-4256-8cd2-2790590af8dc")
+	)
+	(wire
+		(pts
+			(xy 140.97 106.68) (xy 140.97 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f6ac485-dce8-4603-baa8-a1f3ac8bccfd")
+	)
+	(wire
+		(pts
+			(xy 109.22 107.95) (xy 118.11 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f5916f5-dd2a-414a-a34b-e7a24ebb2f3a")
+	)
+	(wire
+		(pts
+			(xy 153.67 35.56) (xy 151.13 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "92a99cd4-1ed3-4240-b929-1c0243abc36d")
+	)
+	(wire
+		(pts
+			(xy 133.35 72.39) (xy 133.35 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9317c3f1-c6a4-4c9d-9edf-b5dca61392da")
+	)
+	(wire
+		(pts
+			(xy 114.3 74.93) (xy 123.19 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "99414538-f98b-459c-a5cb-2331f4888683")
+	)
+	(wire
+		(pts
+			(xy 133.35 43.18) (xy 142.24 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a686feb-cdef-452d-a61b-dc1a30edbedc")
+	)
+	(wire
+		(pts
+			(xy 129.54 149.86) (xy 129.54 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e6bf015-ee65-4893-82f4-a5937f6b997f")
+	)
+	(wire
+		(pts
+			(xy 149.86 77.47) (xy 153.67 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9fdafd81-eaac-47fa-a342-08c2696551d1")
+	)
+	(wire
+		(pts
+			(xy 106.68 135.89) (xy 109.22 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a186cdfa-224d-49d9-a76a-d95c060af16e")
+	)
+	(wire
+		(pts
+			(xy 187.96 88.9) (xy 187.96 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4bed47f-3d39-4643-9a58-3404344c0262")
+	)
+	(wire
+		(pts
+			(xy 96.52 102.87) (xy 99.06 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7b69618-8ea3-4d82-9180-a61bd990c6cc")
+	)
+	(wire
+		(pts
+			(xy 153.67 43.18) (xy 153.67 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aa5d0ad2-ae63-4bdd-878f-7b793466a41e")
+	)
+	(wire
+		(pts
+			(xy 149.86 43.18) (xy 153.67 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af7b4b04-88a9-4b71-a0d2-efe3ea968159")
+	)
+	(wire
+		(pts
+			(xy 129.54 100.33) (xy 127 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b066ff13-e0bd-4ea3-8948-b2724007a2d5")
+	)
+	(wire
+		(pts
+			(xy 109.22 102.87) (xy 109.22 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b194cd7a-fb0f-4dc4-88c1-3274406be17a")
+	)
+	(wire
+		(pts
+			(xy 114.3 78.74) (xy 115.57 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2266549-e6f6-499b-a411-3e87d3470baa")
+	)
+	(wire
+		(pts
+			(xy 133.35 86.36) (xy 133.35 77.47)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b3987ff3-c6c4-4a57-b948-0735bc3c07b2")
+	)
+	(wire
+		(pts
+			(xy 123.19 38.1) (xy 114.3 38.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b61363f7-7448-478c-aa16-e77fc4d9758a")
+	)
+	(wire
+		(pts
+			(xy 129.54 133.35) (xy 132.08 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbeb0946-e18d-4822-a1b2-0cef6b73a8bd")
+	)
+	(wire
+		(pts
+			(xy 109.22 102.87) (xy 111.76 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c1878cf4-f0fe-4b48-92a2-caa0966b0fb0")
+	)
+	(wire
+		(pts
+			(xy 133.35 38.1) (xy 133.35 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c8a7d536-1805-41e7-96d4-839d932c6bb4")
+	)
+	(wire
+		(pts
+			(xy 129.54 116.84) (xy 129.54 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca9e4d87-7eb5-45d4-b2cd-43f6b1a7a3d1")
+	)
+	(wire
+		(pts
+			(xy 109.22 116.84) (xy 109.22 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d5d5a735-3752-4756-bfdb-1e111ea883c9")
+	)
+	(wire
+		(pts
+			(xy 118.11 116.84) (xy 109.22 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d69264b7-97aa-45eb-8463-4a2cefc425cc")
+	)
+	(wire
+		(pts
+			(xy 109.22 149.86) (xy 109.22 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d71997d0-a165-462d-9dab-99743d358f48")
+	)
+	(wire
+		(pts
+			(xy 153.67 77.47) (xy 153.67 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9cb7444-c6a1-48d8-98a9-d6f22513886e")
+	)
+	(wire
+		(pts
+			(xy 114.3 72.39) (xy 124.46 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e0066367-0c27-4886-88d2-eb43804bf9d0")
+	)
+	(wire
+		(pts
+			(xy 129.54 133.35) (xy 127 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e13860e6-cf69-4ca7-89d5-fac2f2b6559e")
+	)
+	(wire
+		(pts
+			(xy 114.3 44.45) (xy 115.57 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e18239f4-81c8-4251-91b5-73c239ad2279")
+	)
+	(wire
+		(pts
+			(xy 133.35 52.07) (xy 133.35 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e6e1cf55-1300-4652-b00f-4e5d658886a9")
+	)
+	(wire
+		(pts
+			(xy 118.11 149.86) (xy 109.22 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb2b9614-3e32-471b-99e1-5cc26e85bf9f")
+	)
+	(wire
+		(pts
+			(xy 115.57 78.74) (xy 115.57 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec2f08b8-3502-49a2-ae47-944f5e55c1b8")
+	)
+	(wire
+		(pts
+			(xy 149.86 86.36) (xy 153.67 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1641095-8d2e-4aeb-b0f3-8ddb77e52ff3")
+	)
+	(wire
+		(pts
+			(xy 125.73 140.97) (xy 129.54 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f26077ed-9032-45ab-aea0-ee087e161516")
+	)
+	(wire
+		(pts
+			(xy 109.22 135.89) (xy 109.22 140.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f2d8753d-e35d-4b85-9eda-f93e5cff1688")
+	)
+	(wire
+		(pts
+			(xy 129.54 140.97) (xy 129.54 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3212d5b-d08c-4ab9-8c01-508dac020b15")
+	)
+	(wire
+		(pts
+			(xy 125.73 107.95) (xy 129.54 107.95)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa00e816-744f-46a4-96a2-37a5ff2f5209")
+	)
+	(wire
+		(pts
+			(xy 115.57 44.45) (xy 115.57 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff030493-81e9-44ea-9948-7c25a4866528")
+	)
+	(text "Audio Out L\n"
+		(exclude_from_sim no)
+		(at 165.1 100.33 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "00e469a0-db9b-4a4d-b538-b52f3d6d87a0")
+	)
+	(text "Audio In L\n"
+		(exclude_from_sim no)
+		(at 93.98 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "44d52659-df92-4482-9a66-8d0157306cbf")
+	)
+	(text "Audio In R\n"
+		(exclude_from_sim no)
+		(at 93.98 69.85 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8a331762-a643-4d73-9d09-4a78f724c43d")
+	)
+	(text "Audio Out R"
+		(exclude_from_sim no)
+		(at 165.1 133.35 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b0d45882-d5cb-4a66-a882-dae71c49596e")
+	)
+	(global_label "AUDIO_ADC_R"
+		(shape output)
+		(at 158.75 69.85 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "379baf51-4ebe-4f1a-94d9-d2eac120d2bd")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 158.75 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "AUDIO_ADC_L"
+		(shape output)
+		(at 158.75 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "5580e384-1bd0-48fe-ac63-c649a6e289ef")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 158.75 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "AUDIO_DAC_R"
+		(shape input)
+		(at 96.52 135.89 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "5bd373bb-c1e7-4b82-91ef-8747348ab08b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 96.52 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "AUDIO_DAC_L"
+		(shape input)
+		(at 96.52 102.87 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d58da50c-7d8e-490b-9762-52808457b048")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 96.52 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:TL074")
+		(at 143.51 35.56 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c4719a")
+		(property "Reference" "U701"
+			(at 143.51 31.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TL074"
+			(at 143.51 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 142.24 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 144.78 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 143.51 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0758d7e1-d83c-4fe1-a7da-e219f94acd15")
+		)
+		(pin "2"
+			(uuid "734d563a-b2c3-49cd-9105-31b850ebd35e")
+		)
+		(pin "3"
+			(uuid "953b3657-2dbf-4b18-b481-39abde07549b")
+		)
+		(pin "5"
+			(uuid "52412df5-2cfd-48fa-af35-9fedb4120e4b")
+		)
+		(pin "6"
+			(uuid "1bf18b2e-4848-4db2-9b0f-e6a01aa84c8f")
+		)
+		(pin "7"
+			(uuid "9fe28dec-97ae-4728-9f86-0d2f26cd9dcb")
+		)
+		(pin "10"
+			(uuid "2d4d8c06-ad9d-41a8-a44b-c1d1339dd58c")
+		)
+		(pin "8"
+			(uuid "c8acb883-c0d4-495c-bedc-499bd64cd728")
+		)
+		(pin "9"
+			(uuid "10e1ec68-043d-4e1d-ba20-e99d9b1db6ed")
+		)
+		(pin "12"
+			(uuid "c8b8d8ca-074e-4698-9ca6-c89367e5bd67")
+		)
+		(pin "13"
+			(uuid "d1c3bad0-15de-4ec7-9680-cbfc966abd02")
+		)
+		(pin "14"
+			(uuid "780b8288-5639-4320-ad9f-612053840e59")
+		)
+		(pin "11"
+			(uuid "2b5d800d-1726-4d17-bfd6-23e49b1d5f61")
+		)
+		(pin "4"
+			(uuid "6c479c93-d650-4071-8527-2432b43cf62c")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "U701")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12VA")
+		(at 199.39 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471a0")
+		(property "Reference" "#PWR0706"
+			(at 199.39 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12VA"
+			(at 199.771 75.6158 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 199.39 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 199.39 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 199.39 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9ac802aa-7acc-45a5-84ed-d1415dbf6cda")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0706")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-12VA")
+		(at 199.39 95.25 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471a6")
+		(property "Reference" "#PWR0708"
+			(at 199.39 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-12VA"
+			(at 199.009 99.6442 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 199.39 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 199.39 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 199.39 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8057f39e-32d1-4c7a-8206-6945af6b81c6")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0708")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 128.27 38.1 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471ae")
+		(property "Reference" "R701"
+			(at 128.27 40.64 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 128.27 43.18 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 128.27 36.322 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 128.27 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fc2694b6-748a-4149-9963-a47b3f1b9b70")
+		)
+		(pin "2"
+			(uuid "a31cd5c0-2748-4b10-bb17-0e676b5c3def")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 146.05 43.18 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471ba")
+		(property "Reference" "R702"
+			(at 146.05 45.72 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 146.05 48.26 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 146.05 41.402 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5a562952-040a-41a5-9aab-846145b2bce4")
+		)
+		(pin "2"
+			(uuid "4188ab0f-eb09-431c-a6f8-02578e59b7c1")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R702")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 133.35 33.02 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471c3")
+		(property "Reference" "#PWR0701"
+			(at 133.35 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 129.54 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 133.35 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 133.35 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 133.35 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "401bdb15-61df-4226-8f44-19e0f61ba04d")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:TL074")
+		(at 143.51 69.85 0)
+		(unit 4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471cc")
+		(property "Reference" "U701"
+			(at 143.51 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TL074"
+			(at 143.51 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 142.24 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 144.78 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 143.51 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3dcf2b35-b8f4-4eec-a99c-926fa26ae18a")
+		)
+		(pin "2"
+			(uuid "033fb6e7-027d-402d-b4d2-ec36854fb6aa")
+		)
+		(pin "3"
+			(uuid "6b13b4b3-58f6-435d-ac9e-769e7848a2c4")
+		)
+		(pin "5"
+			(uuid "0323e907-84ce-4caa-a336-315bfec23692")
+		)
+		(pin "6"
+			(uuid "d55d9049-b727-4277-a29d-4a1421d56862")
+		)
+		(pin "7"
+			(uuid "6b01b0ec-a24d-418b-96b7-757b042f05e5")
+		)
+		(pin "10"
+			(uuid "1f6e8823-5c6a-4391-9030-cf937913b4d3")
+		)
+		(pin "8"
+			(uuid "65a26f9a-2124-400d-ac81-a7f4b3fd10bc")
+		)
+		(pin "9"
+			(uuid "d3aeebab-f09d-4216-ad94-dd87c811b80a")
+		)
+		(pin "12"
+			(uuid "f6ba83ff-1cf3-4326-ba55-983a5e728cdd")
+		)
+		(pin "13"
+			(uuid "c5270210-7d93-4acd-ae04-0cca7231e28b")
+		)
+		(pin "14"
+			(uuid "290a35b2-745a-49e3-94b6-ab235ba41e53")
+		)
+		(pin "11"
+			(uuid "6f4cca4a-ac38-4640-891d-955f5dee467a")
+		)
+		(pin "4"
+			(uuid "30438b76-7351-4bc6-b3b0-9504486afc72")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "U701")
+					(unit 4)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 128.27 72.39 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471d2")
+		(property "Reference" "R703"
+			(at 128.27 74.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 128.27 77.47 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 128.27 70.612 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 128.27 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 128.27 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0400ba45-2026-479f-9a41-bdba41c3c15d")
+		)
+		(pin "2"
+			(uuid "6216ef29-3bdc-4c5e-9a20-540411164f9f")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R703")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 146.05 77.47 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471dd")
+		(property "Reference" "R704"
+			(at 146.05 80.01 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 146.05 82.55 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 146.05 75.692 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c814a993-b363-4545-85f7-3bf95710cab9")
+		)
+		(pin "2"
+			(uuid "96d69a8b-9dfc-408b-87e6-3a0b338ad99a")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R704")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 133.35 67.31 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471e6")
+		(property "Reference" "#PWR0703"
+			(at 133.35 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 129.54 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 133.35 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 133.35 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 133.35 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5c22067f-b3c8-4689-b419-0a27a128f18a")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0703")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:TL074")
+		(at 119.38 100.33 0)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471ee")
+		(property "Reference" "U701"
+			(at 119.38 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TL074"
+			(at 119.38 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 118.11 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 120.65 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 119.38 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "39f8dd68-536d-4a9a-87a7-c7224db77231")
+		)
+		(pin "2"
+			(uuid "504d5845-3de7-447b-ae3a-d6eee4d2ef8e")
+		)
+		(pin "3"
+			(uuid "95035c10-ea37-4739-88e2-6e05684a0166")
+		)
+		(pin "5"
+			(uuid "bf827b32-bb15-450a-a3bc-ec5f4c7ba1e7")
+		)
+		(pin "6"
+			(uuid "7056d09f-d460-4b6c-892b-486cc61a6da9")
+		)
+		(pin "7"
+			(uuid "2ec9ed95-603f-48c8-90d9-d239d3bbc1b3")
+		)
+		(pin "10"
+			(uuid "5bdf60a7-15b9-440f-9c14-c9c6375a806e")
+		)
+		(pin "8"
+			(uuid "ef250cbf-e5a1-4149-8da9-36b4a51faa5d")
+		)
+		(pin "9"
+			(uuid "24678e36-eaa3-4fa4-9efa-cc1f3503a3d3")
+		)
+		(pin "12"
+			(uuid "9be33296-2d7c-4052-a99f-a25d346ff29b")
+		)
+		(pin "13"
+			(uuid "9b66372b-8ac2-4d9b-b8b7-fc365439b672")
+		)
+		(pin "14"
+			(uuid "6d46c75d-f84a-4785-b314-f2b68546409d")
+		)
+		(pin "11"
+			(uuid "e3fa5c52-75b9-40e7-9dce-6741522a17f4")
+		)
+		(pin "4"
+			(uuid "c9015fd7-fff6-46ba-985e-1db33bdb75b0")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "U701")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 102.87 102.87 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471f4")
+		(property "Reference" "R706"
+			(at 102.87 105.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 102.87 107.95 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 102.87 101.092 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 102.87 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a7369430-2501-406e-8628-ee7146db7b30")
+		)
+		(pin "2"
+			(uuid "3d8dc5a4-fdb7-48b4-9c69-a6fd73fe0cb5")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R706")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 121.92 107.95 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c471ff")
+		(property "Reference" "R707"
+			(at 121.92 110.49 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 121.92 113.03 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 121.92 106.172 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 121.92 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "634c01c1-e611-4444-8799-097344c7200d")
+		)
+		(pin "2"
+			(uuid "cb8d2c13-ba0c-4263-ab40-2c509bc44e96")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R707")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 109.22 97.79 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47208")
+		(property "Reference" "#PWR0709"
+			(at 109.22 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 105.41 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 109.22 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 109.22 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 109.22 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "79b01937-af65-405b-a5dd-caca135d041f")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0709")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:TL074")
+		(at 119.38 133.35 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47211")
+		(property "Reference" "U701"
+			(at 119.38 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TL074"
+			(at 119.38 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 118.11 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 120.65 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 119.38 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ad4c416c-296d-457c-aad2-01b3323093df")
+		)
+		(pin "2"
+			(uuid "e082c95c-24c8-4535-8dfc-c44eedfba289")
+		)
+		(pin "3"
+			(uuid "7e1e29e9-6c30-4620-8365-0cd27e842a49")
+		)
+		(pin "5"
+			(uuid "1726bc9f-5955-4c77-88ea-1c8b969fd118")
+		)
+		(pin "6"
+			(uuid "6d2c0d08-5527-4e55-99eb-e2afd4184502")
+		)
+		(pin "7"
+			(uuid "f48d48ea-d1e0-4537-a4b6-a760302b455a")
+		)
+		(pin "10"
+			(uuid "25e27821-5118-4b5e-91e1-872c548ecb7d")
+		)
+		(pin "8"
+			(uuid "bad1dad2-5a3a-442f-bea8-d05f2f327fc0")
+		)
+		(pin "9"
+			(uuid "64f1bfb7-18e7-4750-9ac5-8adc19dff197")
+		)
+		(pin "12"
+			(uuid "0bd9a191-c47e-425c-9d60-56899e63634f")
+		)
+		(pin "13"
+			(uuid "8b79033d-bc5d-4d6c-a697-cd37237fca8f")
+		)
+		(pin "14"
+			(uuid "76bddc21-7416-4187-8b0d-1945ba7d8fca")
+		)
+		(pin "11"
+			(uuid "e8ab1318-f60d-4d64-ac81-894653367e4e")
+		)
+		(pin "4"
+			(uuid "26d5bba3-637d-48ea-8f3d-41bd746669dd")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "U701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 102.87 135.89 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47217")
+		(property "Reference" "R709"
+			(at 102.87 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 102.87 140.97 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 102.87 134.112 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 102.87 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 102.87 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9f4528e9-13e8-4a4e-8049-2f3cf062eb03")
+		)
+		(pin "2"
+			(uuid "2ed6fa1d-ff23-4498-b9ce-3f9939126ebf")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R709")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 121.92 140.97 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47222")
+		(property "Reference" "R710"
+			(at 121.92 143.51 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 121.92 146.05 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 121.92 139.192 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 121.92 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5f8c0feb-899b-406a-85f3-17d2ae8532e9")
+		)
+		(pin "2"
+			(uuid "b1134a79-c797-410d-afcb-616ee0f2288a")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R710")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 109.22 130.81 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c4722b")
+		(property "Reference" "#PWR0712"
+			(at 109.22 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 105.41 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 109.22 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 109.22 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 109.22 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d059856c-0693-406a-98b6-814a66c0c059")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0712")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 135.89 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47234")
+		(property "Reference" "R705"
+			(at 135.89 102.87 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 135.89 105.41 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 135.89 98.552 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 135.89 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 135.89 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2ee796d1-1dd6-47d8-bba7-9cfa8bccd64e")
+		)
+		(pin "2"
+			(uuid "484cb547-faac-4373-8a24-bff65a12f059")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R705")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 135.89 133.35 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c4723a")
+		(property "Reference" "R708"
+			(at 135.89 135.89 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 135.89 138.43 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 135.89 131.572 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 135.89 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 135.89 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "74b0719c-c797-490d-933a-e7862d3f3878")
+		)
+		(pin "2"
+			(uuid "79b653af-0248-443b-8579-bf628d0bb63d")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "R708")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 115.57 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47247")
+		(property "Reference" "#PWR0702"
+			(at 115.57 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 119.38 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 115.57 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "60325f83-d064-4113-a07c-3c58f877b7af")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0702")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 104.14 39.37 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47250")
+		(property "Reference" "J701"
+			(at 91.9988 40.2336 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 91.9988 42.545 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 103.7082 47.8282 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 106.68 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 104.14 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d1f34b5c-9bf8-4ec4-a153-d833f5671c99")
+		)
+		(pin "2"
+			(uuid "14a2e0f0-7bf4-443c-86eb-400b6807d2f5")
+		)
+		(pin "3"
+			(uuid "44989864-d114-4c83-afed-acea4a8d0c50")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "J701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 115.57 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47257")
+		(property "Reference" "#PWR0704"
+			(at 115.57 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 119.38 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 115.57 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 115.57 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 115.57 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b65550be-423f-474a-b8ab-583e0dd777ff")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0704")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 104.14 73.66 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47260")
+		(property "Reference" "J702"
+			(at 91.9988 74.5236 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 91.9988 76.835 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 103.7082 82.1182 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 106.68 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 104.14 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1180891f-b1b3-43d3-8736-46b9d5a3c790")
+		)
+		(pin "2"
+			(uuid "3c347ac2-be89-49ae-9345-e2425b7eb4e3")
+		)
+		(pin "3"
+			(uuid "66788998-6cfc-43b6-a0b2-f12f721f2b29")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "J702")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 140.97 107.95 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47267")
+		(property "Reference" "#PWR0711"
+			(at 140.97 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 137.16 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 140.97 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 140.97 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 140.97 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c17d27c2-50a6-4934-ae93-3fa33282639f")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0711")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 152.4 101.6 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47270")
+		(property "Reference" "J703"
+			(at 164.5412 102.4636 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 164.5412 104.775 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 152.8318 110.0582 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3e58712d-89ac-4d4b-b925-b97ffed7e719")
+		)
+		(pin "2"
+			(uuid "2e7ceff1-247e-450d-b367-83f4974709cc")
+		)
+		(pin "3"
+			(uuid "b1951e98-0be5-4d55-ad0e-705891653ff8")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "J703")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 140.97 140.97 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47277")
+		(property "Reference" "#PWR0713"
+			(at 140.97 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 137.16 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 140.97 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 140.97 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 140.97 140.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ee09437a-0628-4cbf-9945-980c1573918c")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0713")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 152.4 134.62 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47280")
+		(property "Reference" "J704"
+			(at 164.5412 135.4836 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 164.5412 137.795 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 152.8318 143.0782 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 149.86 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 152.4 134.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c89d0e44-904c-43d2-b789-7a8167921904")
+		)
+		(pin "2"
+			(uuid "51ae020e-1554-435e-999c-db8aa40c3473")
+		)
+		(pin "3"
+			(uuid "4dbd4017-9dce-4e7b-a108-ce4f8818c245")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "J704")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 187.96 83.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47287")
+		(property "Reference" "C702"
+			(at 190.881 82.6516 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 190.881 84.963 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 188.9252 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 187.96 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "89fd4cd4-7743-42ff-81a3-d8bd6695390a")
+		)
+		(pin "2"
+			(uuid "c20f2a15-e979-4477-aef9-60742f91c3c7")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "C702")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+12VA")
+		(at 187.96 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c4728d")
+		(property "Reference" "#PWR0705"
+			(at 187.96 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+12VA"
+			(at 188.341 75.6158 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 187.96 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 187.96 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "93c1a54a-738e-4a74-89bf-df8145c0d5fd")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0705")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 182.88 90.17 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47293")
+		(property "Reference" "#PWR0707"
+			(at 182.88 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 183.007 94.5642 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 182.88 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 182.88 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 182.88 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "acf6a625-db0f-4f60-b759-6f57ecdff1c3")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0707")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 187.96 93.98 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c47299")
+		(property "Reference" "C704"
+			(at 190.881 92.8116 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 190.881 95.123 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 188.9252 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 187.96 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f3d1a649-74a9-4582-849b-a555a4fc3847")
+		)
+		(pin "2"
+			(uuid "ccc564cb-9ed6-4c26-9569-9b0d05892ad2")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "C704")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-12VA")
+		(at 187.96 97.79 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c472a4")
+		(property "Reference" "#PWR0710"
+			(at 187.96 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-12VA"
+			(at 187.579 102.1842 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 187.96 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 187.96 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 187.96 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ff621074-def1-4f21-984c-ac7fbc8814c8")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "#PWR0710")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:TL074")
+		(at 201.93 87.63 0)
+		(unit 5)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000061c472aa")
+		(property "Reference" "U701"
+			(at 200.8632 86.4616 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TL074"
+			(at 200.8632 88.773 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-14_3.9x8.7mm_P1.27mm"
+			(at 200.66 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tl071.pdf"
+			(at 203.2 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 201.93 87.63 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c4e7f5be-7fd5-4fa0-a6f6-6a5c682a0437")
+		)
+		(pin "2"
+			(uuid "bc2f4297-cf98-4dc2-a218-a69b11312053")
+		)
+		(pin "3"
+			(uuid "04a1d7b3-4204-4fca-b684-62701d5de243")
+		)
+		(pin "5"
+			(uuid "118bcf24-7a86-40bb-b08b-2c193a35fb3b")
+		)
+		(pin "6"
+			(uuid "818acec0-18db-4720-9faf-3858dec4aaaf")
+		)
+		(pin "7"
+			(uuid "c36dfd6c-adb2-4577-9c1e-b02c012d0f90")
+		)
+		(pin "10"
+			(uuid "371d692b-ac0e-4b19-8b65-f9745ec81298")
+		)
+		(pin "8"
+			(uuid "5ef4b9dc-20c0-4d1f-a708-958da956fb6e")
+		)
+		(pin "9"
+			(uuid "b56f4807-247c-47bd-8022-aeab4ca019f3")
+		)
+		(pin "12"
+			(uuid "4b269bdd-7bc4-45db-a345-a0bd8340e325")
+		)
+		(pin "13"
+			(uuid "5f310103-fbc4-472d-834d-b2aa22ab93e4")
+		)
+		(pin "14"
+			(uuid "95b0c277-cef9-47bd-963e-38d714725e22")
+		)
+		(pin "11"
+			(uuid "1a4aea33-a5ca-4f00-82cb-ae8e4a22e037")
+		)
+		(pin "4"
+			(uuid "2614cf30-c787-4496-952d-f71a5dc1c1ce")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "U701")
+					(unit 5)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 146.05 52.07 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00006224fbcf")
+		(property "Reference" "C701"
+			(at 147.2184 54.991 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "560p"
+			(at 144.907 54.991 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 142.24 53.0352 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1105bae9-2394-4b49-bca9-1f4a5c94c665")
+		)
+		(pin "2"
+			(uuid "81430bb3-8e59-4061-baa9-747a03069304")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "C701")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 146.05 86.36 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-00006225a6f4")
+		(property "Reference" "C703"
+			(at 147.2184 89.281 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "560p"
+			(at 144.907 89.281 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 142.24 87.3252 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 146.05 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e36e6df6-bef8-49f3-84d3-afb6d7b73c66")
+		)
+		(pin "2"
+			(uuid "8bc99c46-4fb8-4c07-8869-7091505aff3f")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "C703")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 121.92 116.84 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062266216")
+		(property "Reference" "C705"
+			(at 123.0884 119.761 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "560p"
+			(at 120.777 119.761 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 118.11 117.8052 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 121.92 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ad0f2380-623f-42b2-b66c-db2d20a049d2")
+		)
+		(pin "2"
+			(uuid "b52a47d8-e042-4432-b8a6-003a9c30dc51")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "C705")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 121.92 149.86 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062267fbc")
+		(property "Reference" "C706"
+			(at 123.0884 152.781 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "560p"
+			(at 120.777 152.781 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 118.11 150.8252 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 121.92 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 121.92 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0182824f-ca71-4db4-82d1-b1cb3c108e7d")
+		)
+		(pin "2"
+			(uuid "4b5f8319-5f4e-4b47-914f-ac138adb6413")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000061c2c7f7"
+					(reference "C706")
+					(unit 1)
+				)
+			)
+		)
+	)
 )
