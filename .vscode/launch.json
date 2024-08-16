@@ -79,6 +79,7 @@
             "preLaunchTask": "buildTests-TapeLooperDSP",
             
             "osx": {
+                "type": "lldb",
                 "MIMode": "lldb",
             },
             "windows": {
@@ -101,6 +102,7 @@
             "preLaunchTask": "buildTests-TapeLooper",
             
             "osx": {
+                "type": "lldb",
                 "MIMode": "lldb",
             },
             "windows": {
@@ -123,6 +125,7 @@
             "preLaunchTask": "build plugin",
             
             "osx": {
+                "type": "lldb",
                 "MIMode": "lldb",
             },
             "windows": {
@@ -144,6 +147,7 @@
             "preLaunchTask": "build plugin",
             
             "osx": {
+                "type": "lldb",
                 "MIMode": "lldb",
                 "program": "${workspaceFolder}/plugin/build/TapeLooperPlugin_artefacts/Debug/Standalone/Tape Looper Plugin.app/Contents/MacOS/Tape Looper Plugin",
             },

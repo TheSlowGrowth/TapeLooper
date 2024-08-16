@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -38,6 +38,12 @@ struct LooperStoragePtr
     }
 };
 
+struct MonoOrStereoLooperStoragePtr :
+    public LooperStoragePtr<1>,
+    public LooperStoragePtr<2>
+{
+};
+
 template <size_t size, size_t numChannels>
 class LooperStorage : public LooperStoragePtr<numChannels>
 {
@@ -54,6 +60,27 @@ public:
 
 private:
     std::array<std::array<float, size>, numChannels> storage_;
+};
+
+template <size_t sizeWhenMono>
+class MonoOrStereoLooperStorage : public MonoOrStereoLooperStoragePtr
+{
+public:
+    MonoOrStereoLooperStorage()
+    {
+        storage_.fill(0.0f);
+
+        this->LooperStoragePtr<1>::data[0] = storage_.data();
+        this->LooperStoragePtr<1>::numSamples = sizeWhenMono;
+
+        const auto sizePerChannel = sizeWhenMono / 2;
+        this->LooperStoragePtr<2>::data[0] = storage_.data();
+        this->LooperStoragePtr<2>::data[1] = storage_.data() + sizePerChannel;
+        this->LooperStoragePtr<2>::numSamples = sizePerChannel;
+    }
+
+private:
+    std::array<float, sizeWhenMono> storage_;
 };
 
 enum class LooperState
@@ -119,15 +146,21 @@ public:
                  const typename ProcessorType::Parameters& processorParameters,
                  float paramPostGain,
                  AudioBufferPtr<numChannels, const float> input,
-                 AudioBufferPtr<numChannels, float> outputToAddTo)
+                 AudioBufferPtr<numChannels, float> outputToAddTo,
+                 ExponentialSmoother::TimeConstant postGainSmootherTimeConstant =
+                     ExponentialSmoother::TimeConstant(0.05f, sampleRate, 1),
+                 ExponentialSmoother::TimeConstant speedSmootherTimeConstant =
+                     ExponentialSmoother::TimeConstant(0.05f, sampleRate, 1))
     {
         const auto mappedWowAndFlutterAmt = wowAndFlutterAmt * wowAndFlutterAmt;
         player_.process(paramSpeed,
-                        mappedWowAndFlutterAmt * maxWowAndFlutterAmt_,
+                        mappedWowAndFlutterAmt,
                         direction,
                         paramPostGain,
                         processorParameters,
-                        outputToAddTo);
+                        outputToAddTo,
+                        postGainSmootherTimeConstant,
+                        speedSmootherTimeConstant);
         recorder_.process(input);
 
         const auto recordingStopped = state_ == LooperState::recording && !recorder_.isRecording();
@@ -142,7 +175,7 @@ public:
                + storage_.getTotalSizeInBytes();
     }
 
-    /** 
+    /**
      * Saves the state of the looper
      */
     template <typename StorageType>
@@ -163,7 +196,7 @@ public:
         return mem.writeItems(isPlaying);
     }
 
-    /** 
+    /**
      * Stopps playback or recording and recalls the state of the looper, including
      *    - the length of the current recording
      *    - if the looper is currently playing
@@ -192,7 +225,6 @@ public:
     const LooperStoragePtr<numChannels> getSampleStoragePtr() const { return storage_; }
 
 private:
-    static constexpr float maxWowAndFlutterAmt_ = 0.025f;
     const LooperStoragePtr<numChannels> storage_;
     LooperState state_;
     PlayerType player_;

@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -27,6 +27,12 @@
 #    define MANUAL_INLINE inline __attribute__((always_inline))
 #endif
 
+struct TapeProcessorParameters
+{
+    float driveGain;
+    float grainAmt;
+};
+
 template <size_t sampleRate, size_t numChannels>
 class TapeProcessor
 {
@@ -35,11 +41,7 @@ public:
     {
     }
 
-    struct Parameters
-    {
-        float driveGain;
-        float grainAmt;
-    };
+    using Parameters = TapeProcessorParameters;
 
     void reset()
     {
@@ -65,15 +67,17 @@ public:
 
         for (size_t ch = 0; ch < numChannels; ch++)
         {
-            // tape saturation
             auto& sample = inputAndOutput[ch];
+
+            // tape grain
+            sample = grainProcessors_[ch].process(grainAmt, sample);
+
+            // tape saturation
             sample = emphasisEqs_[ch].processPreEmphasis(sample);
             sample *= driveGain;
             sample = TapeSaturator<float>::saturate(sample);
             sample /= driveGain;
             sample = emphasisEqs_[ch].processDeEmphasis(sample);
-            // tape grain
-            sample = grainProcessors_[ch].process(grainAmt, sample);
             // apply tape EQ
             sample = tapeEqs_[ch].process(sample);
         }

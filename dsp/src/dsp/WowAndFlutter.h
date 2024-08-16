@@ -46,13 +46,15 @@ public:
     }
 
 private:
+    static constexpr FloatType globalScale_ = FloatType(0.025f);
+
     static constexpr FloatType flutterCarrierSpeedInHz_ = FloatType(6.234);
     static constexpr FloatType flutterModulatorSpeedInHz_ = FloatType(4.8994);
     static constexpr FloatType flutterModulationDepth_ = FloatType(0.23);
-    static constexpr FloatType flutterAmplitude_ = FloatType(0.6);
+    static constexpr FloatType flutterAmplitude_ = FloatType(0.6) * globalScale_;
 
     static constexpr FloatType wowSpeedInHz_ = FloatType(0.4);
-    static constexpr FloatType wowAmplitude_ = FloatType(0.4);
+    static constexpr FloatType wowAmplitude_ = FloatType(0.4) * globalScale_;
 
 public:
     static constexpr FloatType maxOutput_ = 1.0f;

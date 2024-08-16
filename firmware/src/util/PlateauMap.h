@@ -36,8 +36,8 @@ public:
     {
     }
 
-    static constexpr size_t numPlateaus_ = numPlateaus;
-    static constexpr size_t numTransitions_ = numPlateaus + 1;
+    static constexpr size_t kNumPlateaus = numPlateaus;
+    static constexpr size_t kNumTransitions = numPlateaus + 1;
     const std::array<FloatType, numPlateaus> plateauLevels_;
 
     struct TransitionParameters
@@ -47,7 +47,7 @@ public:
         FloatType c = FloatType(0);
         FloatType d = FloatType(0);
     };
-    using TransitionParameterSet = std::array<TransitionParameters, numTransitions_>;
+    using TransitionParameterSet = std::array<TransitionParameters, kNumTransitions>;
     const TransitionParameterSet transitionParameterSet_;
 
 private:
@@ -73,10 +73,10 @@ private:
     {
         TransitionParameterSet result {};
 
-        for (size_t i = 0; i < numTransitions_; i++)
+        for (size_t i = 0; i < kNumTransitions; i++)
         {
             const auto isFirst = i == 0;
-            const auto isLast = i == (numTransitions_ - 1);
+            const auto isLast = i == (kNumTransitions - 1);
             // 1st & 2nd boundary condition: match plateau levels at both ends
             const FloatType levelLeft = isFirst ? FloatType(0) : plateauLevels[i - 1];
             const FloatType levelRight = isLast ? FloatType(1) : plateauLevels[i];
@@ -169,7 +169,7 @@ constexpr FloatType plateauMap(FloatType input, PlateauMapParameters<FloatType, 
         return 1.0f;
 
     size_t transitionIndex = 0;
-    for (size_t i = 0; i < plateauParameters.numTransitions_; i++)
+    for (size_t i = 0; i < plateauParameters.kNumTransitions; i++)
     {
         transitionIndex = i;
         if (input <= plateauParameters.plateauLevels_[i])
