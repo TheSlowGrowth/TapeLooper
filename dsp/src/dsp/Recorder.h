@@ -140,6 +140,7 @@ public:
         return true;
     }
 
+    void setCurrentPlaybackLength(size_t length) { currentLength_ = length; }
     size_t getCurrentRecordingLength() const { return currentLength_; }
     bool isRecording() const { return isRecording_ || isFadingOut_; }
 
