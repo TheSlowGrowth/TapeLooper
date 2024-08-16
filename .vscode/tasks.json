@@ -51,9 +51,11 @@
                     "CMAKE_EXPORT_COMPILE_COMMANDS=1",
                     "-G",
                     "\\\"Unix Makefiles\\\""
-                ],
+                ]
             },
-            "group": "build",
+            "group": {
+                "kind": "build"
+            },
             "problemMatcher": []
         },
         {
@@ -96,9 +98,11 @@
                     "CMAKE_EXPORT_COMPILE_COMMANDS=1",
                     "-G",
                     "\\\"Unix Makefiles\\\""
-                ],
+                ]
             },
-            "group": "build",
+            "group": {
+                "kind": "build"
+            },
             "problemMatcher": []
         },
         {
@@ -112,7 +116,10 @@
             "options": {
                 "cwd": "${workspaceRoot}"
             },
-            "group": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
             "problemMatcher": [
                 "$gcc"
             ]
@@ -137,7 +144,7 @@
                     "clean"
                 ]
             },
-            "options" : {
+            "options": {
                 "cwd": "${workspaceRoot}/firmware/build"
             },
             "problemMatcher": []
@@ -170,9 +177,11 @@
                     "CMAKE_EXPORT_COMPILE_COMMANDS=1",
                     "-G",
                     "\\\"Visual Studio 16 2019\\\""
-                ],
+                ]
             },
-            "group": "build",
+            "group": {
+                "kind": "build"
+            },
             "problemMatcher": []
         },
         {
@@ -207,9 +216,11 @@
                     "CMAKE_EXPORT_COMPILE_COMMANDS=1",
                     "-G",
                     "\\\"Visual Studio 16 2019\\\""
-                ],
+                ]
             },
-            "group": "build",
+            "group": {
+                "kind": "build"
+            },
             "problemMatcher": []
         },
         {
@@ -223,7 +234,9 @@
             "options": {
                 "cwd": "${workspaceRoot}"
             },
-            "group": "build",
+            "group": {
+                "kind": "build"
+            },
             "problemMatcher": [
                 "$gcc"
             ]
@@ -248,12 +261,11 @@
                     "clean"
                 ]
             },
-            "options" : {
+            "options": {
                 "cwd": "${workspaceRoot}/plugin/build"
             },
             "problemMatcher": []
         },
-
         {
             "label": "buildTests-TapeLooperDSP",
             "command": "make",
@@ -261,11 +273,10 @@
                 ""
             ],
             "options": {
-                    "cwd": "${workspaceFolder}/dsp/tests"
+                "cwd": "${workspaceFolder}/dsp/tests"
             },
             "group": {
-                "kind": "build",
-                "isDefault": true
+                "kind": "build"
             },
             "problemMatcher": {
                 "owner": "cpp",
@@ -290,15 +301,14 @@
                 "clean"
             ],
             "options": {
-                    "cwd": "${workspaceFolder}/dsp/tests"
+                "cwd": "${workspaceFolder}/dsp/tests"
             },
             "problemMatcher": []
         },
         {
             "label": "cleanBuildTests-TapeLooperDSP",
             "group": {
-                "kind": "build",
-                "isDefault": true
+                "kind": "build"
             },
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -328,11 +338,10 @@
                 ""
             ],
             "options": {
-                    "cwd": "${workspaceFolder}/firmware/tests"
+                "cwd": "${workspaceFolder}/firmware/tests"
             },
             "group": {
-                "kind": "build",
-                "isDefault": true
+                "kind": "build"
             },
             "problemMatcher": {
                 "owner": "cpp",
@@ -357,15 +366,14 @@
                 "clean"
             ],
             "options": {
-                    "cwd": "${workspaceFolder}/firmware/tests"
+                "cwd": "${workspaceFolder}/firmware/tests"
             },
             "problemMatcher": []
         },
         {
             "label": "cleanBuildTests-TapeLooper",
             "group": {
-                "kind": "build",
-                "isDefault": true
+                "kind": "build"
             },
             "dependsOrder": "sequence",
             "dependsOn": [
@@ -387,6 +395,6 @@
                     "message": 5
                 }
             }
-        },
+        }
     ]
 }

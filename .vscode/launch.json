@@ -15,12 +15,11 @@
             "serverLaunchTimeout": 20000,
             "filterStderr": true,
             "filterStdout": false,
-            "serverStarted": "target halted due to debug-request, current mode: Thread",
+            "serverStarted": "halted due to debug-request, current mode: Thread",
             "preLaunchTask": "build firmware",
             "setupCommands": [
                 { "text": "-target-select remote localhost:3333", "description": "connect to target", "ignoreFailures": false },
                 { "text": "-file-exec-and-symbols ${workspaceRoot}/firmware/build/TapeLooper.elf", "description": "load file", "ignoreFailures": false},
-                { "text": "-interpreter-exec console \"monitor endian little\"", "ignoreFailures": false },
                 { "text": "-interpreter-exec console \"monitor reset\"", "ignoreFailures": false },
                 { "text": "-interpreter-exec console \"monitor halt\"", "ignoreFailures": false },
                 { "text": "-interpreter-exec console \"monitor arm semihosting enable\"", "ignoreFailures": false },
@@ -52,7 +51,6 @@
                     // GDB expects windows-style paths, so we can't use ${workspaceRoot} and have to hardcode the path here.
                     // Furthermore this string passes through TWO escape-steps, requiring us to use ugly "\\\\"
                     { "text": "-file-exec-and-symbols C:\\\\Users\\\\johannes\\\\Documents\\\\Repos\\\\TapeLooper\\\\firmware\\\\build\\\\TapeLooper.elf", "description": "load file", "ignoreFailures": false},
-                    { "text": "-interpreter-exec console \"monitor endian little\"", "ignoreFailures": false },
                     { "text": "-interpreter-exec console \"monitor reset\"", "ignoreFailures": false },
                     { "text": "-interpreter-exec console \"monitor halt\"", "ignoreFailures": false },
                     { "text": "-interpreter-exec console \"monitor arm semihosting enable\"", "ignoreFailures": false },
@@ -77,7 +75,7 @@
                 "engineLogging": false
             },
             "preLaunchTask": "buildTests-TapeLooperDSP",
-            
+
             "osx": {
                 "type": "lldb",
                 "MIMode": "lldb",
@@ -100,7 +98,7 @@
                 "engineLogging": false
             },
             "preLaunchTask": "buildTests-TapeLooper",
-            
+
             "osx": {
                 "type": "lldb",
                 "MIMode": "lldb",
@@ -123,7 +121,7 @@
                 "engineLogging": false
             },
             "preLaunchTask": "build plugin",
-            
+
             "osx": {
                 "type": "lldb",
                 "MIMode": "lldb",
@@ -145,7 +143,7 @@
                 "engineLogging": false
             },
             "preLaunchTask": "build plugin",
-            
+
             "osx": {
                 "type": "lldb",
                 "MIMode": "lldb",

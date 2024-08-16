@@ -50,8 +50,8 @@ daisy::DaisySeed seed;
 
 // ui static objects
 daisy::UiEventQueue uiEventQueue;
-daisy::MAX11300Types::DmaBuffer DMA_BUFFER_MEM_SECTION max11300DmaBuffer;
 UiHardware::LedDmaBufferType DMA_BUFFER_MEM_SECTION ledDmaBufferA, ledDmaBufferB;
+uint16_t DMA_BUFFER_MEM_SECTION buttonShiftRegisterDmaBuffer;
 
 LateInitializedObject<UiHardware> uiHardware;
 LateInitializedObject<TapeLooperUiType> ui;
@@ -88,7 +88,7 @@ void initUi()
     auto& hardware = *uiHardware.create(uiEventQueue,
                                         ledDmaBufferA,
                                         ledDmaBufferB,
-                                        &max11300DmaBuffer);
+                                        &buttonShiftRegisterDmaBuffer);
 
     // init the UI
     ui.create(
@@ -182,8 +182,17 @@ int main(void)
     seed.StartAudio(&audioCallback);
 
     // UI loop
+    auto lastUpdate = daisy::System::GetNow();
     for (;;)
     {
         ui->process();
+        uiHardware->processControls();
+
+        // limit update rate to 50Hz
+        constexpr auto kUpdateIntervalMs = 20;
+        while (daisy::System::GetNow() < lastUpdate + kUpdateIntervalMs)
+        {
+        }
+        lastUpdate = daisy::System::GetNow();
     }
 }

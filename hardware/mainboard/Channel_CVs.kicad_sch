@@ -1,0 +1,9778 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "3165f3d4-19b4-4be7-a721-a320c7b6f7fb")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Amplifier_Operational:MCP6004"
+			(pin_names
+				(offset 0.127)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "MCP6004"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.27 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+				(at 1.27 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "1MHz, Low-Power Op Amp, DIP-14/SOIC-14/TSSOP-14"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "quad opamp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOIC*3.9x8.7mm*P1.27mm* DIP*W7.62mm* TSSOP*4.4x5mm*P0.65mm* SSOP*5.3x6.2mm*P0.65mm* MSOP*3x3mm*P0.5mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MCP6004_1_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "MCP6004_2_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "MCP6004_3_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "MCP6004_4_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "MCP6004_5_1"
+				(pin power_in line
+					(at -2.54 -7.62 90)
+					(length 3.81)
+					(name "V-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -2.54 7.62 270)
+					(length 3.81)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:C"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0.254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "C"
+				(at 0.635 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "C"
+				(at 0.635 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0.9652 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Unpolarized capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "cap capacitor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "C_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "C_0_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "C_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.794)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Device:R"
+			(pin_numbers hide)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "R"
+				(at 2.032 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "R"
+				(at 0 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at -1.778 0 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "R res resistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "R_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "R_0_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "R_1_1"
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "ell_audio_conn:JACK_TS_3PINS"
+			(pin_names
+				(offset 0.762)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "JACK_TS_3PINS"
+				(at -1.27 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 2.54 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 2.54 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "JACK_TS_3PINS_0_0"
+				(polyline
+					(pts
+						(xy 3.81 -1.27) (xy 3.81 1.27) (xy 7.62 1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -8.89 5.08) (xy -7.62 3.81) (xy -6.35 5.08) (xy 7.62 5.08)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "JACK_TS_3PINS_0_1"
+				(rectangle
+					(start -11.43 5.08)
+					(end -10.16 -1.27)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 7.62 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 0 0) (xy -1.27 -1.27) (xy -1.27 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 0) (xy 3.81 -1.27) (xy 5.08 0) (xy 5.08 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 7.62 -2.54)
+					(end -10.16 6.35)
+					(stroke
+						(width 0)
+						(type solid)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "JACK_TS_3PINS_1_1"
+				(pin passive line
+					(at 10.16 5.08 180)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 1.27 180)
+					(length 2.54)
+					(name "TN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -1.27 180)
+					(length 2.54)
+					(name "T"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:+3.3VA"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+3.3VA"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+3.3VA\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+3.3VA_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+3.3VA_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0) hide
+					(name "+3.3VA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:+5VA"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "+5VA"
+				(at 0 3.556 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"+5VA\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "+5VA_0_1"
+				(polyline
+					(pts
+						(xy -0.762 1.27) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 2.54) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "+5VA_1_1"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0) hide
+					(name "+5VA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "power:-10V"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "-10V"
+				(at 0 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"-10V\""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "-10V_0_0"
+				(pin power_in line
+					(at 0 0 90)
+					(length 0) hide
+					(name "-10V"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "-10V_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 1.27) (xy 0.762 1.27) (xy 0 2.54) (xy -0.762 1.27) (xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+		)
+		(symbol "power:GNDA"
+			(power)
+			(pin_names
+				(offset 0)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Value" "GNDA"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GNDA\" , analog ground"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "GNDA_0_1"
+				(polyline
+					(pts
+						(xy 0 0) (xy 0 -1.27) (xy 1.27 -1.27) (xy 0 -2.54) (xy -1.27 -1.27) (xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GNDA_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0) hide
+					(name "GNDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 179.07 39.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0179f900-69ee-4f97-9f2f-05fa3dad6ab9")
+	)
+	(junction
+		(at 83.82 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0dd7f00f-49be-4f37-92c8-755ac409f5a9")
+	)
+	(junction
+		(at 59.69 39.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "13eea9c9-97bf-4d79-a5d5-b30ba9c09889")
+	)
+	(junction
+		(at 104.14 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1483f685-c9ed-4d9d-a953-fc87f34e48d9")
+	)
+	(junction
+		(at 59.69 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2151172a-51e5-44b6-9c52-e996c8e2a75c")
+	)
+	(junction
+		(at 199.39 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "26909034-4772-4141-ba22-7412dcb09aaf")
+	)
+	(junction
+		(at 59.69 100.33)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "361af42b-cfef-479e-b61b-9035a471f6e8")
+	)
+	(junction
+		(at 83.82 100.33)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "41a39adb-b3bc-481f-9e99-31b11f386ffc")
+	)
+	(junction
+		(at 179.07 100.33)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "46e83871-4c89-49ee-b22d-f13fd7cc5df9")
+	)
+	(junction
+		(at 104.14 124.46)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4947c867-a455-4023-9a22-b9441d3403c5")
+	)
+	(junction
+		(at 83.82 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "53732145-1f47-4bf7-a1b1-a92871232d86")
+	)
+	(junction
+		(at 83.82 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "53e8550e-0f9c-4479-aa62-aaac40e4481d")
+	)
+	(junction
+		(at 83.82 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5526bde1-d4e8-4b42-93a4-2cd941c0afb3")
+	)
+	(junction
+		(at 199.39 124.46)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7b76e086-d1dd-4a2b-9da4-5fe1f5f7741d")
+	)
+	(junction
+		(at 104.14 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8165f4b5-8e62-4b03-8d9c-14ce70095fca")
+	)
+	(junction
+		(at 83.82 124.46)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "861cc9e6-9fdf-4b8f-a784-e4a99c16307b")
+	)
+	(junction
+		(at 179.07 124.46)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "98d7ebd1-66ba-4717-a3bf-e5585387ffa5")
+	)
+	(junction
+		(at 83.82 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c19c3ae7-0bd7-45b5-ae9f-84fd41678816")
+	)
+	(junction
+		(at 179.07 93.98)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c295b7a5-f036-4f3f-91de-79fe97804643")
+	)
+	(junction
+		(at 199.39 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c38f9937-5da1-4a99-816f-85601465bcee")
+	)
+	(junction
+		(at 179.07 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c390db71-3df4-478c-b9be-01c59806369a")
+	)
+	(junction
+		(at 83.82 39.37)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c8e9f59b-cfd9-46eb-9b7b-8e83c2e0b2f7")
+	)
+	(junction
+		(at 199.39 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cd79cfa7-c3be-4785-8e24-0e159c615d83")
+	)
+	(junction
+		(at 104.14 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d72c2969-6cf6-4d17-aaf7-c9a0d923f4d8")
+	)
+	(junction
+		(at 179.07 63.5)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d790bef0-0167-4e79-b297-05ce33645a6a")
+	)
+	(junction
+		(at 179.07 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e8343f52-7c2d-4398-bc73-5650d57d2533")
+	)
+	(junction
+		(at 59.69 130.81)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f465ffd7-4c8b-444b-9dca-fa26891173f2")
+	)
+	(junction
+		(at 179.07 69.85)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ff2e9d6a-7eda-4993-bb45-0d0fca08a4cf")
+	)
+	(wire
+		(pts
+			(xy 199.39 93.98) (xy 203.2 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0288b9b4-dbda-4018-a110-d9a1934f4662")
+	)
+	(wire
+		(pts
+			(xy 199.39 41.91) (xy 196.85 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0310cef5-670c-43ff-a29a-69dfdc705044")
+	)
+	(wire
+		(pts
+			(xy 104.14 63.5) (xy 104.14 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06a33314-e27e-4ae1-8eb4-6f73f2807902")
+	)
+	(wire
+		(pts
+			(xy 199.39 72.39) (xy 196.85 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f5c356e-d54a-4bc0-9ee3-94207f79a9b8")
+	)
+	(wire
+		(pts
+			(xy 193.04 54.61) (xy 199.39 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10d07ad3-1e4a-4b73-8965-fac6dc34ccca")
+	)
+	(wire
+		(pts
+			(xy 71.12 69.85) (xy 68.58 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "10fdc95e-6f53-488e-babe-0b216440ec45")
+	)
+	(wire
+		(pts
+			(xy 185.42 93.98) (xy 179.07 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "11a342d1-59f8-4eca-b772-313f4bc3d58a")
+	)
+	(wire
+		(pts
+			(xy 58.42 93.98) (xy 71.12 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12309968-a808-4935-a5dc-bc45b83143f5")
+	)
+	(wire
+		(pts
+			(xy 185.42 54.61) (xy 179.07 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12be2b65-9490-4de3-8403-688e170ffd7f")
+	)
+	(wire
+		(pts
+			(xy 179.07 93.98) (xy 179.07 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1960eea6-a1ec-4df9-888c-542a6d4141ce")
+	)
+	(wire
+		(pts
+			(xy 193.04 85.09) (xy 199.39 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a5a19e9-67b8-4e05-9ae4-201521b996f4")
+	)
+	(wire
+		(pts
+			(xy 199.39 115.57) (xy 199.39 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b538501-69c7-4ef4-9f78-62aa00b8d2c3")
+	)
+	(wire
+		(pts
+			(xy 83.82 39.37) (xy 86.36 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c091245-a232-46c6-ac79-9e6ee285ca82")
+	)
+	(wire
+		(pts
+			(xy 153.67 130.81) (xy 154.94 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1de6f081-b436-4ae4-9045-bcc7e16520da")
+	)
+	(wire
+		(pts
+			(xy 166.37 130.81) (xy 163.83 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e25a535-44a9-481b-822a-6acf0af9d488")
+	)
+	(wire
+		(pts
+			(xy 83.82 85.09) (xy 83.82 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f5d6435-de7e-4109-bf93-ddf354d1c3d5")
+	)
+	(wire
+		(pts
+			(xy 59.69 39.37) (xy 59.69 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f9ccbca-5898-46d2-9d21-a6929657ebb5")
+	)
+	(wire
+		(pts
+			(xy 199.39 24.13) (xy 199.39 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2255130c-f3d1-41d9-9b23-786ecc18f9c1")
+	)
+	(wire
+		(pts
+			(xy 153.67 93.98) (xy 166.37 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22fbba08-3ca6-4c80-b116-7c490d55e4ab")
+	)
+	(wire
+		(pts
+			(xy 78.74 69.85) (xy 83.82 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24cdc1b2-c73b-4bf2-a6bb-7680dcffbd1f")
+	)
+	(wire
+		(pts
+			(xy 199.39 124.46) (xy 199.39 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24f67ca5-e655-407a-93b1-a6a91cb58c23")
+	)
+	(wire
+		(pts
+			(xy 160.02 35.56) (xy 160.02 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "255d98ff-2991-4baf-8146-3f7c81b3b97b")
+	)
+	(wire
+		(pts
+			(xy 58.42 66.04) (xy 59.69 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "26d5201b-b6a0-4917-9d55-26d57907dc49")
+	)
+	(wire
+		(pts
+			(xy 181.61 74.93) (xy 179.07 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b9e8aee-5850-461f-9aa6-b5558d592ccc")
+	)
+	(wire
+		(pts
+			(xy 90.17 85.09) (xy 83.82 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c387315-b90f-4fe7-91f4-a3b16cd85e4a")
+	)
+	(wire
+		(pts
+			(xy 199.39 33.02) (xy 203.2 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2cedacde-aed5-4f54-a97c-c69ab5583dcd")
+	)
+	(wire
+		(pts
+			(xy 97.79 33.02) (xy 104.14 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2d685c5b-89e9-43d0-9763-a46881fd2b0f")
+	)
+	(wire
+		(pts
+			(xy 59.69 35.56) (xy 59.69 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e2d4f4b-3f3c-4d97-89d4-5cdf016c686d")
+	)
+	(wire
+		(pts
+			(xy 83.82 74.93) (xy 83.82 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ebc7c26-ec2c-4d36-ba9c-53d7c9e4b2d3")
+	)
+	(wire
+		(pts
+			(xy 97.79 63.5) (xy 104.14 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f65d0b9-0507-4f15-94ae-45fc5c688294")
+	)
+	(wire
+		(pts
+			(xy 179.07 39.37) (xy 181.61 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3342217e-32cd-4537-9382-f70c233ab5ed")
+	)
+	(wire
+		(pts
+			(xy 58.42 63.5) (xy 71.12 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3430b5d8-ead1-4b17-a214-de1c5c630d88")
+	)
+	(wire
+		(pts
+			(xy 166.37 69.85) (xy 163.83 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "349229b6-8cbb-47ce-932f-f4faed6b29ec")
+	)
+	(wire
+		(pts
+			(xy 160.02 127) (xy 160.02 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34ec42a8-9738-4b44-8485-c0f00ebb393c")
+	)
+	(wire
+		(pts
+			(xy 185.42 63.5) (xy 179.07 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36da4307-c0cf-4180-9382-a9d3a8ab38ab")
+	)
+	(wire
+		(pts
+			(xy 199.39 63.5) (xy 203.2 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3726c6ba-e5fd-4840-817e-65d886d90ee8")
+	)
+	(wire
+		(pts
+			(xy 179.07 105.41) (xy 179.07 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "399ad0f5-273b-48e3-8bc8-caa58d622beb")
+	)
+	(wire
+		(pts
+			(xy 163.83 100.33) (xy 163.83 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "399b1c19-1265-4d84-ad54-fdd8d4824b75")
+	)
+	(wire
+		(pts
+			(xy 83.82 130.81) (xy 86.36 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cecefbe-d3af-403d-92cc-9350ffe235e0")
+	)
+	(wire
+		(pts
+			(xy 71.12 39.37) (xy 68.58 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cfd52b9-ef54-4da3-971a-67a7edef66a8")
+	)
+	(wire
+		(pts
+			(xy 166.37 39.37) (xy 163.83 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3db1eda5-de22-4e31-b6bc-5b8621c62fa2")
+	)
+	(wire
+		(pts
+			(xy 163.83 130.81) (xy 163.83 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ea158c3-5337-438e-9f6f-69a5a0e65045")
+	)
+	(wire
+		(pts
+			(xy 78.74 124.46) (xy 83.82 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3f39524e-d146-46da-84d2-cedfa416ec41")
+	)
+	(wire
+		(pts
+			(xy 199.39 63.5) (xy 199.39 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41e64aef-c2ae-4853-a959-60f1133afe6f")
+	)
+	(wire
+		(pts
+			(xy 90.17 93.98) (xy 83.82 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4311d0e1-993c-4bc4-8adb-37f55f58a4ab")
+	)
+	(wire
+		(pts
+			(xy 104.14 93.98) (xy 107.95 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "475592a1-4ae7-45e1-a167-a2469aa45204")
+	)
+	(wire
+		(pts
+			(xy 153.67 66.04) (xy 160.02 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "47aad90b-406b-4fe0-840e-6a5d570669b9")
+	)
+	(wire
+		(pts
+			(xy 58.42 130.81) (xy 59.69 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ae900f3-007a-45f0-9f18-512a15ca8263")
+	)
+	(wire
+		(pts
+			(xy 97.79 93.98) (xy 104.14 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c89002d-255c-48e2-ac73-78266ab7a3df")
+	)
+	(wire
+		(pts
+			(xy 199.39 133.35) (xy 196.85 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4d4950f8-2993-4847-8140-436cf654e1ce")
+	)
+	(wire
+		(pts
+			(xy 185.42 124.46) (xy 179.07 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4dafb0be-100c-4278-a215-9f6d60ad2ae5")
+	)
+	(wire
+		(pts
+			(xy 83.82 24.13) (xy 83.82 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4dffe691-1567-45c2-a81d-7a048e90dfcf")
+	)
+	(wire
+		(pts
+			(xy 97.79 24.13) (xy 104.14 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e427102-c769-4b86-a541-93b04e9e12a7")
+	)
+	(wire
+		(pts
+			(xy 59.69 100.33) (xy 59.69 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f36d996-f753-456d-8818-4b6b0ff589c8")
+	)
+	(wire
+		(pts
+			(xy 90.17 115.57) (xy 83.82 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "518afb75-4fcd-45ae-8138-e003834f212f")
+	)
+	(wire
+		(pts
+			(xy 86.36 44.45) (xy 83.82 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "520d4df7-c390-4dc7-a79d-5e566d502ce2")
+	)
+	(wire
+		(pts
+			(xy 185.42 33.02) (xy 179.07 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "54c9df5a-f3d1-40fc-894f-4ddcfb469412")
+	)
+	(wire
+		(pts
+			(xy 83.82 44.45) (xy 83.82 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55eb783d-be9a-413b-a916-01901e19ebec")
+	)
+	(wire
+		(pts
+			(xy 83.82 54.61) (xy 83.82 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "562d92b1-7d64-4e10-aee7-3306d8df3f2f")
+	)
+	(wire
+		(pts
+			(xy 179.07 54.61) (xy 179.07 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "56d5efee-517a-4c23-bd62-3923a196845f")
+	)
+	(wire
+		(pts
+			(xy 58.42 35.56) (xy 59.69 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5827ccc0-3111-4771-9a56-768c507c6421")
+	)
+	(wire
+		(pts
+			(xy 58.42 124.46) (xy 71.12 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59bba977-1403-4744-b5c5-fedbe4a5ae9b")
+	)
+	(wire
+		(pts
+			(xy 104.14 85.09) (xy 104.14 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59d6b501-d854-4f66-822e-7873fc70fd57")
+	)
+	(wire
+		(pts
+			(xy 104.14 24.13) (xy 104.14 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5cbc4bea-36d3-443d-abc2-aeb4e45d92df")
+	)
+	(wire
+		(pts
+			(xy 179.07 85.09) (xy 179.07 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5dc12064-a54a-44b2-8c37-b477d1dc886a")
+	)
+	(wire
+		(pts
+			(xy 78.74 93.98) (xy 83.82 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5eb360b4-ebb7-46a9-acae-5550ad968310")
+	)
+	(wire
+		(pts
+			(xy 193.04 93.98) (xy 199.39 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ec6e7f0-2877-4aef-8617-544a0d873b5a")
+	)
+	(wire
+		(pts
+			(xy 173.99 124.46) (xy 179.07 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f152dd2-f83d-443b-a585-78d6aee64d87")
+	)
+	(wire
+		(pts
+			(xy 97.79 115.57) (xy 104.14 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f3b2d6d-7811-4270-b3dd-52e601f7da5f")
+	)
+	(wire
+		(pts
+			(xy 179.07 115.57) (xy 179.07 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5fcd7e17-b667-4fb5-bd1d-364497d58d19")
+	)
+	(wire
+		(pts
+			(xy 68.58 100.33) (xy 68.58 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5ff1e602-0b93-4dfc-9a51-c95cf2dce293")
+	)
+	(wire
+		(pts
+			(xy 179.07 33.02) (xy 179.07 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60526919-4d80-46fc-8662-b0cb8bd3e898")
+	)
+	(wire
+		(pts
+			(xy 163.83 39.37) (xy 163.83 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "628208a7-e6b2-4afb-ba74-53995f63c42f")
+	)
+	(wire
+		(pts
+			(xy 83.82 93.98) (xy 83.82 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "67e27860-a36b-442d-958b-6ba17389186f")
+	)
+	(wire
+		(pts
+			(xy 104.14 54.61) (xy 104.14 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c022d16-d3e7-452a-b735-1f6d0889d458")
+	)
+	(wire
+		(pts
+			(xy 90.17 54.61) (xy 83.82 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6df16957-bb3f-42d0-969c-c2c4910745d4")
+	)
+	(wire
+		(pts
+			(xy 153.67 33.02) (xy 166.37 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f656d28-7612-48cd-90fe-aadc5eed074b")
+	)
+	(wire
+		(pts
+			(xy 104.14 33.02) (xy 107.95 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6fd4e33f-4550-40c6-bcfd-fa0f1430a08c")
+	)
+	(wire
+		(pts
+			(xy 179.07 69.85) (xy 181.61 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70c6801f-9c87-49bb-8d98-54496cd70d22")
+	)
+	(wire
+		(pts
+			(xy 153.67 127) (xy 160.02 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70cd1d4a-93a4-4f6e-a590-74b197ec5a41")
+	)
+	(wire
+		(pts
+			(xy 179.07 74.93) (xy 179.07 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "70dcbfa3-95bd-4021-9ae9-4111e106b945")
+	)
+	(wire
+		(pts
+			(xy 58.42 100.33) (xy 59.69 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "731b1512-d898-4425-954a-83ad3830fefc")
+	)
+	(wire
+		(pts
+			(xy 163.83 69.85) (xy 163.83 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "748fa426-9e05-44d5-819e-341e2ab34674")
+	)
+	(wire
+		(pts
+			(xy 59.69 130.81) (xy 59.69 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "761e64a9-dc96-45b9-b914-9665eaf25d59")
+	)
+	(wire
+		(pts
+			(xy 179.07 63.5) (xy 179.07 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77b0a119-d23d-4217-b8e6-1f05704b1b1d")
+	)
+	(wire
+		(pts
+			(xy 83.82 115.57) (xy 83.82 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "77b0eb8b-e210-484c-b351-a3145c50a586")
+	)
+	(wire
+		(pts
+			(xy 83.82 105.41) (xy 83.82 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78fad199-0016-4a02-abf9-ee4f7627c272")
+	)
+	(wire
+		(pts
+			(xy 58.42 69.85) (xy 59.69 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "79f9cb81-5bc5-403d-9caa-a412300987de")
+	)
+	(wire
+		(pts
+			(xy 153.67 100.33) (xy 154.94 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b26f411-fb64-4def-b9cd-10c395dcc4f0")
+	)
+	(wire
+		(pts
+			(xy 173.99 33.02) (xy 179.07 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c955ab4-a85f-43db-afeb-496ac1da5698")
+	)
+	(wire
+		(pts
+			(xy 179.07 44.45) (xy 179.07 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7cc57b1f-27f9-4597-9aad-69a35a537992")
+	)
+	(wire
+		(pts
+			(xy 68.58 39.37) (xy 68.58 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d12420a-5e6c-49f8-bed3-1cd371c9a824")
+	)
+	(wire
+		(pts
+			(xy 58.42 127) (xy 59.69 127)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82139741-7233-41c4-884f-bea6f79cb2c2")
+	)
+	(wire
+		(pts
+			(xy 153.67 96.52) (xy 160.02 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8227240a-99ff-4695-94dc-9aaa457b8e9d")
+	)
+	(wire
+		(pts
+			(xy 199.39 124.46) (xy 203.2 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "824e8f01-3d7a-4fcb-a94c-b754b04ec027")
+	)
+	(wire
+		(pts
+			(xy 199.39 85.09) (xy 199.39 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83437764-3f81-4d8a-810b-573ee8063714")
+	)
+	(wire
+		(pts
+			(xy 153.67 124.46) (xy 166.37 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83dd3540-47a2-4722-9ee2-c1a5e5055656")
+	)
+	(wire
+		(pts
+			(xy 166.37 100.33) (xy 163.83 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "83e3167e-afdd-42ee-ad25-ddbc45454432")
+	)
+	(wire
+		(pts
+			(xy 78.74 130.81) (xy 83.82 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89d71e30-4c8e-442e-95a3-33be987e3c4f")
+	)
+	(wire
+		(pts
+			(xy 104.14 124.46) (xy 107.95 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8af66de3-dbb2-4341-8443-1e86a79aaf9f")
+	)
+	(wire
+		(pts
+			(xy 90.17 124.46) (xy 83.82 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cfcbf12-74c9-4c02-833b-37ef74aeda54")
+	)
+	(wire
+		(pts
+			(xy 185.42 115.57) (xy 179.07 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8dbbeee3-1dde-4333-811c-cad7d0f1dc27")
+	)
+	(wire
+		(pts
+			(xy 90.17 24.13) (xy 83.82 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f3fbf5d-b34e-4197-8260-a8425865475f")
+	)
+	(wire
+		(pts
+			(xy 199.39 93.98) (xy 199.39 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f701617-79ff-4447-9123-42a5235565ad")
+	)
+	(wire
+		(pts
+			(xy 97.79 85.09) (xy 104.14 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "90b77ea4-b1eb-428b-8aab-8aa5d84cc389")
+	)
+	(wire
+		(pts
+			(xy 83.82 100.33) (xy 86.36 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "91881c4b-15a1-4db3-b11d-10f8772245bd")
+	)
+	(wire
+		(pts
+			(xy 58.42 96.52) (xy 59.69 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "921869d6-30dc-45b7-a321-b5a36f25e8ad")
+	)
+	(wire
+		(pts
+			(xy 193.04 24.13) (xy 199.39 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9271726c-7e2c-421c-b014-6c635414e36d")
+	)
+	(wire
+		(pts
+			(xy 97.79 54.61) (xy 104.14 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9496a9cd-1d9e-40bc-a61c-0758c288b105")
+	)
+	(wire
+		(pts
+			(xy 86.36 74.93) (xy 83.82 74.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9756faa1-26d5-4370-91a2-0286cc5d3f30")
+	)
+	(wire
+		(pts
+			(xy 68.58 69.85) (xy 68.58 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "989fdd8a-2cd5-4604-bd06-8a1471dac805")
+	)
+	(wire
+		(pts
+			(xy 153.67 35.56) (xy 160.02 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a0a21d7-85f6-4db3-9c3e-ea4d6e9474ae")
+	)
+	(wire
+		(pts
+			(xy 185.42 85.09) (xy 179.07 85.09)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a0bfd72-4b70-4850-8b72-07cc8f10183a")
+	)
+	(wire
+		(pts
+			(xy 154.94 100.33) (xy 154.94 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a7f3a41-3647-4a6d-a841-4dce2096e891")
+	)
+	(wire
+		(pts
+			(xy 86.36 135.89) (xy 83.82 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b0acc26-26e0-451b-811f-5c41f92529ad")
+	)
+	(wire
+		(pts
+			(xy 90.17 33.02) (xy 83.82 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b0d052c-7708-48a5-8d7f-b8b4636dd297")
+	)
+	(wire
+		(pts
+			(xy 173.99 69.85) (xy 179.07 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9cfea329-23f5-4db6-897f-9e300d098890")
+	)
+	(wire
+		(pts
+			(xy 78.74 39.37) (xy 83.82 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a045b2c7-05e8-43e1-81e1-b51393d1e3f9")
+	)
+	(wire
+		(pts
+			(xy 193.04 33.02) (xy 199.39 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0f08278-8699-450f-b4eb-dc02655af550")
+	)
+	(wire
+		(pts
+			(xy 83.82 124.46) (xy 83.82 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1822324-6ee2-434a-9271-0438b75bc5eb")
+	)
+	(wire
+		(pts
+			(xy 97.79 124.46) (xy 104.14 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2f0ee5e-5040-4c30-a879-e86c7ca3cc47")
+	)
+	(wire
+		(pts
+			(xy 199.39 33.02) (xy 199.39 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2fca632-17b3-4914-ab52-9f33eb219c25")
+	)
+	(wire
+		(pts
+			(xy 104.14 41.91) (xy 101.6 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a43cb40a-bc64-4a50-9dc2-5fea2498d5a9")
+	)
+	(wire
+		(pts
+			(xy 173.99 100.33) (xy 179.07 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4483e23-909d-478a-8474-4c7976f5e47d")
+	)
+	(wire
+		(pts
+			(xy 104.14 102.87) (xy 101.6 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4ebbbe1-2a3b-41fe-8fdf-ffe7007e6c64")
+	)
+	(wire
+		(pts
+			(xy 71.12 130.81) (xy 68.58 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6a43f85-2f5f-44ce-af9a-47be2e87678d")
+	)
+	(wire
+		(pts
+			(xy 193.04 124.46) (xy 199.39 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9e224cc-99d6-4260-98e2-1d2d6c67c821")
+	)
+	(wire
+		(pts
+			(xy 173.99 130.81) (xy 179.07 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aad92aba-cf7b-4da1-aa72-43586cc5ac65")
+	)
+	(wire
+		(pts
+			(xy 179.07 124.46) (xy 179.07 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abd2076b-3064-4ae5-b2fc-59140baea39f")
+	)
+	(wire
+		(pts
+			(xy 104.14 133.35) (xy 101.6 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac85d8ba-7f7f-4054-8d78-7d24a11eaa33")
+	)
+	(wire
+		(pts
+			(xy 181.61 105.41) (xy 179.07 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ad2b45f6-94c2-4779-a639-3a32ab04d8b2")
+	)
+	(wire
+		(pts
+			(xy 185.42 24.13) (xy 179.07 24.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af87fde8-e7ec-4e85-b695-96ef0f8a36ee")
+	)
+	(wire
+		(pts
+			(xy 173.99 63.5) (xy 179.07 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "afcf7323-d3eb-4a3a-9337-32fdacd01ebc")
+	)
+	(wire
+		(pts
+			(xy 104.14 63.5) (xy 107.95 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1d23306-a409-4fd8-a761-07ebc381ce89")
+	)
+	(wire
+		(pts
+			(xy 59.69 127) (xy 59.69 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b5145aa8-6583-4e5a-883a-a054e118a9ec")
+	)
+	(wire
+		(pts
+			(xy 83.82 33.02) (xy 83.82 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6be0f30-981f-475c-9f1e-fbba17da2d10")
+	)
+	(wire
+		(pts
+			(xy 83.82 69.85) (xy 86.36 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b80f6d9d-5b00-47df-a2ae-4007581b832d")
+	)
+	(wire
+		(pts
+			(xy 104.14 124.46) (xy 104.14 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b87dd246-f077-4e19-abd2-c3678e40f0eb")
+	)
+	(wire
+		(pts
+			(xy 181.61 44.45) (xy 179.07 44.45)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ba94b108-e93c-46f5-9014-dbdb72287b2c")
+	)
+	(wire
+		(pts
+			(xy 154.94 39.37) (xy 154.94 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bac6965b-ba7b-4b9e-abbe-bfa0a68b5a0c")
+	)
+	(wire
+		(pts
+			(xy 199.39 54.61) (xy 199.39 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be393e81-12ea-4817-a778-ad2873716ea9")
+	)
+	(wire
+		(pts
+			(xy 78.74 33.02) (xy 83.82 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bf76e816-dfab-4ddf-8b53-01d769dbe8b7")
+	)
+	(wire
+		(pts
+			(xy 160.02 96.52) (xy 160.02 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c37d743a-c1ab-4ec5-ae1c-2355e4507256")
+	)
+	(wire
+		(pts
+			(xy 153.67 39.37) (xy 154.94 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4e7d891-dcc8-4ce3-90e0-fbdc3fa97db9")
+	)
+	(wire
+		(pts
+			(xy 179.07 130.81) (xy 181.61 130.81)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5c813eb-c9f2-402b-a644-eeec4273e5a6")
+	)
+	(wire
+		(pts
+			(xy 58.42 39.37) (xy 59.69 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5da9761-6a0f-4003-b012-f4c411846c2f")
+	)
+	(wire
+		(pts
+			(xy 78.74 63.5) (xy 83.82 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c694c0ad-ce49-4f46-aa24-0e7bbe8ed1c1")
+	)
+	(wire
+		(pts
+			(xy 153.67 63.5) (xy 166.37 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c81e0226-16f8-43c6-93e0-72d93d2c9fe5")
+	)
+	(wire
+		(pts
+			(xy 193.04 63.5) (xy 199.39 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c94ab076-d68a-4e4b-bad7-d42136253ec9")
+	)
+	(wire
+		(pts
+			(xy 154.94 69.85) (xy 154.94 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca6385d8-fe92-4438-91ed-0407d64f168c")
+	)
+	(wire
+		(pts
+			(xy 59.69 66.04) (xy 59.69 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cad7df8d-6376-45f1-9ef9-198e0d820232")
+	)
+	(wire
+		(pts
+			(xy 59.69 69.85) (xy 59.69 71.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cc880426-ecb7-433f-bdaa-a01193c26ddc")
+	)
+	(wire
+		(pts
+			(xy 173.99 93.98) (xy 179.07 93.98)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd473bf5-ae7c-4ac8-827d-0b15e7f2d396")
+	)
+	(wire
+		(pts
+			(xy 83.82 63.5) (xy 83.82 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cd68220d-2bfa-4818-b33e-5089b51189dc")
+	)
+	(wire
+		(pts
+			(xy 78.74 100.33) (xy 83.82 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d2d8c58f-9d3b-4cf4-9b51-88ce40b3217b")
+	)
+	(wire
+		(pts
+			(xy 199.39 102.87) (xy 196.85 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d37ff2db-0900-4359-b6ee-8a1d717765cd")
+	)
+	(wire
+		(pts
+			(xy 71.12 100.33) (xy 68.58 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3d75a8e-9161-4d2e-8182-e65badbf0996")
+	)
+	(wire
+		(pts
+			(xy 104.14 72.39) (xy 101.6 72.39)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d794e2b5-9250-40a7-9df4-ea321e51b116")
+	)
+	(wire
+		(pts
+			(xy 83.82 135.89) (xy 83.82 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9241d52-f7d7-4d80-9364-dbed3276989e")
+	)
+	(wire
+		(pts
+			(xy 104.14 33.02) (xy 104.14 41.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dad46fb1-6318-4154-a842-d13d9bc2840a")
+	)
+	(wire
+		(pts
+			(xy 179.07 135.89) (xy 179.07 137.16)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc982798-6b96-42bd-8603-7283ca9f2b09")
+	)
+	(wire
+		(pts
+			(xy 104.14 93.98) (xy 104.14 102.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ddf77dd1-b7ac-4230-b3c1-ace8b8de2a33")
+	)
+	(wire
+		(pts
+			(xy 86.36 105.41) (xy 83.82 105.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df7a47d9-bc4b-478f-b026-06084675a216")
+	)
+	(wire
+		(pts
+			(xy 104.14 115.57) (xy 104.14 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e012da44-6f0f-4caa-bb75-0a2b3eea75fa")
+	)
+	(wire
+		(pts
+			(xy 179.07 100.33) (xy 181.61 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e206fd51-0a41-4435-8d5c-3479cb5ff5f2")
+	)
+	(wire
+		(pts
+			(xy 90.17 63.5) (xy 83.82 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e4882e82-4858-4616-b439-468ada59d825")
+	)
+	(wire
+		(pts
+			(xy 160.02 66.04) (xy 160.02 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5aa9daf-ee46-49bd-b2e2-de9cc7d95a7c")
+	)
+	(wire
+		(pts
+			(xy 193.04 115.57) (xy 199.39 115.57)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5f1c661-669e-472b-b1f3-29e28a1c0ae1")
+	)
+	(wire
+		(pts
+			(xy 179.07 24.13) (xy 179.07 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e780f64c-c6ad-4925-acf2-e1a2563b9f91")
+	)
+	(wire
+		(pts
+			(xy 68.58 130.81) (xy 68.58 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ecc17e8f-57a1-4b9b-80a9-07fd275704e9")
+	)
+	(wire
+		(pts
+			(xy 58.42 33.02) (xy 71.12 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ed481439-19a6-4103-b313-cbe2bff210e3")
+	)
+	(wire
+		(pts
+			(xy 173.99 39.37) (xy 179.07 39.37)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee55a995-1b58-4cf7-8318-63a1847a051f")
+	)
+	(wire
+		(pts
+			(xy 59.69 96.52) (xy 59.69 100.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f08d1484-a0bd-4362-8e8f-f004a460fc92")
+	)
+	(wire
+		(pts
+			(xy 153.67 69.85) (xy 154.94 69.85)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1c12ce6-cfef-4e5a-a55d-1bd071bbb286")
+	)
+	(wire
+		(pts
+			(xy 181.61 135.89) (xy 179.07 135.89)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f29149d5-2697-44dd-9398-c540e12dacd0")
+	)
+	(wire
+		(pts
+			(xy 154.94 130.81) (xy 154.94 132.08)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f2f1231f-98ab-4916-be8a-3cb19bb994a7")
+	)
+	(text "Pitch D"
+		(exclude_from_sim no)
+		(at 35.56 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "146db33f-924b-460c-ab29-f831062997f1")
+	)
+	(text "Pitch B"
+		(exclude_from_sim no)
+		(at 35.56 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "544bac66-e174-4ada-af78-02e01dbacadc")
+	)
+	(text "Volume D"
+		(exclude_from_sim no)
+		(at 130.81 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "73e479a3-87af-447f-93f1-e8686f09ba2b")
+	)
+	(text "-2 .. 2V\n"
+		(exclude_from_sim no)
+		(at 45.72 114.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "78acc6fa-4fc9-4c42-91ab-91d7b088df94")
+	)
+	(text "Volume A"
+		(exclude_from_sim no)
+		(at 130.81 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "85f97e8b-efdb-4015-a98f-0b90ffd1e61e")
+	)
+	(text "Pitch C"
+		(exclude_from_sim no)
+		(at 35.56 93.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "9230ae27-c3cc-4d86-8a34-e8a2b0ab6802")
+	)
+	(text "0 .. 5V"
+		(exclude_from_sim no)
+		(at 143.51 114.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "9c4f7331-2d32-4d96-b4ed-c2c004eeb421")
+	)
+	(text "Volume B"
+		(exclude_from_sim no)
+		(at 130.81 62.23 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a9058906-e1eb-4339-84fd-13ad514eb62d")
+	)
+	(text "Pitch A"
+		(exclude_from_sim no)
+		(at 35.56 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "c8ad2a7e-ee67-41b2-90a6-3db8914f920d")
+	)
+	(text "Volume C"
+		(exclude_from_sim no)
+		(at 130.81 93.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "eb4058e7-7b95-468c-ae64-c5758549c873")
+	)
+	(global_label "VOLUME_D"
+		(shape output)
+		(at 203.2 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0100f1df-57d0-4272-b9af-9f79d094d81c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 203.2 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "VOLUME_C"
+		(shape output)
+		(at 203.2 93.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "152ae82c-c22d-4ade-928d-605600093a8c")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 203.2 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "VOLUME_B"
+		(shape output)
+		(at 203.2 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "29078ab3-b4b8-42d4-a9d8-8b83fb81a7ce")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 203.2 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "VOLUME_A"
+		(shape output)
+		(at 203.2 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "2eba47c2-dd0f-41d2-9bfd-e2f401ad658a")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 203.2 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PITCH_B"
+		(shape output)
+		(at 107.95 63.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "45cbf356-9cb9-4688-9b64-b6e2c0749951")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 107.95 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PITCH_D"
+		(shape output)
+		(at 107.95 124.46 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "505ccd8f-a748-4769-93df-893ffd5fb405")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 107.95 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PITCH_A"
+		(shape output)
+		(at 107.95 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "54de5407-8b0e-44de-bccf-330d1835ce4b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 107.95 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "PITCH_C"
+		(shape output)
+		(at 107.95 93.98 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "64f1f238-cfbf-43a7-a20c-4be981ba67b3")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 107.95 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 48.26 95.25 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71f88")
+		(property "Reference" "J905"
+			(at 36.1188 96.1136 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 36.1188 98.425 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 50.8 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 48.26 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "bd8cc72f-0634-4ccc-b79f-db8204225ba0")
+		)
+		(pin "2"
+			(uuid "0e3160eb-e369-4aec-a22d-afe47d8ee19f")
+		)
+		(pin "3"
+			(uuid "7dbb0723-9a5c-4c43-98cd-41193bad1a81")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "J905")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 59.69 101.6 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71f8e")
+		(property "Reference" "#PWR0920"
+			(at 59.69 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 59.563 105.9942 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 59.69 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 59.69 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dfa3b480-5643-4c58-a0b1-4cd2a061c5d1")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0920")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 48.26 125.73 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71f99")
+		(property "Reference" "J907"
+			(at 36.1188 126.5936 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 36.1188 128.905 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 48.26 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0291e991-7a04-4340-a8ab-71334df158d4")
+		)
+		(pin "2"
+			(uuid "1114a847-f66c-4c81-addc-0417f3830d37")
+		)
+		(pin "3"
+			(uuid "3000f601-284f-4f6a-995d-7f1366a14e2f")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "J907")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 59.69 132.08 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71f9f")
+		(property "Reference" "#PWR0931"
+			(at 59.69 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 59.563 136.4742 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 59.69 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 59.69 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d788aa88-2304-47b7-a5ff-240c1f5826ca")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0931")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 143.51 95.25 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71faa")
+		(property "Reference" "J906"
+			(at 131.3688 96.1136 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 131.3688 98.425 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 146.05 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 143.51 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d0ebd82f-5426-4593-ae1d-1748c2c8316e")
+		)
+		(pin "2"
+			(uuid "46408ecf-e883-4c57-ac4f-ff46569cf7f4")
+		)
+		(pin "3"
+			(uuid "a335e4fd-a14c-4ae7-9ab1-d23ca79c3549")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "J906")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 154.94 101.6 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71fb0")
+		(property "Reference" "#PWR0921"
+			(at 154.94 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 154.813 105.9942 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 154.94 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f02d19e6-8206-4d97-99c0-c953a5d8f2b4")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0921")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5VA")
+		(at 160.02 91.44 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71fba")
+		(property "Reference" "#PWR0919"
+			(at 160.02 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5VA"
+			(at 159.639 87.0458 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 160.02 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 160.02 91.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e0e565ca-6c33-45c1-8fa0-d00d62876be5")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0919")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 143.51 125.73 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71fc0")
+		(property "Reference" "J908"
+			(at 131.3688 126.5936 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 131.3688 128.905 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 146.05 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 143.51 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ea6956c5-3e24-4052-a7fc-8f74bef448ff")
+		)
+		(pin "2"
+			(uuid "5f44fe25-e3f8-455b-a813-6606919b1d5d")
+		)
+		(pin "3"
+			(uuid "59607b8b-1607-4d9d-ad9b-cc25c5cfd3a7")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "J908")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 154.94 132.08 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71fc6")
+		(property "Reference" "#PWR0932"
+			(at 154.94 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 154.813 136.4742 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 154.94 132.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "581a2fbb-4367-438c-97b2-17b68cd095fd")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0932")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5VA")
+		(at 160.02 121.92 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71fd0")
+		(property "Reference" "#PWR0930"
+			(at 160.02 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5VA"
+			(at 159.639 117.5258 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 160.02 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 160.02 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7892f5d7-58f7-4a6c-b352-eae742ad54c4")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0930")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 48.26 34.29 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71fd6")
+		(property "Reference" "J901"
+			(at 36.1188 35.1536 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 36.1188 37.465 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 50.8 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 48.26 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a2e188d0-f7a4-4ec0-8fda-f37507504af0")
+		)
+		(pin "2"
+			(uuid "9009394c-7915-4a13-86dd-614f868844eb")
+		)
+		(pin "3"
+			(uuid "5ef9d048-e7f0-4beb-969d-af7814287d83")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "J901")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 59.69 40.64 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71fdc")
+		(property "Reference" "#PWR0902"
+			(at 59.69 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 59.563 45.0342 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 59.69 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 59.69 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ec39002b-f66e-4c89-bd4b-4247e49d3369")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0902")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 48.26 64.77 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71fe7")
+		(property "Reference" "J903"
+			(at 36.1188 65.6336 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 36.1188 67.945 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 50.8 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 48.26 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "25efea2a-192a-4a62-9b87-5d915cc02971")
+		)
+		(pin "2"
+			(uuid "609843a6-7141-4431-a9a3-1bb1cc7f925f")
+		)
+		(pin "3"
+			(uuid "eb32ec92-b0a3-4ae7-961d-e583d926ceb5")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "J903")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 59.69 71.12 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71fed")
+		(property "Reference" "#PWR0913"
+			(at 59.69 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 59.563 75.5142 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 59.69 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 59.69 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 59.69 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0b40e9cb-e841-44fd-b0f6-8c332e1b0fa6")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0913")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 143.51 34.29 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71ff8")
+		(property "Reference" "J902"
+			(at 131.3688 35.1536 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 131.3688 37.465 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 146.05 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 143.51 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2b793674-a59a-4402-b7aa-a2de51a9bcba")
+		)
+		(pin "2"
+			(uuid "db3fdb59-e83e-4c78-a1ae-44c7f950bcb8")
+		)
+		(pin "3"
+			(uuid "655a3c91-bcee-4b87-94e7-176e4e02ba58")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "J902")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 154.94 40.64 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c71ffe")
+		(property "Reference" "#PWR0903"
+			(at 154.94 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 154.813 45.0342 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 154.94 40.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d6eb151d-7988-4c92-8c63-685a963267c6")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0903")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5VA")
+		(at 160.02 30.48 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72008")
+		(property "Reference" "#PWR0901"
+			(at 160.02 34.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5VA"
+			(at 159.639 26.0858 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 160.02 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 160.02 30.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4c8df74d-87b2-4b07-9b0a-75885be7cd47")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0901")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "ell_audio_conn:JACK_TS_3PINS")
+		(at 143.51 64.77 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7200e")
+		(property "Reference" "J904"
+			(at 131.3688 65.6336 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "PJ398SM"
+			(at 131.3688 67.945 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "ell_connectors:THONKICONN"
+			(at 146.05 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 146.05 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 143.51 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7d3787c3-4c9f-49a3-8097-52d69d5671ef")
+		)
+		(pin "2"
+			(uuid "76ffe062-01b7-4fb9-b360-d36e4a6b005d")
+		)
+		(pin "3"
+			(uuid "d760859b-3389-412f-b8ce-2abffd4e7fbb")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "J904")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 154.94 71.12 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72014")
+		(property "Reference" "#PWR0914"
+			(at 154.94 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 154.813 75.5142 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 154.94 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 154.94 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 154.94 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f9d74e00-7b62-4b44-9b70-2dd94aae25ec")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0914")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+5VA")
+		(at 160.02 60.96 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7201e")
+		(property "Reference" "#PWR0911"
+			(at 160.02 64.77 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5VA"
+			(at 159.639 56.5658 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 160.02 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 160.02 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 160.02 60.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cafab822-4b82-4a1f-9b42-1edd392b68db")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0911")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 93.98 41.91 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7202c")
+		(property "Reference" "U901"
+			(at 95.25 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 95.25 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 92.71 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 95.25 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ea220478-c045-4db8-86b8-fd6c5c58146d")
+		)
+		(pin "2"
+			(uuid "2ed8bf51-8a20-4041-990a-c5c021b01e2b")
+		)
+		(pin "3"
+			(uuid "514c8a72-893c-4e0f-9b90-7c5b15f646e6")
+		)
+		(pin "5"
+			(uuid "b7a5ef56-094d-455c-99c0-e84815dde5d7")
+		)
+		(pin "6"
+			(uuid "ed34886d-79fa-48dd-a930-44c6c3021c3f")
+		)
+		(pin "7"
+			(uuid "71c44d5a-a290-431d-8616-707fdd140683")
+		)
+		(pin "10"
+			(uuid "9b9a961c-d4c7-462e-bc9f-03ca69f7c2cf")
+		)
+		(pin "8"
+			(uuid "f4aebcd0-0ebb-42e8-b73d-0fe4968a1a00")
+		)
+		(pin "9"
+			(uuid "ac6db042-dfaf-4f99-a215-1c1f45e34d03")
+		)
+		(pin "12"
+			(uuid "32863865-1ae5-4c82-ae79-92aaec589bbb")
+		)
+		(pin "13"
+			(uuid "43246ae8-ec0a-4f4a-9a12-9c76abc593b5")
+		)
+		(pin "14"
+			(uuid "6d6b9fa0-aa80-4883-8946-9a5cfc879076")
+		)
+		(pin "11"
+			(uuid "5649def8-e05f-45a7-bde4-fc07155d6f17")
+		)
+		(pin "4"
+			(uuid "d77284b9-338a-407c-833c-b0a882f0e051")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U901")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 93.98 33.02 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72032")
+		(property "Reference" "R902"
+			(at 93.98 27.7622 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "78k7"
+			(at 93.98 30.0736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 93.98 31.242 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c56434f6-ed42-42d4-925f-6b037bf86714")
+		)
+		(pin "2"
+			(uuid "a45aa3d7-d3b7-47e1-967b-067a807ed915")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R902")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 74.93 39.37 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72038")
+		(property "Reference" "R905"
+			(at 74.93 44.6278 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "481k"
+			(at 74.93 42.3164 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 74.93 41.148 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 74.93 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f8545982-e2ee-44b4-a073-caccea6481e0")
+		)
+		(pin "2"
+			(uuid "3dc0a2af-fcbc-49e9-a9f3-345e05c6fef9")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R905")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 93.98 24.13 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7203e")
+		(property "Reference" "C901"
+			(at 92.8116 21.209 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1n"
+			(at 95.123 21.209 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 97.79 23.1648 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4953b28a-3dfa-4866-895b-9d6aca973043")
+		)
+		(pin "2"
+			(uuid "ee315763-8283-4dc3-8ca5-0f4b220f150d")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C901")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 83.82 45.72 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72046")
+		(property "Reference" "#PWR0906"
+			(at 83.82 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 83.693 50.1142 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 83.82 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 83.82 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4edc4cb2-f272-42de-a592-d19e9f9ebd83")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0906")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 74.93 33.02 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7205a")
+		(property "Reference" "R901"
+			(at 74.93 27.7622 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 74.93 30.0736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 74.93 31.242 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 74.93 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4dee6a02-a1c7-4b55-97a8-4d67257edc64")
+		)
+		(pin "2"
+			(uuid "e883f85e-c19a-4f1a-a97e-8ac72ac6e0c5")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R901")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-10V")
+		(at 68.58 41.91 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72062")
+		(property "Reference" "#PWR0904"
+			(at 68.58 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-10V"
+			(at 68.199 46.3042 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c76a7f2e-73c7-42eb-9d57-dc91d58c4205")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0904")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 93.98 72.39 0)
+		(mirror x)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7206c")
+		(property "Reference" "U901"
+			(at 95.25 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 95.25 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 92.71 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 95.25 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "970531a1-45a4-4b8a-8f6e-062d1d78f670")
+		)
+		(pin "2"
+			(uuid "653ed411-5988-4ac6-bf57-6d0535dfae04")
+		)
+		(pin "3"
+			(uuid "a01390af-ed77-47e6-b7c0-7a8f3ced416b")
+		)
+		(pin "5"
+			(uuid "8ba42734-6aa5-4f01-9a08-d56775e3984a")
+		)
+		(pin "6"
+			(uuid "29af2959-2798-4c31-aa3f-47a7caa0419f")
+		)
+		(pin "7"
+			(uuid "97279f5d-1352-4f4b-aba3-49002379cbae")
+		)
+		(pin "10"
+			(uuid "551bb9ad-e60f-4207-b401-9c52b6a01507")
+		)
+		(pin "8"
+			(uuid "0aaadd84-3454-4405-a7dc-2f50d0e46c31")
+		)
+		(pin "9"
+			(uuid "6e701d1c-4159-4fdb-be72-22592b830829")
+		)
+		(pin "12"
+			(uuid "65bc7d49-aa8b-4e8a-a4c4-76b6ba04dcc2")
+		)
+		(pin "13"
+			(uuid "1d2787d8-9445-4815-a624-fb9923f90f76")
+		)
+		(pin "14"
+			(uuid "b60d60a5-9d30-403f-b406-cb5cd73fd2dd")
+		)
+		(pin "11"
+			(uuid "efcc7dc0-e85a-459b-a48b-f9529f784914")
+		)
+		(pin "4"
+			(uuid "c45606ac-2e29-49a6-a49f-7ef2a92d535d")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U901")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 93.98 63.5 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72072")
+		(property "Reference" "R908"
+			(at 93.98 58.2422 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "78k7"
+			(at 93.98 60.5536 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 93.98 61.722 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "406ea10f-7aef-4bfe-891b-da86472c0581")
+		)
+		(pin "2"
+			(uuid "855d5605-c3e8-4606-923e-3ef3d5f72edd")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R908")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 74.93 69.85 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72078")
+		(property "Reference" "R911"
+			(at 74.93 75.1078 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "481k"
+			(at 74.93 72.7964 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 74.93 71.628 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 74.93 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "725eb211-7736-402d-9c92-e62f89adf094")
+		)
+		(pin "2"
+			(uuid "90e47877-bd04-4eed-b2a8-1bfd3f79bb58")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R911")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 93.98 54.61 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7207e")
+		(property "Reference" "C904"
+			(at 92.8116 51.689 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1n"
+			(at 95.123 51.689 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 97.79 53.6448 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d9e8651c-e0a4-41a0-91dd-be67870f2166")
+		)
+		(pin "2"
+			(uuid "ff8f0e1e-17c0-4d26-bbf4-a4dfb66223d6")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C904")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 83.82 76.2 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72086")
+		(property "Reference" "#PWR0917"
+			(at 83.82 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 83.693 80.5942 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 83.82 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 83.82 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2825dc29-39c2-4869-89d7-5f0361765379")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0917")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 74.93 63.5 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7209a")
+		(property "Reference" "R907"
+			(at 74.93 58.2422 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 74.93 60.5536 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 74.93 61.722 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 74.93 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5e8a003b-5b6e-47c6-bdab-f5a9cee7a830")
+		)
+		(pin "2"
+			(uuid "b3646e05-963a-4704-8fb5-95ee3da8dd3e")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R907")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-10V")
+		(at 68.58 72.39 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720a2")
+		(property "Reference" "#PWR0915"
+			(at 68.58 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-10V"
+			(at 68.199 76.7842 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e09e88c1-6161-4ce0-a888-6e7a26ea55ea")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0915")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 93.98 102.87 0)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720ac")
+		(property "Reference" "U902"
+			(at 95.25 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 95.25 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 92.71 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 95.25 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a5c7f6da-7d3a-4d05-a4cc-cafbeec5a9d1")
+		)
+		(pin "2"
+			(uuid "7737846d-d795-4831-bbbd-03b10fcaafe5")
+		)
+		(pin "3"
+			(uuid "0ab14898-99c4-4bbd-a35c-7f24a7d734d0")
+		)
+		(pin "5"
+			(uuid "44a67103-2a53-40b7-bf90-d28c685de9a8")
+		)
+		(pin "6"
+			(uuid "15d875b4-2f7f-4542-a294-255784d83c65")
+		)
+		(pin "7"
+			(uuid "e68fa27b-5f79-492d-afc7-3414620869d3")
+		)
+		(pin "10"
+			(uuid "a91f80aa-5bd4-4012-b78a-94511c924979")
+		)
+		(pin "8"
+			(uuid "3ae8f1a0-2160-4cb9-b420-a07e10a7feb7")
+		)
+		(pin "9"
+			(uuid "e5af83b8-d556-404f-8e5e-d109cfd97d0c")
+		)
+		(pin "12"
+			(uuid "df1b4150-c895-4ff0-a65b-9697d86f7d00")
+		)
+		(pin "13"
+			(uuid "dcc8e57d-f86e-4531-a742-b716ef970d76")
+		)
+		(pin "14"
+			(uuid "743e57a3-75ad-4d38-9e4d-d065deab1f04")
+		)
+		(pin "11"
+			(uuid "cb6896d9-e9bc-41b7-ae4b-f04063cb4bf7")
+		)
+		(pin "4"
+			(uuid "30cc0905-aa98-4f8a-86e0-c770ca7df171")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U902")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 93.98 93.98 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720b2")
+		(property "Reference" "R914"
+			(at 93.98 88.7222 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "78k7"
+			(at 93.98 91.0336 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 93.98 92.202 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b25c0162-b01b-4b45-88cc-b0c9abb9f7fc")
+		)
+		(pin "2"
+			(uuid "b4493bc4-b1f0-43d3-8f79-a0c946264726")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R914")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 74.93 100.33 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720b8")
+		(property "Reference" "R917"
+			(at 74.93 105.5878 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "481k"
+			(at 74.93 103.2764 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 74.93 102.108 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 74.93 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f7a790ee-e8fb-4b3d-b213-2d84d36d952d")
+		)
+		(pin "2"
+			(uuid "a2659cc0-74cb-4d8a-af3c-9d3ad14f0f3a")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R917")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 93.98 85.09 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720be")
+		(property "Reference" "C906"
+			(at 92.8116 82.169 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1n"
+			(at 95.123 82.169 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 97.79 84.1248 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b496cc95-ad00-4aa6-8147-d4cddba92703")
+		)
+		(pin "2"
+			(uuid "2d283b66-dd2c-41c7-a392-0879548fa373")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C906")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 83.82 106.68 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720c6")
+		(property "Reference" "#PWR0925"
+			(at 83.82 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 83.693 111.0742 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 83.82 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 83.82 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "52f5c58c-3fb1-43e8-8091-04bf65b66dc3")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0925")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 74.93 93.98 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720da")
+		(property "Reference" "R913"
+			(at 74.93 88.7222 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 74.93 91.0336 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 74.93 92.202 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 74.93 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "67bbb380-9aeb-4ba6-a5f2-a7fd58ec0727")
+		)
+		(pin "2"
+			(uuid "c4e01dad-c101-47b5-bb0b-9b4f7596fb1b")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R913")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-10V")
+		(at 68.58 102.87 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720e2")
+		(property "Reference" "#PWR0922"
+			(at 68.58 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-10V"
+			(at 68.199 107.2642 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e61e4745-9846-492a-bf5c-0c6556022b8d")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0922")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 93.98 133.35 0)
+		(mirror x)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720ec")
+		(property "Reference" "U902"
+			(at 95.25 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 95.25 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 92.71 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 95.25 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ac45297a-b68c-4a4a-8b2d-d0f11c0c7260")
+		)
+		(pin "2"
+			(uuid "a761144b-ef3e-4398-b174-ed7c62a47c21")
+		)
+		(pin "3"
+			(uuid "cab8b31e-fe0d-4422-bb03-69b8ac9af050")
+		)
+		(pin "5"
+			(uuid "e9f324f4-83d8-4bb6-ae87-24dfda2a7a0f")
+		)
+		(pin "6"
+			(uuid "8e5b9280-499a-466e-b622-f3bc1121ab9e")
+		)
+		(pin "7"
+			(uuid "be273fdd-f35a-4810-8c4f-fe0694796c34")
+		)
+		(pin "10"
+			(uuid "3fef359f-7966-4ea1-ae11-a0885fd62031")
+		)
+		(pin "8"
+			(uuid "17944082-00bf-4967-828a-d4cedd18fb94")
+		)
+		(pin "9"
+			(uuid "37241277-e765-458d-ab57-ee0bbf43db5c")
+		)
+		(pin "12"
+			(uuid "d3042885-83c5-4597-8407-e8bdfd5060ce")
+		)
+		(pin "13"
+			(uuid "b1242a83-56a8-4d12-ac06-d3187f13db77")
+		)
+		(pin "14"
+			(uuid "d7d109eb-6486-42cb-953a-9099b3067782")
+		)
+		(pin "11"
+			(uuid "67df91e7-ebe6-4ab4-b237-a921c4d89c6b")
+		)
+		(pin "4"
+			(uuid "9a2a87f8-cf1a-4401-8b46-e21b5a610e80")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U902")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 93.98 124.46 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720f2")
+		(property "Reference" "R920"
+			(at 93.98 119.2022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "78k7"
+			(at 93.98 121.5136 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 93.98 122.682 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4b0f3bb0-8c87-40cc-9845-597bf5b3ba2a")
+		)
+		(pin "2"
+			(uuid "119b3564-026e-42a4-9dc2-c0dee13591a4")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R920")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 74.93 130.81 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720f8")
+		(property "Reference" "R923"
+			(at 74.93 136.0678 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "481k"
+			(at 74.93 133.7564 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 74.93 132.588 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 74.93 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "86b4b98b-7041-4727-9905-e62e04cd4a66")
+		)
+		(pin "2"
+			(uuid "4d5bf7e6-5eee-4759-b78f-17270f91313a")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R923")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 93.98 115.57 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c720fe")
+		(property "Reference" "C909"
+			(at 92.8116 112.649 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1n"
+			(at 95.123 112.649 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 97.79 114.6048 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 93.98 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 93.98 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e11c0255-4eb0-4674-8a2d-f665d752b83b")
+		)
+		(pin "2"
+			(uuid "328a7f61-7c78-4a35-bef8-39b299839e45")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C909")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 83.82 137.16 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72106")
+		(property "Reference" "#PWR0935"
+			(at 83.82 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 83.693 141.5542 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 83.82 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 83.82 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 83.82 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3fceedd0-df48-4e6c-b941-4208e5b8ae82")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0935")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 74.93 124.46 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7211a")
+		(property "Reference" "R919"
+			(at 74.93 119.2022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 74.93 121.5136 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 74.93 122.682 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 74.93 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 74.93 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b8bc51bd-190e-4926-ab67-a4ed4ffbd33f")
+		)
+		(pin "2"
+			(uuid "61fc2be2-9227-46fa-825c-d639da8bf686")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R919")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-10V")
+		(at 68.58 133.35 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72122")
+		(property "Reference" "#PWR0933"
+			(at 68.58 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-10V"
+			(at 68.199 137.7442 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 68.58 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7c25dfdd-7900-43e1-8e32-24be224de498")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0933")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 189.23 41.91 0)
+		(mirror x)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7212c")
+		(property "Reference" "U901"
+			(at 190.5 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 190.5 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 187.96 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 190.5 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c399ca3c-b46a-42c6-8897-72078ebb4e21")
+		)
+		(pin "2"
+			(uuid "d436dade-19b9-4e3f-b24a-692cfc490e29")
+		)
+		(pin "3"
+			(uuid "9ae138af-312b-4b49-9808-5b9b9d11699a")
+		)
+		(pin "5"
+			(uuid "3ff5c5fb-00b3-4d6a-ad18-390032b9dd94")
+		)
+		(pin "6"
+			(uuid "3dd2c230-d840-4938-8ac8-ef3eb9e540aa")
+		)
+		(pin "7"
+			(uuid "ea0efac6-4d69-4b63-9cb8-b26c73f953c9")
+		)
+		(pin "10"
+			(uuid "24f3ad56-b9db-4cfd-a70e-15d109c5903f")
+		)
+		(pin "8"
+			(uuid "a00f2711-00ca-49ce-9163-dff0d600884a")
+		)
+		(pin "9"
+			(uuid "295e9ed2-2729-4bfe-97b2-35a03b8a15d3")
+		)
+		(pin "12"
+			(uuid "64f695ee-eecc-4fe4-9a07-69a33c1341ff")
+		)
+		(pin "13"
+			(uuid "ced1126c-7fa0-45e6-9001-4b2ad690b21c")
+		)
+		(pin "14"
+			(uuid "9930a908-e537-47b4-9bcd-2553056f71b8")
+		)
+		(pin "11"
+			(uuid "5d317531-6428-4dd6-b06d-d1a6bec92dad")
+		)
+		(pin "4"
+			(uuid "3f9ee202-5d7e-450c-891a-66737a5b5b73")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U901")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 189.23 33.02 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72132")
+		(property "Reference" "R904"
+			(at 189.23 27.7622 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "68k"
+			(at 189.23 30.0736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 189.23 31.242 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f60a7e77-dfe6-41dc-a742-543e9e663140")
+		)
+		(pin "2"
+			(uuid "9ebca7cf-519e-46cb-a3ae-78185717795f")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R904")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 170.18 39.37 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72138")
+		(property "Reference" "R906"
+			(at 170.18 44.6278 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200k"
+			(at 170.18 42.3164 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 170.18 41.148 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 170.18 39.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c9d8e1ba-3352-4b35-897e-1cac3e111428")
+		)
+		(pin "2"
+			(uuid "136eadd7-5e33-46e9-8865-acaa44131a53")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R906")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 189.23 24.13 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7213e")
+		(property "Reference" "C902"
+			(at 188.0616 21.209 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1n"
+			(at 190.373 21.209 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 193.04 23.1648 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 24.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "78091f91-8bef-4951-a5c7-0d337a5ab906")
+		)
+		(pin "2"
+			(uuid "aaaa463d-d549-45e3-b73d-a6b4699f35d8")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C902")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 179.07 45.72 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72146")
+		(property "Reference" "#PWR0907"
+			(at 179.07 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 178.943 50.1142 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 179.07 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "26b60135-4f11-41f8-80af-0cea784b620a")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0907")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 170.18 33.02 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7215a")
+		(property "Reference" "R903"
+			(at 170.18 27.7622 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 170.18 30.0736 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 170.18 31.242 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 170.18 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "81177740-6622-4a31-915d-f9c74a6975b2")
+		)
+		(pin "2"
+			(uuid "8e017be9-0d96-450c-bf92-5ad85cadae45")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R903")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-10V")
+		(at 163.83 41.91 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72162")
+		(property "Reference" "#PWR0905"
+			(at 163.83 44.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-10V"
+			(at 163.449 46.3042 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 163.83 41.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ae0dd4b6-ba1c-4b24-915e-2c45224de7f6")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0905")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 189.23 72.39 0)
+		(mirror x)
+		(unit 4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7216c")
+		(property "Reference" "U901"
+			(at 190.5 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 190.5 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 187.96 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 190.5 77.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "80ad85b7-afe0-4dab-a0a6-e8beb9d3206c")
+		)
+		(pin "2"
+			(uuid "4cdd0df7-5008-4d3a-a109-4d786f0f6d16")
+		)
+		(pin "3"
+			(uuid "a8ac7b10-ccff-43c2-bac9-93bbf0c6bee1")
+		)
+		(pin "5"
+			(uuid "ee75dca3-adb3-4f77-bb54-f32695a7ebd6")
+		)
+		(pin "6"
+			(uuid "d2bca65d-a2fe-48ed-b303-2233d117059e")
+		)
+		(pin "7"
+			(uuid "4ded4481-0ef3-4552-a847-99025946bdc0")
+		)
+		(pin "10"
+			(uuid "7a655ede-19e8-42ec-9ab3-0bd081edc754")
+		)
+		(pin "8"
+			(uuid "22b871ec-b0d0-4600-bace-72ab063df005")
+		)
+		(pin "9"
+			(uuid "c4321987-1a25-4f67-9233-2d1d0034d8ec")
+		)
+		(pin "12"
+			(uuid "e3ae6c5e-9738-4bbf-b2a5-dcf52433e3ac")
+		)
+		(pin "13"
+			(uuid "7867009b-9ba4-46e3-b0ee-c450360ecf76")
+		)
+		(pin "14"
+			(uuid "bef15118-4569-40d5-bc06-99df3092701e")
+		)
+		(pin "11"
+			(uuid "a29d0ebf-5f08-43cc-a883-fda9596d7dba")
+		)
+		(pin "4"
+			(uuid "49453b6b-7d43-49c0-9767-40fa743e18a4")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U901")
+					(unit 4)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 189.23 63.5 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72172")
+		(property "Reference" "R910"
+			(at 189.23 58.2422 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "68k"
+			(at 189.23 60.5536 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 189.23 61.722 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a36af5f8-59b8-446d-bb44-2084c9361243")
+		)
+		(pin "2"
+			(uuid "e9cbedbb-5796-4e29-82c3-7fe4c95f02a6")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R910")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 170.18 69.85 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72178")
+		(property "Reference" "R912"
+			(at 170.18 75.1078 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200k"
+			(at 170.18 72.7964 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 170.18 71.628 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 170.18 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d4ec7258-2152-450f-8faa-60f1de13dbfc")
+		)
+		(pin "2"
+			(uuid "f6fc9ecb-663f-45d2-a9a2-c1c39d9609c3")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R912")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 189.23 54.61 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7217e")
+		(property "Reference" "C905"
+			(at 188.0616 51.689 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1n"
+			(at 190.373 51.689 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 193.04 53.6448 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d5ef6d89-c68b-46c4-8347-15ef01d80025")
+		)
+		(pin "2"
+			(uuid "cd1f7f2f-f9d7-4db3-a383-5e769d39b88e")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C905")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 179.07 76.2 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72186")
+		(property "Reference" "#PWR0918"
+			(at 179.07 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 178.943 80.5942 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 179.07 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cad11034-82d8-4cc6-9e4d-59e4679f4bd0")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0918")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 170.18 63.5 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7219a")
+		(property "Reference" "R909"
+			(at 170.18 58.2422 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 170.18 60.5536 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 170.18 61.722 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 170.18 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "2d08da26-43b9-458d-9d53-bb2f440e10bd")
+		)
+		(pin "2"
+			(uuid "00b58328-9b5f-46b9-93c3-fa526b1a4c16")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R909")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-10V")
+		(at 163.83 72.39 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721a2")
+		(property "Reference" "#PWR0916"
+			(at 163.83 74.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-10V"
+			(at 163.449 76.7842 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 163.83 72.39 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e6395cd4-0abd-4676-8b88-ab462e0d628d")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0916")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 189.23 102.87 0)
+		(mirror x)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721ac")
+		(property "Reference" "U902"
+			(at 190.5 97.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 190.5 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 187.96 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 190.5 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "be96f8fc-c0e3-447f-8e3d-4c950addc997")
+		)
+		(pin "2"
+			(uuid "96667305-b3f6-4f10-b940-72e1f25ef674")
+		)
+		(pin "3"
+			(uuid "5f0afdb4-e447-4614-a95b-26ee98a4819b")
+		)
+		(pin "5"
+			(uuid "bef62b22-bb88-4b1f-a369-ccc9704d0e51")
+		)
+		(pin "6"
+			(uuid "3a950af3-ffb2-4fb0-89dc-4bf9ddd350e0")
+		)
+		(pin "7"
+			(uuid "cbc98714-11e8-42a8-86bb-20afc6b15a31")
+		)
+		(pin "10"
+			(uuid "56bfba83-b118-404d-826e-690311fda207")
+		)
+		(pin "8"
+			(uuid "55148e3c-3c79-4749-b290-f4ecb086f337")
+		)
+		(pin "9"
+			(uuid "97b6bc67-e4c6-4fe1-a08a-5d0dfe567c9e")
+		)
+		(pin "12"
+			(uuid "0ce25272-48d0-4e1f-8c4a-77e6cbbd9621")
+		)
+		(pin "13"
+			(uuid "dcada777-0fe0-4e98-b73f-a976a58221d6")
+		)
+		(pin "14"
+			(uuid "9e00d976-ab77-4864-b1ac-e68273983f6d")
+		)
+		(pin "11"
+			(uuid "408db40c-a84e-49ab-90eb-99061b0b0c9d")
+		)
+		(pin "4"
+			(uuid "af99cc8e-052d-45ea-90ea-cbe334319b76")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U902")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 189.23 93.98 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721b2")
+		(property "Reference" "R916"
+			(at 189.23 88.7222 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "68k"
+			(at 189.23 91.0336 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 189.23 92.202 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "deaaeb8e-1588-4ba3-bbbf-e38e2c6b1555")
+		)
+		(pin "2"
+			(uuid "209009bb-2c90-4861-9e38-0217c0011428")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R916")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 170.18 100.33 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721b8")
+		(property "Reference" "R918"
+			(at 170.18 105.5878 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200k"
+			(at 170.18 103.2764 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 170.18 102.108 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 170.18 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b8d1e62f-ef29-4c14-bd1b-41a369ad68cb")
+		)
+		(pin "2"
+			(uuid "feac8803-02c9-4010-92b6-cdc2271911ee")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R918")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 189.23 85.09 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721be")
+		(property "Reference" "C907"
+			(at 188.0616 82.169 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1n"
+			(at 190.373 82.169 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 193.04 84.1248 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ee2e8d8f-6f9e-4078-b48d-ea7eeda66ce3")
+		)
+		(pin "2"
+			(uuid "2ee86a6f-1dc3-4cc6-8208-cb3002d949de")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C907")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 179.07 106.68 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721c6")
+		(property "Reference" "#PWR0926"
+			(at 179.07 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 178.943 111.0742 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 179.07 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "90f43522-b092-4d08-8aa6-2849c0163ade")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0926")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 170.18 93.98 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721da")
+		(property "Reference" "R915"
+			(at 170.18 88.7222 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 170.18 91.0336 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 170.18 92.202 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 170.18 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1438b932-816c-4033-b370-1def05ea6269")
+		)
+		(pin "2"
+			(uuid "af1e077c-8a6d-4fdf-86e3-21fbc58de011")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R915")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-10V")
+		(at 163.83 102.87 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721e2")
+		(property "Reference" "#PWR0923"
+			(at 163.83 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-10V"
+			(at 163.449 107.2642 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 163.83 102.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "329cebcc-c630-4cdf-b4e2-e83efe826a47")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0923")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 189.23 133.35 0)
+		(mirror x)
+		(unit 4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721ec")
+		(property "Reference" "U902"
+			(at 190.5 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 190.5 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 187.96 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 190.5 138.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4656d545-9581-41e0-8f9e-28c661306003")
+		)
+		(pin "2"
+			(uuid "caf00966-bfa0-4c25-8563-e74a18a36066")
+		)
+		(pin "3"
+			(uuid "a037b20c-f2d0-474e-a706-ab2780596fa1")
+		)
+		(pin "5"
+			(uuid "006dc02d-ff94-4989-bf36-6f44ab0d392a")
+		)
+		(pin "6"
+			(uuid "b70c934b-3b3d-4e32-9091-4848be5ca6d1")
+		)
+		(pin "7"
+			(uuid "7c214f94-fc22-41d4-b7e3-24345d051ec9")
+		)
+		(pin "10"
+			(uuid "5daeb641-955d-4d5d-bd8e-71205f5f328d")
+		)
+		(pin "8"
+			(uuid "143d7e1b-ac25-4a5f-90e8-9462a1b04b08")
+		)
+		(pin "9"
+			(uuid "5a6ef4c5-a1a9-4428-b9a3-8c6ebb522bd4")
+		)
+		(pin "12"
+			(uuid "20c0d1dd-f1f5-4fcf-bd70-9d3403d5e099")
+		)
+		(pin "13"
+			(uuid "714ce601-bd0f-4b4b-b6b4-ab13eb2210a5")
+		)
+		(pin "14"
+			(uuid "b1f89250-07a5-43af-af2c-b6d0026145c0")
+		)
+		(pin "11"
+			(uuid "0ff24b8a-08b0-4f7f-802b-38b4b591492f")
+		)
+		(pin "4"
+			(uuid "b13b4418-adc1-46ee-8562-fbef4ea0a3db")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U902")
+					(unit 4)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 189.23 124.46 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721f2")
+		(property "Reference" "R922"
+			(at 189.23 119.2022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "68k"
+			(at 189.23 121.5136 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 189.23 122.682 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c7c35ec8-9593-4909-9949-2153200237b4")
+		)
+		(pin "2"
+			(uuid "22308f83-8590-446c-98ee-72bd19c8fdf1")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R922")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 170.18 130.81 270)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721f8")
+		(property "Reference" "R924"
+			(at 170.18 136.0678 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "200k"
+			(at 170.18 133.7564 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 170.18 132.588 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 170.18 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "72d7ec8a-d29d-46be-8740-84e376f45edc")
+		)
+		(pin "2"
+			(uuid "c58a989b-8e46-4f8a-8758-782c70e113aa")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R924")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 189.23 115.57 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c721fe")
+		(property "Reference" "C910"
+			(at 188.0616 112.649 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1n"
+			(at 190.373 112.649 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 193.04 114.6048 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 189.23 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 189.23 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "65a489c7-9ebe-499e-b932-8ced20973a8f")
+		)
+		(pin "2"
+			(uuid "b187fcd0-4800-4f2d-ae83-6d0b1f9ea793")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C910")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 179.07 137.16 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72206")
+		(property "Reference" "#PWR0936"
+			(at 179.07 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 178.943 141.5542 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 179.07 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 179.07 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 179.07 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "43d50060-be20-4efb-9316-4aa39a8d27f4")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0936")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 170.18 124.46 90)
+		(mirror x)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c7221a")
+		(property "Reference" "R921"
+			(at 170.18 119.2022 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "100k"
+			(at 170.18 121.5136 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 170.18 122.682 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 170.18 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 170.18 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "19650b5a-55d4-471c-b541-73131c7e36ec")
+		)
+		(pin "2"
+			(uuid "3e1ad43d-8455-4277-97c4-5ff86db9b2e0")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "R921")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:-10V")
+		(at 163.83 133.35 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062c72222")
+		(property "Reference" "#PWR0934"
+			(at 163.83 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "-10V"
+			(at 163.449 137.7442 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 163.83 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 163.83 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 163.83 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f820ed27-d1c2-4586-88e3-22d51c12392f")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0934")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 236.22 54.61 0)
+		(mirror y)
+		(unit 5)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d34947")
+		(property "Reference" "U901"
+			(at 234.95 59.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 234.95 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 237.49 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 234.95 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 236.22 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "384759a6-4b7a-41af-a468-515a3c103371")
+		)
+		(pin "2"
+			(uuid "7b5c71b1-1a46-459d-9b60-56b8d35c02f0")
+		)
+		(pin "3"
+			(uuid "4801cfe1-fe0d-4c6e-ba13-44f8fb95293e")
+		)
+		(pin "5"
+			(uuid "e832b6bd-5ba5-43e1-a7f3-fae0cd900fe9")
+		)
+		(pin "6"
+			(uuid "c3e70989-3a8e-4faf-b879-08129ed42053")
+		)
+		(pin "7"
+			(uuid "694869ce-3f57-473d-b014-ab7ff687327d")
+		)
+		(pin "10"
+			(uuid "e010ae28-f5e8-41e3-91b6-a2b5c2ace8d9")
+		)
+		(pin "8"
+			(uuid "e6da499d-9601-49bc-af4e-e162b6e261f9")
+		)
+		(pin "9"
+			(uuid "b0664773-1396-47ca-9a4f-b4787544791b")
+		)
+		(pin "12"
+			(uuid "7d6e9055-80ff-42be-bf40-7961ddddf60b")
+		)
+		(pin "13"
+			(uuid "6aa70915-0b71-4f5e-acb6-a0bb612a3c9c")
+		)
+		(pin "14"
+			(uuid "75317fa5-a808-457d-8938-0ad56e41bdae")
+		)
+		(pin "11"
+			(uuid "8589255c-e397-4732-91e4-a5be15cc6ba9")
+		)
+		(pin "4"
+			(uuid "21b7844e-d8d5-4ad4-906a-c33b28eab398")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U901")
+					(unit 5)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 256.54 53.34 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d35c9a")
+		(property "Reference" "C903"
+			(at 259.461 52.1716 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 259.461 54.483 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 257.5052 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 256.54 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 256.54 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "682115f8-182c-453a-b4b2-8abd6014bda1")
+		)
+		(pin "2"
+			(uuid "d08d9cca-3574-47cc-9b85-e9af0bdd35ed")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C903")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 256.54 57.15 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d365ff")
+		(property "Reference" "#PWR0910"
+			(at 256.54 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 256.413 61.5442 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 256.54 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 256.54 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 256.54 57.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3a2fe0b3-b5cf-463e-9e71-1fa4ef192d4d")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0910")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3VA")
+		(at 256.54 49.53 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d371be")
+		(property "Reference" "#PWR0909"
+			(at 256.54 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3VA"
+			(at 256.921 45.1358 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 256.54 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 256.54 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 256.54 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7fc106a5-c16e-41bb-a24c-fcae785d2152")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0909")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3VA")
+		(at 238.76 46.99 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d37661")
+		(property "Reference" "#PWR0908"
+			(at 238.76 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3VA"
+			(at 239.141 42.5958 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 238.76 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5cc68d2f-6843-44ae-8199-69bf4522950a")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0908")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 238.76 62.23 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d37c03")
+		(property "Reference" "#PWR0912"
+			(at 238.76 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 238.633 66.6242 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 238.76 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "615a2733-8b2d-42ab-9a73-c6727d7fbd34")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0912")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Amplifier_Operational:MCP6004")
+		(at 236.22 111.76 0)
+		(mirror y)
+		(unit 5)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d43531")
+		(property "Reference" "U902"
+			(at 234.95 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6004"
+			(at 234.95 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SO-14_3.9x8.65mm_P1.27mm"
+			(at 237.49 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 234.95 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 236.22 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "65c8ff4d-c873-4227-8e51-a43286c3e105")
+		)
+		(pin "2"
+			(uuid "ef8b7918-a477-4170-b09a-3a8da92b106f")
+		)
+		(pin "3"
+			(uuid "74da0fae-916d-4075-b75e-0ff1bb1f3748")
+		)
+		(pin "5"
+			(uuid "86a7ef16-3cd3-48c4-9421-3a22fc12cdef")
+		)
+		(pin "6"
+			(uuid "6ff71663-780d-4b88-b1ea-ee2c743f107a")
+		)
+		(pin "7"
+			(uuid "b2835c91-2795-4723-857d-a2702682bded")
+		)
+		(pin "10"
+			(uuid "809270aa-a13b-40e3-a21a-c8bc9c98108c")
+		)
+		(pin "8"
+			(uuid "c318dc72-9b62-4d68-80aa-a1fe9296a31d")
+		)
+		(pin "9"
+			(uuid "79c766ea-545d-459f-97d3-e610e44cca8c")
+		)
+		(pin "12"
+			(uuid "0dd53ac4-094f-4c28-b89d-27252d76d960")
+		)
+		(pin "13"
+			(uuid "9f5699a0-9aa1-4829-ad45-49d909144eae")
+		)
+		(pin "14"
+			(uuid "c1696d45-aa63-41a8-bef8-d09d7ec12955")
+		)
+		(pin "11"
+			(uuid "db6c6eb3-ddaf-4d45-bd1d-ab4d46e2f2d9")
+		)
+		(pin "4"
+			(uuid "d77dc230-36be-4a5c-b8c5-52c073322cc7")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "U902")
+					(unit 5)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:C")
+		(at 256.54 110.49 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d43537")
+		(property "Reference" "C908"
+			(at 259.461 109.3216 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100n"
+			(at 259.461 111.633 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"
+			(at 257.5052 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 256.54 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 256.54 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "61bd5e95-c15f-4787-bce2-64e06a944bb8")
+		)
+		(pin "2"
+			(uuid "0999f9ee-5b17-4c5b-9231-dfb8adb44fe0")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "C908")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 256.54 114.3 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d4353d")
+		(property "Reference" "#PWR0928"
+			(at 256.54 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 256.413 118.6942 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 256.54 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 256.54 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 256.54 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7829d561-1773-40af-9e64-96c89adc70c1")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0928")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3VA")
+		(at 256.54 106.68 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d43543")
+		(property "Reference" "#PWR0927"
+			(at 256.54 110.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3VA"
+			(at 256.921 102.2858 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 256.54 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 256.54 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 256.54 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5002fddc-1bee-42e9-ad40-f7048a2a436d")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0927")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3VA")
+		(at 238.76 104.14 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d43549")
+		(property "Reference" "#PWR0924"
+			(at 238.76 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3.3VA"
+			(at 239.141 99.7458 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 238.76 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ced3dee5-f01c-420f-a283-1895ed63f041")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0924")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GNDA")
+		(at 238.76 119.38 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "00000000-0000-0000-0000-000062d4354f")
+		(property "Reference" "#PWR0929"
+			(at 238.76 125.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GNDA"
+			(at 238.633 123.7742 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 238.76 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 238.76 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 238.76 119.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ddf9ea84-34dd-4ca9-8112-d98ce0f20d1d")
+		)
+		(instances
+			(project "TapeLooper_MainBoard"
+				(path "/be36fae3-8c96-4cfa-8e3e-b8c8ad77760e/00000000-0000-0000-0000-000062c57b83"
+					(reference "#PWR0929")
+					(unit 1)
+				)
+			)
+		)
+	)
+)
