@@ -268,6 +268,8 @@ public:
     static constexpr size_t getNumChannels() { return numChannels; }
     static constexpr size_t getSampleRate() { return sampleRate; }
 
+    RecorderType& recorderForTesting() { return recorder_; }
+
 private:
     const LooperStoragePtr<numChannels> storage_;
     LooperState state_;
