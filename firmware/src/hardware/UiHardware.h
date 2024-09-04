@@ -264,22 +264,11 @@ public:
                + coeffs[int(cv)].offset;
     }
 
-    struct CvInCoefficients
-    {
-        bool operator==(const CvInCoefficients& other) const
-        {
-            return scale == other.scale && offset == other.offset;
-        }
-        float scale;
-        float offset;
-    };
-    using CalibrationData = std::array<CvInCoefficients, int(CvInput::NUM_CVS)>;
-
-    CalibrationData& getCalibrationData() { return calibrationStorage_.GetSettings(); }
+    CvCalibrationData& getCalibrationData() { return calibrationStorage_.GetSettings(); }
     void saveCalibrationData() { calibrationStorage_.Save(); }
 
 private:
-    static constexpr CalibrationData getDefaultCalibrationData()
+    static constexpr CvCalibrationData getDefaultCalibrationData()
     {
         /**
             The general formula for the CV inputs is
@@ -317,9 +306,9 @@ private:
         constexpr auto kScaleVolume = -4.852941f;
         constexpr auto kOffsetVolume = 5.0f;
 
-        constexpr CalibrationData defaults = []() constexpr
+        constexpr CvCalibrationData defaults = []() constexpr
         {
-            CalibrationData result = { { 0.0f, 0.0f } };
+            CvCalibrationData result = { { 0.0f, 0.0f } };
             for (size_t i = 0; i < result.size(); i++)
             {
                 const auto isSpeedCv = i % 2 == 0;
@@ -332,7 +321,7 @@ private:
     }
     static constexpr auto kCalibrationDataOffset = 0;
 
-    mutable daisy::PersistentStorage<CalibrationData> calibrationStorage_;
+    mutable daisy::PersistentStorage<CvCalibrationData> calibrationStorage_;
 
     daisy::AdcHandle adc_;
 };

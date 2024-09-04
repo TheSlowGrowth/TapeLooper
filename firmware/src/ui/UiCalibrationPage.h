@@ -222,10 +222,10 @@ private:
         }
     }
 
-    typename KnobAndCvReader::CvInCoefficients calculateCoefficients(float rawMin,
-                                                                     float realMin,
-                                                                     float rawMax,
-                                                                     float realMax)
+    CvInCoefficients calculateCoefficients(float rawMin,
+                                           float realMin,
+                                           float rawMax,
+                                           float realMax)
     {
         const auto scale = (realMax - realMin) / (rawMax - rawMin);
         const auto offset = realMax - scale * (rawMax);
@@ -245,5 +245,5 @@ private:
     int selectedChannel_ = -1;
     State state_ = State::idle;
     float recordedMin_;
-    typename KnobAndCvReader::CalibrationData newCalibrationData_;
+    CvCalibrationData newCalibrationData_;
 };
