@@ -34,7 +34,7 @@ DEPS = $(OBJECTS:.o=.d)
 # flags #
 COMPILE_FLAGS = -std=gnu++17 -Wall -Wextra -g -Werror -pthread -DUNIT_TEST=1
 INCLUDES = -I /usr/local/include/ \
-		   -I ../../dsp/lib/sprout/ \
+		   -I ../../dsp/lib/gcem/include/ \
 		   -I ../../dsp/src/ \
 		   -I ../../lib/libDaisy/src/ \
 		   -I ../../lib/googletest/ \

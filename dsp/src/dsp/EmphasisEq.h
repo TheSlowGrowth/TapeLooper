@@ -16,8 +16,7 @@
  */
 
 #pragma once
-#include <sprout/config.hpp>
-#include <sprout/math/pow.hpp>
+#include <gcem.hpp>
 #include "DspHelpers.h"
 
 enum class OnePoleShelvingEqType
@@ -89,8 +88,7 @@ public:
     {
         constexpr FloatType sampleRate = FilterParameters::getSampleRate();
         // Bilinear transform
-        constexpr auto sqrtA = sprout::math::pow(FloatType(1.05925),
-                                                 FilterParameters::getGainInDecibels()); // = sqrt(10^(gain/20))
+        constexpr auto sqrtA = gcem::pow(FloatType(1.05925), FilterParameters::getGainInDecibels()); // = sqrt(10^(gain/20))
         constexpr auto scaledFreq = FilterParameters::getCutoffFrequency() * (FilterParameters::isLowShelf() ? (FloatType(1) / sqrtA) : sqrtA);
         constexpr auto clippedFreq = limit(sampleRate / FloatType(24576.0),
                                            sampleRate / FloatType(2.125),

@@ -21,7 +21,8 @@
 #    define MANUAL_INLINE inline __attribute__((always_inline))
 #endif
 
-#include <sprout/math/exp.hpp>
+#include <gcem.hpp>
+#include <cstdint>
 
 template <typename IntType, int size>
 class WrappedInt
@@ -130,7 +131,7 @@ public:
     {
     public:
         constexpr TimeConstant(float smoothingTimeInS, float sampleRate, int blockSize) :
-            value_(1.0f - sprout::math::exp(-2.2f * float(blockSize) / sampleRate / smoothingTimeInS))
+            value_(1.0f - gcem::exp(-2.2f * float(blockSize) / sampleRate / smoothingTimeInS))
         {
         }
 

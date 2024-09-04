@@ -14,17 +14,21 @@ set(HEADER_FILES
     src/util/Memory.h
 )
 
-add_subdirectory(lib/sprout)
+add_subdirectory(lib/gcem)
 
 add_library(${TARGET}
     src/dsp/DspHelpers.cpp
 )
 target_include_directories(${TARGET} INTERFACE
     src/
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/sprout/
-) 
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/gcem/include/
+)
 target_include_directories(${TARGET} PRIVATE
     src/
-    ${CMAKE_CURRENT_SOURCE_DIR}/lib/sprout/
-) 
+    ${CMAKE_CURRENT_SOURCE_DIR}/lib/gcem/include
+)
+target_compile_definitions(${TARGET}
+PUBLIC
+    _USE_MATH_DEFINES
+)
 set_property(TARGET tapeLooperDsp PROPERTY CXX_STANDARD 17)

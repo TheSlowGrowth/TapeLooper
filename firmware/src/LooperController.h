@@ -20,6 +20,7 @@
 #include <memory.h>
 
 #include <dsp/TapeLooper.h>
+#include <gcem.hpp>
 
 #include "constants.h"
 #include "util/LateInitializedObject.h"
@@ -225,7 +226,7 @@ private:
         //      ln(maxLag / minLag) / (numSteps-1) = b
         //      log(maxLag / minLag) / ((numSteps-1) * log(e)) = b
         constexpr auto a = minLag;
-        constexpr auto b = sprout::math::log(maxLag / minLag) / (float(numSteps - 1) * sprout::math::log(2.718281828f));
+        constexpr auto b = gcem::log(maxLag / minLag) / (float(numSteps - 1) * gcem::log(2.718281828f));
 
         switch (acceleration)
         {
@@ -234,13 +235,13 @@ private:
             case MotorAcceleration::veryFast:
                 return a;
             case MotorAcceleration::fast:
-                return a * sprout::exp(b);
+                return a * gcem::exp(b);
             case MotorAcceleration::medium:
-                return a * sprout::exp(2 * b);
+                return a * gcem::exp(2 * b);
             case MotorAcceleration::slow:
-                return a * sprout::exp(3 * b);
+                return a * gcem::exp(3 * b);
             case MotorAcceleration::verySlow:
-                return a * sprout::exp(4 * b);
+                return a * gcem::exp(4 * b);
         }
     }
 

@@ -336,12 +336,12 @@ TEST_F(LooperController_Test, process_shouldUseCorrectMotorSpeedTimeConstants)
         constexpr float expectedBlockSize = float(blockSize);
         constexpr float expectedSampleRate = sampleRateHz;
         // according to Udo Zoelzer:
-        //   timeConstant = 1.0f - sprout::math::exp(-2.2f * float(expectedBlockSize) / expectedSampleRate / smoothingTimeInS);
+        //   timeConstant = 1.0f - gcem::exp(-2.2f * float(expectedBlockSize) / expectedSampleRate / smoothingTimeInS);
         // hence:
         //   ln(1.0f - timeConstant) =  -2.2f * float(expectedBlockSize) / expectedSampleRate / smoothingTimeInS
         //   smoothingTime = -2.2f * float(expectedBlockSize) / expectedSampleRate * log(e) / log(1.0f - timeConstant)
         return -2.2f * float(expectedBlockSize) / expectedSampleRate
-               * sprout::math::log(2.718281828f) / sprout::math::log(1.0f - timeConstant);
+               * gcem::log(2.718281828f) / gcem::log(1.0f - timeConstant);
     };
 
     // finally capture the time constants for each acceleration setting
@@ -364,7 +364,7 @@ TEST_F(LooperController_Test, process_shouldUseCorrectMotorSpeedTimeConstants)
     // expect the other times to be scaled exponentially in between (== constant factor)
     constexpr float totalRange = 20.0f / 0.1f;
     constexpr size_t numSettings = 5;
-    constexpr float expectedFactor = sprout::pow(totalRange, 1.0f / float(numSettings - 1));
+    constexpr float expectedFactor = gcem::pow(totalRange, 1.0f / float(numSettings - 1));
     EXPECT_NEAR(measuredSmoothingTimes[MotorAcceleration::fast]
                     / measuredSmoothingTimes[MotorAcceleration::veryFast],
                 expectedFactor,

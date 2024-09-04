@@ -16,13 +16,9 @@
  */
 
 #pragma once
-#include <sprout/config.hpp>
-#include <sprout/math/pow.hpp>
-#include <sprout/math/tan.hpp>
-#include <sprout/math/sin.hpp>
-#include <sprout/math/cos.hpp>
-#include <sprout/math/sqrt.hpp>
-#include <sprout/math/constants.hpp>
+
+#include <gcem.hpp>
+#include <math.h>
 
 template <typename FloatType>
 class Biquad
@@ -48,8 +44,8 @@ public:
         {
             // according to U.Zoelzer - DAFX, second edition, sec. 2.2, p.49
             const FloatType K = (mathType == MathType::accurate)
-                                    ? FloatType(sprout::math::tan(sprout::math::pi<FloatType>() * frequency / sampleRate))
-                                    : FloatType(fastTan(sprout::math::pi<FloatType>() * frequency / sampleRate));
+                                    ? FloatType(gcem::tan(FloatType(M_PI) * frequency / sampleRate))
+                                    : FloatType(fastTan(FloatType(M_PI) * frequency / sampleRate));
             const FloatType Kp1 = K + 1;
             Coefficients result;
             result.b0 = K / Kp1;
@@ -66,8 +62,8 @@ public:
         {
             // according to U.Zoelzer - DAFX, second edition, sec. 2.2, p.49
             const FloatType K = (mathType == MathType::accurate)
-                                    ? FloatType(sprout::math::tan(sprout::math::pi<FloatType>() * frequency / sampleRate))
-                                    : FloatType(fastTan(sprout::math::pi<FloatType>() * frequency / sampleRate));
+                                    ? FloatType(gcem::tan(FloatType(M_PI) * frequency / sampleRate))
+                                    : FloatType(fastTan(FloatType(M_PI) * frequency / sampleRate));
             const FloatType K2 = K * K;
             const FloatType K2Q = K2 * Q;
             const FloatType denom = K2Q + K + Q;
@@ -86,8 +82,8 @@ public:
         {
             // according to U.Zoelzer - DAFX, second edition, sec. 2.2, p.49
             const FloatType K = (mathType == MathType::accurate)
-                                    ? FloatType(sprout::math::tan(sprout::math::pi<FloatType>() * frequency / sampleRate))
-                                    : FloatType(fastTan(sprout::math::pi<FloatType>() * frequency / sampleRate));
+                                    ? FloatType(gcem::tan(FloatType(M_PI) * frequency / sampleRate))
+                                    : FloatType(fastTan(FloatType(M_PI) * frequency / sampleRate));
             const FloatType Kp1 = K + 1;
             Coefficients result;
             result.b0 = 1 / Kp1;
@@ -104,8 +100,8 @@ public:
         {
             // according to U.Zoelzer - DAFX, second edition, sec. 2.2, p.49
             const FloatType K = (mathType == MathType::accurate)
-                                    ? FloatType(sprout::math::tan(sprout::math::pi<FloatType>() * frequency / sampleRate))
-                                    : FloatType(fastTan(sprout::math::pi<FloatType>() * frequency / sampleRate));
+                                    ? FloatType(gcem::tan(FloatType(M_PI) * frequency / sampleRate))
+                                    : FloatType(fastTan(FloatType(M_PI) * frequency / sampleRate));
             const FloatType K2 = K * K;
             Coefficients result;
             result.b0 = Q / (K2 * Q + K + Q);
@@ -122,8 +118,8 @@ public:
         {
             // according to U.Zoelzer - DAFX, second edition, sec. 2.2, p.49
             const FloatType K = (mathType == MathType::accurate)
-                                    ? FloatType(sprout::math::tan(sprout::math::pi<FloatType>() * frequency / sampleRate))
-                                    : FloatType(fastTan(sprout::math::pi<FloatType>() * frequency / sampleRate));
+                                    ? FloatType(gcem::tan(FloatType(M_PI) * frequency / sampleRate))
+                                    : FloatType(fastTan(FloatType(M_PI) * frequency / sampleRate));
             const FloatType K2 = K * K;
             Coefficients result;
             result.b0 = K / (K2 * Q + K + Q);
@@ -140,8 +136,8 @@ public:
         {
             // according to U.Zoelzer - DAFX, second edition, sec. 2.2, p.49
             const FloatType K = (mathType == MathType::accurate)
-                                    ? FloatType(sprout::math::tan(sprout::math::pi<FloatType>() * frequency / sampleRate))
-                                    : FloatType(fastTan(sprout::math::pi<FloatType>() * frequency / sampleRate));
+                                    ? FloatType(gcem::tan(FloatType(M_PI) * frequency / sampleRate))
+                                    : FloatType(fastTan(FloatType(M_PI) * frequency / sampleRate));
             const FloatType K2 = K * K;
             Coefficients result;
             result.b0 = Q * (1 + K2) / (K2 * Q + K + Q);
@@ -158,9 +154,9 @@ public:
         {
             // according to U.Zoelzer - DAFX, second edition, sec. 2.3.2, p.66, table 2.4
             const FloatType K = (mathType == MathType::accurate)
-                                    ? FloatType(sprout::math::tan(sprout::math::pi<FloatType>() * frequency / sampleRate))
-                                    : FloatType(fastTan(sprout::math::pi<FloatType>() * frequency / sampleRate));
-            const FloatType V0 = sprout::math::pow(tenPow1div20, gain); // == pow(10, gain/20)
+                                    ? FloatType(gcem::tan(FloatType(M_PI) * frequency / sampleRate))
+                                    : FloatType(fastTan(FloatType(M_PI) * frequency / sampleRate));
+            const FloatType V0 = gcem::pow(tenPow1div20, gain); // == pow(10, gain/20)
             const FloatType K2 = K * K;
             Coefficients result;
             if (gain > 0)
@@ -188,11 +184,11 @@ public:
         static constexpr Coefficients createLowShelf1(FloatType sampleRate, FloatType frequency, FloatType gain)
         {
             // Bilinear transform
-            const auto sqrtA = sprout::math::pow(tenPow1div40, gain); // = sqrt(10^(gain/20))
+            const auto sqrtA = gcem::pow(tenPow1div40, gain); // = sqrt(10^(gain/20))
             const auto scaledFreq = frequency / sqrtA;
             const auto warpedFreq = (mathType == MathType::accurate)
-                                        ? FloatType(sprout::math::tan(sprout::math::pi<FloatType>() * scaledFreq / sampleRate))
-                                        : FloatType(fastTan(sprout::math::pi<FloatType>() * scaledFreq / sampleRate));
+                                        ? FloatType(gcem::tan(FloatType(M_PI) * scaledFreq / sampleRate))
+                                        : FloatType(fastTan(FloatType(M_PI) * scaledFreq / sampleRate));
             const auto A = sqrtA * sqrtA; // = 10^(gain/20)
 
             const auto wfp1 = (warpedFreq + FloatType(1.0));
@@ -213,12 +209,12 @@ public:
         {
             static_assert(mathType == MathType::accurate, "MathType::fast is not yet supported!");
 
-            const FloatType A = sprout::math::pow(tenPow1div40, gain); // == pow(10, gain/40) == sqrt(pow(10, gain/20))
+            const FloatType A = gcem::pow(tenPow1div40, gain); // == pow(10, gain/40) == sqrt(pow(10, gain/20))
             const auto aminus1 = A - FloatType(1);
             const auto aplus1 = A + FloatType(1);
-            const auto omega = (sprout::math::two_pi<FloatType>() * std::max(frequency, FloatType(2))) / sampleRate;
-            const auto coso = sprout::math::cos(omega);
-            const auto beta = sprout::math::sin(omega) * sprout::math::sqrt(A) / Q;
+            const auto omega = (FloatType(2.0 * M_PI) * gcem::max(frequency, FloatType(2))) / sampleRate;
+            const auto coso = gcem::cos(omega);
+            const auto beta = gcem::sin(omega) * gcem::sqrt(A) / Q;
             const auto aminus1TimesCoso = aminus1 * coso;
 
             // coefficients for transposed Form II Biquad
@@ -245,11 +241,11 @@ public:
         static constexpr Coefficients createHighShelf1(FloatType sampleRate, FloatType frequency, FloatType gain)
         {
             // Bilinear transform
-            const auto sqrtA = sprout::math::pow(tenPow1div40, gain); // = sqrt(10^(gain/20))
+            const auto sqrtA = gcem::pow(tenPow1div40, gain); // = sqrt(10^(gain/20))
             const auto scaledFreq = frequency * sqrtA;
             const auto warpedFreq = (mathType == MathType::accurate)
-                                        ? FloatType(sprout::math::tan(sprout::math::pi<FloatType>() * scaledFreq / sampleRate))
-                                        : FloatType(fastTan(sprout::math::pi<FloatType>() * scaledFreq / sampleRate));
+                                        ? FloatType(gcem::tan(FloatType(M_PI) * scaledFreq / sampleRate))
+                                        : FloatType(fastTan(FloatType(M_PI) * scaledFreq / sampleRate));
             const auto A = sqrtA * sqrtA; // = 10^(gain/20)
 
             const auto wfp1 = (warpedFreq + FloatType(1.0));
@@ -270,12 +266,12 @@ public:
         {
             static_assert(mathType == MathType::accurate, "MathType::fast is not yet supported!");
 
-            const FloatType A = sprout::math::pow(tenPow1div40, gain); // == pow(10, gain/40) == sqrt(pow(10, gain/20))
+            const FloatType A = gcem::pow(tenPow1div40, gain); // == pow(10, gain/40) == sqrt(pow(10, gain/20))
             const auto aminus1 = A - FloatType(1);
             const auto aplus1 = A + FloatType(1);
-            const auto omega = (sprout::math::two_pi<FloatType>() * std::max(frequency, FloatType(2))) / sampleRate;
-            const auto coso = sprout::math::cos(omega);
-            const auto beta = sprout::math::sin(omega) * sprout::math::sqrt(A) / Q;
+            const auto omega = (FloatType(2.0 * M_PI) * std::max(frequency, FloatType(2))) / sampleRate;
+            const auto coso = gcem::cos(omega);
+            const auto beta = gcem::sin(omega) * gcem::sqrt(A) / Q;
             const auto aminus1TimesCoso = aminus1 * coso;
 
             // coefficients for transposed Form II Biquad

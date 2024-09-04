@@ -17,7 +17,7 @@
 
 #pragma once
 #include "DspHelpers.h"
-#include <sprout/math/ceil.hpp>
+#include <gcem.hpp>
 
 template <typename FloatType, int sampleRate>
 class WowAndFlutterOscillator

@@ -18,7 +18,7 @@ CPP_SOURCES = app/main.cpp
 
 C_INCLUDES ?= 
 C_INCLUDES += \
--Ilib/sprout \
+-Ilib/gcem \
 -Iapp/
 
 ifeq ($(DEBUG), 1)

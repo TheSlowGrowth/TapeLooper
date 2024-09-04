@@ -7,3 +7,6 @@
 [submodule "plugin/lib/JUCE"]
 	path = plugin/lib/JUCE
 	url = https://github.com/juce-framework/JUCE.git
+[submodule "dsp/lib/gcem"]
+	path = dsp/lib/gcem
+	url = https://github.com/kthohr/gcem

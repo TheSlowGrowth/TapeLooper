@@ -1,1 +1,0 @@
-subdirs( test example )
