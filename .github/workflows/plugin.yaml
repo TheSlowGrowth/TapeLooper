@@ -70,6 +70,10 @@ jobs:
       with:
         xcode-version: latest-stable
 
+    - name: Select Xcode
+      run: |
+        sudo xcode-select --reset
+
     - name: Checkout
       uses: actions/checkout@v2
       with:
