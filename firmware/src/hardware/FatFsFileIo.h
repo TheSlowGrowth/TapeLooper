@@ -19,4 +19,30 @@
 
 class FatFsFileIo
 {
+public:
+    bool openForReading(const char* fileName)
+    {
+        (void) (fileName);
+        return false;
+    }
+
+    bool openForWriting(const char* fileName)
+    {
+        (void) (fileName);
+        return false;
+    }
+
+    bool write(void* data, size_t size)
+    {
+        return false;
+    }
+
+    int32_t read(void* data, size_t maxSize)
+    {
+        return -1;
+    }
+
+    void closeFile()
+    {
+    }
 };
