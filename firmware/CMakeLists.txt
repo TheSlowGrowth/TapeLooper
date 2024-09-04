@@ -24,6 +24,7 @@ endif(COMMAND cmake_policy)
 set(FIRMWARE_NAME TapeLooper)
 set(FIRMWARE_SOURCES
     src/main.cpp
+    src/util/WavFileFormat.cpp
 )
 
 # include dsp library
