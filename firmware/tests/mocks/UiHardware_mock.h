@@ -21,6 +21,18 @@
 
 #include "hardware/UiHardwareTypes.h"
 
+class KnobsAndCvMock
+{
+public:
+    float getCvRaw(CvInput cv) { return cvRawValues_[int(cv)]; }
+    CvCalibrationData& getCalibrationData() { return calibrationData_; }
+    void saveCalibrationData() { savedCalibrationData_ = calibrationData_; }
+
+    float cvRawValues_[int(CvInput::NUM_CVS)] = { 0 };
+    CvCalibrationData calibrationData_;
+    CvCalibrationData savedCalibrationData_;
+};
+
 class UiHardwareMock
 {
 public:
@@ -56,4 +68,8 @@ public:
             led.colour = LedColour::off;
         }
     }
+
+    KnobsAndCvMock& getKnobsAndCv() { return knobsAndCv_; };
+
+    KnobsAndCvMock knobsAndCv_;
 };
