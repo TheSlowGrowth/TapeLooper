@@ -78,6 +78,7 @@ std::ostream& operator<<(std::ostream& out, LedColour colour)
         case LedColour::pulsingRed:
             return out << "LedColour::pulsingRed";
     }
+    return out;
 }
 
 // the clear and flush functions of the UI cancas must be function pointers.
