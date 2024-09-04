@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -135,14 +135,14 @@ TEST_F(DSP_Player, c_playForwardsNormalSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> processCallArgs_input;
     std::vector<FloatWithTolerance> processCallArgs_param;
     ON_CALL(player_.getProcessor(), process(_, _))
-        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params) {
+        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params)
+                       {
             for (size_t ch = 0; ch < numChannels_; ch++)
             {
                 processCallArgs_input[ch].push_back(inputsAndOutputs[ch]);
                 inputsAndOutputs[ch] += 100;
             }
-            processCallArgs_param.push_back(params.value);
-        });
+            processCallArgs_param.push_back(params.value); });
 
     // expect processor to be called the correct number of times.
     // linear interpolation requires samples i and i+1, even if fractional is 0 (and i+1 isn't actually used)
@@ -261,14 +261,14 @@ TEST_F(DSP_Player, d_playForwardsHalfSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> processCallArgs_input;
     std::vector<FloatWithTolerance> processCallArgs_param;
     ON_CALL(player_.getProcessor(), process(_, _))
-        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params) {
+        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params)
+                       {
             for (size_t ch = 0; ch < numChannels_; ch++)
             {
                 processCallArgs_input[ch].push_back(inputsAndOutputs[ch]);
                 inputsAndOutputs[ch] += 100;
             }
-            processCallArgs_param.push_back(params.value);
-        });
+            processCallArgs_param.push_back(params.value); });
 
     // expect processor to be called once for two output samples.
     // linear interpolation requires samples i and i+1, even if fractional is 0 (and i+1 isn't actually used)
@@ -376,14 +376,14 @@ TEST_F(DSP_Player, e_playForwardsDoubleSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> processCallArgs_input;
     std::vector<FloatWithTolerance> processCallArgs_param;
     ON_CALL(player_.getProcessor(), process(_, _))
-        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params) {
+        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params)
+                       {
             for (size_t ch = 0; ch < numChannels_; ch++)
             {
                 processCallArgs_input[ch].push_back(inputsAndOutputs[ch]);
                 inputsAndOutputs[ch] += 100;
             }
-            processCallArgs_param.push_back(params.value);
-        });
+            processCallArgs_param.push_back(params.value); });
 
     // expect processor to be called twice for each output sample.
     // linear interpolation requires samples i and i+1, even if fractional is 0 (and i+1 isn't actually used)
@@ -497,14 +497,14 @@ TEST_F(DSP_Player, f_playBackwardsNormalSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> processCallArgs_input;
     std::vector<FloatWithTolerance> processCallArgs_param;
     ON_CALL(player_.getProcessor(), process(_, _))
-        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params) {
+        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params)
+                       {
             for (size_t ch = 0; ch < numChannels_; ch++)
             {
                 processCallArgs_input[ch].push_back(inputsAndOutputs[ch]);
                 inputsAndOutputs[ch] += 100;
             }
-            processCallArgs_param.push_back(params.value);
-        });
+            processCallArgs_param.push_back(params.value); });
 
     // expect processor to be called the correct number of times.
     // linear interpolation requires samples i and i+1, even if fractional is 0 (and i+1 isn't actually used)
@@ -623,14 +623,14 @@ TEST_F(DSP_Player, g_playBackwardsHalfSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> processCallArgs_input;
     std::vector<FloatWithTolerance> processCallArgs_param;
     ON_CALL(player_.getProcessor(), process(_, _))
-        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params) {
+        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params)
+                       {
             for (size_t ch = 0; ch < numChannels_; ch++)
             {
                 processCallArgs_input[ch].push_back(inputsAndOutputs[ch]);
                 inputsAndOutputs[ch] += 100;
             }
-            processCallArgs_param.push_back(params.value);
-        });
+            processCallArgs_param.push_back(params.value); });
 
     // expect processor to be called once for two output samples.
     // linear interpolation requires samples i and i+1, even if fractional is 0 (and i+1 isn't actually used)
@@ -736,14 +736,14 @@ TEST_F(DSP_Player, h_playBackwardsDoubleSpeed)
     std::array<std::vector<FloatWithTolerance>, numChannels_> processCallArgs_input;
     std::vector<FloatWithTolerance> processCallArgs_param;
     ON_CALL(player_.getProcessor(), process(_, _))
-        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params) {
+        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters& params)
+                       {
             for (size_t ch = 0; ch < numChannels_; ch++)
             {
                 processCallArgs_input[ch].push_back(inputsAndOutputs[ch]);
                 inputsAndOutputs[ch] += 100;
             }
-            processCallArgs_param.push_back(params.value);
-        });
+            processCallArgs_param.push_back(params.value); });
 
     // expect processor to be called twice for each output sample.
     // linear interpolation requires samples i and i+1, even if fractional is 0 (and i+1 isn't actually used)
@@ -851,10 +851,10 @@ TEST_F(DSP_Player, i_applySmoothingToPostGain)
 
     // the processor mock always returns 1.0f
     ON_CALL(player_.getProcessor(), process(_, _))
-        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters&) {
+        .WillByDefault([&](float inputsAndOutputs[numChannels_], const MockProcessor::Parameters&)
+                       {
             inputsAndOutputs[0] = 1.0f;
-            inputsAndOutputs[1] = 10.0f;
-        });
+            inputsAndOutputs[1] = 10.0f; });
     // add this expectation to silence gmock warning.
     EXPECT_CALL(player_.getProcessor(), process(_, _)).Times(::testing::AnyNumber());
 
@@ -988,9 +988,8 @@ TEST_F(DSP_Player, k_applyNoSmoothingToProcessorParameters)
     // the processor mock stores its argument values
     std::vector<FloatWithTolerance> processCallArgs_param;
     ON_CALL(player_.getProcessor(), process(_, _))
-        .WillByDefault([&](float[], const MockProcessor::Parameters& params) {
-            processCallArgs_param.push_back(params.value);
-        });
+        .WillByDefault([&](float[], const MockProcessor::Parameters& params)
+                       { processCallArgs_param.push_back(params.value); });
     // add this expectation to silence gmock warning.
     EXPECT_CALL(player_.getProcessor(), process(_, _)).Times(::testing::AnyNumber());
 

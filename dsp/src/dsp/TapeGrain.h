@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -40,9 +40,9 @@ public:
     }
 
     /** Sets the amount of jitter between 0 (none) and 1 (full).
-      * At full jitter, the frequency of the individual cycles varies between
-      * 0.00001 and 2 times the base frequency.
-      */
+     * At full jitter, the frequency of the individual cycles varies between
+     * 0.00001 and 2 times the base frequency.
+     */
     void setJitter(FloatType jitterAmount)
     {
         jitter_ = limit(FloatType(0), FloatType(1), jitterAmount);
@@ -94,7 +94,7 @@ private:
     FloatType currentOutputValue_;
 };
 
-/** 
+/**
  * Amplitude-modulates a signal with filtered noise
  * to simulate the grain of magnetic tape.
  */

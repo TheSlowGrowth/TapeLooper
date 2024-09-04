@@ -53,7 +53,7 @@ jobs:
       with:
         name: TapeLooper.bin
         path: firmware/build/TapeLooper.bin
-  
+
   ###############################################################################
   # builds the automated tests with clang; runs tests and exports results
   firmware-tests:
@@ -69,12 +69,12 @@ jobs:
       run: |
         cd firmware/tests
         make release
-    
+
     - name: Run Tests
       run: |
         cd firmware/tests/build/bin
         ./TapeLooper_gtest --gtest_output=xml:gtestresults.xml
-    
+
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1
       if: always()

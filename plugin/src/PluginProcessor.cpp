@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -74,7 +74,7 @@ double TapeLooperPluginAudioProcessor::getTailLengthSeconds() const
 int TapeLooperPluginAudioProcessor::getNumPrograms()
 {
     return 1; // NB: some hosts don't cope very well if you tell them there are 0 programs,
-        // so this should be at least 1, even if you're not really implementing programs.
+              // so this should be at least 1, even if you're not really implementing programs.
 }
 
 int TapeLooperPluginAudioProcessor::getCurrentProgram()
@@ -204,7 +204,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout TapeLooperPluginAudioProcess
                                                                1.0f, // default value
                                                                "", // label
                                                                juce::AudioProcessorParameter::genericParameter, // category
-                                                               [](float value, int) { return juce::String(value, 2); }) // value-to-string function
+                                                               [](float value, int)
+                                                               { return juce::String(value, 2); }) // value-to-string function
         );
         juce::NormalisableRange<float> driveRange(0.25f, 4.0f);
         driveRange.setSkewForCentre(1.0f);
@@ -214,7 +215,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout TapeLooperPluginAudioProcess
                                                                1.0f, // default value
                                                                "", // label
                                                                juce::AudioProcessorParameter::genericParameter, // category
-                                                               [](float value, int) { return juce::String(value, 2); }) // value-to-string function
+                                                               [](float value, int)
+                                                               { return juce::String(value, 2); }) // value-to-string function
         );
         result.add(std::make_unique<juce::AudioParameterFloat>(juce::String(dspdefs::paramIds::chGrainAmt) + chStr, // parameterID
                                                                "GrainAmt " + chStr, // parameter name

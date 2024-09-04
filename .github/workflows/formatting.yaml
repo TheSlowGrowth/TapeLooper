@@ -24,8 +24,8 @@ jobs:
       fail-fast: false
       matrix:
         path:
-          - 'firmware/src' 
-          - 'firmware/tests' 
+          - 'firmware/src'
+          - 'firmware/tests'
           - 'dsp/src'
           - 'dsp/tests'
           - 'plugin/src'

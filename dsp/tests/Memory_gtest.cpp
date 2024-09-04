@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -173,13 +173,11 @@ TEST(ReadableMemory, b_readSingleitem)
     EXPECT_CALL(memProvider, getAvailableSize())
         .WillOnce(::testing::Return(3ul));
     EXPECT_CALL(memProvider, read((void*) &value1, sizeof(value1)))
-        .WillOnce(testing::Invoke([](void* dest, size_t) {
-            *((uint8_t*) dest) = 12u;
-        }));
+        .WillOnce(testing::Invoke([](void* dest, size_t)
+                                  { *((uint8_t*) dest) = 12u; }));
     EXPECT_CALL(memProvider, read((void*) &value2, sizeof(value2)))
-        .WillOnce(testing::Invoke([](void* dest, size_t) {
-            *((uint16_t*) dest) = 234u;
-        }));
+        .WillOnce(testing::Invoke([](void* dest, size_t)
+                                  { *((uint16_t*) dest) = 234u; }));
     EXPECT_CALL(memProvider, write(_, _)).Times(0);
 
     ReadableMemory mem(memProvider);
@@ -208,13 +206,11 @@ TEST(ReadableMemory, c_readMultipleItems)
     EXPECT_CALL(memProvider, getAvailableSize())
         .WillOnce(::testing::Return(3ul));
     EXPECT_CALL(memProvider, read((void*) &value1, sizeof(value1)))
-        .WillOnce(testing::Invoke([](void* dest, size_t) {
-            *((uint8_t*) dest) = 12u;
-        }));
+        .WillOnce(testing::Invoke([](void* dest, size_t)
+                                  { *((uint8_t*) dest) = 12u; }));
     EXPECT_CALL(memProvider, read((void*) &value2, sizeof(value2)))
-        .WillOnce(testing::Invoke([](void* dest, size_t) {
-            *((uint16_t*) dest) = 234u;
-        }));
+        .WillOnce(testing::Invoke([](void* dest, size_t)
+                                  { *((uint16_t*) dest) = 234u; }));
     EXPECT_CALL(memProvider, write(_, _)).Times(0);
 
     ReadableMemory mem(memProvider);
@@ -241,13 +237,11 @@ TEST(ReadableMemory, d_readRaw)
     EXPECT_CALL(memProvider, getAvailableSize())
         .WillOnce(::testing::Return(3ul));
     EXPECT_CALL(memProvider, read((void*) &value1, sizeof(value1)))
-        .WillOnce(testing::Invoke([](void* dest, size_t) {
-            *((uint8_t*) dest) = 12u;
-        }));
+        .WillOnce(testing::Invoke([](void* dest, size_t)
+                                  { *((uint8_t*) dest) = 12u; }));
     EXPECT_CALL(memProvider, read((void*) &value2, sizeof(value2)))
-        .WillOnce(testing::Invoke([](void* dest, size_t) {
-            *((uint16_t*) dest) = 234u;
-        }));
+        .WillOnce(testing::Invoke([](void* dest, size_t)
+                                  { *((uint16_t*) dest) = 234u; }));
     EXPECT_CALL(memProvider, write(_, _)).Times(0);
 
     ReadableMemory mem(memProvider);

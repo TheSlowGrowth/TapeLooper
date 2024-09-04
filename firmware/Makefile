@@ -8,7 +8,7 @@ else
 	GCC_PATH ?= ~/dev/gcc-arm-none-eabi-9-2020-q2-update/bin
 endif
 
-# programming 
+# programming
 PGM_DEVICE = interface/ftdi/olimex-arm-usb-tiny-h.cfg
 
 CPP_STANDARD ?= -std=gnu++17
@@ -16,14 +16,14 @@ CPP_STANDARD ?= -std=gnu++17
 # Sources
 CPP_SOURCES = app/main.cpp
 
-C_INCLUDES ?= 
+C_INCLUDES ?=
 C_INCLUDES += \
 -Ilib/gcem \
 -Iapp/
 
 ifeq ($(DEBUG), 1)
 OPT = -O0
-else 
+else
 OPT = -O3
 endif
 

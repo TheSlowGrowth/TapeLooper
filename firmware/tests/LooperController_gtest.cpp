@@ -69,14 +69,14 @@ public:
 
     // clang-format off
     MOCK_METHOD(void, process, (
-        float speedParam, 
-        float wowAndFlutterParam, 
-        Direction direction, 
-        ProcessorParametersMock processorParams, 
-        float gainParam, 
-        (AudioBufferPtr<2, const float>) input, 
-        AudioBufferPtr<2> output, 
-        ExponentialSmoother::TimeConstant postGainSmootherTimeConstant, 
+        float speedParam,
+        float wowAndFlutterParam,
+        Direction direction,
+        ProcessorParametersMock processorParams,
+        float gainParam,
+        (AudioBufferPtr<2, const float>) input,
+        AudioBufferPtr<2> output,
+        ExponentialSmoother::TimeConstant postGainSmootherTimeConstant,
         ExponentialSmoother::TimeConstant speedSmootherTimeConstant), ());
     // clang-format on
 
@@ -101,14 +101,14 @@ public:
 
     // clang-format off
     MOCK_METHOD(void, process, (
-        float speedParam, 
-        float wowAndFlutterParam, 
-        Direction direction, 
-        ProcessorParametersMock processorParams, 
-        float gainParam, 
-        (AudioBufferPtr<1, const float>) input, 
-        AudioBufferPtr<1> output, 
-        ExponentialSmoother::TimeConstant postGainSmootherTimeConstant, 
+        float speedParam,
+        float wowAndFlutterParam,
+        Direction direction,
+        ProcessorParametersMock processorParams,
+        float gainParam,
+        (AudioBufferPtr<1, const float>) input,
+        AudioBufferPtr<1> output,
+        ExponentialSmoother::TimeConstant postGainSmootherTimeConstant,
         ExponentialSmoother::TimeConstant speedSmootherTimeConstant), ());
     // clang-format on
 

@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -298,7 +298,7 @@ public:
         static constexpr FloatType tenPow1div40 = FloatType(1.05925372517728887881);
         static constexpr FloatType sqrt2Inv = FloatType(0.70710678118654752440);
         /** Taylor series expansion of tan(x) around x=0;
-          * Valid for |x| << pi/2 */
+         * Valid for |x| << pi/2 */
         static constexpr FloatType fastTan(FloatType input)
         {
             const FloatType input2 = input * input;
