@@ -1,14 +1,14 @@
 ### Based on: https://gist.github.com/mauriciopoppe/de8908f67923091982c8c8136a063ea6
 ### Thanks!
 
-CXX ?= clang++ 
+CXX ?= clang++
 
 # path #
 SRC_PATH = .
 BUILD_PATH = build
 BIN_PATH = $(BUILD_PATH)/bin
 
-# executable # 
+# executable #
 BIN_NAME = TapeLooper_gtest
 
 # extensions #
@@ -34,7 +34,7 @@ DEPS = $(OBJECTS:.o=.d)
 # flags #
 COMPILE_FLAGS = -std=gnu++17 -Wall -Wextra -g -Werror -pthread -DUNIT_TEST=1
 INCLUDES = -I /usr/local/include/ \
-		   -I ../../dsp/lib/sprout/ \
+		   -I ../../dsp/lib/gcem/include/ \
 		   -I ../../dsp/src/ \
 		   -I ../../lib/libDaisy/src/ \
 		   -I ../../lib/googletest/ \

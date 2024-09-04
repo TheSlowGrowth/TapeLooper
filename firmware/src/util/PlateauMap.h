@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -84,7 +84,7 @@ private:
             const FloatType slopeLeft = isFirst ? FloatType(1) : FloatType(0);
             const FloatType slopeRight = isLast ? FloatType(1) : FloatType(0);
 
-            /* 
+            /*
             Using this prototype for the transition function:
                 f(x) = ax^3 + bx^2 + cx + d
             These are the boundary conditions:
@@ -129,31 +129,31 @@ private:
  * Maps an input value of 0..1 to an output value of 0..1, creating
  * a number of plateaus. This can be used to map a potentiometer value
  * so that it's easier to hit certain values.
- * 
+ *
  * At each plateau value, the slope of the mapping function will be
  * zero, so that the mapping function is level at the plateau.
  * It looks something like this:
- * 
+ *
  *    1 +                  /
  *      |                 /
  *      |           /----/
  *      |          /
  *      |   /-----/
  *      |  /
- *      | / 
+ *      | /
  *      |/
  *    0 +------------------+-->
  *      0                  1
- * 
+ *
  * At each plateau, the output value is equal to the input value.
  * Between the plateaus, a qubic polynomial function creates a smooth
  * transition zone.
- * 
- * The PlateauMapParameters class is used to specify the level of the 
- * plateaus. It can be specified as constexpr so that all the 
- * preprocessing of the transition function parameters is done at compile 
+ *
+ * The PlateauMapParameters class is used to specify the level of the
+ * plateaus. It can be specified as constexpr so that all the
+ * preprocessing of the transition function parameters is done at compile
  * time.
- * 
+ *
  *     // Create plateaus at 0.5 and 0.75
  *     // The values will be evaluated ad compile time.
  *     constexpr PlateauMapParameters<float, 2> parameters({ 0.5f, 0.75f });

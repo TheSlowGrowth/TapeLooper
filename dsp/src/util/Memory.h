@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -20,11 +20,11 @@
 #include <memory>
 #include <cstring>
 
-/** 
+/**
  * Represents a fixed size chunk of memory to which data can be written.
  * Access to the memory is provided by the MemoryProviderType template argument,
  * allowing to implement various storage backends, e.g. raw memory, file access, etc.
- * @tparam MemoryProviderType A storage provider backend. Must implement the following 
+ * @tparam MemoryProviderType A storage provider backend. Must implement the following
  *                            public member functions:
  *                                  // returns the maximum number of bytes that can be written
  *                                  size_t getAvailableSize() const;
@@ -50,12 +50,12 @@ public:
 
     ~WritableMemory() {}
 
-    /** 
-     * Returns the number of bytes that can still be written 
+    /**
+     * Returns the number of bytes that can still be written
      */
     size_t getRemainingSize() const { return size_; }
 
-    /** 
+    /**
      * Attempts to write to the memory.
      * If enough bytes are available, the data is written and true is returned.
      * Otherwise, false is returned and the data is not written.
@@ -70,7 +70,7 @@ public:
         return true;
     }
 
-    /** 
+    /**
      * Attempts to write a value to the memory.
      * If enough bytes are available, the data is written and true is returned.
      * Otherwise, false is returned and the data is not written.
@@ -81,7 +81,7 @@ public:
         return writeRaw((const void*) &value, sizeof(T));
     }
 
-    /** 
+    /**
      * Attempts to write multiple values to the memory.
      * If enough bytes are available to store all values, they're written and true is returned.
      * Otherwise, false is returned and none of the values is written.
@@ -103,11 +103,11 @@ private:
     size_t size_;
 };
 
-/** 
+/**
  * Represents a fixed size chunk of memory from which data can be read.
  * Access to the memory is provided by the MemoryProviderType template argument,
  * allowing to implement various storage backends, e.g. raw memory, file access, etc.
- * @tparam MemoryProviderType A storage provider backend. Must implement the following 
+ * @tparam MemoryProviderType A storage provider backend. Must implement the following
  *                            public member functions:
  *                                  // returns the maximum number of bytes that can be read
  *                                  size_t getAvailableSize() const;
@@ -131,8 +131,8 @@ public:
     }
     ~ReadableMemory() {}
 
-    /** 
-     * Returns the number of bytes that can still be read 
+    /**
+     * Returns the number of bytes that can still be read
      */
     size_t getRemainingSize() const { return size_; }
 
@@ -151,7 +151,7 @@ public:
         return true;
     }
 
-    /** 
+    /**
      * Attempts to read a value from the memory.
      * If enough bytes are available, the data is read and true is returned.
      * Otherwise, false is returned and the value is unchanged.
@@ -162,7 +162,7 @@ public:
         return readRaw((void*) &value, sizeof(T));
     }
 
-    /** 
+    /**
      * Attempts to read multiple values from the memory.
      * If enough bytes are available to read all values, they're read and true is returned.
      * Otherwise, false is returned and all values are unchanged.
@@ -184,7 +184,7 @@ private:
     size_t size_;
 };
 
-/** 
+/**
  * A memory provider that allocates a fixed size buffer
  * on the Stack. For use with ReadableMemory and WritableMemory
  */

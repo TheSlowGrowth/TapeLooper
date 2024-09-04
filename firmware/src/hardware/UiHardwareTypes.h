@@ -116,3 +116,15 @@ enum class LedColour
     pulsingYellow,
     pulsingGreen,
 };
+
+struct CvInCoefficients
+{
+    bool operator==(const CvInCoefficients& other) const
+    {
+        return scale == other.scale && offset == other.offset;
+    }
+    float scale;
+    float offset;
+};
+
+using CvCalibrationData = std::array<CvInCoefficients, int(CvInput::NUM_CVS)>;

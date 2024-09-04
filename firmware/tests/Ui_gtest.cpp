@@ -78,6 +78,7 @@ std::ostream& operator<<(std::ostream& out, LedColour colour)
         case LedColour::pulsingRed:
             return out << "LedColour::pulsingRed";
     }
+    return out;
 }
 
 // the clear and flush functions of the UI cancas must be function pointers.
@@ -508,7 +509,7 @@ TEST_F(UiFixture, recordingPage_onlyRecordLedShouldBeOn)
     EXPECT_LED_COLOUR(Led::record, LedColour::pulsingRed);
 }
 
-TEST_F(UiFixture, recordingPage_exitRecordPage)
+TEST_F(UiFixture, recordingPage_exitRecordPageToSettings)
 {
     // enter recording page
     simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::record) });
@@ -525,8 +526,11 @@ TEST_F(UiFixture, recordingPage_exitRecordPage)
     EXPECT_LED_COLOUR(Led::save, LedColour::off);
     EXPECT_LED_COLOUR(Led::load, LedColour::off);
     EXPECT_LED_COLOUR(Led::record, LedColour::off);
+}
 
-    // enter recording page again
+TEST_F(UiFixture, recordingPage_exitRecordPageToSavePage)
+{
+    // enter recording page
     simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::record) });
     waitUntilDisplayDrawn();
     EXPECT_LED_COLOUR(Led::settings, LedColour::off);
@@ -541,8 +545,11 @@ TEST_F(UiFixture, recordingPage_exitRecordPage)
     EXPECT_LED_COLOUR(Led::save, LedColour::pulsingRed);
     EXPECT_LED_COLOUR(Led::load, LedColour::off);
     EXPECT_LED_COLOUR(Led::record, LedColour::off);
+}
 
-    // enter recording page again
+TEST_F(UiFixture, recordingPage_exitRecordPageToLoadPage)
+{
+    // enter recording page
     simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::record) });
     waitUntilDisplayDrawn();
     EXPECT_LED_COLOUR(Led::settings, LedColour::off);
@@ -557,8 +564,11 @@ TEST_F(UiFixture, recordingPage_exitRecordPage)
     EXPECT_LED_COLOUR(Led::save, LedColour::off);
     EXPECT_LED_COLOUR(Led::load, LedColour::pulsingRed);
     EXPECT_LED_COLOUR(Led::record, LedColour::off);
+}
 
-    // enter recording page again
+TEST_F(UiFixture, recordingPage_exitRecordPageToBasePage)
+{
+    // enter recording page
     simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::record) });
     waitUntilDisplayDrawn();
     EXPECT_LED_COLOUR(Led::settings, LedColour::off);
@@ -720,7 +730,7 @@ TEST_F(UiFixture, settingsPage_settingsLedShouldCycleThroughColours)
     EXPECT_LED_COLOUR(Led::record, LedColour::off);
 }
 
-TEST_F(UiFixture, settingsPage_exitSettingsPage)
+TEST_F(UiFixture, settingsPage_exitSettingsPageToCalibration)
 {
     // enter settings page
     simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::settings) });
@@ -730,47 +740,26 @@ TEST_F(UiFixture, settingsPage_exitSettingsPage)
     EXPECT_LED_COLOUR(Led::load, LedColour::off);
     EXPECT_LED_COLOUR(Led::record, LedColour::off);
 
-    // leave towards save page
-    simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::save) });
+    // press save button (nothing happens yet)
+    simulateEvents({ Event(Event::Type::buttonPressed, Button::save) });
+    waitUntilDisplayDrawn();
+    EXPECT_LED_COLOUR(Led::settings, LedColour::pulsingRed);
+    EXPECT_LED_COLOUR(Led::save, LedColour::off);
+    EXPECT_LED_COLOUR(Led::load, LedColour::off);
+    EXPECT_LED_COLOUR(Led::record, LedColour::off);
+
+    // press save button as well (both now pressed => leave towards calibration page)
+    simulateEvents({ Event(Event::Type::buttonPressed, Button::load) });
     waitUntilDisplayDrawn();
     EXPECT_LED_COLOUR(Led::settings, LedColour::off);
     EXPECT_LED_COLOUR(Led::save, LedColour::pulsingRed);
-    EXPECT_LED_COLOUR(Led::load, LedColour::off);
-    EXPECT_LED_COLOUR(Led::record, LedColour::off);
-
-    // enter settings page again
-    simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::settings) });
-    waitUntilDisplayDrawn();
-    EXPECT_LED_COLOUR(Led::settings, LedColour::pulsingRed);
-    EXPECT_LED_COLOUR(Led::save, LedColour::off);
-    EXPECT_LED_COLOUR(Led::load, LedColour::off);
-    EXPECT_LED_COLOUR(Led::record, LedColour::off);
-
-    // leave towards load page
-    simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::load) });
-    waitUntilDisplayDrawn();
-    EXPECT_LED_COLOUR(Led::settings, LedColour::off);
-    EXPECT_LED_COLOUR(Led::save, LedColour::off);
     EXPECT_LED_COLOUR(Led::load, LedColour::pulsingRed);
     EXPECT_LED_COLOUR(Led::record, LedColour::off);
+}
 
-    // enter settings page again
-    simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::settings) });
-    waitUntilDisplayDrawn();
-    EXPECT_LED_COLOUR(Led::settings, LedColour::pulsingRed);
-    EXPECT_LED_COLOUR(Led::save, LedColour::off);
-    EXPECT_LED_COLOUR(Led::load, LedColour::off);
-    EXPECT_LED_COLOUR(Led::record, LedColour::off);
-
-    // leave towards recording page
-    simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::record) });
-    waitUntilDisplayDrawn();
-    EXPECT_LED_COLOUR(Led::settings, LedColour::off);
-    EXPECT_LED_COLOUR(Led::save, LedColour::off);
-    EXPECT_LED_COLOUR(Led::load, LedColour::off);
-    EXPECT_LED_COLOUR(Led::record, LedColour::pulsingRed);
-
-    // enter settings page again
+TEST_F(UiFixture, settingsPage_exitSettingsPageToBasePage)
+{
+    // enter settings page
     simulateEvents({ Event(Event::Type::buttonPressedAndReleased, Button::settings) });
     waitUntilDisplayDrawn();
     EXPECT_LED_COLOUR(Led::settings, LedColour::pulsingRed);

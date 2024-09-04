@@ -24,7 +24,11 @@
 #include "TapeSaturator.h"
 
 #ifndef MANUAL_INLINE
-#    define MANUAL_INLINE inline __attribute__((always_inline))
+#    ifdef _MSC_VER
+#        define MANUAL_INLINE __forceinline
+#    else
+#        define MANUAL_INLINE inline __attribute__((always_inline))
+#    endif
 #endif
 
 struct TapeProcessorParameters

@@ -1,16 +1,16 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -27,7 +27,7 @@ public:
         lastPeak_ = 0.0f;
         // calculate time constants for the smoother
         // according to Udo Zoelzer, DAFX, sec. 4.2, p. 109
-        timeConstant_ = 0.0217597649487899548f; //1.0f - std::expf(-2.2f * float(blockSize) / float(sampleRate) / releaseTimeInS);
+        timeConstant_ = 0.0217597649487899548f; // 1.0f - std::expf(-2.2f * float(blockSize) / float(sampleRate) / releaseTimeInS);
     }
 
     void readPeaks(const float* samples)

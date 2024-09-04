@@ -1,23 +1,22 @@
-/**	
+/**
  * Copyright (C) Johannes Elliesen, 2021
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- *  
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
 #pragma once
-#include <sprout/config.hpp>
-#include <sprout/math/pow.hpp>
+#include <gcem.hpp>
 #include "DspHelpers.h"
 
 enum class OnePoleShelvingEqType
@@ -26,8 +25,8 @@ enum class OnePoleShelvingEqType
     highShelf
 };
 
-/** 
- * This class serves as a "relay" to allow specifying 
+/**
+ * This class serves as a "relay" to allow specifying
  * float parameters with template arguments
  */
 template <typename NumericType,
@@ -89,8 +88,7 @@ public:
     {
         constexpr FloatType sampleRate = FilterParameters::getSampleRate();
         // Bilinear transform
-        constexpr auto sqrtA = sprout::math::pow(FloatType(1.05925),
-                                                 FilterParameters::getGainInDecibels()); // = sqrt(10^(gain/20))
+        constexpr auto sqrtA = gcem::pow(FloatType(1.05925), FilterParameters::getGainInDecibels()); // = sqrt(10^(gain/20))
         constexpr auto scaledFreq = FilterParameters::getCutoffFrequency() * (FilterParameters::isLowShelf() ? (FloatType(1) / sqrtA) : sqrtA);
         constexpr auto clippedFreq = limit(sampleRate / FloatType(24576.0),
                                            sampleRate / FloatType(2.125),

@@ -64,7 +64,7 @@ juce_generate_juce_header(TapeLooperPlugin)
 
 set(
     plugin_sourcefiles
-    
+
     src/PluginEditor.h
     src/PluginEditor.cpp
     src/PluginProcessor.h
@@ -101,7 +101,8 @@ target_compile_definitions(TapeLooperPlugin
         JUCE_USE_CURL=0     # If you remove this, add `NEEDS_CURL TRUE` to the `juce_add_plugin` call
         JUCE_MODAL_LOOPS_PERMITTED=1
         JUCE_VST3_CAN_REPLACE_VST2=0
-        MANUAL_INLINE=      # overrides inline statements used to optimize dsp code for the hardware
+        MANUAL_INLINE=inline # overrides inline statements used to optimize dsp code for the hardware
+        _USE_MATH_DEFINES
 )
 
 # If your target needs extra binary assets, you can add them here. The first argument is the name of
@@ -130,7 +131,7 @@ target_link_libraries(TapeLooperPlugin
         juce::juce_recommended_warning_flags)
 
 ###################################################################################################
-## Googletest console application 
+## Googletest console application
 ###################################################################################################
 
 # find thread library
@@ -155,7 +156,7 @@ add_executable(TapeLooperPlugin_Gtest)
 set_target_properties (TapeLooperPlugin_Gtest PROPERTIES
     FOLDER TapeLooperPlugin
 )
-        
+
 target_sources(TapeLooperPlugin_Gtest
     PRIVATE
         ${test_sourcefiles}
@@ -169,7 +170,7 @@ foreach(source IN LISTS test_sourcefiles)
 endforeach()
 
 # link thread library
-target_link_libraries(TapeLooperPlugin_Gtest 
+target_link_libraries(TapeLooperPlugin_Gtest
     PRIVATE
         ${CMAKE_THREAD_LIBS_INIT}
         juce::juce_gui_extra
@@ -181,8 +182,8 @@ target_link_libraries(TapeLooperPlugin_Gtest
         juce::juce_recommended_warning_flags
     )
 
-    
-set_property(TARGET TapeLooperPlugin_Gtest 
-    PROPERTY 
+
+set_property(TARGET TapeLooperPlugin_Gtest
+    PROPERTY
         CXX_STANDARD 17
 )
