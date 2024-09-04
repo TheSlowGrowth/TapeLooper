@@ -101,7 +101,7 @@ target_compile_definitions(TapeLooperPlugin
         JUCE_USE_CURL=0     # If you remove this, add `NEEDS_CURL TRUE` to the `juce_add_plugin` call
         JUCE_MODAL_LOOPS_PERMITTED=1
         JUCE_VST3_CAN_REPLACE_VST2=0
-        MANUAL_INLINE=      # overrides inline statements used to optimize dsp code for the hardware
+        MANUAL_INLINE=inline # overrides inline statements used to optimize dsp code for the hardware
         _USE_MATH_DEFINES
 )
 
