@@ -34,12 +34,15 @@ jobs:
     - name: Configure
       run: |
         cmake.exe -G "Visual Studio 16 2019" -A x64 -B plugin/build -S plugin
+
     - name: Build
       run: |
         cmake --build plugin/build --config Release
+
     - name: Run Tests
       run: |
         plugin/build/Release/TapeLooperPlugin_Gtest.exe --gtest_output=xml:TestResults\gtestResults_windows.xml
+
     - name: Upload Test Results
       uses: actions/upload-artifact@v2
       with:
@@ -82,12 +85,15 @@ jobs:
     - name: Configure
       run: |
         cmake -G "Xcode" -B plugin/build -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" -S plugin
+
     - name: Build
       run: |
         cmake --build plugin/build --config Release
+
     - name: Run Tests
       run: |
         plugin/build/Release/TapeLooperPlugin_Gtest --gtest_output=xml:TestResults/gtestResults_macos.xml
+
     - name: Upload Test Results
       uses: actions/upload-artifact@v2
       with:
@@ -126,12 +132,15 @@ jobs:
     - name: Configure
       run: |
         cmake -G "Unix Makefiles" -B plugin/build -S plugin
+
     - name: Build
       run: |
         cmake --build plugin/build --config Release
+
     - name: Run Tests
       run: |
         plugin/build/TapeLooperPlugin_Gtest --gtest_output=xml:TestResults/gtestResults_ubuntu.xml
+
     - name: Upload Test Results
       uses: actions/upload-artifact@v2
       with:
