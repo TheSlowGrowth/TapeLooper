@@ -20,6 +20,7 @@
 
 #include <../tests/TestIsolator.h> // from libDaisy
 #include <sys/system.h> // from libDaisy
+#include "libDaisyCombined.h" // remaining libDaisy mocks/stubs
 #include "ui/TapeLooperUi.h"
 
 #include "mocks/LooperController_mock.h"

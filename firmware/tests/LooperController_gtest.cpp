@@ -18,6 +18,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
+#include "libDaisyCombined.h"
 #include "LooperController.h"
 #include "../libDaisy/tests/TestIsolator.h"
 
