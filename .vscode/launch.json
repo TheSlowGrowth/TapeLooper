@@ -91,7 +91,7 @@
             "program": "${workspaceFolder}/firmware/tests/build/bin/TapeLooper_gtest",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/firmware/tests/build/bin",
+            "cwd": "${workspaceFolder}/firmware/tests/",
             "environment": [],
             "externalConsole": false,
             "logging": {
