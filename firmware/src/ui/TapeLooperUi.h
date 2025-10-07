@@ -26,8 +26,7 @@
 #include "UiBasePage.h"
 #include "UiCalibrationPage.h"
 #include "UiSettingsPage.h"
-#include "UiSavePage.h"
-#include "UiLoadPage.h"
+#include "UiLoadOrSavePage.h"
 #include "UiRecordingPage.h"
 
 template <typename UiHardwareType,
