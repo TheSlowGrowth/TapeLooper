@@ -72,14 +72,14 @@ jobs:
 
     - name: Run Tests
       run: |
-        cd firmware/tests/build/bin
-        ./TapeLooper_gtest --gtest_output=xml:gtestresults.xml
+        cd firmware/tests
+        ./build/bin/TapeLooper_gtest --gtest_output=xml:gtestresults.xml
 
     - name: Publish Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1
       if: always()
       with:
-        files: firmware/tests/build/bin/**/*.xml
+        files: firmware/tests/**/*.xml
         github_token: ${{ secrets.GITHUB_TOKEN }}
 
 
