@@ -29,7 +29,8 @@
 enum class ChannelLayout
 {
     mono,
-    stereo
+    stereo,
+    invalid
 };
 
 enum class MotorAcceleration
@@ -226,23 +227,37 @@ private:
                 looper.template destroy<typename LooperTypes::StereoLooperType>();
         }
 
-        ChannelLayout layout = ChannelLayout::stereo;
+        ChannelLayout layout = ChannelLayout::invalid;
         Direction direction = Direction::forwards;
         MotorAcceleration acceleration = MotorAcceleration::medium;
         LateInitializedObject<MonoLooperType, StereoLooperType> looper;
 
         void initializeToLayout(const ChannelLayout newLayout, MonoOrStereoLooperStoragePtr& storage)
         {
-            layout = newLayout;
-            if (layout == ChannelLayout::mono)
+            switch (layout)
             {
-                looper.template destroy<typename LooperTypes::StereoLooperType>();
-                looper.template create<typename LooperTypes::MonoLooperType>(storage);
+                case ChannelLayout::mono:
+                    looper.template destroy<typename LooperTypes::MonoLooperType>();
+                    break;
+                case ChannelLayout::stereo:
+                    looper.template destroy<typename LooperTypes::StereoLooperType>();
+                    break;
+                default:
+                    break;
             }
-            else
+
+            layout = newLayout;
+
+            switch (newLayout)
             {
-                looper.template destroy<typename LooperTypes::MonoLooperType>();
-                looper.template create<typename LooperTypes::StereoLooperType>(storage);
+                case ChannelLayout::mono:
+                    looper.template create<typename LooperTypes::MonoLooperType>(storage);
+                    break;
+                case ChannelLayout::stereo:
+                    looper.template create<typename LooperTypes::StereoLooperType>(storage);
+                    break;
+                default:
+                    break;
             }
         }
     };
