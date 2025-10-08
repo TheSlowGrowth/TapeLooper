@@ -383,7 +383,7 @@ private:
     {
         wavHeader_ = makeWavFileHeader32bitInt(sampleRate, numChannelsPerFrame, totalNumFrames);
 
-        return fileIo_.write(&wavHeader_, sizeof(wavHeader_));
+        return fileIo_.write(&wavHeader_, sizeof(wavHeader_)) == int32_t(sizeof(wavHeader_));
     }
 
     bool readWavHeader()
@@ -500,7 +500,7 @@ private:
         }
 
         const auto numBytes = std::distance(&writeBuffer_[0], outPtr) * sizeof(int32_t);
-        return fileIo_.write(writeBuffer_, numBytes);
+        return fileIo_.write(writeBuffer_, numBytes) == int32_t(numBytes);
     }
 
     template <size_t numChannels>

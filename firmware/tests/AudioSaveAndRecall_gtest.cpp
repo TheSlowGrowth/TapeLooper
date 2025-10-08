@@ -110,15 +110,16 @@ public:
         return true;
     }
 
-    bool write(void* data, size_t size)
+    int32_t write(void* data, size_t size)
     {
         if (simulateFileWriteError_)
-            return false;
+            return -1;
 
         dataWritten_.insert(dataWritten_.end(),
                             static_cast<std::byte*>(data),
                             static_cast<std::byte*>(data) + size);
-        return true;
+
+        return int32_t(size);
     }
 
     int32_t read(void* data, size_t maxSize)
