@@ -106,7 +106,8 @@ template <typename FileIoProvider>
 class AudioSaveAndRecall
 {
 public:
-    AudioSaveAndRecall()
+    AudioSaveAndRecall(FileIoProvider& fileIo) :
+        fileIo_(fileIo)
     {
     }
 
@@ -625,7 +626,7 @@ private:
     typedef ReadOrWriteResult (*WriteOrReadFuncPtr)(AudioSaveAndRecall* storage, void* looper);
     typedef void (*LiftRestrictionsFuncPtr)(void* looper);
 
-    FileIoProvider fileIo_;
+    FileIoProvider& fileIo_;
 
     size_t totalNumFrames_ = 0;
     size_t numFramesDone_ = 0;

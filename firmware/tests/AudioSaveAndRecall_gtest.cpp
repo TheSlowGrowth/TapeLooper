@@ -171,6 +171,7 @@ public:
     LooperStorage<kNumSamples, 2> stereoBuffer_;
     TapeLooper<kSampleRate, 1> monoLooper_;
     TapeLooper<kSampleRate, 2> stereoLooper_;
+    TestFileIo fileIo_;
 
     AudioSaveAndRecallResult doneCallbackResult_ =
         AudioSaveAndRecallResult(-1); // invalid
@@ -219,19 +220,19 @@ public:
 
 TEST_F(AudioSaveAndRecallFixture, a_saveToFile_failWhenNoDataInLooper)
 {
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
     monoLooper_.setPlaybackLength(0);
 
-    sut.getFileIoProviderForTesting().simulateFileOpenError_ = true;
+    fileIo_.simulateFileOpenError_ = true;
     sut.startSavingToFile("dummyFilename",
                           monoLooper_,
                           &doneCallback,
                           &doneCallbackResult_);
 
     // doesn't even open the file
-    EXPECT_STREQ(sut.getFileIoProviderForTesting().lastFileName_, "");
-    EXPECT_FALSE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_STREQ(fileIo_.lastFileName_, "");
+    EXPECT_FALSE(fileIo_.closeFileCalled_);
 
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult::error);
     EXPECT_EQ(sut.getCurrentProgress(), -1.0f);
@@ -239,33 +240,33 @@ TEST_F(AudioSaveAndRecallFixture, a_saveToFile_failWhenNoDataInLooper)
 
 TEST_F(AudioSaveAndRecallFixture, b_saveToFile_failWhenFileDoesntOpen)
 {
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
-    sut.getFileIoProviderForTesting().simulateFileOpenError_ = true;
+    fileIo_.simulateFileOpenError_ = true;
     sut.startSavingToFile("dummyFilename",
                           monoLooper_,
                           &doneCallback,
                           &doneCallbackResult_);
 
-    EXPECT_STREQ(sut.getFileIoProviderForTesting().lastFileName_, "dummyFilename");
+    EXPECT_STREQ(fileIo_.lastFileName_, "dummyFilename");
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult::error);
     EXPECT_EQ(sut.getCurrentProgress(), -1.0f);
-    EXPECT_TRUE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_TRUE(fileIo_.closeFileCalled_);
 }
 
 TEST_F(AudioSaveAndRecallFixture, c_saveToFile_failWhenErrorWhileWriting)
 {
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
     sut.startSavingToFile("dummyFilename",
                           monoLooper_,
                           &doneCallback,
                           &doneCallbackResult_);
 
-    EXPECT_STREQ(sut.getFileIoProviderForTesting().lastFileName_, "dummyFilename");
+    EXPECT_STREQ(fileIo_.lastFileName_, "dummyFilename");
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult(-1)); // not called yet
     EXPECT_EQ(sut.getCurrentProgress(), 0.0f);
-    EXPECT_FALSE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_FALSE(fileIo_.closeFileCalled_);
 
     // make some progress
     sut.readOrWriteNextChunk();
@@ -273,18 +274,18 @@ TEST_F(AudioSaveAndRecallFixture, c_saveToFile_failWhenErrorWhileWriting)
     EXPECT_LT(sut.getCurrentProgress(), 1.0f);
 
     // simulate file IO error
-    sut.getFileIoProviderForTesting().simulateFileWriteError_ = true;
+    fileIo_.simulateFileWriteError_ = true;
     sut.readOrWriteNextChunk();
 
     // operation was aborted
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult::error);
     EXPECT_EQ(sut.getCurrentProgress(), -1.0f);
-    EXPECT_TRUE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_TRUE(fileIo_.closeFileCalled_);
 }
 
 TEST_F(AudioSaveAndRecallFixture, d_saveToFile_saveFileButWaitUntilRecordingDoneAndPreventNewRecording)
 {
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
     monoLooper_.switchState(LooperState::recording);
     monoLooper_.recorderForTesting().setRecordingProgressForTesting(2000);
@@ -294,10 +295,10 @@ TEST_F(AudioSaveAndRecallFixture, d_saveToFile_saveFileButWaitUntilRecordingDone
                           &doneCallback,
                           &doneCallbackResult_);
 
-    EXPECT_STREQ(sut.getFileIoProviderForTesting().lastFileName_, "dummyFilename");
+    EXPECT_STREQ(fileIo_.lastFileName_, "dummyFilename");
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult(-1)); // not called yet
     EXPECT_EQ(sut.getCurrentProgress(), 0.0f);
-    EXPECT_FALSE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_FALSE(fileIo_.closeFileCalled_);
 
     // the looper was stopped when saving started...
     EXPECT_EQ(monoLooper_.getState(), LooperState::stopped);
@@ -321,17 +322,17 @@ TEST_F(AudioSaveAndRecallFixture, d_saveToFile_saveFileButWaitUntilRecordingDone
 
 TEST_F(AudioSaveAndRecallFixture, e_saveToFile_saveFileAndAllowPlaybackButPreventNewRecording)
 {
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
     sut.startSavingToFile("dummyFilename",
                           monoLooper_,
                           &doneCallback,
                           &doneCallbackResult_);
 
-    EXPECT_STREQ(sut.getFileIoProviderForTesting().lastFileName_, "dummyFilename");
+    EXPECT_STREQ(fileIo_.lastFileName_, "dummyFilename");
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult(-1)); // not called yet
     EXPECT_EQ(sut.getCurrentProgress(), 0.0f);
-    EXPECT_FALSE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_FALSE(fileIo_.closeFileCalled_);
 
     // attempt to start a new recording while we're saving
     monoLooper_.switchState(LooperState::recording);
@@ -360,17 +361,17 @@ TEST_F(AudioSaveAndRecallFixture, e_saveToFile_saveFileAndAllowPlaybackButPreven
 
 TEST_F(AudioSaveAndRecallFixture, f_saveToFile_saveFileAndReportProgress)
 {
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
     sut.startSavingToFile("dummyFilename",
                           monoLooper_,
                           &doneCallback,
                           &doneCallbackResult_);
 
-    EXPECT_STREQ(sut.getFileIoProviderForTesting().lastFileName_, "dummyFilename");
+    EXPECT_STREQ(fileIo_.lastFileName_, "dummyFilename");
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult(-1)); // not called yet
     EXPECT_EQ(sut.getCurrentProgress(), 0.0f);
-    EXPECT_FALSE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_FALSE(fileIo_.closeFileCalled_);
 
     // write until completed
     int timeout = 1000;
@@ -383,12 +384,12 @@ TEST_F(AudioSaveAndRecallFixture, f_saveToFile_saveFileAndReportProgress)
     }
     EXPECT_EQ(sut.getCurrentProgress(), 1.0f);
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult::ok);
-    EXPECT_TRUE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_TRUE(fileIo_.closeFileCalled_);
 }
 
 TEST_F(AudioSaveAndRecallFixture, g_saveToFile_producesValidMonoWavFile)
 {
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
     constexpr auto kNumTestSamples = 4800;
     constexpr auto kReferenceFilename = "data/monoSineWaves.wav";
@@ -409,19 +410,19 @@ TEST_F(AudioSaveAndRecallFixture, g_saveToFile_producesValidMonoWavFile)
     }
     EXPECT_EQ(sut.getCurrentProgress(), 1.0f);
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult::ok);
-    EXPECT_TRUE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_TRUE(fileIo_.closeFileCalled_);
 
 #ifdef WRITE_REFERENCES
-    writeReferenceFile(kReferenceFilename, sut.getFileIoProviderForTesting().dataWritten_);
+    writeReferenceFile(kReferenceFilename, fileIo_.dataWritten_);
 #endif
 
     const auto expectedFileContents = readReferenceFile(kReferenceFilename);
-    EXPECT_EQ(sut.getFileIoProviderForTesting().dataWritten_, expectedFileContents);
+    EXPECT_EQ(fileIo_.dataWritten_, expectedFileContents);
 }
 
 TEST_F(AudioSaveAndRecallFixture, h_saveToFile_producesValidStereoWavFile)
 {
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
     constexpr auto kNumTestSamples = 4800;
     constexpr auto kReferenceFilename = "data/stereoSineWaves.wav";
@@ -442,14 +443,14 @@ TEST_F(AudioSaveAndRecallFixture, h_saveToFile_producesValidStereoWavFile)
     }
     EXPECT_EQ(sut.getCurrentProgress(), 1.0f);
     EXPECT_EQ(doneCallbackResult_, AudioSaveAndRecallResult::ok);
-    EXPECT_TRUE(sut.getFileIoProviderForTesting().closeFileCalled_);
+    EXPECT_TRUE(fileIo_.closeFileCalled_);
 
 #ifdef WRITE_REFERENCES
-    writeReferenceFile(kReferenceFilename, sut.getFileIoProviderForTesting().dataWritten_);
+    writeReferenceFile(kReferenceFilename, fileIo_.dataWritten_);
 #endif
 
     const auto expectedFileContents = readReferenceFile(kReferenceFilename);
-    EXPECT_EQ(sut.getFileIoProviderForTesting().dataWritten_, expectedFileContents);
+    EXPECT_EQ(fileIo_.dataWritten_, expectedFileContents);
 }
 
 class AudioSaveAndRecallParameterizedFileFormatFixture :
@@ -462,11 +463,11 @@ TEST_P(AudioSaveAndRecallParameterizedFileFormatFixture, canReadMonoWav)
 {
     const auto [referenceFileNameMono, referenceFileNameStereo, epsilon] = GetParam();
 
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
     constexpr auto kExpectedNumSamples = 48;
 
-    sut.getFileIoProviderForTesting().dataToRead_ = readReferenceFile(referenceFileNameMono);
+    fileIo_.dataToRead_ = readReferenceFile(referenceFileNameMono);
 
     sut.startReadingFromFile("dummyFilename",
                              monoLooper_,
@@ -494,11 +495,11 @@ TEST_P(AudioSaveAndRecallParameterizedFileFormatFixture, canReadStereoWav)
 {
     const auto [referenceFileNameMono, referenceFileNameStereo, epsilon] = GetParam();
 
-    AudioSaveAndRecall<TestFileIo> sut;
+    AudioSaveAndRecall<TestFileIo> sut(fileIo_);
 
     constexpr auto kExpectedNumSamples = 48;
 
-    sut.getFileIoProviderForTesting().dataToRead_ = readReferenceFile(referenceFileNameStereo);
+    fileIo_.dataToRead_ = readReferenceFile(referenceFileNameStereo);
 
     sut.startReadingFromFile("dummyFilename",
                              stereoLooper_,
