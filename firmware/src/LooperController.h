@@ -89,24 +89,23 @@ public:
                 AudioSaveAndRecallDoneCallbackPtr doneCallback,
                 void* doneCallbackContext)
     {
-        (void) (bank);
-        (void) (looperIdx);
-        (void) (slot);
-        (void) (doneCallback);
-        (void) (doneCallbackContext);
-        /*
-        audioSaveAndRecall_.startSavingToFile(bank,
-                                              slot,
-                                              loopers_[looperIdx].looper,
-                                              doneCallback,
-                                              doneCallbackContext);
-        */
+        if (loopers_[looperIdx].layout == ChannelLayout::mono)
+            audioSaveAndRecall_.startSavingToFile(bank,
+                                                  slot,
+                                                  loopers_[looperIdx].looper.template as<MonoLooperType>(),
+                                                  doneCallback,
+                                                  doneCallbackContext);
+        else
+            audioSaveAndRecall_.startSavingToFile(bank,
+                                                  slot,
+                                                  loopers_[looperIdx].looper.template as<StereoLooperType>(),
+                                                  doneCallback,
+                                                  doneCallbackContext);
     }
 
     float getCurrentSaveOrLoadProgress()
     {
-        // return audioSaveAndRecall_.getCurrentProgress();
-        return 0.0f;
+        return audioSaveAndRecall_.getCurrentProgress();
     }
 
     void loadFrom(StorageBank bank,
@@ -115,19 +114,45 @@ public:
                   AudioSaveAndRecallDoneCallbackPtr doneCallback,
                   void* doneCallbackContext)
     {
-        (void) (bank);
-        (void) (looperIdx);
-        (void) (slot);
-        (void) (doneCallback);
-        (void) (doneCallbackContext);
-        /*
-        // TODO: Reconfigure to correct channel layout
-        audioSaveAndRecall_.startReadingFromFiles(bank,
-                                                  slot,
-                                                  loopers_[looperIdx].looper,
-                                                  doneCallback,
-                                                  doneCallbackContext);
-        */
+        const auto numChannels = audioSaveAndRecall_.getNumChannelsInFile(bank, slot);
+        if (numChannels == 0)
+        {
+            if (doneCallback)
+            {
+                doneCallback(doneCallbackContext, AudioSaveAndRecallResult::error);
+            }
+            return;
+        }
+
+        if (numChannels == 1 && getChannelLayout(looperIdx) != ChannelLayout::mono)
+        {
+            setChannelLayout(looperIdx, ChannelLayout::mono);
+        }
+        else if (numChannels == 2 && getChannelLayout(looperIdx) != ChannelLayout::stereo)
+        {
+            setChannelLayout(looperIdx, ChannelLayout::stereo);
+        }
+
+        if (loopers_[looperIdx].layout == ChannelLayout::mono)
+            audioSaveAndRecall_.startReadingFromFile(bank,
+                                                     slot,
+                                                     loopers_[looperIdx].looper.template as<MonoLooperType>(),
+                                                     doneCallback,
+                                                     doneCallbackContext);
+        else
+            audioSaveAndRecall_.startReadingFromFile(bank,
+                                                     slot,
+                                                     loopers_[looperIdx].looper.template as<StereoLooperType>(),
+                                                     doneCallback,
+                                                     doneCallbackContext);
+    }
+
+    void abortLoadOrSaveOperation()
+    {
+        if (audioSaveAndRecall_.isSavingOrRecalling())
+        {
+            audioSaveAndRecall_.abort();
+        }
     }
 
     void setChannelLayout(size_t looperIdx, ChannelLayout channelLayout)
