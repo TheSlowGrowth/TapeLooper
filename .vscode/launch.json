@@ -106,53 +106,6 @@
             "windows": {
                 "MIMode": "gdb",
             }
-        },
-        {
-            "name": "Plugin Tests",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/plugin/build/TapeLooperPlugin_Gtest",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/plugin/build",
-            "environment": [],
-            "externalConsole": false,
-            "logging": {
-                "engineLogging": false
-            },
-            "preLaunchTask": "build plugin",
-
-            "osx": {
-                "type": "lldb",
-                "MIMode": "lldb",
-            },
-            "windows": {
-                "MIMode": "gdb",
-            }
-        },
-        {
-            "name": "Standalone Plugin",
-            "type": "cppdbg",
-            "request": "launch",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/plugin/build",
-            "environment": [],
-            "externalConsole": false,
-            "logging": {
-                "engineLogging": false
-            },
-            "preLaunchTask": "build plugin",
-
-            "osx": {
-                "type": "lldb",
-                "MIMode": "lldb",
-                "program": "${workspaceFolder}/plugin/build/TapeLooperPlugin_artefacts/Standalone/Tape Looper Plugin.app/Contents/MacOS/Tape Looper Plugin",
-            },
-            "windows": {
-                "MIMode": "gdb",
-                "program": "${workspaceFolder}/plugin/build/TapeLooperPlugin_artefacts/Standalone/Tape Looper Plugin.exe",
-            }
         }
     ]
 }
