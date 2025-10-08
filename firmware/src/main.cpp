@@ -55,6 +55,7 @@ daisy::UiEventQueue uiEventQueue;
 UiHardware::LedDmaBufferType DMA_BUFFER_MEM_SECTION ledDmaBufferA, ledDmaBufferB;
 uint16_t DMA_BUFFER_MEM_SECTION buttonShiftRegisterDmaBuffer;
 
+LateInitializedObject<FatFsFileIo> fileIo;
 LateInitializedObject<UiHardware> uiHardware;
 LateInitializedObject<TapeLooperUiType> ui;
 
@@ -113,7 +114,7 @@ void initDsp()
 {
     looperParameterProvider.create();
 
-    audioSaveAndRecall.create();
+    audioSaveAndRecall.create(fileIo);
 
     // initialize the looper storage in SDRAM
     const auto& rawStorages = *looperStorages.create();
@@ -147,6 +148,8 @@ void configurePlatform()
     seed.Init(true /* enable 480MHz boost */);
     seed.SetAudioBlockSize(blockSize);
     seed.SetAudioSampleRate(sampleRate);
+
+    fileIo.create();
 }
 
 void audioCallback(const float* const* in, float** out, size_t size)
