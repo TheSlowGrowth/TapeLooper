@@ -23,6 +23,7 @@ endif(COMMAND cmake_policy)
 
 set(FIRMWARE_NAME TapeLooper)
 set(FIRMWARE_SOURCES
+    src/AudioSaveAndRecall.cpp
     src/main.cpp
     src/util/WavFileFormat.cpp
 )

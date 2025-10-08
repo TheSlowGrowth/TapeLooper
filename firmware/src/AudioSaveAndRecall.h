@@ -21,6 +21,11 @@
 #include <dsp/TapeLooper.h>
 #include "util/WavFileFormat.h"
 
+extern int32_t f2s32(float x);
+extern float s322f(int32_t x);
+extern float s242f(int32_t x);
+extern float s162f(int16_t x);
+
 using AudioFileName = daisy::FixedCapStr<32>;
 
 enum class AudioSaveAndRecallResult
@@ -40,33 +45,69 @@ enum class StorageBank
 
 typedef void (*AudioSaveAndRecallDoneCallbackPtr)(void* context, AudioSaveAndRecallResult result);
 
+namespace loop_library
+{
+    static auto kLibraryBaseFolder = "loops/";
+
+    AudioFileName makeFileNameWithoutExtensionFor(const StorageBank bank,
+                                                  const int slot);
+    AudioFileName makeWavFileNameFor(const StorageBank bank,
+                                     const int slot);
+
+    template <typename FileIoProvider>
+    class Library
+    {
+    public:
+        Library(FileIoProvider& fileIo) :
+            fileIo_(fileIo)
+        {
+            for (int i = 0; i < int(StorageBank::count); i++)
+            {
+                isStorageSlotUsedBitfield_[i] = 0;
+            }
+        }
+
+        void scanOrInitLibrary()
+        {
+            fileIo_.makeFolderIfNotExistent(loop_library::kLibraryBaseFolder);
+
+            for (size_t bank = 0; bank < kNumBanks; bank++)
+            {
+                for (size_t slot = 0; slot < kNumSlots; slot++)
+                {
+                    const auto filename = loop_library::makeWavFileNameFor(StorageBank(bank), slot);
+
+                    if (const auto isInUse = fileIo_.hasFile(filename))
+                        isStorageSlotUsedBitfield_[bank] |= (1 << slot);
+                    else
+                        isStorageSlotUsedBitfield_[bank] &= ~(1 << slot);
+                }
+            }
+        }
+
+        bool hasLoop(StorageBank bank, int slot)
+        {
+            if (slot < 0 || slot >= kNumSlots)
+                return false;
+
+            return isStorageSlotUsedBitfield_[int(bank)] & (1 << slot);
+        }
+
+    private:
+        FileIoProvider& fileIo_;
+
+        static constexpr auto kNumSlots = 16;
+        static constexpr auto kNumBanks = int(StorageBank::count);
+        int16_t isStorageSlotUsedBitfield_[kNumBanks];
+    };
+}; // namespace loop_library
+
 template <typename FileIoProvider>
 class AudioSaveAndRecall
 {
 public:
     AudioSaveAndRecall()
     {
-        isStorageSlotUsedBitfield_[0] = 0;
-        isStorageSlotUsedBitfield_[1] = 0;
-        isStorageSlotUsedBitfield_[2] = 0;
-    }
-
-    void scanOrInitLibrary()
-    {
-        fileIo_.makeFolderIfNotExistent(libraryBaseFolder_);
-
-        for (size_t bank = 0; bank < kNumBanks; bank++)
-        {
-            for (size_t slot = 0; slot < kNumSlots; slot++)
-            {
-                const auto filename = makeWavFileNameFor(StorageBank(bank), slot);
-
-                if (const auto isInUse = fileIo_.hasFile(filename))
-                    isStorageSlotUsedBitfield_[bank] |= (1 << slot);
-                else
-                    isStorageSlotUsedBitfield_[bank] &= ~(1 << slot);
-            }
-        }
     }
 
     template <typename LooperType>
@@ -76,7 +117,7 @@ public:
                            AudioSaveAndRecallDoneCallbackPtr doneCallback,
                            void* doneCallbackContext)
     {
-        startSavingToFile(makeWavFileNameFor(bank, slot),
+        startSavingToFile(loop_library::makeWavFileNameFor(bank, slot),
                           looper,
                           doneCallback,
                           doneCallbackContext);
@@ -156,7 +197,7 @@ public:
     size_t getNumChannelsInFile(StorageBank bank,
                                 int slot)
     {
-        return getNumChannelsInFile(makeWavFileNameFor(bank, slot));
+        return getNumChannelsInFile(loop_library::makeWavFileNameFor(bank, slot));
     }
 
     size_t getNumChannelsInFile(const AudioFileName& filename)
@@ -188,7 +229,7 @@ public:
                               AudioSaveAndRecallDoneCallbackPtr doneCallback,
                               void* doneCallbackContext)
     {
-        startReadingFromFile(makeWavFileNameFor(bank, slot),
+        startReadingFromFile(loop_library::makeWavFileNameFor(bank, slot),
                              looper,
                              doneCallback,
                              doneCallbackContext);
@@ -566,69 +607,6 @@ private:
         return numFramesRead / numChannels;
     }
 
-    AudioFileName makeFileNameWithoutExtensionFor(const StorageBank bank,
-                                                  const int slot)
-    {
-        auto filename = libraryBaseFolder_;
-        switch (bank)
-        {
-            case StorageBank::green:
-                filename.Append("green-");
-                break;
-            case StorageBank::yellow:
-                filename.Append("yellow-");
-                break;
-            case StorageBank::red:
-                filename.Append("red-");
-                break;
-            default:
-                return "";
-        }
-        switch (slot / 4)
-        {
-            case 0:
-                filename.Append("A");
-                break;
-            case 1:
-                filename.Append("B");
-                break;
-            case 2:
-                filename.Append("C");
-                break;
-            case 3:
-                filename.Append("D");
-                break;
-            default:
-                return "";
-        }
-        switch (slot % 4)
-        {
-            case 0:
-                filename.Append("0");
-                break;
-            case 1:
-                filename.Append("1");
-                break;
-            case 2:
-                filename.Append("2");
-                break;
-            case 3:
-                filename.Append("3");
-                break;
-            default:
-                return "";
-        }
-        return filename;
-    }
-
-    AudioFileName makeWavFileNameFor(const StorageBank bank,
-                                     const int slot)
-    {
-        auto name = makeFileNameWithoutExtensionFor(bank, slot);
-        name.Append(".wav");
-        return name;
-    }
-
     static constexpr size_t kNumFramesPerChunk_ = 1000;
     static constexpr size_t kBitsPerSample_ = 32u;
     static constexpr size_t kMaxNumChannels_ = 2u;
@@ -658,10 +636,4 @@ private:
     void* doneCallbackContext_ = nullptr;
 
     int32_t writeBuffer_[kWriteBufferSizeBytes_ / sizeof(int32_t)];
-
-    static constexpr auto kNumSlots = 16;
-    static constexpr auto kNumBanks = int(StorageBank::count);
-    int16_t isStorageSlotUsedBitfield_[kNumBanks];
-
-    const AudioFileName libraryBaseFolder_ = "loops";
 };
