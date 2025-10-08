@@ -23,6 +23,7 @@
 
 #include <dsp/TapeLooper.h>
 #include "LooperController.h"
+#include "AudioSaveAndRecall.h"
 
 template <size_t numLoopers>
 class LooperControllerMock
@@ -64,18 +65,37 @@ public:
             return LooperState::stopped;
     }
 
-    void saveTo(size_t looperIdx, size_t slot)
+    void saveTo(StorageBank bank,
+                size_t looperIdx,
+                size_t slot,
+                AudioSaveAndRecallDoneCallbackPtr doneCallback,
+                void* doneCallbackContext)
     {
+        (void) (doneCallback);
+        (void) (doneCallbackContext);
+
         std::ostringstream stringStream;
-        stringStream << "saveTo(" << looperIdx << ", " << slot << ")";
+        stringStream << "saveTo(" << int(bank) << ", " << looperIdx << ", " << slot << ")";
         events += stringStream.str() + "\n";
     }
 
-    void loadFrom(size_t looperIdx, size_t slot)
+    void loadFrom(StorageBank bank,
+                  size_t looperIdx,
+                  size_t slot,
+                  AudioSaveAndRecallDoneCallbackPtr doneCallback,
+                  void* doneCallbackContext)
     {
+        (void) (doneCallback);
+        (void) (doneCallbackContext);
+
         std::ostringstream stringStream;
-        stringStream << "loadFrom(" << looperIdx << ", " << slot << ")";
+        stringStream << "loadFrom(" << int(bank) << ", " << looperIdx << ", " << slot << ")";
         events += stringStream.str() + "\n";
+    }
+
+    void abortLoadOrSaveOperation()
+    {
+        events += "abortLoadOrSaveOperation()\n";
     }
 
     void setChannelLayout(size_t looperIdx, ChannelLayout channelLayout)
@@ -85,6 +105,12 @@ public:
                      << looperIdx << ", ChannelLayout::"
                      << (channelLayout == ChannelLayout::stereo ? "stereo)" : "mono)");
         events += stringStream.str() + "\n";
+    }
+
+    float getCurrentSaveOrLoadProgress()
+    {
+        events += "getCurrentSaveOrLoadProgress()\n";
+        return -1.0f;
     }
 
     std::function<ChannelLayout(size_t looperIdx)> getChannelLayoutMock_;
