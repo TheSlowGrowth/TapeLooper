@@ -27,12 +27,16 @@
 #include "../hardware/UiHardwareTypes.h"
 #include "LooperParameterProvider.h"
 
-template <typename LooperControllerType, typename UiHardwareType, Led PageLed>
+template <typename LooperControllerType,
+          typename UiHardwareType,
+          typename LoopLibraryType,
+          Led PageLed>
 class UiLoadOrSavePage : public daisy::UiPage
 {
 public:
-    UiLoadOrSavePage(LooperControllerType& looperController) :
-        looperController_(looperController)
+    UiLoadOrSavePage(LooperControllerType& looperController, LoopLibraryType& loopLibrary) :
+        looperController_(looperController),
+        loopLibrary_(loopLibrary)
     {
     }
 
@@ -321,17 +325,20 @@ protected:
     int selectedChannel_ = -1;
     int selectedSlot_ = 0;
     LooperControllerType& looperController_;
+    LoopLibraryType& loopLibrary_;
     uint32_t closeAfterTime_ = -1;
 };
 
-template <typename LooperControllerType, typename UiHardwareType>
-class UiSavePage : public UiLoadOrSavePage<LooperControllerType, UiHardwareType, Led::save>
+template <typename LooperControllerType,
+          typename UiHardwareType,
+          typename LoopLibraryType>
+class UiSavePage : public UiLoadOrSavePage<LooperControllerType, UiHardwareType, LoopLibraryType, Led::save>
 {
-    using ParentType = UiLoadOrSavePage<LooperControllerType, UiHardwareType, Led::save>;
+    using ParentType = UiLoadOrSavePage<LooperControllerType, UiHardwareType, LoopLibraryType, Led::save>;
 
 public:
-    UiSavePage(LooperControllerType& looperController) :
-        ParentType(looperController)
+    UiSavePage(LooperControllerType& looperController, LoopLibraryType& loopLibrary) :
+        ParentType(looperController, loopLibrary)
     {
     }
 
@@ -365,14 +372,16 @@ public:
     }
 };
 
-template <typename LooperControllerType, typename UiHardwareType>
-class UiLoadPage : public UiLoadOrSavePage<LooperControllerType, UiHardwareType, Led::load>
+template <typename LooperControllerType,
+          typename UiHardwareType,
+          typename LoopLibraryType>
+class UiLoadPage : public UiLoadOrSavePage<LooperControllerType, UiHardwareType, LoopLibraryType, Led::load>
 {
-    using ParentType = UiLoadOrSavePage<LooperControllerType, UiHardwareType, Led::load>;
+    using ParentType = UiLoadOrSavePage<LooperControllerType, UiHardwareType, LoopLibraryType, Led::load>;
 
 public:
-    UiLoadPage(LooperControllerType& looperController) :
-        ParentType(looperController)
+    UiLoadPage(LooperControllerType& looperController, LoopLibraryType& loopLibrary) :
+        ParentType(looperController, loopLibrary)
     {
     }
 

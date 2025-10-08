@@ -41,10 +41,13 @@ struct LooperTypes
     using AudioSaveAndRecallType = AudioSaveAndRecall<FatFsFileIo>;
 };
 using LooperControllerType = LooperController<LooperTypes, numLoopers>;
+using LoopLibraryType = loop_library::Library<FatFsFileIo>;
+
 using TapeLooperUiType = TapeLooperUi<UiHardware,
                                       PeakMeter<blockSize, sampleRateHz>,
                                       LooperControllerType,
-                                      LooperParameterProviderType>;
+                                      LooperParameterProviderType,
+                                      LoopLibraryType>;
 using LooperStoragesType = std::array<MonoOrStereoLooperStorage<looperSamplesPerChannel>, numLoopers>;
 
 // hardware static objects
@@ -57,6 +60,7 @@ uint16_t DMA_BUFFER_MEM_SECTION buttonShiftRegisterDmaBuffer;
 
 LateInitializedObject<FatFsFileIo> fileIo;
 LateInitializedObject<UiHardware> uiHardware;
+LateInitializedObject<LoopLibraryType> loopLibrary;
 LateInitializedObject<TapeLooperUiType> ui;
 
 // dsp static objects
@@ -95,6 +99,8 @@ void initUi()
                                         ledDmaBufferB,
                                         &buttonShiftRegisterDmaBuffer);
 
+    loopLibrary.create(fileIo);
+
     // init the UI
     ui.create(
         hardware,
@@ -103,7 +109,8 @@ void initUi()
         uiEventQueue,
         peakMeters,
         looperController,
-        looperParameterProvider);
+        looperParameterProvider,
+        loopLibrary);
 }
 
 // ===================================================================
