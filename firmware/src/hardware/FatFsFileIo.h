@@ -17,46 +17,76 @@
 
 #pragma once
 
+#include <per/sdmmc.h>
+#include <fatfs.h>
+
 class FatFsFileIo
 {
 public:
-    void ensureVolumeMounted() {}
+    FatFsFileIo()
+    {
+        daisy::SdmmcHandler::Config sdCfg;
+        sdCfg.Defaults();
+        sdCfg.speed = daisy::SdmmcHandler::Speed::STANDARD;
+        sd_.Init(sdCfg);
+        fileSystem_.Init(daisy::FatFSInterface::Config::MEDIA_SD);
+    }
+
+    void ensureVolumeMounted()
+    {
+        isMounted_ = f_mount(&fileSystem_.GetSDFileSystem(), fileSystem_.GetSDPath(), 1) == FR_OK;
+    }
 
     bool makeFolderIfNotExistent(const char* folderName)
     {
-        (void) (folderName);
-        return false;
+        return f_mkdir(folderName) == FR_OK;
     }
 
     bool hasFile(const char* fileName)
     {
-        (void) (fileName);
-        return false;
+        const auto canOpenForReading = openForReading(fileName);
+        if (canOpenForReading)
+        {
+            closeFile();
+        }
+        return canOpenForReading;
     }
 
     bool openForReading(const char* fileName)
     {
-        (void) (fileName);
-        return false;
+        const auto result = f_open(&file_, fileName, FA_OPEN_EXISTING | FA_READ);
+        return result == FR_OK;
     }
 
     bool openForWriting(const char* fileName)
     {
-        (void) (fileName);
-        return false;
+        const auto result = f_open(&file_, fileName, FA_CREATE_ALWAYS | FA_WRITE);
+        return result == FR_OK;
     }
 
-    bool write(void* data, size_t size)
+    int32_t write(const void* data, size_t size)
     {
-        return false;
+        UINT bytesWritten = 0;
+        const auto result = f_write(&file_, data, UINT(size), &bytesWritten);
+        return result == FR_OK ? int32_t(bytesWritten) : -1;
     }
 
     int32_t read(void* data, size_t maxSize)
     {
-        return -1;
+        UINT bytesRead = 0;
+        const auto result = f_read(&file_, data, UINT(maxSize), &bytesRead);
+        return result == FR_OK ? int32_t(bytesRead) : -1;
     }
 
-    void closeFile()
+    bool closeFile()
     {
+        const auto result = f_close(&file_);
+        return result == FR_OK;
     }
+
+private:
+    bool isMounted_ = false;
+    daisy::SdmmcHandler sd_;
+    daisy::FatFSInterface fileSystem_;
+    FIL file_;
 };
