@@ -69,6 +69,8 @@ namespace loop_library
 
         void scanOrInitLibrary()
         {
+            fileIo_.ensureVolumeMounted();
+
             fileIo_.makeFolderIfNotExistent(loop_library::kLibraryBaseFolder);
 
             for (size_t bank = 0; bank < kNumBanks; bank++)
@@ -131,6 +133,8 @@ public:
                            void* doneCallbackContext)
     {
         static_assert(LooperType::getNumChannels() <= kMaxNumChannels_);
+
+        fileIo_.ensureVolumeMounted();
 
         looperPtr_ = &looper;
         doneCallback_ = doneCallback;
@@ -243,6 +247,8 @@ public:
                               void* doneCallbackContext)
     {
         static_assert(LooperType::getNumChannels() <= kMaxNumChannels_);
+
+        fileIo_.ensureVolumeMounted();
 
         looperPtr_ = &looper;
         doneCallback_ = doneCallback;

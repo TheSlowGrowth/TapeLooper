@@ -86,6 +86,8 @@ namespace
 class TestFileIo
 {
 public:
+    void ensureVolumeMounted() {}
+
     bool openForReading(const AudioFileName& fileName)
     {
         lastFileName_ = fileName;
