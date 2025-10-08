@@ -24,6 +24,7 @@
 #include "ui/TapeLooperUi.h"
 
 #include "mocks/LooperController_mock.h"
+#include "mocks/LoopLibrary_mock.h"
 #include "mocks/ParameterProvider_mock.h"
 #include "mocks/PeakMeter_mock.h"
 #include "mocks/UiHardware_mock.h"
@@ -119,7 +120,8 @@ protected:
             eventQueue_,
             peakMeters_,
             looperController_,
-            looperParameterProvider_)
+            looperParameterProvider_,
+            loopLibrary_)
     {
         uiTestMockFunctionIsolator.GetStateForCurrentTest()->clearCanvasFunction =
             [&](const daisy::UiCanvasDescriptor&)
@@ -328,10 +330,12 @@ protected:
     std::array<PeakMeterMock, numLoopers_> peakMeters_;
     LooperControllerMock<numLoopers_> looperController_;
     ParameterProviderMock<numLoopers_> looperParameterProvider_;
+    LoopLibraryMock loopLibrary_;
     TapeLooperUi<UiHardwareMock,
                  PeakMeterMock,
                  LooperControllerMock<numLoopers_>,
-                 ParameterProviderMock<numLoopers_>>
+                 ParameterProviderMock<numLoopers_>,
+                 LoopLibraryMock>
         ui_;
 };
 
