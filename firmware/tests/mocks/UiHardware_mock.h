@@ -69,6 +69,28 @@ public:
         }
     }
 
+    static const std::array<Led, 16> allChannelLeds()
+    {
+        return {
+            Led::chA_m2,
+            Led::chA_m1,
+            Led::chA_p1,
+            Led::chA_p2,
+            Led::chB_m2,
+            Led::chB_m1,
+            Led::chB_p1,
+            Led::chB_p2,
+            Led::chC_m2,
+            Led::chC_m1,
+            Led::chC_p1,
+            Led::chC_p2,
+            Led::chD_m2,
+            Led::chD_m1,
+            Led::chD_p1,
+            Led::chD_p2,
+        };
+    }
+
     KnobsAndCvMock& getKnobsAndCv() { return knobsAndCv_; };
 
     KnobsAndCvMock knobsAndCv_;
