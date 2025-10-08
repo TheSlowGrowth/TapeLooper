@@ -113,6 +113,11 @@ public:
         return -1.0f;
     }
 
+    bool isSavingOrRecalling()
+    {
+        return false;
+    }
+
     std::function<ChannelLayout(size_t looperIdx)> getChannelLayoutMock_;
     ChannelLayout getChannelLayout(size_t looperIdx) const
     {

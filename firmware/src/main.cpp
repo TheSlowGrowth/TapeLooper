@@ -216,6 +216,10 @@ int main(void)
         constexpr auto kUpdateIntervalMs = 20;
         while (daisy::System::GetNow() < lastUpdate + kUpdateIntervalMs)
         {
+            if (looperController->isSavingOrRecalling())
+            {
+                looperController->processSaveOrLoadOperation();
+            }
         }
         lastUpdate = daisy::System::GetNow();
     }

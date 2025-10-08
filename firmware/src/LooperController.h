@@ -103,11 +103,6 @@ public:
                                                   doneCallbackContext);
     }
 
-    float getCurrentSaveOrLoadProgress()
-    {
-        return audioSaveAndRecall_.getCurrentProgress();
-    }
-
     void loadFrom(StorageBank bank,
                   size_t looperIdx,
                   size_t slot,
@@ -147,12 +142,27 @@ public:
                                                      doneCallbackContext);
     }
 
+    float getCurrentSaveOrLoadProgress()
+    {
+        return audioSaveAndRecall_.getCurrentProgress();
+    }
+
+    bool isSavingOrRecalling()
+    {
+        return audioSaveAndRecall_.isSavingOrRecalling();
+    }
+
     void abortLoadOrSaveOperation()
     {
         if (audioSaveAndRecall_.isSavingOrRecalling())
         {
             audioSaveAndRecall_.abort();
         }
+    }
+
+    void processSaveOrLoadOperation()
+    {
+        audioSaveAndRecall_.readOrWriteNextChunk();
     }
 
     void setChannelLayout(size_t looperIdx, ChannelLayout channelLayout)
