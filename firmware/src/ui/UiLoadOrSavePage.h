@@ -90,12 +90,6 @@ public:
         const Button button = Button(buttonID);
         switch (button)
         {
-            case Button::record:
-                [[fallthrough]];
-            case Button::settings:
-                looperController_.abortLoadOrSaveOperation();
-                Close(); // close this page
-                return false; // pass event to the page below to open the respective page
             case Button::save:
                 return handleSaveButton();
             case Button::load:
@@ -111,7 +105,7 @@ public:
             case Stage::selectBankAndSlot:
                 return onButtonInBankAndSlotSelection(button);
             default:
-                // any button press while showing
+                // any button press while showing success or error closes the page
                 if (stage_ == Stage::displaySuccess || stage_ == Stage::displayError)
                 {
                     Close();
@@ -125,6 +119,11 @@ public:
     bool OnPotMoved(uint16_t, float) override
     {
         return false; // passthrough pot events to the base page
+    }
+
+    void OnFocusGained() override
+    {
+        loopLibrary_.scanOrInitLibrary();
     }
 
 protected:
@@ -188,7 +187,17 @@ protected:
         const auto allLeds = UiHardwareType::allChannelLeds();
         for (size_t i = 0; i < allLeds.size(); i++)
         {
-            hardware.setLed(allLeds[i], this->selectedSlot_ == int(i) ? bankColorPulsing : LedColour::off);
+            if (this->selectedSlot_ == int(i))
+            {
+                hardware.setLed(allLeds[i], bankColourPulsing);
+            }
+            else
+            {
+                hardware.setLed(allLeds[i],
+                                loopLibrary_.hasLoop(selectedBank_, i)
+                                    ? bankColour
+                                    : LedColour::off);
+            }
         }
     }
 
@@ -359,7 +368,7 @@ public:
                  || this->stage_ == ParentType::Stage::displaySuccess
                  || this->stage_ == ParentType::Stage::displayError)
         {
-            Close();
+            this->Close();
         }
         return true;
     }
@@ -409,7 +418,7 @@ public:
                  || this->stage_ == ParentType::Stage::displaySuccess
                  || this->stage_ == ParentType::Stage::displayError)
         {
-            Close();
+            this->Close();
         }
         return true;
     }

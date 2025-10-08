@@ -20,6 +20,20 @@
 class FatFsFileIo
 {
 public:
+    void ensureVolumeMounted() {}
+
+    bool makeFolderIfNotExistent(const char* folderName)
+    {
+        (void) (folderName);
+        return false;
+    }
+
+    bool hasFile(const char* fileName)
+    {
+        (void) (fileName);
+        return false;
+    }
+
     bool openForReading(const char* fileName)
     {
         (void) (fileName);
