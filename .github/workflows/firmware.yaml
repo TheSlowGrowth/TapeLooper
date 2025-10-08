@@ -37,7 +37,7 @@ jobs:
         submodules: recursive
 
     - name: Configure
-      run: cmake -S firmware -B firmware/build -G "Unix Makefiles" -D CMAKE_TOOLCHAIN_FILE="$(pwd)/lib/libDaisy/cmake/toolchains/stm32h750xx.cmake" -D CMAKE_BUILD_TYPE=RelWithDebInfo -D TOOLCHAIN_PREFIX=$(which arm-none-eabi-gcc | sed -e "s/bin\/arm-none-eabi-gcc//")
+      run: cmake -S firmware -B firmware/build -G "Unix Makefiles" -D CMAKE_BUILD_TYPE=RelWithDebInfo -D TOOLCHAIN_PREFIX=$(which arm-none-eabi-gcc | sed -e "s/bin\/arm-none-eabi-gcc//")
 
     - name: Build
       run: cmake --build firmware/build

@@ -40,11 +40,11 @@ public:
         dmaBuffer_ = dmaBuffer;
 
         // shift register for the channel buttons
-        shiftRegisterLoadPin_.pin = { DSY_GPIOA, 4 };
-        shiftRegisterLoadPin_.mode = DSY_GPIO_MODE_OUTPUT_PP;
-        shiftRegisterLoadPin_.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&shiftRegisterLoadPin_);
-        dsy_gpio_write(&shiftRegisterLoadPin_, 1);
+        shiftRegisterLoadPin_.Init({ daisy::GPIOPort::PORTA, 4 },
+                                   daisy::GPIO::Mode::OUTPUT,
+                                   daisy::GPIO::Pull::NOPULL,
+                                   daisy::GPIO::Speed::MEDIUM);
+        shiftRegisterLoadPin_.Write(true);
 
         daisy::SpiHandle::Config config;
         config.periph = daisy::SpiHandle::Config::Peripheral::SPI_1;
@@ -55,27 +55,27 @@ public:
         config.clock_phase = daisy::SpiHandle::Config::ClockPhase::ONE_EDGE;
         config.nss = daisy::SpiHandle::Config::NSS::SOFT;
         config.baud_prescaler = daisy::SpiHandle::Config::BaudPrescaler::PS_16;
-        config.pin_config.sclk = { DSY_GPIOA, 5 };
-        config.pin_config.miso = { DSY_GPIOG, 9 };
+        config.pin_config.sclk = { daisy::GPIOPort::PORTA, 5 };
+        config.pin_config.miso = { daisy::GPIOPort::PORTG, 9 };
         shiftRegisterSpi_.Init(config);
 
         // common section buttons
-        commonGpios_.settings.pin = { DSY_GPIOB, 7 };
-        commonGpios_.settings.mode = DSY_GPIO_MODE_INPUT;
-        commonGpios_.settings.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&commonGpios_.settings);
-        commonGpios_.save.pin = { DSY_GPIOG, 11 };
-        commonGpios_.save.mode = DSY_GPIO_MODE_INPUT;
-        commonGpios_.save.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&commonGpios_.save);
-        commonGpios_.load.pin = { DSY_GPIOG, 10 };
-        commonGpios_.load.mode = DSY_GPIO_MODE_INPUT;
-        commonGpios_.load.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&commonGpios_.load);
-        commonGpios_.rec.pin = { DSY_GPIOB, 12 };
-        commonGpios_.rec.mode = DSY_GPIO_MODE_INPUT;
-        commonGpios_.rec.pull = DSY_GPIO_NOPULL;
-        dsy_gpio_init(&commonGpios_.rec);
+        commonGpios_.settings.Init({ daisy::GPIOPort::PORTB, 7 },
+                                   daisy::GPIO::Mode::INPUT,
+                                   daisy::GPIO::Pull::NOPULL,
+                                   daisy::GPIO::Speed::LOW);
+        commonGpios_.save.Init({ daisy::GPIOPort::PORTG, 11 },
+                               daisy::GPIO::Mode::INPUT,
+                               daisy::GPIO::Pull::NOPULL,
+                               daisy::GPIO::Speed::LOW);
+        commonGpios_.load.Init({ daisy::GPIOPort::PORTG, 10 },
+                               daisy::GPIO::Mode::INPUT,
+                               daisy::GPIO::Pull::NOPULL,
+                               daisy::GPIO::Speed::LOW);
+        commonGpios_.rec.Init({ daisy::GPIOPort::PORTB, 12 },
+                              daisy::GPIO::Mode::INPUT,
+                              daisy::GPIO::Pull::NOPULL,
+                              daisy::GPIO::Speed::LOW);
     }
 
     bool getButtonState(Button buttonId) const
@@ -84,13 +84,13 @@ public:
         switch (buttonId)
         {
             case Button::save:
-                return !dsy_gpio_read(&commonGpios_.save);
+                return !const_cast<daisy::GPIO*>(&commonGpios_.save)->Read();
             case Button::load:
-                return !dsy_gpio_read(&commonGpios_.load);
+                return !const_cast<daisy::GPIO*>(&commonGpios_.load)->Read();
             case Button::settings:
-                return !dsy_gpio_read(&commonGpios_.settings);
+                return !const_cast<daisy::GPIO*>(&commonGpios_.settings)->Read();
             case Button::record:
-                return !dsy_gpio_read(&commonGpios_.rec);
+                return !const_cast<daisy::GPIO*>(&commonGpios_.rec)->Read();
             case Button::chA_play:
                 return !getBit<2>();
             case Button::chA_up:
@@ -123,12 +123,12 @@ public:
 
     void triggerReadout()
     {
-        dsy_gpio_write(&shiftRegisterLoadPin_, 0);
+        shiftRegisterLoadPin_.Write(false);
 
         constexpr auto kNumBytes = 2;
         shiftRegisterSpi_.DmaReceive((uint8_t*) dmaBuffer_, kNumBytes, nullptr, nullptr, nullptr);
 
-        dsy_gpio_write(&shiftRegisterLoadPin_, 1);
+        shiftRegisterLoadPin_.Write(true);
     }
 
 private:
@@ -140,15 +140,15 @@ private:
 
     struct
     {
-        dsy_gpio settings;
-        dsy_gpio save;
-        dsy_gpio load;
-        dsy_gpio rec;
+        daisy::GPIO settings;
+        daisy::GPIO save;
+        daisy::GPIO load;
+        daisy::GPIO rec;
     } commonGpios_;
 
     uint16_t* dmaBuffer_ = nullptr;
     daisy::SpiHandle shiftRegisterSpi_;
-    dsy_gpio shiftRegisterLoadPin_;
+    daisy::GPIO shiftRegisterLoadPin_;
 };
 
 class KnobAndCvReader
@@ -163,18 +163,18 @@ public:
     {
         calibrationStorage_.Init(getDefaultCalibrationData(), kCalibrationDataOffset);
 
-        const dsy_gpio_pin mux0 = { DSY_GPIOA, 1 };
-        const dsy_gpio_pin mux1 = { DSY_GPIOA, 0 };
-        const dsy_gpio_pin mux2 = { DSY_GPIOD, 11 };
+        const daisy::Pin mux0 = { daisy::GPIOPort::PORTA, 1 };
+        const daisy::Pin mux1 = { daisy::GPIOPort::PORTA, 0 };
+        const daisy::Pin mux2 = { daisy::GPIOPort::PORTD, 11 };
 
         constexpr auto kNumChannelsPerAdc = 7;
         constexpr auto kNumAdcs = 4;
 
         daisy::AdcChannelConfig channelConfigs[kNumAdcs];
-        channelConfigs[0].InitMux({ DSY_GPIOC, 0 }, kNumChannelsPerAdc, mux0, mux1, mux2);
-        channelConfigs[1].InitMux({ DSY_GPIOA, 3 }, kNumChannelsPerAdc, mux0, mux1, mux2);
-        channelConfigs[2].InitMux({ DSY_GPIOB, 1 }, kNumChannelsPerAdc, mux0, mux1, mux2);
-        channelConfigs[3].InitMux({ DSY_GPIOA, 7 }, kNumChannelsPerAdc, mux0, mux1, mux2);
+        channelConfigs[0].InitMux({ daisy::GPIOPort::PORTC, 0 }, kNumChannelsPerAdc, mux0, mux1, mux2);
+        channelConfigs[1].InitMux({ daisy::GPIOPort::PORTA, 3 }, kNumChannelsPerAdc, mux0, mux1, mux2);
+        channelConfigs[2].InitMux({ daisy::GPIOPort::PORTB, 1 }, kNumChannelsPerAdc, mux0, mux1, mux2);
+        channelConfigs[3].InitMux({ daisy::GPIOPort::PORTA, 7 }, kNumChannelsPerAdc, mux0, mux1, mux2);
 
         adc_.Init(channelConfigs, kNumAdcs);
         adc_.Start();
@@ -423,13 +423,13 @@ private:
         daisy::I2CHandle i2c;
         daisy::I2CHandle::Config i2cCfg;
         i2cCfg.periph = daisy::I2CHandle::Config::Peripheral::I2C_1;
-        i2cCfg.pin_config.sda = { DSY_GPIOB, 9 };
-        i2cCfg.pin_config.scl = { DSY_GPIOB, 8 };
+        i2cCfg.pin_config.sda = { daisy::GPIOPort::PORTB, 9 };
+        i2cCfg.pin_config.scl = { daisy::GPIOPort::PORTB, 8 };
         i2cCfg.speed = daisy::I2CHandle::Config::Speed::I2C_400KHZ;
         i2cCfg.mode = daisy::I2CHandle::Config::Mode::I2C_MASTER;
         i2c.Init(i2cCfg);
 
-        ledDriver_.Init(i2c, { 0b00, 0b01, 0b10 }, bufferA, bufferB, { DSY_GPIOB, 6 });
+        ledDriver_.Init(i2c, { 0b00, 0b01, 0b10 }, bufferA, bufferB, { daisy::GPIOPort::PORTB, 6 });
     }
 
     void updateLedBrightnessValues()
