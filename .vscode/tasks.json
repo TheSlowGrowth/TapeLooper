@@ -168,7 +168,7 @@
                     "-D",
                     "CMAKE_EXPORT_COMPILE_COMMANDS=1",
                     "-G",
-                    "\\\"Visual Studio 16 2019\\\""
+                    "\\\"Visual Studio 17 2022\\\""
                 ]
             },
             "group": {
@@ -207,7 +207,7 @@
                     "-D",
                     "CMAKE_EXPORT_COMPILE_COMMANDS=1",
                     "-G",
-                    "\\\"Visual Studio 16 2019\\\""
+                    "\\\"Visual Studio 17 2022\\\""
                 ]
             },
             "group": {

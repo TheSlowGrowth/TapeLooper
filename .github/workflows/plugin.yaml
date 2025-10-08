@@ -18,7 +18,7 @@ jobs:
   ###############################################################################
   # builds the plugin on windows
   testBuildWindows:
-    runs-on: windows-2019
+    runs-on: windows-2025
 
     steps:
     - name: Setup cmake
@@ -33,7 +33,7 @@ jobs:
 
     - name: Configure
       run: |
-        cmake.exe -G "Visual Studio 16 2019" -A x64 -B plugin/build -S plugin
+        cmake.exe -G "Visual Studio 17 2022" -A x64 -B plugin/build -S plugin
 
     - name: Build
       run: |
@@ -44,13 +44,13 @@ jobs:
         plugin/build/Release/TapeLooperPlugin_Gtest.exe --gtest_output=xml:TestResults\gtestResults_windows.xml
 
     - name: Upload Test Results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
-        name: TestResults
+        name: TestResults_Windows
         path: TestResults/**
 
     - name: Upload executable
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: TapeLooperPlugin_Windows
         path: |
@@ -95,13 +95,13 @@ jobs:
         plugin/build/Release/TapeLooperPlugin_Gtest --gtest_output=xml:TestResults/gtestResults_macos.xml
 
     - name: Upload Test Results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
-        name: TestResults
+        name: TestResults_MacOS
         path: TestResults/**
 
     - name: Upload executable
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: TapeLooperPlugin_MacOS
         path: |
@@ -142,13 +142,13 @@ jobs:
         plugin/build/TapeLooperPlugin_Gtest --gtest_output=xml:TestResults/gtestResults_ubuntu.xml
 
     - name: Upload Test Results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
-        name: TestResults
+        name: TestResults_Linux
         path: TestResults/**
 
     - name: Upload executable
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: TapeLooperPlugin_Linux
         path: |
@@ -167,9 +167,9 @@ jobs:
 
     steps:
       - name: Download Artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: TestResults
+          pattern: TestResults_*
           path: TestResults
 
       - name: Publish Test Results
