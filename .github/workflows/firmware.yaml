@@ -22,9 +22,9 @@ jobs:
 
     steps:
     - name: Install arm-none-eabi-gcc
-      uses: fiam/arm-none-eabi-gcc@v1
+      uses: carlosperate/arm-none-eabi-gcc-action@v1
       with:
-        release: '10-2020-q4' # The arm-none-eabi-gcc release to use.
+        release: '10-2020-q4'
 
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v1.9
