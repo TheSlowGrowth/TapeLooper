@@ -19,22 +19,39 @@
 
 #include <per/sdmmc.h>
 #include <fatfs.h>
+#include <util/hal_map.h>
+
+extern SD_HandleTypeDef hsd1;
 
 class FatFsFileIo
 {
 public:
     FatFsFileIo()
     {
-        daisy::SdmmcHandler::Config sdCfg;
-        sdCfg.Defaults();
-        sdCfg.speed = daisy::SdmmcHandler::Speed::STANDARD;
-        sd_.Init(sdCfg);
-        fileSystem_.Init(daisy::FatFSInterface::Config::MEDIA_SD);
+        Init();
     }
 
     void ensureVolumeMounted()
     {
         isMounted_ = f_mount(&fileSystem_.GetSDFileSystem(), fileSystem_.GetSDPath(), 1) == FR_OK;
+
+        // In case of an error, reinitialize the peripheral and try again.
+        // Someone could have removed the SD and plugged it back in
+        if (!isMounted_)
+        {
+            // unmount
+            f_mount(nullptr, fileSystem_.GetSDPath(), 0);
+            fileSystem_.DeInit();
+
+            HAL_SD_DeInit(&hsd1);
+            memset(&hsd1, 0, sizeof(hsd1));
+
+            daisy::System::DelayUs(10000);
+
+            Init();
+
+            isMounted_ = f_mount(&fileSystem_.GetSDFileSystem(), fileSystem_.GetSDPath(), 1) == FR_OK;
+        }
     }
 
     bool makeFolderIfNotExistent(const char* folderName)
@@ -85,6 +102,15 @@ public:
     }
 
 private:
+    void Init()
+    {
+        daisy::SdmmcHandler::Config sdCfg;
+        sdCfg.Defaults();
+        sdCfg.speed = daisy::SdmmcHandler::Speed::STANDARD;
+        sd_.Init(sdCfg);
+        fileSystem_.Init(daisy::FatFSInterface::Config::MEDIA_SD);
+    }
+
     bool isMounted_ = false;
     daisy::SdmmcHandler sd_;
     daisy::FatFSInterface fileSystem_;
