@@ -48,68 +48,68 @@ public:
 
     void Draw(const daisy::UiCanvasDescriptor& canvas) override
     {
-        UiHardwareType& hardware = *((UiHardwareType*) canvas.handle_);
+        /* UiHardwareType& hardware = *((UiHardwareType*) canvas.handle_);
 
-        // light up the load & save page leds to indicate calibration
-        hardware.setLed(Led::load, LedColour::pulsingRed);
-        hardware.setLed(Led::save, LedColour::pulsingRed);
+         // light up the load & save page leds to indicate calibration
+         hardware.setLed(Led::load, LedColour::pulsingRed);
+         hardware.setLed(Led::save, LedColour::pulsingRed);
 
-        // clear all channel octave leds
-        for (auto led : { Led::chA_m2,
-                          Led::chA_m1,
-                          Led::chA_p1,
-                          Led::chA_p2,
-                          Led::chB_m2,
-                          Led::chB_m1,
-                          Led::chB_p1,
-                          Led::chB_p2,
-                          Led::chC_m2,
-                          Led::chC_m1,
-                          Led::chC_p1,
-                          Led::chC_p2,
-                          Led::chD_m2,
-                          Led::chD_m1,
-                          Led::chD_p1,
-                          Led::chD_p2 })
-        {
-            hardware.setLed(led, LedColour::off);
-        }
+         // clear all channel octave leds
+         for (auto led : { Led::chA_m2,
+                           Led::chA_m1,
+                           Led::chA_p1,
+                           Led::chA_p2,
+                           Led::chB_m2,
+                           Led::chB_m1,
+                           Led::chB_p1,
+                           Led::chB_p2,
+                           Led::chC_m2,
+                           Led::chC_m1,
+                           Led::chC_p1,
+                           Led::chC_p2,
+                           Led::chD_m2,
+                           Led::chD_m1,
+                           Led::chD_p1,
+                           Led::chD_p2 })
+         {
+             hardware.setLed(led, LedColour::off);
+         }
 
-        // still selecting an input ?
-        if (selectedChannel_ < 0)
-        {
-            hardware.setLed(Led::chA_m2, LedColour::pulsingYellow);
-            hardware.setLed(Led::chA_p2, LedColour::pulsingYellow);
-            hardware.setLed(Led::chB_m2, LedColour::pulsingYellow);
-            hardware.setLed(Led::chB_p2, LedColour::pulsingYellow);
-            hardware.setLed(Led::chC_m2, LedColour::pulsingYellow);
-            hardware.setLed(Led::chC_p2, LedColour::pulsingYellow);
-            hardware.setLed(Led::chD_m2, LedColour::pulsingYellow);
-            hardware.setLed(Led::chD_p2, LedColour::pulsingYellow);
-        }
-        else
-        {
-            constexpr Led lowestLeds[4] = { Led::chA_m2, Led::chB_m2, Led::chC_m2, Led::chD_m2 };
-            constexpr Led highestLeds[4] = { Led::chA_p2, Led::chB_p2, Led::chC_p2, Led::chD_p2 };
+         // still selecting an input ?
+         if (selectedChannel_ < 0)
+         {
+             hardware.setLed(Led::chA_m2, LedColour::pulsingYellow);
+             hardware.setLed(Led::chA_p2, LedColour::pulsingYellow);
+             hardware.setLed(Led::chB_m2, LedColour::pulsingYellow);
+             hardware.setLed(Led::chB_p2, LedColour::pulsingYellow);
+             hardware.setLed(Led::chC_m2, LedColour::pulsingYellow);
+             hardware.setLed(Led::chC_p2, LedColour::pulsingYellow);
+             hardware.setLed(Led::chD_m2, LedColour::pulsingYellow);
+             hardware.setLed(Led::chD_p2, LedColour::pulsingYellow);
+         }
+         else
+         {
+             constexpr Led lowestLeds[4] = { Led::chA_m2, Led::chB_m2, Led::chC_m2, Led::chD_m2 };
+             constexpr Led highestLeds[4] = { Led::chA_p2, Led::chB_p2, Led::chC_p2, Led::chD_p2 };
 
-            switch (state_)
-            {
-                case State::readMinSpeed:
-                    hardware.setLed(lowestLeds[selectedChannel_], LedColour::pulsingRed);
-                    break;
-                case State::readMaxSpeed:
-                    hardware.setLed(highestLeds[selectedChannel_], LedColour::pulsingRed);
-                    break;
-                case State::readMinVolume:
-                    hardware.setLed(lowestLeds[selectedChannel_], LedColour::pulsingGreen);
-                    break;
-                case State::readMaxVolume:
-                    hardware.setLed(highestLeds[selectedChannel_], LedColour::pulsingGreen);
-                    break;
-                default:
-                    break;
-            }
-        }
+             switch (state_)
+             {
+                 case State::readMinSpeed:
+                     hardware.setLed(lowestLeds[selectedChannel_], LedColour::pulsingRed);
+                     break;
+                 case State::readMaxSpeed:
+                     hardware.setLed(highestLeds[selectedChannel_], LedColour::pulsingRed);
+                     break;
+                 case State::readMinVolume:
+                     hardware.setLed(lowestLeds[selectedChannel_], LedColour::pulsingGreen);
+                     break;
+                 case State::readMaxVolume:
+                     hardware.setLed(highestLeds[selectedChannel_], LedColour::pulsingGreen);
+                     break;
+                 default:
+                     break;
+             }
+         }*/
     }
 
     bool OnButton(uint16_t buttonID, uint8_t numberOfPresses, bool isRetriggering) override

@@ -49,20 +49,20 @@ public:
 
     void reset()
     {
-        driveGainSmoother_.reset();
+        /*driveGainSmoother_.reset();
         grainAmtSmoother_.reset();
         for (size_t ch = 0; ch < numChannels; ch++)
         {
             emphasisEqs_[ch].reset();
             tapeEqs_[ch].reset();
             grainProcessors_[ch].reset();
-        }
+        }*/
     }
 
     MANUAL_INLINE void process(float inputAndOutput[numChannels],
                                const Parameters& parameters)
     {
-        constexpr auto smootherTimeConstant_ =
+        /*constexpr auto smootherTimeConstant_ =
             ExponentialSmoother::TimeConstant(0.05f, sampleRate, 1);
         const auto driveGain = driveGainSmoother_.smooth(parameters.driveGain,
                                                          smootherTimeConstant_);
@@ -84,14 +84,14 @@ public:
             sample = emphasisEqs_[ch].processDeEmphasis(sample);
             // apply tape EQ
             sample = tapeEqs_[ch].process(sample);
-        }
+        }*/
     }
 
 private:
-    ExponentialSmoother driveGainSmoother_;
-    ExponentialSmoother grainAmtSmoother_;
+    // ExponentialSmoother driveGainSmoother_;
+    // ExponentialSmoother grainAmtSmoother_;
 
-    std::array<EmphasisEq<float, sampleRate>, numChannels> emphasisEqs_;
-    std::array<TapeEq<sampleRate>, numChannels> tapeEqs_;
-    std::array<TapeGrainProcessor<float, sampleRate>, numChannels> grainProcessors_;
+    // std::array<EmphasisEq<float, sampleRate>, numChannels> emphasisEqs_;
+    // std::array<TapeEq<sampleRate>, numChannels> tapeEqs_;
+    // std::array<TapeGrainProcessor<float, sampleRate>, numChannels> grainProcessors_;
 };

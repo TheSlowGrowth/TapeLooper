@@ -159,7 +159,7 @@ public:
                      ExponentialSmoother::TimeConstant(0.05f, sampleRate, 1))
     {
         const auto mappedWowAndFlutterAmt = wowAndFlutterAmt * wowAndFlutterAmt;
-        player_.process(paramSpeed,
+        /*player_.process(paramSpeed,
                         mappedWowAndFlutterAmt,
                         direction,
                         paramPostGain,
@@ -167,7 +167,7 @@ public:
                         outputToAddTo,
                         postGainSmootherTimeConstant,
                         speedSmootherTimeConstant);
-        recorder_.process(input);
+        recorder_.process(input);*/
 
         const auto recordingStopped = state_ == LooperState::recording && !recorder_.isRecording();
         if (recordingStopped)

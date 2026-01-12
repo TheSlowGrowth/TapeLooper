@@ -49,18 +49,18 @@ class LooperController
 public:
     using MonoLooperType = typename LooperTypes::MonoLooperType;
     using StereoLooperType = typename LooperTypes::StereoLooperType;
-    using ParameterProviderType = typename LooperTypes::ParameterProvider;
+    // using ParameterProviderType = typename LooperTypes::ParameterProvider;
     using AudioSaveAndRecallType = typename LooperTypes::AudioSaveAndRecallType;
 
     LooperController(std::array<MonoOrStereoLooperStoragePtr, numLoopers> looperStorage,
                      AudioBufferPtr<1> monoDownmixBuffer,
                      AudioBufferPtr<1> temporaryBuffer,
-                     const ParameterProviderType& paramProvider,
+                     // const ParameterProviderType& paramProvider,
                      AudioSaveAndRecallType& audioSaveAndRecall) :
         looperStorage_(looperStorage),
         monoDownmixBuffer_(monoDownmixBuffer),
         temporaryBuffer_(temporaryBuffer),
-        paramProvider_(paramProvider),
+        // paramProvider_(paramProvider),
         audioSaveAndRecall_(audioSaveAndRecall)
     {
         for (size_t i = 0; i < numLoopers; i++)
@@ -196,7 +196,7 @@ public:
     {
         outputBuffer.fill(0.0f);
 
-        bool hasProcessedMonoDownmix = false;
+        /*bool hasProcessedMonoDownmix = false;
         for (size_t ch = 0; ch < numLoopers; ch++)
         {
             auto& looperChannel = loopers_[ch];
@@ -244,7 +244,7 @@ public:
                     postGainSmootherTimeConstant_,
                     getMotorTimeConstant(looperChannel.acceleration));
             }
-        }
+        }*/
     }
 
 private:
@@ -384,6 +384,6 @@ private:
     std::array<LooperWithSettings, numLoopers> loopers_;
     AudioBufferPtr<1> monoDownmixBuffer_;
     AudioBufferPtr<1> temporaryBuffer_;
-    const ParameterProviderType& paramProvider_;
+    // const ParameterProviderType& paramProvider_;
     AudioSaveAndRecallType& audioSaveAndRecall_;
 };

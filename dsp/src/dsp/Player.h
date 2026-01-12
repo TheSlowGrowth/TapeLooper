@@ -52,7 +52,7 @@ public:
 
     void reset()
     {
-        processor_.reset();
+        /*processor_.reset();
         speedModulator_.reset();
         postGainSmoother_.reset(0);
         speedSmoother_.reset(0);
@@ -61,7 +61,7 @@ public:
         playPos_ = 0.0f;
         lastProcessedSampleIdx_ = -1;
         interpolationBuffer_[0].fill(0.0f);
-        interpolationBuffer_[1].fill(0.0f);
+        interpolationBuffer_[1].fill(0.0f);*/
     }
 
     void startPlaying(size_t loopLengthInSamples)
@@ -86,7 +86,7 @@ public:
 
     size_t getLoopLengthInSamples() const { return playbackLength_; }
 
-    void process(float paramSpeed,
+    /*void process(float paramSpeed,
                  float speedModulationAmt,
                  Direction direction,
                  float paramPostProcessorGain,
@@ -147,10 +147,10 @@ public:
             playPos_ += speed;
             playPos_ = wrapDownToPlaybackLength(playPos_);
         }
-    }
+    }*/
 
-    ProcessorType& getProcessor() { return processor_; }
-    SpeedModulatorType& getSpeedModulator() { return speedModulator_; }
+    // ProcessorType& getProcessor() { return processor_; }
+    // SpeedModulatorType& getSpeedModulator() { return speedModulator_; }
 
 private:
     static constexpr float minSpeed_ = 0.25f;
@@ -183,6 +183,6 @@ private:
     int lastProcessedSampleIdx_;
     std::array<std::array<float, numChannels>, 2> interpolationBuffer_;
 
-    SpeedModulatorType speedModulator_;
-    ProcessorType processor_;
+    // SpeedModulatorType speedModulator_;
+    // ProcessorType processor_;
 };

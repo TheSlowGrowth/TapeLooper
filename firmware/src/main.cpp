@@ -74,7 +74,7 @@ AudioBuffer<1, blockSize> temporaryBuffer;
 LateInitializedObject<LooperControllerType> looperController;
 
 // misc
-daisy::CpuLoadMeter cpuLoadMeter;
+// daisy::CpuLoadMeter cpuLoadMeter;
 
 // ===================================================================
 // UI
@@ -135,7 +135,7 @@ void initDsp()
         arrayOfStoragePtrs,
         monoDownmixBuffer,
         temporaryBuffer,
-        looperParameterProvider,
+        // looperParameterProvider,
         audioSaveAndRecall);
 
     // init peak meters
@@ -143,7 +143,7 @@ void initDsp()
         peakMeter.init(0.5f);
 
     // init CPU load meter
-    cpuLoadMeter.Init(seed.AudioSampleRate(), seed.AudioBlockSize());
+    // cpuLoadMeter.Init(seed.AudioSampleRate(), seed.AudioBlockSize());
 }
 
 // ===================================================================
@@ -161,10 +161,10 @@ void configurePlatform()
 
 void audioCallback(const float* const* in, float** out, size_t size)
 {
-    cpuLoadMeter.OnBlockStart();
+    // cpuLoadMeter.OnBlockStart();
 
     // update CV values
-    looperParameterProvider->controlInputs_[0].pitchCvVolts =
+    /*looperParameterProvider->controlInputs_[0].pitchCvVolts =
         uiHardware->getKnobsAndCv().getCvVolts(CvInput::chA_speed);
     looperParameterProvider->controlInputs_[1].pitchCvVolts =
         uiHardware->getKnobsAndCv().getCvVolts(CvInput::chB_speed);
@@ -179,29 +179,29 @@ void audioCallback(const float* const* in, float** out, size_t size)
     looperParameterProvider->controlInputs_[2].volumeCvVolts =
         uiHardware->getKnobsAndCv().getCvVolts(CvInput::chC_volume);
     looperParameterProvider->controlInputs_[3].volumeCvVolts =
-        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chD_volume);
+        uiHardware->getKnobsAndCv().getCvVolts(CvInput::chD_volume);*/
 
     // peak meters
-    peakMeters[0].readPeaks(in[0]);
-    peakMeters[1].readPeaks(in[1]);
+    // peakMeters[0].readPeaks(in[0]);
+    // peakMeters[1].readPeaks(in[1]);
 
     // process
     AudioBufferPtr<numChannelsPerLooper, const float> inputs(in, size);
     AudioBufferPtr<numChannelsPerLooper, float> outputs(out, size);
     outputs.fill(0.0f);
-    looperController->process(inputs, outputs);
+    // looperController->process(inputs, outputs);
 
     // peak meters
-    peakMeters[2].readPeaks(out[0]);
-    peakMeters[3].readPeaks(out[1]);
+    // peakMeters[2].readPeaks(out[0]);
+    // peakMeters[3].readPeaks(out[1]);
 
     // clip outputs
     // TODO
 
-    cpuLoadMeter.OnBlockEnd();
-    // Set breakpoint here to check load
-    const auto load = cpuLoadMeter.GetAvgCpuLoad();
-    (void) load;
+    // cpuLoadMeter.OnBlockEnd();
+    //  Set breakpoint here to check load
+    // const auto load = cpuLoadMeter.GetAvgCpuLoad();
+    //(void) load;
 }
 
 int main(void)
@@ -213,7 +213,7 @@ int main(void)
     initUi();
 
     // start audio
-    seed.StartAudio(&audioCallback);
+    // seed.StartAudio(&audioCallback);
 
     // UI loop
     auto lastUpdate = daisy::System::GetNow();

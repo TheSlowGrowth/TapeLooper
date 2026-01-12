@@ -52,44 +52,44 @@ public:
 
     void Draw(const daisy::UiCanvasDescriptor& canvas) override
     {
-        UiHardwareType& hardware = *((UiHardwareType*) canvas.handle_);
+        /* UiHardwareType& hardware = *((UiHardwareType*) canvas.handle_);
 
-        // update peak meter LEDs
-        float red, green;
-        peakMeters_[0].getRedAndGreenValues(red, green);
-        hardware.setLedFromRawValues(Led::peakMeterInL, red, green);
-        peakMeters_[1].getRedAndGreenValues(red, green);
-        hardware.setLedFromRawValues(Led::peakMeterInR, red, green);
-        peakMeters_[2].getRedAndGreenValues(red, green);
-        hardware.setLedFromRawValues(Led::peakMeterOutL, red, green);
-        peakMeters_[3].getRedAndGreenValues(red, green);
-        hardware.setLedFromRawValues(Led::peakMeterOutR, red, green);
+         // update peak meter LEDs
+         float red, green;
+         peakMeters_[0].getRedAndGreenValues(red, green);
+         hardware.setLedFromRawValues(Led::peakMeterInL, red, green);
+         peakMeters_[1].getRedAndGreenValues(red, green);
+         hardware.setLedFromRawValues(Led::peakMeterInR, red, green);
+         peakMeters_[2].getRedAndGreenValues(red, green);
+         hardware.setLedFromRawValues(Led::peakMeterOutL, red, green);
+         peakMeters_[3].getRedAndGreenValues(red, green);
+         hardware.setLedFromRawValues(Led::peakMeterOutR, red, green);
 
-        // update channel octave LEDs
-        const auto updateChannelOctaveLeds = [&](size_t looperChannel, std::array<Led, 4> ledIds)
-        {
-            // select colour
-            const auto looperState = looperController_.getLooperState(looperChannel);
-            auto colourToUse = LedColour::green;
-            if (looperState == LooperState::recording)
-                colourToUse = LedColour::pulsingRed;
-            else if (looperState == LooperState::playing)
-                colourToUse = LedColour::yellow;
+         // update channel octave LEDs
+         const auto updateChannelOctaveLeds = [&](size_t looperChannel, std::array<Led, 4> ledIds)
+         {
+             // select colour
+             const auto looperState = looperController_.getLooperState(looperChannel);
+             auto colourToUse = LedColour::green;
+             if (looperState == LooperState::recording)
+                 colourToUse = LedColour::pulsingRed;
+             else if (looperState == LooperState::playing)
+                 colourToUse = LedColour::yellow;
 
-            const auto octave = looperParameterProvider_.controlInputs_[looperChannel].octave;
-            hardware.setLed(ledIds[0],
-                            octave == -2 ? colourToUse : LedColour::off);
-            hardware.setLed(ledIds[1],
-                            (octave == -1) || (octave == 0) ? colourToUse : LedColour::off);
-            hardware.setLed(ledIds[2],
-                            (octave == 1) || (octave == 0) ? colourToUse : LedColour::off);
-            hardware.setLed(ledIds[3],
-                            octave == 2 ? colourToUse : LedColour::off);
-        };
-        updateChannelOctaveLeds(0, { Led::chA_m2, Led::chA_m1, Led::chA_p1, Led::chA_p2 });
-        updateChannelOctaveLeds(1, { Led::chB_m2, Led::chB_m1, Led::chB_p1, Led::chB_p2 });
-        updateChannelOctaveLeds(2, { Led::chC_m2, Led::chC_m1, Led::chC_p1, Led::chC_p2 });
-        updateChannelOctaveLeds(3, { Led::chD_m2, Led::chD_m1, Led::chD_p1, Led::chD_p2 });
+             const auto octave = looperParameterProvider_.controlInputs_[looperChannel].octave;
+             hardware.setLed(ledIds[0],
+                             octave == -2 ? colourToUse : LedColour::off);
+             hardware.setLed(ledIds[1],
+                             (octave == -1) || (octave == 0) ? colourToUse : LedColour::off);
+             hardware.setLed(ledIds[2],
+                             (octave == 1) || (octave == 0) ? colourToUse : LedColour::off);
+             hardware.setLed(ledIds[3],
+                             octave == 2 ? colourToUse : LedColour::off);
+         };
+         updateChannelOctaveLeds(0, { Led::chA_m2, Led::chA_m1, Led::chA_p1, Led::chA_p2 });
+         updateChannelOctaveLeds(1, { Led::chB_m2, Led::chB_m1, Led::chB_p1, Led::chB_p2 });
+         updateChannelOctaveLeds(2, { Led::chC_m2, Led::chC_m1, Led::chC_p1, Led::chC_p2 });
+         updateChannelOctaveLeds(3, { Led::chD_m2, Led::chD_m1, Led::chD_p1, Led::chD_p2 });*/
     }
 
     bool OnButton(uint16_t buttonID, uint8_t numberOfPresses, bool isRetriggering) override
@@ -165,7 +165,7 @@ public:
     {
         // write raw user inputs to the looperParameterProvider
 
-        const Pot pot = Pot(potID);
+        /*const Pot pot = Pot(potID);
         switch (pot)
         {
             // speed / pitch
@@ -235,7 +235,7 @@ public:
                 break;
             default:
                 break;
-        }
+        }*/
 
         return true;
     }
@@ -246,13 +246,13 @@ private:
 
     void onPlayButton(size_t looperChannel)
     {
-        const auto currentState = looperController_.getLooperState(looperChannel);
+        /*const auto currentState = looperController_.getLooperState(looperChannel);
         if (currentState == LooperState::playing)
             looperController_.setLooperState(looperChannel, LooperState::stopped);
         else if (currentState == LooperState::stopped)
             looperController_.setLooperState(looperChannel, LooperState::playing);
         else if (currentState == LooperState::recording)
-            looperController_.setLooperState(looperChannel, LooperState::playing);
+            looperController_.setLooperState(looperChannel, LooperState::playing);*/
     }
 
     void onUpButton(size_t looperChannel)
