@@ -34,12 +34,12 @@
             },
             "linux": {
                 "MIMode": "gdb",
-                "MIDebuggerPath": "~/dev/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gdb",
+                "MIDebuggerPath": "~/dev/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-gdb",
                 "debugServerPath": "openocd"
             },
             "osx": {
                 "MIMode": "gdb",
-                "MIDebuggerPath": "/Users/johanneselliesen/dev/gcc-arm-none-eabi-9-2020-q2-update/bin/arm-none-eabi-gdb",
+                "MIDebuggerPath": "/Users/johanneselliesen/dev/gcc-arm-none-eabi-10-2020-q4-major/bin/arm-none-eabi-gdb",
                 "debugServerPath": "openocd"
             },
             "windows": {
@@ -91,7 +91,7 @@
             "program": "${workspaceFolder}/firmware/tests/build/bin/TapeLooper_gtest",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/firmware/tests/build/bin",
+            "cwd": "${workspaceFolder}/firmware/tests/",
             "environment": [],
             "externalConsole": false,
             "logging": {
@@ -105,53 +105,6 @@
             },
             "windows": {
                 "MIMode": "gdb",
-            }
-        },
-        {
-            "name": "Plugin Tests",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/plugin/build/TapeLooperPlugin_Gtest",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/plugin/build",
-            "environment": [],
-            "externalConsole": false,
-            "logging": {
-                "engineLogging": false
-            },
-            "preLaunchTask": "build plugin",
-
-            "osx": {
-                "type": "lldb",
-                "MIMode": "lldb",
-            },
-            "windows": {
-                "MIMode": "gdb",
-            }
-        },
-        {
-            "name": "Standalone Plugin",
-            "type": "cppdbg",
-            "request": "launch",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}/plugin/build",
-            "environment": [],
-            "externalConsole": false,
-            "logging": {
-                "engineLogging": false
-            },
-            "preLaunchTask": "build plugin",
-
-            "osx": {
-                "type": "lldb",
-                "MIMode": "lldb",
-                "program": "${workspaceFolder}/plugin/build/TapeLooperPlugin_artefacts/Standalone/Tape Looper Plugin.app/Contents/MacOS/Tape Looper Plugin",
-            },
-            "windows": {
-                "MIMode": "gdb",
-                "program": "${workspaceFolder}/plugin/build/TapeLooperPlugin_artefacts/Standalone/Tape Looper Plugin.exe",
             }
         }
     ]

@@ -62,6 +62,15 @@ public:
         recHeadIdx_ = 0;
     }
 
+    void stopRecordingImmediately()
+    {
+        isRecording_ = false;
+        isFadingOut_ = false;
+        xfadePhase_ = 0.0f;
+        currentLength_ = recHeadIdx_;
+        recHeadIdx_ = 0;
+    }
+
     void setCrossfadeLength(size_t crossfadeLengthInSamples)
     {
         xFadeLengthInSamples_ = std::min(crossfadeLengthInSamples, buffer_.size_);
@@ -131,8 +140,11 @@ public:
         return true;
     }
 
+    void setCurrentPlaybackLength(size_t length) { currentLength_ = length; }
     size_t getCurrentRecordingLength() const { return currentLength_; }
     bool isRecording() const { return isRecording_ || isFadingOut_; }
+
+    void setRecordingProgressForTesting(size_t numSamplesDone) { recHeadIdx_ = numSamplesDone; }
 
 private:
     static constexpr float defaultXFadeLengthInS_ = 0.1f;

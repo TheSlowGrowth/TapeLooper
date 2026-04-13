@@ -24,11 +24,13 @@
 
 #include "constants.h"
 #include "util/LateInitializedObject.h"
+#include "AudioSaveAndRecall.h"
 
 enum class ChannelLayout
 {
     mono,
-    stereo
+    stereo,
+    invalid
 };
 
 enum class MotorAcceleration
@@ -48,15 +50,18 @@ public:
     using MonoLooperType = typename LooperTypes::MonoLooperType;
     using StereoLooperType = typename LooperTypes::StereoLooperType;
     using ParameterProviderType = typename LooperTypes::ParameterProvider;
+    using AudioSaveAndRecallType = typename LooperTypes::AudioSaveAndRecallType;
 
     LooperController(std::array<MonoOrStereoLooperStoragePtr, numLoopers> looperStorage,
                      AudioBufferPtr<1> monoDownmixBuffer,
                      AudioBufferPtr<1> temporaryBuffer,
-                     const ParameterProviderType& paramProvider) :
+                     const ParameterProviderType& paramProvider,
+                     AudioSaveAndRecallType& audioSaveAndRecall) :
         looperStorage_(looperStorage),
         monoDownmixBuffer_(monoDownmixBuffer),
         temporaryBuffer_(temporaryBuffer),
-        paramProvider_(paramProvider)
+        paramProvider_(paramProvider),
+        audioSaveAndRecall_(audioSaveAndRecall)
     {
         for (size_t i = 0; i < numLoopers; i++)
             loopers_[i].initializeToLayout(ChannelLayout::stereo, looperStorage_[i]);
@@ -78,18 +83,86 @@ public:
             return loopers_[looperIdx].looper.template as<StereoLooperType>().getState();
     }
 
-    void saveTo(size_t looperIdx, size_t slot)
+    void saveTo(StorageBank bank,
+                size_t looperIdx,
+                size_t slot,
+                AudioSaveAndRecallDoneCallbackPtr doneCallback,
+                void* doneCallbackContext)
     {
-        (void) (looperIdx);
-        (void) (slot);
-        // TODO
+        if (loopers_[looperIdx].layout == ChannelLayout::mono)
+            audioSaveAndRecall_.startSavingToFile(bank,
+                                                  slot,
+                                                  loopers_[looperIdx].looper.template as<MonoLooperType>(),
+                                                  doneCallback,
+                                                  doneCallbackContext);
+        else
+            audioSaveAndRecall_.startSavingToFile(bank,
+                                                  slot,
+                                                  loopers_[looperIdx].looper.template as<StereoLooperType>(),
+                                                  doneCallback,
+                                                  doneCallbackContext);
     }
 
-    void loadFrom(size_t looperIdx, size_t slot)
+    void loadFrom(StorageBank bank,
+                  size_t looperIdx,
+                  size_t slot,
+                  AudioSaveAndRecallDoneCallbackPtr doneCallback,
+                  void* doneCallbackContext)
     {
-        (void) (looperIdx);
-        (void) (slot);
-        // TODO
+        const auto numChannels = audioSaveAndRecall_.getNumChannelsInFile(bank, slot);
+        if (numChannels == 0)
+        {
+            if (doneCallback)
+            {
+                doneCallback(doneCallbackContext, AudioSaveAndRecallResult::error);
+            }
+            return;
+        }
+
+        if (numChannels == 1 && getChannelLayout(looperIdx) != ChannelLayout::mono)
+        {
+            setChannelLayout(looperIdx, ChannelLayout::mono);
+        }
+        else if (numChannels == 2 && getChannelLayout(looperIdx) != ChannelLayout::stereo)
+        {
+            setChannelLayout(looperIdx, ChannelLayout::stereo);
+        }
+
+        if (loopers_[looperIdx].layout == ChannelLayout::mono)
+            audioSaveAndRecall_.startReadingFromFile(bank,
+                                                     slot,
+                                                     loopers_[looperIdx].looper.template as<MonoLooperType>(),
+                                                     doneCallback,
+                                                     doneCallbackContext);
+        else
+            audioSaveAndRecall_.startReadingFromFile(bank,
+                                                     slot,
+                                                     loopers_[looperIdx].looper.template as<StereoLooperType>(),
+                                                     doneCallback,
+                                                     doneCallbackContext);
+    }
+
+    float getCurrentSaveOrLoadProgress()
+    {
+        return audioSaveAndRecall_.getCurrentProgress();
+    }
+
+    bool isSavingOrRecalling()
+    {
+        return audioSaveAndRecall_.isSavingOrRecalling();
+    }
+
+    void abortLoadOrSaveOperation()
+    {
+        if (audioSaveAndRecall_.isSavingOrRecalling())
+        {
+            audioSaveAndRecall_.abort();
+        }
+    }
+
+    void processSaveOrLoadOperation()
+    {
+        audioSaveAndRecall_.readOrWriteNextChunk();
     }
 
     void setChannelLayout(size_t looperIdx, ChannelLayout channelLayout)
@@ -189,23 +262,37 @@ private:
                 looper.template destroy<typename LooperTypes::StereoLooperType>();
         }
 
-        ChannelLayout layout = ChannelLayout::stereo;
+        ChannelLayout layout = ChannelLayout::invalid;
         Direction direction = Direction::forwards;
         MotorAcceleration acceleration = MotorAcceleration::medium;
         LateInitializedObject<MonoLooperType, StereoLooperType> looper;
 
         void initializeToLayout(const ChannelLayout newLayout, MonoOrStereoLooperStoragePtr& storage)
         {
-            layout = newLayout;
-            if (layout == ChannelLayout::mono)
+            switch (layout)
             {
-                looper.template destroy<typename LooperTypes::StereoLooperType>();
-                looper.template create<typename LooperTypes::MonoLooperType>(storage);
+                case ChannelLayout::mono:
+                    looper.template destroy<typename LooperTypes::MonoLooperType>();
+                    break;
+                case ChannelLayout::stereo:
+                    looper.template destroy<typename LooperTypes::StereoLooperType>();
+                    break;
+                default:
+                    break;
             }
-            else
+
+            layout = newLayout;
+
+            switch (newLayout)
             {
-                looper.template destroy<typename LooperTypes::MonoLooperType>();
-                looper.template create<typename LooperTypes::StereoLooperType>(storage);
+                case ChannelLayout::mono:
+                    looper.template create<typename LooperTypes::MonoLooperType>(storage);
+                    break;
+                case ChannelLayout::stereo:
+                    looper.template create<typename LooperTypes::StereoLooperType>(storage);
+                    break;
+                default:
+                    break;
             }
         }
     };
@@ -298,4 +385,5 @@ private:
     AudioBufferPtr<1> monoDownmixBuffer_;
     AudioBufferPtr<1> temporaryBuffer_;
     const ParameterProviderType& paramProvider_;
+    AudioSaveAndRecallType& audioSaveAndRecall_;
 };

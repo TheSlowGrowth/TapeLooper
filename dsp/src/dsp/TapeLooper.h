@@ -107,9 +107,9 @@ public:
     {
     }
 
-    void switchState(LooperState state)
+    void switchState(LooperState newState)
     {
-        switch (state)
+        switch (newState)
         {
             default:
             case LooperState::stopped:
@@ -119,18 +119,24 @@ public:
                     player_.stopPlaying();
                 break;
             case LooperState::playing:
+                if (preventPlayback_)
+                    return;
                 if (state_ == LooperState::recording)
                     recorder_.stopRecording();
                 player_.startPlaying(recorder_.getCurrentRecordingLength());
                 break;
             case LooperState::recording:
+                if (preventRecording_)
+                    return;
                 if (state_ == LooperState::playing)
                     player_.stopPlaying();
                 recorder_.startRecording();
                 break;
         }
-        state_ = state;
+        state_ = newState;
     }
+
+    bool isRecording() const { return recorder_.isRecording(); }
 
     LooperState getState() const { return state_; }
 
@@ -205,6 +211,8 @@ public:
     template <typename StorageType>
     bool restore(ReadableMemory<StorageType>& mem)
     {
+        if (preventRecording_)
+            return false;
         if (!recorder_.restore(mem))
             return false;
 
@@ -222,11 +230,51 @@ public:
         return true;
     }
 
-    const LooperStoragePtr<numChannels> getSampleStoragePtr() const { return storage_; }
+    void preventPlaybackAndRecording(bool stopRecordingImmediately = false)
+    {
+        preventPlayback_ = true;
+        preventRecording_ = true;
+        const auto previousState = getState();
+        switchState(LooperState::stopped);
+        if (previousState == LooperState::recording)
+        {
+            if (stopRecordingImmediately)
+                recorder_.stopRecordingImmediately();
+        }
+    }
+
+    void preventRecording(bool stopRecordingImmediately = false)
+    {
+        preventPlayback_ = false;
+        preventRecording_ = true;
+
+        if (getState() == LooperState::recording)
+        {
+            switchState(LooperState::stopped);
+            if (stopRecordingImmediately)
+                recorder_.stopRecordingImmediately();
+        }
+    }
+
+    void liftRestrictions()
+    {
+        preventPlayback_ = false;
+        preventRecording_ = false;
+    }
+
+    LooperStoragePtr<numChannels> getSampleStoragePtr() { return storage_; }
+    void setPlaybackLength(size_t length) { recorder_.setCurrentPlaybackLength(length); }
+    size_t getPlaybackLength() const { return recorder_.getCurrentRecordingLength(); }
+    static constexpr size_t getNumChannels() { return numChannels; }
+    static constexpr size_t getSampleRate() { return sampleRate; }
+
+    RecorderType& recorderForTesting() { return recorder_; }
 
 private:
     const LooperStoragePtr<numChannels> storage_;
     LooperState state_;
     PlayerType player_;
     RecorderType recorder_;
+    bool preventPlayback_ = false;
+    bool preventRecording_ = false;
 };

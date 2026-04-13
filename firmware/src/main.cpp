@@ -21,6 +21,7 @@
 
 #include "constants.h"
 #include "dsp/PeakMeter.h"
+#include "hardware/FatFsFileIo.h"
 #include "hardware/UiHardware.h"
 #include "ui/TapeLooperUi.h"
 #include "dsp/TapeLooper.h"
@@ -37,12 +38,16 @@ struct LooperTypes
     using MonoLooperType = TapeLooper<sampleRateHz, 1>;
     using StereoLooperType = TapeLooper<sampleRateHz, 2>;
     using ParameterProvider = LooperParameterProviderType;
+    using AudioSaveAndRecallType = AudioSaveAndRecall<FatFsFileIo>;
 };
 using LooperControllerType = LooperController<LooperTypes, numLoopers>;
+using LoopLibraryType = loop_library::Library<FatFsFileIo>;
+
 using TapeLooperUiType = TapeLooperUi<UiHardware,
                                       PeakMeter<blockSize, sampleRateHz>,
                                       LooperControllerType,
-                                      LooperParameterProviderType>;
+                                      LooperParameterProviderType,
+                                      LoopLibraryType>;
 using LooperStoragesType = std::array<MonoOrStereoLooperStorage<looperSamplesPerChannel>, numLoopers>;
 
 // hardware static objects
@@ -53,7 +58,9 @@ daisy::UiEventQueue uiEventQueue;
 UiHardware::LedDmaBufferType DMA_BUFFER_MEM_SECTION ledDmaBufferA, ledDmaBufferB;
 uint16_t DMA_BUFFER_MEM_SECTION buttonShiftRegisterDmaBuffer;
 
+LateInitializedObject<FatFsFileIo> fileIo;
 LateInitializedObject<UiHardware> uiHardware;
+LateInitializedObject<LoopLibraryType> loopLibrary;
 LateInitializedObject<TapeLooperUiType> ui;
 
 // dsp static objects
@@ -61,6 +68,7 @@ std::array<PeakMeter<blockSize, sampleRateHz>, 4> peakMeters;
 #define EXTERNAL_SDRAM_SECTION __attribute__((section(".sdram_bss")))
 LateInitializedObject<LooperStoragesType> EXTERNAL_SDRAM_SECTION looperStorages;
 LateInitializedObject<LooperParameterProviderType> looperParameterProvider;
+LateInitializedObject<LooperTypes::AudioSaveAndRecallType> audioSaveAndRecall;
 AudioBuffer<1, blockSize> monoDownmixBuffer;
 AudioBuffer<1, blockSize> temporaryBuffer;
 LateInitializedObject<LooperControllerType> looperController;
@@ -91,6 +99,8 @@ void initUi()
                                         ledDmaBufferB,
                                         &buttonShiftRegisterDmaBuffer);
 
+    loopLibrary.create(fileIo);
+
     // init the UI
     ui.create(
         hardware,
@@ -99,7 +109,8 @@ void initUi()
         uiEventQueue,
         peakMeters,
         looperController,
-        looperParameterProvider);
+        looperParameterProvider,
+        loopLibrary);
 }
 
 // ===================================================================
@@ -108,8 +119,9 @@ void initUi()
 
 void initDsp()
 {
-    // init the parameter provider
     looperParameterProvider.create();
+
+    audioSaveAndRecall.create(fileIo);
 
     // initialize the looper storage in SDRAM
     const auto& rawStorages = *looperStorages.create();
@@ -123,7 +135,8 @@ void initDsp()
         arrayOfStoragePtrs,
         monoDownmixBuffer,
         temporaryBuffer,
-        looperParameterProvider);
+        looperParameterProvider,
+        audioSaveAndRecall);
 
     // init peak meters
     for (auto& peakMeter : peakMeters)
@@ -142,6 +155,8 @@ void configurePlatform()
     seed.Init(true /* enable 480MHz boost */);
     seed.SetAudioBlockSize(blockSize);
     seed.SetAudioSampleRate(sampleRate);
+
+    fileIo.create();
 }
 
 void audioCallback(const float* const* in, float** out, size_t size)
@@ -211,6 +226,10 @@ int main(void)
         constexpr auto kUpdateIntervalMs = 20;
         while (daisy::System::GetNow() < lastUpdate + kUpdateIntervalMs)
         {
+            if (looperController->isSavingOrRecalling())
+            {
+                looperController->processSaveOrLoadOperation();
+            }
         }
         lastUpdate = daisy::System::GetNow();
     }

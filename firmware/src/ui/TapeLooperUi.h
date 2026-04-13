@@ -26,14 +26,14 @@
 #include "UiBasePage.h"
 #include "UiCalibrationPage.h"
 #include "UiSettingsPage.h"
-#include "UiSavePage.h"
-#include "UiLoadPage.h"
+#include "UiLoadOrSavePage.h"
 #include "UiRecordingPage.h"
 
 template <typename UiHardwareType,
           typename PeakMeterType,
           typename LooperControllerType,
-          typename ParameterProviderType>
+          typename ParameterProviderType,
+          typename LoopLibraryType>
 class TapeLooperUi
 {
 public:
@@ -43,15 +43,16 @@ public:
                  daisy::UiEventQueue& eventQueue,
                  const std::array<PeakMeterType, 4>& peakMeters,
                  LooperControllerType& looperController,
-                 ParameterProviderType& looperParameterProvider) :
+                 ParameterProviderType& looperParameterProvider,
+                 LoopLibraryType& loopLibrary) :
         uiHardware_(uiHardware),
         eventQueue_(eventQueue),
         calibrationPage_(uiHardware),
         settingsPage_(looperController,
                       looperParameterProvider,
                       calibrationPage_),
-        savePage_(looperController),
-        loadPage_(looperController),
+        savePage_(looperController, loopLibrary),
+        loadPage_(looperController, loopLibrary),
         recordingPage_(looperController),
         basePage_(peakMeters,
                   looperController,
@@ -93,10 +94,12 @@ private:
                    ParameterProviderType>
         settingsPage_;
     UiSavePage<LooperControllerType,
-               UiHardwareType>
+               UiHardwareType,
+               LoopLibraryType>
         savePage_;
     UiLoadPage<LooperControllerType,
-               UiHardwareType>
+               UiHardwareType,
+               LoopLibraryType>
         loadPage_;
     UiRecordingPage<LooperControllerType,
                     UiHardwareType>

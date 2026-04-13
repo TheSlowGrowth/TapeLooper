@@ -1,5 +1,5 @@
 /**
- * Copyright (C) Johannes Elliesen, 2021
+ * Copyright (C) Johannes Elliesen, 2025
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,21 +17,22 @@
 
 #pragma once
 
-namespace dspdefs
+#include <gtest/gtest.h>
+
+#include "AudioSaveAndRecall.h"
+
+class LoopLibraryMock
 {
-    constexpr size_t numLoopers = 4;
-    constexpr double loopLengthInS = 60.0;
-
-    constexpr float speedMin = 0.25f;
-    constexpr float speedMax = 4.0f;
-
-    namespace paramIds
+public:
+    void scanOrInitLibrary()
     {
-        const auto chState = "chState";
-        const auto chSpeed = "chSpeed";
-        const auto chDrive = "chDrive";
-        const auto chGrainAmt = "chGrainAmt";
-        const auto chWowAndFlutterAmt = "chWowAndFlutterAmt";
-        const auto chPostGain = "chPostGain";
-    } // namespace paramIds
-} // namespace dspdefs
+    }
+
+    bool hasLoop(StorageBank bank, int slot)
+    {
+        (void) (bank);
+        (void) (slot);
+
+        return false;
+    }
+};

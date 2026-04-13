@@ -47,3 +47,4 @@ plugin/build
 
 # macOS crap
 .DS_Store
+firmware/.cache
