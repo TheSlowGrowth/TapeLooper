@@ -44,7 +44,8 @@ public:
             fileSystem_.DeInit();
 
             HAL_SD_DeInit(&hsd1);
-            memset(&hsd1, 0, sizeof(hsd1));
+            __HAL_RCC_SDMMC1_FORCE_RESET();
+            __HAL_RCC_SDMMC1_RELEASE_RESET();
 
             daisy::System::DelayUs(10000);
 
